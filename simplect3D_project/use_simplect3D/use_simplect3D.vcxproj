@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3AEEA53D-20A2-41B9-9DF2-963115183080}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>use_simplect3D</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\cppprojects\simplect3D_3.1.0\simplect3D;C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\cppprojects\simplect3D_3.1.0\simplect3D;C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;simplect3D_developping_;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;simplect3D_developping_;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\simplect3D_cpp\anime.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\anime_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\billboard.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\box.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\box_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\bunish_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\canimer.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\display_manager.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\camera.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\dxinput.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\dxlight.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\dxmanager.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\fps60.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\image_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\key.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\key_system.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\leaf.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\manager.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\matrix.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\model.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\bunisher.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\mouse.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\se.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_coor3.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_ModelDustConverter.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_normalize_vector.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_triangle_gravity_center.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\sound_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\sound_manager.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\sphere.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\sphere_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\unique_sound.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\utility.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\simplect3D\anime.h" />
+    <ClInclude Include="..\..\simplect3D\anime_data.h" />
+    <ClInclude Include="..\..\simplect3D\billboard.h" />
+    <ClInclude Include="..\..\simplect3D\si3_coor3.h" />
+    <ClInclude Include="..\..\simplect3D\si3_blendmode.h" />
+    <ClInclude Include="..\..\simplect3D\box.h" />
+    <ClInclude Include="..\..\simplect3D\box_data.h" />
+    <ClInclude Include="..\..\simplect3D\bunish_data.h" />
+    <ClInclude Include="..\..\simplect3D\canimer.h" />
+    <ClInclude Include="..\..\simplect3D\diffuse.h" />
+    <ClInclude Include="..\..\simplect3D\display_manager.h" />
+    <ClInclude Include="..\..\simplect3D\display_object.h" />
+    <ClInclude Include="..\..\simplect3D\camera.h" />
+    <ClInclude Include="..\..\simplect3D\dxinput.h" />
+    <ClInclude Include="..\..\simplect3D\dxlight.h" />
+    <ClInclude Include="..\..\simplect3D\dxmanager.h" />
+    <ClInclude Include="..\..\simplect3D\fps60.h" />
+    <ClInclude Include="..\..\simplect3D\image_data.h" />
+    <ClInclude Include="..\..\simplect3D\key.h" />
+    <ClInclude Include="..\..\simplect3D\key_system.h" />
+    <ClInclude Include="..\..\simplect3D\leaf.h" />
+    <ClInclude Include="..\..\simplect3D\manager.h" />
+    <ClInclude Include="..\..\simplect3D\matrix.h" />
+    <ClInclude Include="..\..\simplect3D\model.h" />
+    <ClInclude Include="..\..\simplect3D\model_coor.h" />
+    <ClInclude Include="..\..\simplect3D\bunisher.h" />
+    <ClInclude Include="..\..\simplect3D\model_data.h" />
+    <ClInclude Include="..\..\simplect3D\mouse.h" />
+    <ClInclude Include="..\..\simplect3D\popular.h" />
+    <ClInclude Include="..\..\simplect3D\saferelease.h" />
+    <ClInclude Include="..\..\simplect3D\se.h" />
+    <ClInclude Include="..\..\simplect3D\si3_ModelDustConverter.h" />
+    <ClInclude Include="..\..\simplect3D\si3_top_type.h" />
+    <ClInclude Include="..\..\simplect3D\simplect3D.h" />
+    <ClInclude Include="..\..\simplect3D\sound_data.h" />
+    <ClInclude Include="..\..\simplect3D\sound_manager.h" />
+    <ClInclude Include="..\..\simplect3D\sphere.h" />
+    <ClInclude Include="..\..\simplect3D\sphere_data.h" />
+    <ClInclude Include="..\..\simplect3D\top4.h" />
+    <ClInclude Include="..\..\simplect3D\unique_sound.h" />
+    <ClInclude Include="..\..\simplect3D\utility.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
