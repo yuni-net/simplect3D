@@ -33,10 +33,6 @@ namespace si3
 		return z_;
 	}
 
-	void sphere::radius(float value)
-	{
-		radius_ = value;
-	}
 	float sphere::radius() const
 	{
 		return radius_;
@@ -91,18 +87,18 @@ namespace si3
 		construct();
 	}
 
-	sphere::sphere(const manager & si3m, const char * path, float roughness)
+	sphere::sphere(const manager & si3m, const char * path, float smoothness, float radius)
 	{
 		construct();
-		create(si3m, path, roughness);
+		create(si3m, path, smoothness, radius);
 	}
 
-	void sphere::create(const manager & si3m, const char * path, float roughness)
+	void sphere::create(const manager & si3m, const char * path, float smoothness, float radius)
 	{
 		device = si3m.get_dxdevice();
-		sphered = new sphere_data(si3m.get_dxdevice(), path, roughness);
+		radius_ = radius;
+		sphered = new sphere_data(si3m.get_dxdevice(), path, smoothness, radius);
 		ownership = true;
-		radius(1.0f);
 	}
 
 
@@ -174,8 +170,6 @@ namespace si3
 		device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
 		device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
 
-		matrix scale_mat;
-		scale_mat.scale(radius(), radius(), radius());
 
 		matrix rot_mat =
 			matrix().rotate_y(rot_y()) *
@@ -185,25 +179,8 @@ namespace si3
 		matrix para_mat;
 		para_mat.parallel(x(), y(), z());
 
-		matrix world_mat = scale_mat*rot_mat*para_mat;
+		matrix world_mat = rot_mat*para_mat;
 
-#if 0
-		D3DXMATRIX scale_mat;
-		D3DXMatrixScaling(&scale_mat, radius(), radius(), radius());
-
-		D3DXMATRIX rotate_mat;
-		//	D3DXMatrixRotationX(&rotate_mat, 3.14159265f);
-		D3DXMatrixRotationX(&rotate_mat, 0.0f);
-
-		D3DXMATRIX trans_mat;
-		D3DXMatrixTranslation(&trans_mat, x(), y(), z());
-
-		D3DXMATRIX scale_rot;
-		D3DXMatrixMultiply(&scale_rot, &scale_mat, &rotate_mat);
-
-		D3DXMATRIX world_mat;
-		D3DXMatrixMultiply(&world_mat, &scale_rot, &trans_mat);
-#endif
 
 		//マテリアル設定
 		const D3DMATERIAL9 material = {
@@ -243,8 +220,6 @@ namespace si3
 		// Zバッファを更新しない
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 
-		matrix scale_mat;
-		scale_mat.scale(radius(), radius(), radius());
 
 		matrix rot_mat =
 			matrix().rotate_y(rot_y()) *
@@ -254,25 +229,8 @@ namespace si3
 		matrix para_mat;
 		para_mat.parallel(x(), y(), z());
 
-		matrix world_mat = scale_mat*rot_mat*para_mat;
+		matrix world_mat = rot_mat*para_mat;
 
-#if 0
-		D3DXMATRIX scale_mat;
-		D3DXMatrixScaling(&scale_mat, radius(), radius(), radius());
-
-		D3DXMATRIX rotate_mat;
-		//	D3DXMatrixRotationX(&rotate_mat, 3.14159265f);
-		D3DXMatrixRotationX(&rotate_mat, 0.0f);
-
-		D3DXMATRIX trans_mat;
-		D3DXMatrixTranslation(&trans_mat, x(), y(), z());
-
-		D3DXMATRIX scale_rot;
-		D3DXMatrixMultiply(&scale_rot, &scale_mat, &rotate_mat);
-
-		D3DXMATRIX world_mat;
-		D3DXMatrixMultiply(&world_mat, &scale_rot, &trans_mat);
-#endif
 
 		//マテリアル設定
 		const D3DMATERIAL9 material = {

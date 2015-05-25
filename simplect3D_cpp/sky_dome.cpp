@@ -17,7 +17,7 @@ namespace si3
 	void sky_dome::load(const manager & manageri, const TCHAR * path)
 	{
 		managerp = &manageri;
-		sphered.load(manageri.get_dxdevice(), path, 0.1f);
+		sphered.load(manageri.get_dxdevice(), path, 1.0f, 1.0f);
 		loaded = true;
 	}
 

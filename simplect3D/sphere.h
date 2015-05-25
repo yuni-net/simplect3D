@@ -14,8 +14,8 @@ namespace si3
 	{
 	public:
 		sphere();
-		sphere(const manager & si3m, const char * path, float roughness);
-		void create(const manager & si3m, const char * path, float roughness);
+		sphere(const manager & si3m, const char * path, float smoothness, float radius);
+		void create(const manager & si3m, const char * path, float smoothness, float radius);
 
 		void x(float value);
 		float x() const;
@@ -26,7 +26,6 @@ namespace si3
 		void z(float value);
 		float z() const;
 
-		void radius(float value);
 		float radius() const;
 
 #if 1
