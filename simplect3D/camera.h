@@ -42,6 +42,8 @@ namespace si3
 		const D3DXMATRIX & view_mat() const;
 		const D3DXMATRIX & view_rot() const;
 
+		float near_clip() const;
+
 
 
 
@@ -54,5 +56,6 @@ namespace si3
 		LPDIRECT3DDEVICE9 dxdevice;
 		D3DXMATRIX	view_rot_;
 		D3DXMATRIX	view_mat_;
+		float near_clip_;
 	};
 }

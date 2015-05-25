@@ -13,7 +13,9 @@ namespace si3
 	class sphere :public display_object
 	{
 	public:
-		sphere(const manager & si3m, float roughness);
+		sphere();
+		sphere(const manager & si3m, const char * path, float roughness);
+		void create(const manager & si3m, const char * path, float roughness);
 
 		void x(float value);
 		float x() const;
@@ -27,7 +29,7 @@ namespace si3
 		void radius(float value);
 		float radius() const;
 
-#if 0
+#if 1
 		void red(float value);
 		float red() const;
 
@@ -36,8 +38,20 @@ namespace si3
 
 		void blue(float value);
 		float blue() const;
+
+		void alpha(float value);
+		float alpha() const;
+
 #endif
 
+		void rot_x(float value);
+		float rot_x() const;
+
+		void rot_y(float value);
+		float rot_y() const;
+
+		void rot_z(float value);
+		float rot_z() const;
 
 
 
@@ -47,16 +61,26 @@ namespace si3
 		~sphere();
 
 	private:
+		LPDIRECT3DDEVICE9 device;
 		float x_;
 		float y_;
 		float z_;
 		float radius_;
+
 		float red_;
 		float green_;
 		float blue_;
+		float alpha_;
+
+		float rot_x_;
+		float rot_y_;
+		float rot_z_;
 
 		sphere_data * sphered;
 		bool ownership;
+
+
+		void construct();
 	};
 }
 

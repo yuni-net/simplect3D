@@ -1,9 +1,14 @@
-#if 0
+#if 1
 
 #include <box.h>
 
 namespace si3
 {
+	void box::set_box_data(const box_data & boxd)
+	{
+		this->boxd = &boxd;
+	}
+
 	void box::x(float value)
 	{
 		x_ = value;
@@ -31,69 +36,167 @@ namespace si3
 		return z_;
 	}
 
-	void box::radius(float value)
+
+	float box::rot_x() const
 	{
-		radius_ = value;
+		return rot_x_;
 	}
-	float box::radius() const
+	void box::rot_x(float value)
 	{
-		return radius_;
+		rot_x_ = value;
 	}
 
-#if 0
-	void box::red(float value)
+	float box::rot_y() const
 	{
-		red_ = value;
+		return rot_y_;
 	}
+	void box::rot_y(float value)
+	{
+		rot_y_ = value;
+	}
+
+	float box::rot_z() const
+	{
+		return rot_z_;
+	}
+	void box::rot_z(float value)
+	{
+		rot_z_ = value;
+	}
+
+
 	float box::red() const
 	{
 		return red_;
 	}
-
-	void box::green(float value)
+	void box::red(float value)
 	{
-		green_ = value;
+		red_ = value;
 	}
+
 	float box::green() const
 	{
 		return green_;
 	}
-
-	void box::blue(float value)
+	void box::green(float value)
 	{
-		blue_ = value;
+		green_ = value;
 	}
+
 	float box::blue() const
 	{
 		return blue_;
 	}
-#endif
+	void box::blue(float value)
+	{
+		blue_ = value;
+	}
+
+	float box::alpha() const
+	{
+		return alpha_;
+	}
+	void box::alpha(float value)
+	{
+		alpha_ = value;
+	}
 
 
 	void box::draw_no_alpha() const
 	{
-		D3DXMATRIX scale_mat;
-		D3DXMatrixScaling(&scale_mat, radius(), radius(), radius());
+		if (alpha() < 1.0f)
+		{
+			return;
+		}
 
-		D3DXMATRIX rotate_mat;
-		//	D3DXMatrixRotationX(&rotate_mat, 3.14159265f);
-		D3DXMatrixRotationX(&rotate_mat, 0.0f);
+		auto device = boxd->get_device();
 
-		D3DXMATRIX trans_mat;
-		D3DXMatrixTranslation(&trans_mat, x(), y(), z());
+		// Zバッファを更新する
+		device->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
 
-		D3DXMATRIX scale_rot;
-		D3DXMatrixMultiply(&scale_rot, &scale_mat, &rotate_mat);
+		// αテスト禁止
+		device->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
 
-		D3DXMATRIX world_mat;
-		D3DXMatrixMultiply(&world_mat, &scale_rot, &trans_mat);
+		// 半透明表示禁止(αブレンディング無効化)
+		device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
-		boxd->draw(world_mat);
+		matrix rotate_mat =
+			matrix().rotate_y(rot_y()) *
+			matrix().rotate_x(rot_x()) *
+			matrix().rotate_z(rot_z());
+
+		matrix parallel_mat;
+		parallel_mat.parallel(x(), y(), z());
+
+		matrix world_mat;
+		world_mat = rotate_mat*parallel_mat;
+
+		// ワールド変換行列設定
+		device->SetTransform(D3DTS_WORLD, world_mat.dxpointer());
+
+		D3DMATERIAL9 material = {
+			{ red(), green(), blue(), alpha() },
+			{ red(), green(), blue(), alpha() },
+			{ 0.0f, 0.0f, 0.0f, 0.0f },
+			{ 0.0f, 0.0f, 0.0f, 0.0f },
+			1.0f
+		};
+
+		//マテリアル設定
+		device->SetMaterial(&material);
+
+
+		boxd->draw();
 	}
 	void box::draw_alpha() const
 	{
-		// todo
-		// 現在未対応
+		if (alpha() >= 1.0f)
+		{
+			return;
+		}
+
+		auto device = boxd->get_device();
+
+		// Zバッファを更新しない
+		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
+
+		// 半透明表示を可能にする(αブレンディング有効化)
+		device->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+		device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+		device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+		// 完全透明部分を書き込まない(αテスト有効化)
+		device->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+		device->SetRenderState(D3DRS_ALPHAREF, 0);
+		device->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
+
+		matrix rotate_mat =
+			matrix().rotate_y(rot_y()) *
+			matrix().rotate_x(rot_x()) *
+			matrix().rotate_z(rot_z());
+
+		matrix parallel_mat;
+		parallel_mat.parallel(x(), y(), z());
+
+		matrix world_mat;
+		world_mat = rotate_mat*parallel_mat;
+
+		// ワールド変換行列設定
+		device->SetTransform(D3DTS_WORLD, world_mat.dxpointer());
+
+		D3DMATERIAL9 material = {
+			{ red(), green(), blue(), alpha() },
+			{ red(), green(), blue(), alpha() },
+			{ 0.0f, 0.0f, 0.0f, 0.0f },
+			{ 0.0f, 0.0f, 0.0f, 0.0f },
+			1.0f
+		};
+
+		//マテリアル設定
+		device->SetMaterial(&material);
+
+
+		boxd->draw();
 	}
 
 }

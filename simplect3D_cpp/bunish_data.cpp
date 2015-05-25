@@ -55,7 +55,9 @@ namespace si3
 		pos += bunish_vec;
 		radian += rot_speed;
 		compute_world_mat();
+#ifdef NDEBUG
 		compute_z(si3m);
+#endif
 	}
 
 	void bunish_data::compute_world_mat()

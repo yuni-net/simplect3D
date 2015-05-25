@@ -5,18 +5,10 @@
 #include "model_coor.h"
 #include "model_data.h"
 #include "display_object.h"
+#include "rot_mode.h"
 
 namespace si3
 {
-	struct rot_mode
-	{
-		enum ERotMode
-		{
-			x,
-			y,
-			z
-		};
-	};
 
 	class manager;
 

@@ -2,6 +2,7 @@
 
 #include "popular.h"
 #include "display_object.h"
+#include "sky_dome_mini.h"
 
 namespace si3
 {
@@ -18,6 +19,8 @@ namespace si3
 		float context_green() const;
 		float context_blue() const;
 
+		sky_dome_mini & get_skydome();
+
 		void draw();
 
 
@@ -30,5 +33,6 @@ namespace si3
 		float fRed_;
 		float fGreen_;
 		float fBlue_;
+		sky_dome_mini skydome;
 	};
 }

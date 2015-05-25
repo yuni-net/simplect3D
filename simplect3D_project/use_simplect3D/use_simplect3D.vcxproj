@@ -41,12 +41,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\cppprojects\simplect3D_3.1.0\simplect3D;C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\projects\cpp\simplect3D\simplect3D;C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\cppprojects\simplect3D_3.1.0\simplect3D;C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\projects\cpp\simplect3D\simplect3D;C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\FantomWaves;C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2009%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,6 +112,8 @@
     <ClCompile Include="..\..\simplect3D_cpp\si3_ModelDustConverter.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_normalize_vector.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_triangle_gravity_center.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\sky_dome_mini.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sound_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sound_manager.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere.cpp" />
@@ -124,6 +126,7 @@
     <ClInclude Include="..\..\simplect3D\anime.h" />
     <ClInclude Include="..\..\simplect3D\anime_data.h" />
     <ClInclude Include="..\..\simplect3D\billboard.h" />
+    <ClInclude Include="..\..\simplect3D\rot_mode.h" />
     <ClInclude Include="..\..\simplect3D\si3_coor3.h" />
     <ClInclude Include="..\..\simplect3D\si3_blendmode.h" />
     <ClInclude Include="..\..\simplect3D\box.h" />
@@ -155,6 +158,8 @@
     <ClInclude Include="..\..\simplect3D\si3_ModelDustConverter.h" />
     <ClInclude Include="..\..\simplect3D\si3_top_type.h" />
     <ClInclude Include="..\..\simplect3D\simplect3D.h" />
+    <ClInclude Include="..\..\simplect3D\sky_dome.h" />
+    <ClInclude Include="..\..\simplect3D\sky_dome_mini.h" />
     <ClInclude Include="..\..\simplect3D\sound_data.h" />
     <ClInclude Include="..\..\simplect3D\sound_manager.h" />
     <ClInclude Include="..\..\simplect3D\sphere.h" />

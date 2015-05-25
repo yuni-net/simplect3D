@@ -9,7 +9,15 @@ namespace si3
 	class sphere_data
 	{
 	public:
-		sphere_data(LPDIRECT3DDEVICE9 device, float roughness);
+		sphere_data();
+		/*
+		** roughness:球の曲面の粗さ。この数値が大きいほど粗くなる。
+		** 1.0で最も粗くなり、長方形の板が表示される。
+		** マイナス値を指定してはいけない。
+		** 0.0も指定してはいけない。
+		*/
+		sphere_data(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
+		void load(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
 		void draw(const D3DXMATRIX & world_mat) const;
 
 
@@ -17,15 +25,18 @@ namespace si3
 
 
 
-
+		~sphere_data();
 	private:
 		struct land_vertex
 		{
 			D3DVECTOR   pos;
 			D3DVECTOR   normal;
+			float u;
+			float v;
 		};
 
 		LPDIRECT3DDEVICE9 device;
+		LPDIRECT3DTEXTURE9 texture;
 		IDirect3DVertexBuffer9 * vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		int index_num;
@@ -52,6 +63,8 @@ namespace si3
 			int piece_num_x,					// in
 			int piece_num_y);					// in
 
+		void construct();
+		void release();
 	};
 }
 

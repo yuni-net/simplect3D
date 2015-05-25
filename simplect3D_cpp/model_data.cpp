@@ -453,6 +453,11 @@ namespace si3
 		// 半透明表示禁止(αブレンディング無効化)
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
+		// マテリアルとテクスチャのrgba情報を掛け合わせる設定
+		device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+		device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+		device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
+
 		uint beg_index = 0;
 
 
@@ -551,6 +556,11 @@ namespace si3
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
 		device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 		device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+		// マテリアルとテクスチャのrgba情報を掛け合わせる設定
+		device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+		device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+		device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
 
 		// Zバッファを更新しない
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);

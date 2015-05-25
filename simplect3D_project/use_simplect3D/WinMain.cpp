@@ -41,7 +41,14 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_y(0.0f);
 	camera.look_z(0.0f);
 
+	si3::sky_dome skydome;
+	skydome.load(si3m, "data/orange.jpg");
+	skydome.x(0.0f);
+	skydome.y(0.0f);
+	skydome.z(0.0f);
+	skydome.radius(60.0f);
 
+//	skydome.load(si3m, "data/sky.jpg");
 
 //	si3::model_data miku_data(si3m, "data/Lat_Miku/miku_newface.pmd");
 	si3::model_data miku_data(si3m, "data/nanase_pose.pmd");
@@ -51,6 +58,8 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	miku.x(0.0f);
 	miku.y(0.0f);
 	miku.z(0.0f);
+
+
 
 	si3::bunisher mikusher;
 
@@ -125,6 +134,8 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 		{
 			si3m.register_display_object(miku);
 		}
+
+		si3m.register_display_object(skydome);
 
 		si3m.show();
 

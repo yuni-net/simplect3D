@@ -19,6 +19,7 @@ namespace si3
 		dxdevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 		dxdevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
 		dxdevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
+
 	}
 
 	void display_manager::register_display_object(const display_object & display_objecti)
@@ -82,5 +83,12 @@ namespace si3
 
 		display_objects.zerosize();
 
+		register_display_object(skydome);
 	}
+
+	sky_dome_mini & display_manager::get_skydome()
+	{
+		return skydome;
+	}
+
 }

@@ -91,7 +91,9 @@ namespace si3
 		listbuff->Unlock();
 
 		alpha -= alpha_speed;
+#ifdef NDEBUG
 		bunish_data_list.sort();	// ~‡‚Éƒ\[ƒg‚³‚ê‚é
+#endif
 	}
 
 

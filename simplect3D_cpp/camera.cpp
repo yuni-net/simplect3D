@@ -8,13 +8,13 @@ namespace si3
 	{
 		const float view_angle = 60.0f;													// 視野角
 		const float aspect_ratio = static_cast<float>(screen_width) / screen_height;	// アスペクト比
-		const float near_clip = 0.1f;													// 前面クリップ距離
+		near_clip_ = 0.1f;													// 前面クリップ距離
 		const float far_clip = 10000.0f;												// 背面クリップ距離
 
 		this->dxdevice = dxdevice;
 
 		// プロジェクション マトリックス設定
-		D3DXMatrixPerspectiveFovLH(&projection_mat, D3DXToRadian(view_angle), aspect_ratio, near_clip, far_clip);
+		D3DXMatrixPerspectiveFovLH(&projection_mat, D3DXToRadian(view_angle), aspect_ratio, near_clip(), far_clip);
 
 		// ビュー マトリックス設定
 		camera_coor = D3DXVECTOR3(0.0f, 20.0f, -50.0f);						// 視点座標
@@ -189,5 +189,9 @@ namespace si3
 		return view_rot_;
 	}
 
+	float camera::near_clip() const
+	{
+		return near_clip_;
+	}
 
 }

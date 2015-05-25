@@ -3,28 +3,26 @@
 #include <utility.h>
 #include <sphere_data.h>
 
-static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL;
-//static const WORD SPHERE_FVF = D3DFVF_XYZ;
+static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
 namespace si3
 {
-	sphere_data::sphere_data(LPDIRECT3DDEVICE9 device, float roughness)
+	sphere_data::sphere_data()
+	{
+		construct();
+	}
+	sphere_data::sphere_data(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
+	{
+		construct();
+		load(device, path, roughness);
+	}
+
+	void sphere_data::load(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
 	{
 		this->device = device;
 
-		saferelease(vertbuff);
-		saferelease(indexbuff);
+		release();
 
-#if 0
-		HRESULT hr;
-
-		// テクスチャのサイズを調べて記憶する
-		D3DXIMAGE_INFO info;
-		hr = D3DXGetImageInfoFromFile(path, &info);
-		if (FAILED(hr)) return false;
-		width = info.Width;
-		height = info.Height;
-#endif
 		const float diameter = 2.0f;
 		const float width = diameter * pi;
 		const float height = diameter;
@@ -44,9 +42,8 @@ namespace si3
 		index_num = top_of_grid + top_for_degen;			// 頂点インデックス情報の個数
 		triangle_num = index_num - 2;						// 三角ポリゴンの合計
 
-#if 0
 		// テクスチャ作成
-		hr = D3DXCreateTextureFromFileEx(
+		HRESULT hr = D3DXCreateTextureFromFileEx(
 			device,
 			path,
 			D3DX_DEFAULT_NONPOW2,
@@ -60,9 +57,8 @@ namespace si3
 			0,
 			NULL,
 			NULL,
-			texture);
-		if (FAILED(hr)) return false;
-#endif
+			&texture);
+		if (FAILED(hr)) return;
 
 		bool result;
 
@@ -128,18 +124,28 @@ namespace si3
 		* 4.2→3を、最後の行になるまで繰り返す
 		*
 		*/
+		const float piece_width = 1.0f / top_num_x;
+		const float piece_height = 1.0f / top_num_y;
 		int target_index = 0;
 		for (int index_y = 0; index_y < top_num_y; ++index_y)		// 上の行から下の行へ頂点情報を格納してゆく
 		{
+			if (index_y == top_num_y - 1)
+			{
+				index_y = top_num_y - 1;
+			}
 			for (int index_x = 0; index_x < top_num_x; ++index_x)	// 左の列から右の列へ頂点情報を格納してゆく
 			{
 				land_vertex & vertex = pVtx[target_index];
 
-				float theta = pi*index_y / piece_num_y;
-				vertex.pos.y = height*cos(theta) / 2.0f;
+				float theta = 2.0f*pi*index_y / piece_num_y;
+				float cos_value = cos(theta);
+				cos_value = cos_value*0.5f;
+				vertex.pos.y = height*cos_value;
+			//	vertex.pos.y = height*sin(theta);
 
 				float radian = 2*pi * index_x/piece_num_x;
-				float radius = sin(theta);
+
+				float radius = height*0.5f * sin(theta);
 
 				vertex.pos.x = cos(radian)*radius;
 				vertex.pos.z = sin(radian)*radius;
@@ -147,6 +153,9 @@ namespace si3
 				// 法線ベクトルは原点からxyzまでのベクトルを単位ベクトルに直したものと一致する
 				// 内部で単位ベクトルを計算し、vertex.normalに代入している
 				vector_to_unit_vector(vertex.pos, vertex.normal);
+
+				vertex.u = piece_width*index_x;
+				vertex.v = piece_height*index_y;
 
 				++target_index;
 			}
@@ -229,24 +238,12 @@ namespace si3
 		// 頂点フォーマット設定
 		device->SetFVF(SPHERE_FVF);
 
-		//マテリアル設定
-		static const D3DMATERIAL9 material = {
-				{ 1.0f, 1.0f, 1.0f, 1.0f },		// Diffuse
-				{ 0.9f, 0.9f, 0.9f, 0.9f },		// Ambient
-				{ 0.1f, 0.1f, 0.1f, 0.1f },		// Specular
-				{ 0.0f, 0.0f, 0.0f, 0.0f },		// Emissive
-				1.0f };
-		device->SetMaterial(&material);
+
+		device->SetTexture(0, texture);
 
 		device->SetStreamSource(0, vertbuff, 0, sizeof(land_vertex));
 		device->SetIndices(indexbuff);
 
-		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
-		//device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
-
-		//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
-		device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-		//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_POINT);
 
 		// プリミティブ描画
 		device->DrawIndexedPrimitive(
@@ -257,6 +254,26 @@ namespace si3
 			0,
 			triangle_num);
 
+	}
+
+
+	sphere_data::~sphere_data()
+	{
+		release();
+	}
+
+	void sphere_data::construct()
+	{
+		device = nullptr;
+		vertbuff = nullptr;
+		indexbuff = nullptr;
+		texture = nullptr;
+	}
+	void sphere_data::release()
+	{
+		saferelease(vertbuff);
+		saferelease(indexbuff);
+		saferelease(texture);
 	}
 
 

@@ -1,7 +1,7 @@
 /*
  * WELCOME TO simplect3D LIBRARY !
  * 
- * Version: 5.0.0
+ * Version: 5.0.1
  * FinalUpdate: Feb 8th 2015
  * Author: NH 30070 AT12A171 10
  */
@@ -20,6 +20,10 @@
 #include "unique_sound.h"
 #include "se.h"
 #include "bunisher.h"
+#include "sky_dome.h"
+#include "sky_dome_mini.h"
+#include "box.h"
+#include "sphere.h"
 
 #ifndef simplect3D_developping_
 #ifdef _DEBUG
@@ -33,6 +37,9 @@
 // release note ***********************************************************
 
 #if 0
+
+[5.0.1]
+*when Debug, bunisher does not sort
 
 [5.0.0]
 *bunisher was implemented

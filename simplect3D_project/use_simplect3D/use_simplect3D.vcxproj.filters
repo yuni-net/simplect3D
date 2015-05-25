@@ -76,9 +76,6 @@
     <Filter Include="simplect3D\display_object">
       <UniqueIdentifier>{0fd7b4ab-d00c-4291-b82a-8c382e6b6304}</UniqueIdentifier>
     </Filter>
-    <Filter Include="simplect3D\box_data">
-      <UniqueIdentifier>{39d49c9c-460a-413b-948c-708b121848d9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="simplect3D\box">
       <UniqueIdentifier>{3b150fe3-1815-4358-b8d9-831905fd46c2}</UniqueIdentifier>
     </Filter>
@@ -123,6 +120,18 @@
     </Filter>
     <Filter Include="simplect3D\bunisher\ModelDustConverter">
       <UniqueIdentifier>{3445a89d-93a1-4f5b-aeaa-ba6040ef9893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\sky_dome">
+      <UniqueIdentifier>{48feca6f-014a-42fd-bf39-dbf6cc98c518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\sky_dome\sky_dome_mini">
+      <UniqueIdentifier>{bde5dcba-1caa-4965-91d4-1c0dc3bb3b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\sky_dome\sky_dome">
+      <UniqueIdentifier>{fafaa3b5-00b6-4065-af98-938d50d4eae8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\box\box_data">
+      <UniqueIdentifier>{39d49c9c-460a-413b-948c-708b121848d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +185,7 @@
       <Filter>simplect3D\box</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\box_data.cpp">
-      <Filter>simplect3D\box_data</Filter>
+      <Filter>simplect3D\box\box_data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\utility.cpp">
       <Filter>simplect3D\utility</Filter>
@@ -228,6 +237,12 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\si3_triangle_gravity_center.cpp">
       <Filter>simplect3D\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\sky_dome_mini.cpp">
+      <Filter>simplect3D\sky_dome\sky_dome_mini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp">
+      <Filter>simplect3D\sky_dome\sky_dome</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,7 +313,7 @@
       <Filter>simplect3D\box</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\box_data.h">
-      <Filter>simplect3D\box_data</Filter>
+      <Filter>simplect3D\box\box_data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\billboard.h">
       <Filter>simplect3D\billboard</Filter>
@@ -353,6 +368,15 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_top_type.h">
       <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\sky_dome_mini.h">
+      <Filter>simplect3D\sky_dome\sky_dome_mini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\rot_mode.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\sky_dome.h">
+      <Filter>simplect3D\sky_dome\sky_dome</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
