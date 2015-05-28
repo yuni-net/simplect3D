@@ -133,6 +133,15 @@
     <Filter Include="simplect3D\box\box_data">
       <UniqueIdentifier>{39d49c9c-460a-413b-948c-708b121848d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\Motion3D">
+      <UniqueIdentifier>{5ba818ac-3788-411e-afeb-74c270d50527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\MotionData">
+      <UniqueIdentifier>{43e89cf8-9465-4706-be02-813c97ff1ae1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\ModelData">
+      <UniqueIdentifier>{be37439e-f3bb-43db-8dd3-aff95f9c00a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -243,6 +252,15 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp">
       <Filter>simplect3D\sky_dome\sky_dome</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp">
+      <Filter>simplect3D\Motion3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp">
+      <Filter>simplect3D\Motion3D\ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp">
+      <Filter>simplect3D\Motion3D\MotionData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -377,6 +395,18 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\sky_dome.h">
       <Filter>simplect3D\sky_dome\sky_dome</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\Motion3D.h">
+      <Filter>simplect3D\Motion3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\MotionData.h">
+      <Filter>simplect3D\Motion3D\MotionData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\ModelData.h">
+      <Filter>simplect3D\Motion3D\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\Top_pmd.h">
+      <Filter>simplect3D\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
