@@ -11,6 +11,7 @@ namespace si3
 {
 	class manager;
 	class MotionData;
+	class BoneMap;
 
 	class ModelData
 	{
@@ -19,7 +20,7 @@ namespace si3
 		ModelData(const manager & manageri, const tstring & path);
 		ModelData(const manager & manageri, const TCHAR * path, const si3::coor3 & center);
 
-		bool load(const manager & manageri, const TCHAR * path, MotionData & motion_data);
+		bool load(const manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
 		bool load(const manager & manageri, const TCHAR * path);
 		bool load(const manager & manageri, const tstring & path);
 		bool load(const manager & manageri, const TCHAR * path, const si3::coor3 & center);
@@ -48,6 +49,16 @@ namespace si3
 
 #pragma pack(push, 1)
 
+		struct top_data
+		{
+			float pos[3];
+			float normal[3];
+			float uv[2];
+			unsigned short bone_num[2];
+			uchar bone_weight;
+			uchar edge_flag;
+		};
+
 		struct pmd_mate_data
 		{
 			float diffuse[3];
@@ -61,6 +72,7 @@ namespace si3
 			char texture_name[20];	// ç≈å„ÇÃ'\0'ÇÕï€è·Ç≥ÇÍÇƒÇ¢Ç»Ç¢ÇÃÇ≈íçà”
 		};
 
+
 #pragma pack(pop)
 
 		LPDIRECT3DDEVICE9 device;
@@ -73,6 +85,7 @@ namespace si3
 		void release();
 
 		bool load_header(FILE * fp);
+		bool load_bone(FILE * fp, MotionData & motion_data, BoneMap & bone_map);
 		bool create_top_buffer(unsigned long top_num);
 		bool load_top_center(FILE * fp, const si3::coor3 & center);
 		bool load_top(FILE * fp);

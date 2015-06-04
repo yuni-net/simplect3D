@@ -106,6 +106,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\model.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\bunisher.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\BoneMap.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="..\..\simplect3D\anime_data.h" />
     <ClInclude Include="..\..\simplect3D\billboard.h" />
     <ClInclude Include="..\..\simplect3D\ModelData.h" />
+    <ClInclude Include="..\..\simplect3D\BoneMap.h" />
     <ClInclude Include="..\..\simplect3D\Motion3D.h" />
     <ClInclude Include="..\..\simplect3D\MotionData.h" />
     <ClInclude Include="..\..\simplect3D\rot_mode.h" />

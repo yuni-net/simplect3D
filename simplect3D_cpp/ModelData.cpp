@@ -2,6 +2,8 @@
 #include <manager.h>
 #include <MotionData.h>
 #include <Top_pmd.h>
+#include <cstdint>
+#include <BoneMap.h>
 
 namespace si3
 {
@@ -48,6 +50,62 @@ namespace si3
 		return true;
 	}
 
+	bool ModelData::load_bone(FILE * fp, MotionData & motion_data, BoneMap & bone_map)
+	{
+#pragma pack(push, 1)
+		struct BoneData
+		{
+			char bone_name[20];
+			int16_t parent_bone_index;
+			int16_t tail_pos_bone_index;
+			int8_t bone_type;
+			int16_t ik_parent_bone_index;
+			float bone_head_pos[3];
+		};
+#pragma pack(pop)
+
+		// seek top datas *******************************
+		unsigned long vert_num;
+		fread(&vert_num, sizeof(vert_num), 1, fp);
+		fseek(fp, sizeof(top_data)*vert_num, SEEK_CUR);
+		// **********************************************
+
+		// seek index datas *****************************
+		unsigned long index_num;
+		fread(&index_num, sizeof(index_num), 1, fp);
+		fseek(fp, sizeof(unsigned short)*index_num, SEEK_CUR);
+		// **********************************************
+
+		// seek material datas **************************
+		unsigned long material_num;
+		fread(&material_num, sizeof(material_num), 1, fp);
+		fseek(fp, sizeof(pmd_mate_data)*material_num, SEEK_CUR);
+		// **********************************************
+
+		unsigned short bone_num;
+		fread(&bone_num, sizeof(bone_num), 1, fp);
+		motion_data.init_top_lists(bone_num);
+
+		for (unsigned short bone_No = 0; bone_No < bone_num; ++bone_No)
+		{
+			BoneData bone_data;
+			fread(&bone_data, sizeof(bone_data), 1, fp);
+			char bone_name[21];
+			memcpy(bone_name, bone_data.bone_name, 20);
+			bone_name[20] = '\0';
+			bone_map.register_name(bone_name);
+		}
+
+		long reverse_byte =
+			sizeof(vert_num) + sizeof(top_data)*vert_num +
+			sizeof(index_num) + sizeof(unsigned short)*index_num +
+			sizeof(material_num) + sizeof(pmd_mate_data)*material_num +
+			sizeof(bone_num) + sizeof(BoneData)*bone_num;
+
+		fseek(fp, -reverse_byte, SEEK_CUR);
+	}
+
+
 	bool ModelData::create_top_buffer(unsigned long top_num)
 	{
 		// 頂点情報格納バッファを作成
@@ -84,16 +142,6 @@ namespace si3
 
 		for (ulong top_No = 0; top_No < top_num; ++top_No)
 		{
-			struct top_data
-			{
-				float pos[3];
-				float normal[3];
-				float uv[2];
-				ushort bone_num[2];
-				uchar bone_weight;
-				uchar edge_flag;
-			};
-
 			top_data top_data_;
 			fread(&top_data_, sizeof(top_data), 1, fp);
 
@@ -133,15 +181,6 @@ namespace si3
 
 		for (ulong top_No = 0; top_No < top_num; ++top_No)
 		{
-			struct top_data
-			{
-				float pos[3];
-				float normal[3];
-				float uv[2];
-				ushort bone_num[2];
-				uchar bone_weight;
-				uchar edge_flag;
-			};
 
 			top_data top_data_;
 			fread(&top_data_, sizeof(top_data), 1, fp);
@@ -175,8 +214,6 @@ namespace si3
 			return false;
 		}
 
-		motion_data.clear_top_lists();
-
 		// バッファをロックをして書き込みを開始する
 		top_type * top_head = nullptr;
 		HRESULT hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_head), 0);
@@ -188,7 +225,7 @@ namespace si3
 			Top_pmd top_data_;
 			fread(&top_data_, sizeof(Top_pmd), 1, fp);
 
-			motion_data.add_top(top_data_);
+			motion_data.add_top(top_No, top_data_);
 
 			top_type & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0];
@@ -433,7 +470,7 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData::load(const manager & manageri, const TCHAR * path, MotionData & motion_data)
+	bool ModelData::load(const manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
 	{
 		release();
 
@@ -442,6 +479,11 @@ namespace si3
 		FILE * fp = fopen(path, "rb");
 
 		if (load_header(fp) == false)
+		{
+			return false;
+		}
+
+		if (load_bone(fp, motion_data, bone_map) == false)
 		{
 			return false;
 		}

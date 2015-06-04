@@ -135,7 +135,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 			si3m.register_display_object(miku);
 		}
 
-		si3m.register_display_object(skydome);
+	//	si3m.register_display_object(skydome);
 
 		si3m.show();
 

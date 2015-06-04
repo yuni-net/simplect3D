@@ -10,6 +10,8 @@ namespace si3
 		float z;
 
 		coor3 & operator+=(const coor3 & another);
+		coor3 operator+(const coor3 & another) const;
+		coor3 operator*(const float magni) const;
 	};
 
 }

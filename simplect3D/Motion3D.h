@@ -62,6 +62,7 @@ namespace si3
 	private:
 		mutable ModelData model_data;
 		mutable MotionData motion_data;
+		BoneMap bone_map;
 		mutable matrix world_mat;
 		LPDIRECT3DDEVICE9 device;
 

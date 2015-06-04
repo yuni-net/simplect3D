@@ -11,8 +11,8 @@ namespace si3
 	void Motion3D::load(manager & si3m, const char * model_path, const char * motion_path)
 	{
 		device = si3m.get_dxdevice();
-		motion_data.load(si3m, motion_path);
-		model_data.load(si3m, model_path, motion_data);
+		motion_data.load(si3m, motion_path, bone_map);
+		model_data.load(si3m, model_path, motion_data, bone_map);
 		seek_first();
 	}
 
