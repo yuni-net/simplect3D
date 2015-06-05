@@ -24,10 +24,10 @@ namespace si3
 		load(manageri, path, center);
 	}
 
-#pragma pack(push, 1)
 
 	bool ModelData::load_header(FILE * fp)
 	{
+#pragma pack(push, 1)
 		struct header
 		{
 			char magic[3];	// "Pmd"
@@ -35,6 +35,7 @@ namespace si3
 			char model_name[20];
 			char comment[256];
 		};
+#pragma pack(pop)
 
 		header header_;
 
@@ -103,6 +104,8 @@ namespace si3
 			sizeof(bone_num) + sizeof(BoneData)*bone_num;
 
 		fseek(fp, -reverse_byte, SEEK_CUR);
+
+		return true;
 	}
 
 
@@ -511,7 +514,6 @@ namespace si3
 	}
 
 
-#pragma pack(pop)
 
 
 	bool ModelData::load(const manager & manageri, const tstring & path)

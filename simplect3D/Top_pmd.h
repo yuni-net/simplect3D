@@ -3,6 +3,7 @@
 
 namespace si3
 {
+#pragma pack(push, 1)
 	struct Top_pmd
 	{
 		float pos[3];
@@ -12,6 +13,7 @@ namespace si3
 		unsigned char bone_weight;
 		unsigned char edge_flag;
 	};
+#pragma pack(pop)
 }
 
 #endif

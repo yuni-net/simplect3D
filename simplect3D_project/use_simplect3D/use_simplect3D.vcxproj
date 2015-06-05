@@ -87,6 +87,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\anime.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\anime_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\billboard.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\BoneData.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\box.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\box_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\bunish_data.cpp" />
@@ -97,6 +98,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\dxlight.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\dxmanager.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\fps60.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\get_text.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\image_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\key.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\key_system.cpp" />
@@ -130,6 +132,7 @@
     <ClInclude Include="..\..\simplect3D\anime.h" />
     <ClInclude Include="..\..\simplect3D\anime_data.h" />
     <ClInclude Include="..\..\simplect3D\billboard.h" />
+    <ClInclude Include="..\..\simplect3D\BoneData.h" />
     <ClInclude Include="..\..\simplect3D\ModelData.h" />
     <ClInclude Include="..\..\simplect3D\BoneMap.h" />
     <ClInclude Include="..\..\simplect3D\Motion3D.h" />
@@ -176,6 +179,7 @@
     <ClInclude Include="..\..\simplect3D\Top_pmd.h" />
     <ClInclude Include="..\..\simplect3D\unique_sound.h" />
     <ClInclude Include="..\..\simplect3D\utility.h" />
+    <ClInclude Include="..\..\simplect3D\util_MMD.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

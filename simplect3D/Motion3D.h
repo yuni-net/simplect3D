@@ -21,6 +21,7 @@ namespace si3
 		** モデルデータとモーションデータを読み込みます。
 		** モデルデータはpmd形式、モーションデータはvmd形式のみ対応です。
 		** この時点でアニメーション位置が先頭に設定されます。
+		** また、回転角はxyz全てゼロに設定されます。
 		*/
 		void load(manager & si3m, const char * model_path, const char * motion_path);
 

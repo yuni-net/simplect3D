@@ -11,6 +11,7 @@ namespace si3
 	public:
 		void register_name(const char * name);
 		int get_bone_index(const char * name) const;
+		int get_bone_index(const std::string & name) const;
 
 
 

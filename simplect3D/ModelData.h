@@ -48,7 +48,6 @@ namespace si3
 		};
 
 #pragma pack(push, 1)
-
 		struct top_data
 		{
 			float pos[3];
@@ -58,6 +57,10 @@ namespace si3
 			uchar bone_weight;
 			uchar edge_flag;
 		};
+
+#pragma pack(pop)
+
+#pragma pack(push, 1)
 
 		struct pmd_mate_data
 		{

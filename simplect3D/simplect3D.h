@@ -24,6 +24,7 @@
 #include "sky_dome_mini.h"
 #include "box.h"
 #include "sphere.h"
+#include "Motion3D.h"
 
 #ifndef simplect3D_developping_
 #ifdef _DEBUG

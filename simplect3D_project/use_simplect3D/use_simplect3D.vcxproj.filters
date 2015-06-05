@@ -148,6 +148,15 @@
     <Filter Include="simplect3D\Motion3D\BoneMap">
       <UniqueIdentifier>{6898c3d2-4337-46e3-98b0-2fc19e7ccda3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\Motion3D\MotionData\MotionData">
+      <UniqueIdentifier>{637686ce-8b0c-4852-8c83-772bc7d48a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\MotionData\BoneData">
+      <UniqueIdentifier>{c6b006d8-6415-4f3b-afd3-8d811dedf9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\utility\MMD">
+      <UniqueIdentifier>{c45cc964-cd13-43ad-a5bf-252389faf269}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -262,14 +271,20 @@
     <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp">
       <Filter>simplect3D\Motion3D\ModelData</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp">
-      <Filter>simplect3D\Motion3D\MotionData</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp">
       <Filter>simplect3D\Motion3D\Motion3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\BoneMap.cpp">
       <Filter>simplect3D\Motion3D\BoneMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp">
+      <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\BoneData.cpp">
+      <Filter>simplect3D\Motion3D\MotionData\BoneData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\get_text.cpp">
+      <Filter>simplect3D\utility\MMD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -405,20 +420,26 @@
     <ClInclude Include="..\..\simplect3D\sky_dome.h">
       <Filter>simplect3D\sky_dome\sky_dome</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\simplect3D\MotionData.h">
-      <Filter>simplect3D\Motion3D\MotionData</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\simplect3D\ModelData.h">
       <Filter>simplect3D\Motion3D\ModelData</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Top_pmd.h">
-      <Filter>simplect3D\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\Motion3D.h">
       <Filter>simplect3D\Motion3D\Motion3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\BoneMap.h">
       <Filter>simplect3D\Motion3D\BoneMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\MotionData.h">
+      <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\BoneData.h">
+      <Filter>simplect3D\Motion3D\MotionData\BoneData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\Top_pmd.h">
+      <Filter>simplect3D\utility\MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\util_MMD.h">
+      <Filter>simplect3D\utility\MMD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
