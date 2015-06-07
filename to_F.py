@@ -6,7 +6,7 @@ import shutil
 import glob
 
 fromCurrent = 'C:\\Users\\MoNoQLoREATOR\\Documents\\CppProjects\\simplect3D_3.1.0\\'
-toCurrent = 'F:\\simplect3D_3.1.0\\'
+toCurrent = 'C:\\Users\\MoNoQLoREATOR\\Downloads\\'
 
 
 def get_name(path):
