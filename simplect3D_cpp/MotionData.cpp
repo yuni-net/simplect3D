@@ -47,7 +47,7 @@ namespace si3
 			const std::string & bone_name = get_text(motion.bone_name, 15);
 
 			const int bone_index = bone_map.get_bone_index(bone_name);
-			auto & bone = bone_lists[bone_index];
+			auto & bone = motion_list[bone_index];
 			bone.add_key_frame(motion);
 
 			if (motion.frame_No > final_frame)
@@ -99,78 +99,56 @@ namespace si3
 
 
 	/***
-	** この関数はユーザーが呼び出すのではなく、Motion3Dクラス側が呼び出しを行う関数です。
-	** プレイ状態のときにアニメーションを行います。
-	** アニメーションによって変更された新しい頂点情報をmodel_dataに転送します。
+	** この関数はユーザーが呼び出すのではなく、ModelDataクラス側が呼び出しを行う関数です。
+	** プレイ状態のときにアニメーションカウンタを進めます。
+	** アニメーションを行う必要が無い場合はtrueを返します。
 	*/
-	void MotionData::animation(ModelData & model_data)
+	bool MotionData::animation()
 	{
 		if (animating == false && did_seek_first == false)
 		{
-			return;
+			return true;
 		}
 
 		if (did_finish_anime())
 		{
-			return;
+			return true;
 		}
 
 		++now_frame;
 
-
-
-		top_type * top_buffer = model_data.lock_top_buffer();
-
-		for (int bone_No = 0; bone_No < bone_num(); ++bone_No)
-		{
-			auto & bone = bone_lists[bone_No];
-			bone.compute_trans_mat(now_frame);
-		}
-
-		model_data.unlock_top_buffer();
-
 		did_seek_first = false;
+
+		return false;
 	}
-
-
 
 
 	/***
-	** ボーンと頂点の関係データを白紙に戻します。
+	* @brief 現在のフレームのこのボーンの座標変換行列を計算します。
+	* @param
+	*  [out]trans_mat: 変換行列がここに格納されます
+	*  [out]rot_mat: 変換行列の回転成分のみがここに格納されます
+	*  bone_No: ボーン番号を指定します
+	* @return
+	*  座標を変換する必要がある場合はtrueを、そもそも変換する必要が無い場合はfalseを返します。
+	*  例えば前のフレームから変化が無ければ座標を再度変換する必要は無いわけです。
+	*  ただし、必ず１フレームずつ順番にアニメーションすることが前提になっています。
+	*  逆再生や、任意のフレームにテレポートした場合は当然変換する必要があるでしょう。
 	*/
-	void MotionData::init_top_lists(const int bone_num)
+	bool MotionData::compute_trans_mat(
+		matrix & trans_mat,
+		matrix & rot_mat,
+		const int bone_No)
 	{
-		bone_lists.setsize(bone_num);
-		for (fw::uint bone_No = 0; bone_No < bone_lists.size(); ++bone_No)
-		{
-			bone_lists[bone_No].init_top_lists();
-		}
+		BoneMotion & motion = motion_list[bone_No];
+		return motion.compute_trans_mat(trans_mat, rot_mat, now_frame);
 	}
 
-	/***
-	** ボーンと頂点の関係データに新しい関係を追加します。
-	*/
-	void MotionData::add_top(int index, Top_pmd & top)
-	{
-		int bonedex;
-		bool is_main;
 
-		bonedex = top.bone_num[0];
-		is_main = true;
-		bone_lists[bonedex].add_associated_top(index, top, is_main);
-
-		// todo
-#if 0
-		bonedex = top.bone_num[1];
-		is_main = false;
-		bone_lists[bonedex].add_associated_top(index, top, is_main);
-#endif
-
-	}
 
 	int MotionData::bone_num() const
 	{
-		return bone_lists.size();
+		return motion_list.size();
 	}
 
 

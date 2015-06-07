@@ -6,7 +6,7 @@
 #include "matrix.h"
 #include "si3_coor3.h"
 #include "BoneMap.h"
-#include "BoneData.h"
+#include "BoneMotion.h"
 
 namespace si3
 {
@@ -48,21 +48,30 @@ namespace si3
 
 
 		/***
-		** この関数はユーザーが呼び出すのではなく、Motion3Dクラス側が呼び出しを行う関数です。
-		** プレイ状態のときにアニメーションを行います。
-		** アニメーションによって変更された新しい頂点情報をmodel_dataに転送します。
+		** この関数はユーザーが呼び出すのではなく、ModelDataクラス側が呼び出しを行う関数です。
+		** プレイ状態のときにアニメーションカウンタを進めます。
+		** アニメーションを行う必要が無い場合はtrueを返します。
 		*/
-		void animation(ModelData & model_data);
+		bool animation();
 
 		/***
-		** ボーンと頂点の関係データを白紙に戻します。
+		* @brief 現在のフレームのこのボーンの座標変換行列を計算します。
+		* @param
+		*  [out]trans_mat: 変換行列がここに格納されます
+		*  [out]rot_mat: 変換行列の回転成分のみがここに格納されます
+		*  bone_No: ボーン番号を指定します
+		* @return
+		*  座標を変換する必要がある場合はtrueを、そもそも変換する必要が無い場合はfalseを返します。
+		*  例えば前のフレームから変化が無ければ座標を再度変換する必要は無いわけです。
+		*  ただし、必ず１フレームずつ順番にアニメーションすることが前提になっています。
+		*  逆再生や、任意のフレームにテレポートした場合は当然変換する必要があるでしょう。
 		*/
-		void init_top_lists(const int bone_num);
+		bool compute_trans_mat(
+			matrix & trans_mat,
+			matrix & rot_mat,
+			const int bone_No);
 
-		/***
-		** ボーンと頂点の関係データに新しい関係を追加します。
-		*/
-		void add_top(int index, Top_pmd & top);
+
 
 	private:
 
@@ -71,7 +80,7 @@ namespace si3
 		int now_frame;
 		int final_frame;
 		bool did_seek_first;
-		fw::vector<BoneData> bone_lists;
+		fw::vector<BoneMotion> motion_list;
 
 		int bone_num() const;
 	};

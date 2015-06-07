@@ -9,6 +9,7 @@ namespace si3
 		float y;
 		float z;
 
+		bool operator !=(const coor3 & another) const;
 		coor3 & operator+=(const coor3 & another);
 		coor3 operator+(const coor3 & another) const;
 		coor3 operator*(const float magni) const;

@@ -2,6 +2,19 @@
 
 namespace si3
 {
+	void BonedTop::init(const int top_index, const Top_pmd & top_data_)
+	{
+		this->top_index = top_index;
+
+		pos_mat.x(top_data_.pos[0]);
+		pos_mat.y(top_data_.pos[1]);
+		pos_mat.z(top_data_.pos[2]);
+
+		normal_mat.x(top_data_.normal[0]);
+		normal_mat.y(top_data_.normal[1]);
+		normal_mat.z(top_data_.normal[2]);
+	}
+
 	void BonedTop::renew_tops(
 		top_type * top_buffer,
 		const matrix & trans_mat,

@@ -11,6 +11,12 @@ namespace si3
 	class BoneBranch
 	{
 	public:
+		void init(const int bone_No);
+
+		void add_child(BoneBranch & child);
+
+		void add_top(const int top_index, const Top_pmd & top_data_);
+
 		void renew_tops(
 			top_type * top_buffer,
 			MotionData & motion_data,
@@ -21,8 +27,9 @@ namespace si3
 
 
 	private:
+		int bone_No;
 		Bone bone;
-		fw::vector<BoneBranch> child_list;
+		fw::vector<BoneBranch *> child_list;
 	};
 
 }

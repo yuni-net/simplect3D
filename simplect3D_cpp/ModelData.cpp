@@ -51,7 +51,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_bone(FILE * fp, MotionData & motion_data, BoneMap & bone_map)
+	bool ModelData::load_bone(FILE * fp, BoneMap & bone_map)
 	{
 #pragma pack(push, 1)
 		struct BoneData
@@ -85,16 +85,30 @@ namespace si3
 
 		unsigned short bone_num;
 		fread(&bone_num, sizeof(bone_num), 1, fp);
-		motion_data.init_top_lists(bone_num);
+		bone_tree.setsize(bone_num);
 
 		for (unsigned short bone_No = 0; bone_No < bone_num; ++bone_No)
 		{
+			BoneBranch & me = bone_tree[bone_No];
+			me.init(bone_No);
+
 			BoneData bone_data;
 			fread(&bone_data, sizeof(bone_data), 1, fp);
+
 			char bone_name[21];
 			memcpy(bone_name, bone_data.bone_name, 20);
 			bone_name[20] = '\0';
 			bone_map.register_name(bone_name);
+
+			const int16_t parent_No = bone_data.parent_bone_index;
+			const bool there_is_no_parent = parent_No == 0xffff;
+			if (there_is_no_parent)
+			{
+				continue;
+			}
+
+			BoneBranch & parent = bone_tree[parent_No];
+			parent.add_child(me);
 		}
 
 		long reverse_byte =
@@ -228,7 +242,9 @@ namespace si3
 			Top_pmd top_data_;
 			fread(&top_data_, sizeof(Top_pmd), 1, fp);
 
-			motion_data.add_top(top_No, top_data_);
+			// todo weight‚ª‘S‚­l—¶‚³‚ê‚Ä‚¢‚È‚¢
+			const int bone_index = top_data_.bone_num[0];
+			bone_tree[bone_index].add_top(top_No, top_data_);
 
 			top_type & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0];
@@ -486,7 +502,7 @@ namespace si3
 			return false;
 		}
 
-		if (load_bone(fp, motion_data, bone_map) == false)
+		if (load_bone(fp, bone_map) == false)
 		{
 			return false;
 		}
@@ -553,8 +569,8 @@ namespace si3
 
 	void ModelData::animation(MotionData & motion_data)
 	{
-		bool did_finish_animation = motion_data.animation();
-		if (did_finish_animation)
+		bool motion_is_not_needed = motion_data.animation();
+		if (motion_is_not_needed)
 		{
 			return;
 		}
@@ -562,7 +578,8 @@ namespace si3
 		auto top_buffer = lock_top_buffer();
 
 		bool todo_renew = false;
-		bone_tree.renew_tops(top_buffer, motion_data, matrix(), todo_renew);
+		auto & root = bone_tree[0];
+		root.renew_tops(top_buffer, motion_data, matrix(), matrix(), todo_renew);
 
 		unlock_top_buffer();
 	}

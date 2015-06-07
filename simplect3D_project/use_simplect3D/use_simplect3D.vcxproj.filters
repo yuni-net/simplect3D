@@ -151,9 +151,6 @@
     <Filter Include="simplect3D\Motion3D\MotionData\MotionData">
       <UniqueIdentifier>{637686ce-8b0c-4852-8c83-772bc7d48a9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="simplect3D\Motion3D\MotionData\BoneData">
-      <UniqueIdentifier>{c6b006d8-6415-4f3b-afd3-8d811dedf9cb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="simplect3D\utility\MMD">
       <UniqueIdentifier>{c45cc964-cd13-43ad-a5bf-252389faf269}</UniqueIdentifier>
     </Filter>
@@ -165,6 +162,9 @@
     </Filter>
     <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop">
       <UniqueIdentifier>{5ce105c9-5a15-45b5-b2c1-f264e1191179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\MotionData\BoneMotion">
+      <UniqueIdentifier>{c6b006d8-6415-4f3b-afd3-8d811dedf9cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -289,9 +289,6 @@
     <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp">
       <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\BoneData.cpp">
-      <Filter>simplect3D\Motion3D\MotionData\BoneData</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\get_text.cpp">
       <Filter>simplect3D\utility\MMD</Filter>
     </ClCompile>
@@ -303,6 +300,9 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\BonedTop.cpp">
       <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\BoneMotion.cpp">
+      <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,9 +450,6 @@
     <ClInclude Include="..\..\simplect3D\MotionData.h">
       <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneData.h">
-      <Filter>simplect3D\Motion3D\MotionData\BoneData</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\simplect3D\Top_pmd.h">
       <Filter>simplect3D\utility\MMD</Filter>
     </ClInclude>
@@ -467,6 +464,9 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\BonedTop.h">
       <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\BoneMotion.h">
+      <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

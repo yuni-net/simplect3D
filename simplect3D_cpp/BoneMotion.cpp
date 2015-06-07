@@ -1,20 +1,13 @@
-#include <BoneData.h>
+#include <BoneMotion.h>
 
 namespace si3
 {
-	/***
-	** ボーンと頂点の関係データを白紙に戻します。
-	*/
-	void BoneData::init_top_lists()
-	{
-		associated_tops.zerosize();
-	}
 
 
 	/***
 	* @brief キーフレーム情報を追加します。
 	*/
-	void BoneData::add_key_frame(const Motion & motion)
+	void BoneMotion::add_key_frame(const Motion & motion)
 	{
 		KeyFrame key_frame;
 		key_frame.frame = motion.frame_No;
@@ -29,51 +22,68 @@ namespace si3
 		key_frame_list.add(key_frame);
 	}
 
-	void BoneData::compute_trans_mat(const int now_frame)
+	/***
+	* @brief 現在のフレームのこのボーンの座標変換行列を計算します。
+	* @param
+	*  [out]trans_mat: 変換行列がここに格納されます
+	*  [out]rot_mat: 変換行列の回転成分のみがここに格納されます
+	*  now_frame: 現在のフレーム指定します
+	* @return
+	*  座標を変換する必要がある場合はtrueを、そもそも変換する必要が無い場合はfalseを返します。
+	*  例えば前のフレームから変化が無ければ座標を再度変換する必要は無いわけです。
+	*  ただし、必ず１フレームずつ順番にアニメーションすることが前提になっています。
+	*  逆再生や、任意のフレームにテレポートした場合は当然変換する必要があるでしょう。
+	*/
+	bool BoneMotion::compute_trans_mat(
+		matrix & trans_mat,
+		matrix & rot_mat,
+		const int now_frame)
 	{
 		MoveData move_data;
-		if (did_bone_move(move_data, now_frame) == false)
+		bool todo_trans;
+		bool todo_judge_move;
+
+		compute_move_data(move_data, todo_trans, todo_judge_move, now_frame);
+
+		if (todo_trans == false)
 		{
-			return;
+			return false;
 		}
 
-		matrix rot_mat = rot_mat_of_bone(move_data);
+		if (todo_judge_move)
+		{
+			if (did_bone_move(move_data) == false)
+			{
+				return false;
+			}
+		}
+
+		rot_mat = rot_mat_of_bone(move_data);
 		matrix para_mat = para_mat_of_bone(move_data);
-		matrix trans_mat = rot_mat * para_mat;
+		trans_mat = rot_mat * para_mat;
 
-		for (fw::uint top_No = 0; top_No < associated_tops.size(); ++top_No)
-		{
-			BonedTop & boned_top = associated_tops[top_No];
-			boned_top.set_trans_mat(rot_mat, trans_mat);
-		}
-	}
-
-	void BoneData::add_associated_top(const int index, Top_pmd & top, const bool is_main)
-	{
-		BonedTop boned_top;
-
-		unsigned char weight = top.bone_weight;
-		if (is_main == false)
-		{
-			weight = 100 - weight;
-		}
-
-		boned_top.init(index, top, weight);
-		associated_tops.add(boned_top);
+		return true;
 	}
 
 
-	bool BoneData::did_bone_move(MoveData & move_data, const int now_frame) const
+
+	void BoneMotion::compute_move_data(
+		MoveData & move_data,
+		bool & todo_trans,
+		bool & todo_judge_move,
+		const int now_frame)
 	{
 		// まずキーフレームが一つもない場合は問答無用で
 		if (key_frame_list.size() <= 0)
 		{
-			return false;
+			todo_trans = false;
+			return;
 		}
 
 		if (now_frame < key_frame_list[0].frame)
 		{
-			return false;
+			todo_trans = false;
+			return;
 		}
 
 		if (key_frame_list.size() == 1)
@@ -85,19 +95,23 @@ namespace si3
 
 			if (now_frame > 0)
 			{
-				return false;
+				todo_trans = false;
+				return;
 			}
 
 			move_data.beg = &(key_frame_list[0]);
 			move_data.end = &(key_frame_list[0]);
-			return true;
+			todo_trans = true;
+			todo_judge_move = false;
+			return;
 		}
 
 		const int final_index = key_frame_list.size() - 1;
 		const int final_frame = key_frame_list[final_index].frame;
 		if (now_frame > final_frame)
 		{
-			return false;
+			todo_trans = false;
+			return;
 		}
 
 		// キーフレームを一つずつ順番に走査して、
@@ -124,26 +138,40 @@ namespace si3
 		move_data.beg = &(key_frame_list[beg_index]);
 		move_data.end = &(key_frame_list[beg_index + 1]);
 
-		return true;
+		todo_trans = true;
+		todo_judge_move = true;
 	}
 
-
-#if 0
-	void BoneData::trans_and_set(D3DVECTOR & target, const float base[3], const matrix & mat)
+	/***
+	* move_dataのbegとendが異なる値であるかどうかを判定します。
+	* 異なる場合はtrueを、同じである場合はfalseを返します。
+	*/
+	bool BoneMotion::did_bone_move(MoveData & move_data) const
 	{
-		// todo weight が全く考慮されていない
-		matrix coor_mat;
-		coor_mat.x(base[0]);
-		coor_mat.y(base[1]);
-		coor_mat.z(base[2]);
-		coor_mat *= mat;
-		target.x = coor_mat.x();
-		target.y = coor_mat.y();
-		target.z = coor_mat.z();
-	}
-#endif
+		const KeyFrame & beg = *(move_data.beg);
+		const KeyFrame & end = *(move_data.end);
 
-	matrix BoneData::rot_mat_of_bone(const MoveData & move_data) const
+		if (beg.pos != end.pos)
+		{
+			return true;
+		}
+
+		if (beg.radian != end.radian)
+		{
+			return true;
+		}
+
+		if (beg.axis != end.axis)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+
+
+	matrix BoneMotion::rot_mat_of_bone(const MoveData & move_data) const
 	{
 		// begとendの回転の軸が同一であるということが前提である点に注意
 
@@ -159,7 +187,7 @@ namespace si3
 
 		return matrix(rot_mat);
 	}
-	matrix BoneData::para_mat_of_bone(const MoveData & move_data) const
+	matrix BoneMotion::para_mat_of_bone(const MoveData & move_data) const
 	{
 		const coor3 & beg_pos = move_data.beg->pos;
 		const coor3 & end_pos = move_data.end->pos;

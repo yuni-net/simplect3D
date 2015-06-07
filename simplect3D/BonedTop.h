@@ -3,12 +3,15 @@
 
 #include "si3_top_type.h"
 #include "matrix.h"
+#include "Top_pmd.h"
 
 namespace si3
 {
 	class BonedTop
 	{
 	public:
+		void init(const int top_index, const Top_pmd & top_data_);
+
 		void renew_tops(
 			top_type * top_buffer,
 			const matrix & trans_mat,

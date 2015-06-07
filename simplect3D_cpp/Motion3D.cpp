@@ -46,7 +46,7 @@ namespace si3
 	// @override
 	void Motion3D::draw_no_alpha() const
 	{
-		motion_data.animation(model_data);
+		model_data.animation(motion_data);
 
 		compute_world_mat();
 

@@ -6,6 +6,7 @@
 #include "matrix.h"
 #include "model_data.h"
 #include "utility.h"
+#include "BoneBranch.h"
 
 namespace si3
 {
@@ -86,13 +87,13 @@ namespace si3
 		IDirect3DVertexBuffer9 * vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		unsigned long index_num_;
-		BoneBranch bone_tree;
+		fw::vector<BoneBranch> bone_tree;
 
 		void construct();
 		void release();
 
 		bool load_header(FILE * fp);
-		bool load_bone(FILE * fp, MotionData & motion_data, BoneMap & bone_map);
+		bool load_bone(FILE * fp, BoneMap & bone_map);
 		bool create_top_buffer(unsigned long top_num);
 		bool load_top_center(FILE * fp, const si3::coor3 & center);
 		bool load_top(FILE * fp);
