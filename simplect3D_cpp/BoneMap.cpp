@@ -6,9 +6,15 @@ namespace si3
 	void BoneMap::register_name(const char * name)
 	{
 		std::string key(name);
-		mymap.insert(make_pair(key, id));
+		register_name(key);
+	}
+
+	void BoneMap::register_name(const std::string & name)
+	{
+		mymap.insert(make_pair(name, id));
 		++id;
 	}
+
 
 	int BoneMap::get_bone_index(const char * name) const
 	{

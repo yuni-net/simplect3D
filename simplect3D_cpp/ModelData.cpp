@@ -86,21 +86,20 @@ namespace si3
 		unsigned short bone_num;
 		fread(&bone_num, sizeof(bone_num), 1, fp);
 		bone_tree.setsize(bone_num);
+		bone_num_ = bone_num;
 
 		for (unsigned short bone_No = 0; bone_No < bone_num; ++bone_No)
 		{
-			BoneBranch & me = bone_tree[bone_No];
-			me.init(bone_No);
-
 			BoneData bone_data;
 			fread(&bone_data, sizeof(bone_data), 1, fp);
 
-			char bone_name[21];
-			memcpy(bone_name, bone_data.bone_name, 20);
-			bone_name[20] = '\0';
+			const std::string bone_name = get_text(bone_data.bone_name, 20);
 			bone_map.register_name(bone_name);
 
-			const int16_t parent_No = bone_data.parent_bone_index;
+			BoneBranch & me = bone_tree[bone_No];
+			me.init(bone_No, bone_data.bone_head_pos);
+
+			const uint16_t parent_No = bone_data.parent_bone_index;
 			const bool there_is_no_parent = parent_No == 0xffff;
 			if (there_is_no_parent)
 			{
@@ -564,6 +563,11 @@ namespace si3
 	void ModelData::unlock_index_buffer() const
 	{
 		indexbuff->Unlock();
+	}
+
+	int ModelData::bone_num() const
+	{
+		return bone_num_;
 	}
 
 

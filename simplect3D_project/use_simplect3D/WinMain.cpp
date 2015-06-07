@@ -35,7 +35,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_z(0.0f);
 
 	si3::Motion3D yuuki;
-	yuuki.load(si3m, "data/yuuki/yuuki_before.pmd", "data/motion.vmd");
+	yuuki.load(si3m, "data/yuuki/yuuki_before.pmd", "data/motion01.vmd");
 //	yuuki.pause();
 	yuuki.pos.x = 0.0f;
 	yuuki.pos.y = 0.0f;
@@ -91,6 +91,11 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 		if (key.pushed(DIK_J))
 		{
 		//	miku.mask_index += 1;
+		}
+
+		if (key.pushed(DIK_RETURN))
+		{
+			yuuki.seek_first();
 		}
 
 		si3m.register_display_object(yuuki);

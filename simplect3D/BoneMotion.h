@@ -1,6 +1,7 @@
 #ifndef si3_BoneMotion_h_
 #define si3_BoneMotion_h_
 
+#include <list>
 #include "popular.h"
 #include "si3_coor3.h"
 #include "Top_pmd.h"
@@ -18,6 +19,11 @@ namespace si3
 		*/
 		void add_key_frame(const Motion & motion);
 
+		/***
+		* 全てのキーフレーム情報の追加が終了したら必ず呼び出してください。
+		*/
+		void finish_add_key_frame();
+
 
 		/***
 		* @brief 現在のフレームのこのボーンの座標変換行列を計算します。
@@ -34,6 +40,7 @@ namespace si3
 		bool compute_trans_mat(
 			matrix & trans_mat,
 			matrix & rot_mat,
+			const coor3 & bone_pos,
 			const int now_frame);
 
 
@@ -45,6 +52,11 @@ namespace si3
 			coor3 pos;
 			float radian;
 			coor3 axis;
+
+			bool operator<(const KeyFrame & another) const
+			{
+				return frame < another.frame;
+			}
 		};
 
 		struct MoveData
@@ -55,7 +67,7 @@ namespace si3
 
 
 		
-		fw::vector<KeyFrame> key_frame_list;
+		std::vector<KeyFrame> key_frame_list;
 
 
 		void compute_move_data(
@@ -70,8 +82,37 @@ namespace si3
 		*/
 		bool did_bone_move(MoveData & move_data) const;
 
-		matrix rot_mat_of_bone(const MoveData & move_data) const;
-		matrix para_mat_of_bone(const MoveData & move_data) const;
+		float compute_percent(MoveData & move_data, const int now_frame) const;
+
+		/***
+		* @brief move_dataに基づき現在のフレームの回転行列を計算してそれを返す。
+		* @param
+		*  move_data: MoveDataのインスタンスを指定します。
+		*  percent: begフレームとendフレームの間のどこに居るのかを割合で指定します(0.0f-1.0f)。
+		*  [out]quate: 計算の結果得られたクォータニオンがここに格納されます。
+		* @return 現在のフレームの回転行列を返す。
+		*/
+		matrix rot_mat_of_bone(
+			const MoveData & move_data,
+			const float percent,
+			D3DXQUATERNION & quate) const;
+
+	//	matrix para_mat_of_bone(const MoveData & move_data, const float percent) const;
+
+		/***
+		* @brief move_dataに基づき現在のフレームの変換行列を計算してそれを返す。
+		* @param
+		*  move_data: MoveDataのインスタンスを指定します。
+		*  percent: begフレームとendフレームの間のどこに居るのかを割合で指定します(0.0f-1.0f)。
+		*  bone_top: ボーンの頂点を指定します。これが回転の中心座標となります。
+		*  quate: 回転に使用するクォータニオンをここに指定します。
+		* @return 現在のフレームの変換行列を返す。
+		*/
+		matrix trans_mat_of_bone(
+			const MoveData & move_data,
+			const float percent,
+			const coor3 & bone_top,
+			const D3DXQUATERNION & quate) const;
 
 	};
 }

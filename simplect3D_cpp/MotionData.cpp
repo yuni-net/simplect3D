@@ -10,7 +10,7 @@ namespace si3
 	** モーションデータのロードを行います。
 	** この時点でアニメーション位置が先頭に設定されます。
 	*/
-	void MotionData::load(manager & si3m, const char * path, const BoneMap & bone_map)
+	void MotionData::load(manager & si3m, const char * path, const BoneMap & bone_map, const int bone_num)
 	{
 #pragma pack(push, 1)
 		struct Header
@@ -38,6 +38,7 @@ namespace si3
 
 		unsigned long motion_num;
 		file >> motion_num;
+		motion_list.setsize(bone_num);
 
 		for (fw::uint motion_No = 0; motion_No < motion_num; ++motion_No)
 		{
@@ -54,6 +55,12 @@ namespace si3
 			{
 				final_frame = motion.frame_No;
 			}
+		}
+
+		for (fw::uint motion_No = 0; motion_No < motion_list.size(); ++motion_No)
+		{
+			auto & motion = motion_list[motion_No];
+			motion.finish_add_key_frame();
 		}
 
 		animating = true;
@@ -83,6 +90,7 @@ namespace si3
 	void MotionData::seek_first()
 	{
 		now_frame = 0;
+		did_seek_first = true;
 	}
 
 	/***
@@ -138,18 +146,14 @@ namespace si3
 	bool MotionData::compute_trans_mat(
 		matrix & trans_mat,
 		matrix & rot_mat,
+		const coor3 & bone_pos,
 		const int bone_No)
 	{
 		BoneMotion & motion = motion_list[bone_No];
-		return motion.compute_trans_mat(trans_mat, rot_mat, now_frame);
+		return motion.compute_trans_mat(trans_mat, rot_mat, bone_pos, now_frame);
 	}
 
 
-
-	int MotionData::bone_num() const
-	{
-		return motion_list.size();
-	}
 
 
 

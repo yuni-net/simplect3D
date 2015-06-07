@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <BoneMotion.h>
 
 namespace si3
@@ -19,7 +20,12 @@ namespace si3
 		key_frame.axis.y = motion.rotation[2];
 		key_frame.axis.z = motion.rotation[3];
 
-		key_frame_list.add(key_frame);
+		key_frame_list.push_back(key_frame);
+	}
+
+	void BoneMotion::finish_add_key_frame()
+	{
+		std::sort(key_frame_list.begin(), key_frame_list.end());
 	}
 
 	/***
@@ -37,6 +43,7 @@ namespace si3
 	bool BoneMotion::compute_trans_mat(
 		matrix & trans_mat,
 		matrix & rot_mat,
+		const coor3 & bone_pos,
 		const int now_frame)
 	{
 		MoveData move_data;
@@ -58,9 +65,12 @@ namespace si3
 			}
 		}
 
-		rot_mat = rot_mat_of_bone(move_data);
-		matrix para_mat = para_mat_of_bone(move_data);
-		trans_mat = rot_mat * para_mat;
+		const float percent = compute_percent(move_data, now_frame);
+
+		D3DXQUATERNION quate;
+		rot_mat = rot_mat_of_bone(move_data, percent, quate);
+
+		trans_mat = trans_mat_of_bone(move_data, percent, bone_pos, quate);
 
 		return true;
 	}
@@ -169,30 +179,103 @@ namespace si3
 		return false;
 	}
 
+	float BoneMotion::compute_percent(MoveData & move_data, const int now_frame) const
+	{
+		const KeyFrame & beg = *(move_data.beg);
+		const KeyFrame & end = *(move_data.end);
+
+		const int rel_frame = now_frame - beg.frame;
+
+		if (rel_frame == 0)
+		{
+			return 0.0f;
+		}
+
+		const int gap_frame = end.frame - beg.frame;
+
+		return static_cast<float>(rel_frame) / gap_frame;
+	}
 
 
-	matrix BoneMotion::rot_mat_of_bone(const MoveData & move_data) const
+
+
+	/***
+	* @brief move_dataに基づき現在のフレームの回転行列を計算してそれを返す。
+	* @param
+	*  move_data: MoveDataのインスタンスを指定します。
+	*  percent: begフレームとendフレームの間のどこに居るのかを割合で指定します(0.0f-1.0f)。
+	*  [out]quate: 計算の結果得られたクォータニオンがここに格納されます。
+	* @return 現在のフレームの回転行列を返す。
+	*/
+	matrix BoneMotion::rot_mat_of_bone(const MoveData & move_data, const float percent, D3DXQUATERNION & quate) const
 	{
 		// begとendの回転の軸が同一であるということが前提である点に注意
 
 		const float beg_rot = move_data.beg->radian;
 		const float end_rot = move_data.end->radian;
-		const float ave_rot = (beg_rot + end_rot)*0.5f;
+		const float now_rot = (beg_rot + end_rot)*percent;
 
 		const auto & axis = move_data.beg->axis;
-		D3DXQUATERNION quate(ave_rot, axis.x, axis.y, axis.z);
+		D3DXQUATERNION quate_base(now_rot, axis.x, axis.y, axis.z);
+		quate = quate_base;
 
 		D3DXMATRIX rot_mat;
 		D3DXMatrixRotationQuaternion(&rot_mat, &quate);
 
 		return matrix(rot_mat);
 	}
-	matrix BoneMotion::para_mat_of_bone(const MoveData & move_data) const
+
+#if 0
+	matrix BoneMotion::para_mat_of_bone(const MoveData & move_data, const float percent) const
 	{
 		const coor3 & beg_pos = move_data.beg->pos;
 		const coor3 & end_pos = move_data.end->pos;
-		coor3 ave_pos = (beg_pos + end_pos)*0.5f;
-		return matrix().parallel(ave_pos.x, ave_pos.y, ave_pos.z);
+		coor3 now_pos = (beg_pos + end_pos)*percent;
+		return matrix().parallel(now_pos.x, now_pos.y, now_pos.z);
+	}
+#endif
+
+	/***
+	* @brief move_dataに基づき現在のフレームの変換行列を計算してそれを返す。
+	* @param
+	*  move_data: MoveDataのインスタンスを指定します。
+	*  percent: begフレームとendフレームの間のどこに居るのかを割合で指定します(0.0f-1.0f)。
+	*  bone_top: ボーンの頂点を指定します。これが回転の中心座標となります。
+	*  quate: 回転に使用するクォータニオンをここに指定します。
+	* @return 現在のフレームの変換行列を返す。
+	*/
+	matrix BoneMotion::trans_mat_of_bone(const MoveData & move_data, const float percent, const coor3 & bone_top, const D3DXQUATERNION & quate) const
+	{
+		const coor3 & beg_pos = move_data.beg->pos;
+		const coor3 & end_pos = move_data.end->pos;
+		coor3 now_pos = (beg_pos + end_pos)*percent;
+
+		D3DXVECTOR3 scaling;
+		scaling.x = 1.0f;
+		scaling.y = 1.0f;
+		scaling.z = 1.0f;
+
+		D3DXVECTOR3 bone_top_dx;
+		bone_top_dx.x = bone_top.x;
+		bone_top_dx.y = bone_top.y;
+		bone_top_dx.z = bone_top.z;
+
+		D3DXVECTOR3 translation;
+		translation.x = now_pos.x;
+		translation.y = now_pos.y;
+		translation.z = now_pos.z;
+
+		D3DXMATRIX trans_mat;
+		D3DXMatrixTransformation(
+			&trans_mat,
+			NULL,
+			NULL,
+			&scaling,
+			&bone_top_dx,
+			&quate,
+			&translation);
+
+		return matrix(trans_mat);
 	}
 
 }

@@ -33,6 +33,8 @@ namespace si3
 		void unlock_index_buffer() const;
 
 
+		int bone_num() const;
+
 
 		void animation(MotionData & motion_data);
 
@@ -88,6 +90,7 @@ namespace si3
 		IDirect3DIndexBuffer9 * indexbuff;
 		unsigned long index_num_;
 		fw::vector<BoneBranch> bone_tree;
+		int bone_num_;
 
 		void construct();
 		void release();

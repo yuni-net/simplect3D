@@ -9,9 +9,11 @@ namespace si3
 		memcpy(pool, words, buffer_byte);
 		pool[buffer_byte] = '\0';
 
+		std::string text(pool);
+
 		delete [] pool;
 		pool = nullptr;
 
-		return std::string(pool);
+		return text;
 	}
 }

@@ -2,10 +2,15 @@
 
 namespace si3
 {
-	void BoneBranch::init(const int bone_No)
+	void BoneBranch::init(const int bone_No, const float bone_pos[3])
 	{
 		this->bone_No = bone_No;
+
+		this->bone_pos.x = bone_pos[0];
+		this->bone_pos.y = bone_pos[1];
+		this->bone_pos.z = bone_pos[2];
 	}
+
 
 	void BoneBranch::add_child(BoneBranch & child)
 	{
@@ -30,12 +35,16 @@ namespace si3
 		matrix my_trans_mat;
 		matrix my_rot_mat;
 
-		const bool todo_trans = motion_data.compute_trans_mat(my_trans_mat, my_rot_mat, bone_No);
+		const bool todo_trans = motion_data.compute_trans_mat(my_trans_mat, my_rot_mat, bone_pos, bone_No);
 		if (todo_trans)
 		{
 			todo_renew = true;
 			trans_mat = parent_trans_mat * my_trans_mat;
 			rot_mat = parent_rot_mat * my_rot_mat;
+		}
+
+		if (todo_renew)
+		{
 			bone.renew_tops(top_buffer, trans_mat, rot_mat);
 		}
 

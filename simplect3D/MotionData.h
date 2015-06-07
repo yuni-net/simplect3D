@@ -21,7 +21,7 @@ namespace si3
 		** この時点でアニメーション位置が先頭に設定されます。
 		** また、アニメーションを再生状態にします。
 		*/
-		void load(manager & si3m, const char * path, const BoneMap & bone_map);
+		void load(manager & si3m, const char * path, const BoneMap & bone_map, const int bone_num);
 
 		/***
 		** アニメーションを再生状態にします
@@ -69,6 +69,7 @@ namespace si3
 		bool compute_trans_mat(
 			matrix & trans_mat,
 			matrix & rot_mat,
+			const coor3 & bone_pos,
 			const int bone_No);
 
 
@@ -81,8 +82,6 @@ namespace si3
 		int final_frame;
 		bool did_seek_first;
 		fw::vector<BoneMotion> motion_list;
-
-		int bone_num() const;
 	};
 }
 

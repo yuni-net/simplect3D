@@ -11,7 +11,7 @@ namespace si3
 	class BoneBranch
 	{
 	public:
-		void init(const int bone_No);
+		void init(const int bone_No, const float bone_pos[3]);
 
 		void add_child(BoneBranch & child);
 
@@ -28,6 +28,7 @@ namespace si3
 
 	private:
 		int bone_No;
+		coor3 bone_pos;
 		Bone bone;
 		fw::vector<BoneBranch *> child_list;
 	};
