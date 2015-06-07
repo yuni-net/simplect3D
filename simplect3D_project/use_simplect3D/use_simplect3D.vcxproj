@@ -87,7 +87,9 @@
     <ClCompile Include="..\..\simplect3D_cpp\anime.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\anime_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\billboard.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\Bone.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\BoneData.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\BonedTop.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\box.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\box_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\bunish_data.cpp" />
@@ -122,6 +124,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome_mini.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sound_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sound_manager.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\BoneBranch.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\unique_sound.cpp" />
@@ -132,7 +135,10 @@
     <ClInclude Include="..\..\simplect3D\anime.h" />
     <ClInclude Include="..\..\simplect3D\anime_data.h" />
     <ClInclude Include="..\..\simplect3D\billboard.h" />
+    <ClInclude Include="..\..\simplect3D\Bone.h" />
+    <ClInclude Include="..\..\simplect3D\BoneBranch.h" />
     <ClInclude Include="..\..\simplect3D\BoneData.h" />
+    <ClInclude Include="..\..\simplect3D\BonedTop.h" />
     <ClInclude Include="..\..\simplect3D\ModelData.h" />
     <ClInclude Include="..\..\simplect3D\BoneMap.h" />
     <ClInclude Include="..\..\simplect3D\Motion3D.h" />

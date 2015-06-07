@@ -117,6 +117,8 @@ namespace si3
 
 		++now_frame;
 
+
+
 		top_type * top_buffer = model_data.lock_top_buffer();
 
 		for (int bone_No = 0; bone_No < bone_num(); ++bone_No)

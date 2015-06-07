@@ -32,6 +32,9 @@ namespace si3
 		void unlock_index_buffer() const;
 
 
+
+		void animation(MotionData & motion_data);
+
 		ModelData();
 		~ModelData();
 
@@ -83,6 +86,7 @@ namespace si3
 		IDirect3DVertexBuffer9 * vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		unsigned long index_num_;
+		BoneBranch bone_tree;
 
 		void construct();
 		void release();

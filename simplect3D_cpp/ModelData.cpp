@@ -551,6 +551,22 @@ namespace si3
 	}
 
 
+	void ModelData::animation(MotionData & motion_data)
+	{
+		bool did_finish_animation = motion_data.animation();
+		if (did_finish_animation)
+		{
+			return;
+		}
+
+		auto top_buffer = lock_top_buffer();
+
+		bool todo_renew = false;
+		bone_tree.renew_tops(top_buffer, motion_data, matrix(), todo_renew);
+
+		unlock_top_buffer();
+	}
+
 
 	ModelData::ModelData()
 	{
