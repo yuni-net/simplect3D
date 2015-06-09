@@ -213,10 +213,15 @@ namespace si3
 
 		const float beg_rot = move_data.beg->radian;
 		const float end_rot = move_data.end->radian;
-		const float now_rot = (beg_rot + end_rot)*percent;
+		const float now_rot = beg_rot + (end_rot - beg_rot)*percent;
 
-		const auto & axis = move_data.beg->axis;
-		D3DXQUATERNION quate_base(now_rot, axis.x, axis.y, axis.z);
+		const coor3 * axis = &(move_data.beg->axis);
+		if (axis_is_unit(*axis))
+		{
+			axis = &(move_data.end->axis);
+		}
+		
+		D3DXQUATERNION quate_base(now_rot, axis->x, axis->y, axis->z);
 		quate = quate_base;
 
 		D3DXMATRIX rot_mat;
@@ -248,7 +253,7 @@ namespace si3
 	{
 		const coor3 & beg_pos = move_data.beg->pos;
 		const coor3 & end_pos = move_data.end->pos;
-		coor3 now_pos = (beg_pos + end_pos)*percent;
+		coor3 now_pos = beg_pos + (end_pos - beg_pos)*percent;
 
 		D3DXVECTOR3 scaling;
 		scaling.x = 1.0f;
@@ -276,6 +281,26 @@ namespace si3
 			&translation);
 
 		return matrix(trans_mat);
+	}
+
+	bool BoneMotion::axis_is_unit(const coor3 & axis) const
+	{
+		if (abs(axis.x) >= 0.00001f)
+		{
+			return false;
+		}
+
+		if (abs(axis.y) >= 0.00001f)
+		{
+			return false;
+		}
+
+		if (abs(axis.z - 1.0f) >= 0.00001f)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 }

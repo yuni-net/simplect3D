@@ -12,6 +12,7 @@ namespace si3
 		bool operator !=(const coor3 & another) const;
 		coor3 & operator+=(const coor3 & another);
 		coor3 operator+(const coor3 & another) const;
+		coor3 operator-(const coor3 & another) const;
 		coor3 operator*(const float magni) const;
 	};
 

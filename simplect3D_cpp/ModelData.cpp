@@ -97,9 +97,14 @@ namespace si3
 			bone_map.register_name(bone_name);
 
 			BoneBranch & me = bone_tree[bone_No];
-			me.init(bone_No, bone_data.bone_head_pos);
+			me.init(bone_No, bone_data.bone_head_pos, bone_name);
 
 			const uint16_t parent_No = bone_data.parent_bone_index;
+			// debug
+			if (parent_No == 38)
+			{
+				int a = 0;
+			}
 			const bool there_is_no_parent = parent_No == 0xffff;
 			if (there_is_no_parent)
 			{

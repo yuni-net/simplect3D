@@ -11,7 +11,9 @@ namespace si3
 	class BoneBranch
 	{
 	public:
-		void init(const int bone_No, const float bone_pos[3]);
+		std::string bone_name;
+
+		void init(const int bone_No, const float bone_pos[3], const std::string & bone_name);
 
 		void add_child(BoneBranch & child);
 

@@ -114,6 +114,8 @@ namespace si3
 			const coor3 & bone_top,
 			const D3DXQUATERNION & quate) const;
 
+
+		bool axis_is_unit(const coor3 & axis) const;
 	};
 }
 

@@ -46,7 +46,7 @@ namespace si3
 			file >> motion;
 
 			const std::string & bone_name = get_text(motion.bone_name, 15);
-
+			
 			const int bone_index = bone_map.get_bone_index(bone_name);
 			auto & bone = motion_list[bone_index];
 			bone.add_key_frame(motion);
@@ -149,6 +149,12 @@ namespace si3
 		const coor3 & bone_pos,
 		const int bone_No)
 	{
+		// debug
+		if (now_frame == 51)
+		{
+			now_frame = 51;
+		}
+
 		BoneMotion & motion = motion_list[bone_No];
 		return motion.compute_trans_mat(trans_mat, rot_mat, bone_pos, now_frame);
 	}

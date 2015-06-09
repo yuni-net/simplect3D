@@ -2,13 +2,15 @@
 
 namespace si3
 {
-	void BoneBranch::init(const int bone_No, const float bone_pos[3])
+	void BoneBranch::init(const int bone_No, const float bone_pos[3], const std::string & bone_name)
 	{
 		this->bone_No = bone_No;
 
 		this->bone_pos.x = bone_pos[0];
 		this->bone_pos.y = bone_pos[1];
 		this->bone_pos.z = bone_pos[2];
+
+		this->bone_name = bone_name;
 	}
 
 
@@ -34,6 +36,12 @@ namespace si3
 
 		matrix my_trans_mat;
 		matrix my_rot_mat;
+
+		// debug
+		if (bone_name == "âEÇ–Ç∂" || bone_name=="ç∂Ç–Ç∂")
+		{
+			int a = 0;
+		}
 
 		const bool todo_trans = motion_data.compute_trans_mat(my_trans_mat, my_rot_mat, bone_pos, bone_No);
 		if (todo_trans)
