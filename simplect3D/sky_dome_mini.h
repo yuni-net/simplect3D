@@ -5,6 +5,7 @@
 #include "display_object.h"
 #include "rot_mode.h"
 #include "sphere_data.h"
+#include "sky_dome_data.h"
 
 namespace si3
 {
@@ -32,7 +33,7 @@ namespace si3
 
 	private:
 		const manager * managerp;;
-		sphere_data sphered;
+		sky_dome_data sphered;
 		bool loaded;
 
 		void construct();

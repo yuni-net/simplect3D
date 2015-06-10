@@ -26,6 +26,9 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 
 	displaym.context_color(1.0f, 1.0f, 1.0f);
 
+	auto & skydome = si3m.display_manager().get_skydome();
+	skydome.load(si3m, "data/orange.jpg");
+
 	camera.x(0.0f);
 	camera.y(10.0f);
 	camera.z(-32.0f);

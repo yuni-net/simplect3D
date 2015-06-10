@@ -166,6 +166,9 @@
     <Filter Include="simplect3D\Motion3D\MotionData\BoneMotion">
       <UniqueIdentifier>{c6b006d8-6415-4f3b-afd3-8d811dedf9cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\sky_dome\sky_dome_data">
+      <UniqueIdentifier>{4f6b4524-59f7-4495-a1bd-c01e8bf4da1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -303,6 +306,9 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\BoneMotion.cpp">
       <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\sky_dome_data.cpp">
+      <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +473,9 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\BoneMotion.h">
       <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\sky_dome_data.h">
+      <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

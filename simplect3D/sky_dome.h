@@ -2,6 +2,7 @@
 #define si3_sky_dome_h_
 
 #include "sphere.h"
+#include "sky_dome_data.h"
 
 namespace si3
 {
@@ -35,7 +36,7 @@ namespace si3
 
 	private:
 		const manager * managerp;;
-		sphere_data sphered;
+		sky_dome_data sphered;
 		bool loaded;
 
 		float x_;
