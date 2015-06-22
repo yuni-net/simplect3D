@@ -7,6 +7,7 @@
 #include "Top_pmd.h"
 #include "util_MMD.h"
 #include "matrix.h"
+#include "utility.h"
 
 namespace si3
 {
@@ -50,8 +51,7 @@ namespace si3
 		{
 			int frame;
 			coor3 pos;
-			float radian;
-			coor3 axis;
+			Quaternion quate;
 
 			bool operator<(const KeyFrame & another) const
 			{

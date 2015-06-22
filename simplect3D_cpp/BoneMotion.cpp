@@ -15,10 +15,10 @@ namespace si3
 		key_frame.pos.x = motion.location[0];
 		key_frame.pos.y = motion.location[1];
 		key_frame.pos.z = motion.location[2];
-		key_frame.radian = motion.rotation[0];
-		key_frame.axis.x = motion.rotation[1];
-		key_frame.axis.y = motion.rotation[2];
-		key_frame.axis.z = motion.rotation[3];
+		key_frame.quate.x = motion.rotation[0];
+		key_frame.quate.y = motion.rotation[1];
+		key_frame.quate.z = motion.rotation[2];
+		key_frame.quate.w = motion.rotation[3];
 
 		key_frame_list.push_back(key_frame);
 	}
@@ -166,12 +166,10 @@ namespace si3
 			return true;
 		}
 
-		if (beg.radian != end.radian)
-		{
-			return true;
-		}
-
-		if (beg.axis != end.axis)
+		if (beg.quate.x != end.quate.x ||
+			beg.quate.y != end.quate.y || 
+			beg.quate.z != end.quate.z || 
+			beg.quate.w != end.quate.w )
 		{
 			return true;
 		}
@@ -209,20 +207,12 @@ namespace si3
 	*/
 	matrix BoneMotion::rot_mat_of_bone(const MoveData & move_data, const float percent, D3DXQUATERNION & quate) const
 	{
-		// beg‚Æend‚Ì‰ñ“]‚ÌŽ²‚ª“¯ˆê‚Å‚ ‚é‚Æ‚¢‚¤‚±‚Æ‚ª‘O’ñ‚Å‚ ‚é“_‚É’ˆÓ
-
-		const float beg_rot = move_data.beg->radian;
-		const float end_rot = move_data.end->radian;
-		const float now_rot = beg_rot + (end_rot - beg_rot)*percent;
-
-		const coor3 * axis = &(move_data.beg->axis);
-		if (axis_is_unit(*axis))
-		{
-			axis = &(move_data.end->axis);
-		}
+		const Quaternion & quate_beg = move_data.beg->quate;
+		const Quaternion & quate_end = move_data.end->quate;
+		Quaternion quate_now = quate_beg + (quate_end - quate_beg)*percent;
 		
-		D3DXQUATERNION quate_base(now_rot, axis->x, axis->y, axis->z);
-		quate = quate_base;
+		D3DXQUATERNION quate_dx(quate_now.x, quate_now.y, quate_now.z, quate_now.w);
+		quate = quate_dx;
 
 		D3DXMATRIX rot_mat;
 		D3DXMatrixRotationQuaternion(&rot_mat, &quate);

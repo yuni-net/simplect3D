@@ -5,6 +5,7 @@
 #include "si3_blendmode.h"
 #include "si3_coor3.h"
 #include "si3_top_type.h"
+#include "si3_Quaternion.h"
 
 namespace si3
 {
@@ -15,7 +16,6 @@ namespace si3
 #else
 	typedef std::string tstring;
 #endif
-
 
 
 

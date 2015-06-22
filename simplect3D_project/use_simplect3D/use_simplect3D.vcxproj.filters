@@ -169,6 +169,12 @@
     <Filter Include="simplect3D\sky_dome\sky_dome_data">
       <UniqueIdentifier>{4f6b4524-59f7-4495-a1bd-c01e8bf4da1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\utility\coor3">
+      <UniqueIdentifier>{592fc762-5e7e-4e0b-b5c0-0d69d394854b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\utility\Quaternion">
+      <UniqueIdentifier>{1bb93c58-356c-4c0b-898f-806723b90657}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -259,9 +265,6 @@
     <ClCompile Include="..\..\simplect3D_cpp\bunish_data.cpp">
       <Filter>simplect3D\bunisher\bunish_data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\si3_coor3.cpp">
-      <Filter>simplect3D\utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp">
       <Filter>simplect3D\model\model_data</Filter>
     </ClCompile>
@@ -309,6 +312,12 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome_data.cpp">
       <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\si3_coor3.cpp">
+      <Filter>simplect3D\utility\coor3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\Quaternion.cpp">
+      <Filter>simplect3D\utility\Quaternion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -429,9 +438,6 @@
     <ClInclude Include="..\..\simplect3D\si3_blendmode.h">
       <Filter>simplect3D\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_coor3.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_top_type.h">
       <Filter>simplect3D\utility</Filter>
     </ClInclude>
@@ -476,6 +482,12 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\sky_dome_data.h">
       <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_coor3.h">
+      <Filter>simplect3D\utility\coor3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Quaternion.h">
+      <Filter>simplect3D\utility\Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
