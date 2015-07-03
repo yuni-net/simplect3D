@@ -37,16 +37,12 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_y(10.0f);
 	camera.look_z(0.0f);
 
-	si3::model_data miku_data;
-	miku_data.load(si3m, "data/Lat_Miku/nanase_pose.pmd");
-
-	si3::model miku;
-	miku.model_data(si3m, miku_data);
-	miku.x(0.0f);
-	miku.y(0.0f);
-	miku.z(0.0f);
-
-	si3::bunisher miku_bunish;
+	si3::Motion3D yuuki;
+	yuuki.load(si3m, "data/yuuki/yuuki_before.pmd", "data/motion.vmd");
+//	yuuki.pause();
+	yuuki.pos.x = 0.0f;
+	yuuki.pos.y = 0.0f;
+	yuuki.pos.z = 0.0f;
 
 	float fRadian = -3.14159265f/2.0f;
 	const float fRotSpeed = 0.08f;
@@ -102,19 +98,10 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 
 		if (key.pushed(DIK_RETURN))
 		{
-			miku_bunish.init(si3m, miku);
-			bunishing = true;
+			yuuki.seek_first();
 		}
 
-		if (bunishing)
-		{
-			si3m.register_display_object(miku_bunish);
-		}
-		else
-		{
-			si3m.register_display_object(miku);
-		}
-
+		si3m.register_display_object(yuuki);
 
 		si3m.show();
 
