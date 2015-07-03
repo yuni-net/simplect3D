@@ -4,490 +4,85 @@
     <Filter Include="simplect3D">
       <UniqueIdentifier>{2b8ab85d-2249-4b9a-ad5b-204d6e0da083}</UniqueIdentifier>
     </Filter>
-    <Filter Include="simplect3D\utility">
-      <UniqueIdentifier>{3f17d9d8-3ed8-4eb8-9612-add1d1d2e0e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sphere_data">
-      <UniqueIdentifier>{d97c45e4-6991-4129-a261-359cd6f85b2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sphere">
-      <UniqueIdentifier>{db63e16e-d56c-403d-9214-2e8180b57b7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\model">
-      <UniqueIdentifier>{33c98123-756a-4ed7-825c-78f67bbc9506}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\model\model">
-      <UniqueIdentifier>{662c8fc5-3439-48d6-801f-609759706047}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\model\model_data">
-      <UniqueIdentifier>{7cb76e3f-9813-4c4f-9c3d-369aa49b6c39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\model\model_coor">
-      <UniqueIdentifier>{fd3d5f01-d520-432d-8d83-e9eaa577618a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\matrix">
-      <UniqueIdentifier>{09b3beff-c7f6-4506-aec9-15b20eb85044}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\manager">
-      <UniqueIdentifier>{efcd0f5b-9392-4a12-987c-e29d54b2967c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\manager\display_manager">
-      <UniqueIdentifier>{3cf576b6-b130-4902-bc2c-131fa0423f5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\manager\dxmanager">
-      <UniqueIdentifier>{075e577c-6097-4917-a5ae-af71a3958bf6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\manager\manager">
-      <UniqueIdentifier>{f8b06480-9361-47e5-b57b-1198bdd33c79}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\image_data">
-      <UniqueIdentifier>{30856909-25be-432b-b159-18cb722377b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\fps60">
-      <UniqueIdentifier>{1515dc48-5a82-48b7-9b95-b1fba19778ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxlight">
-      <UniqueIdentifier>{d1082b71-1c97-4354-ad15-5e5cd15afb18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput">
-      <UniqueIdentifier>{b4b5e218-4228-4499-91b6-e70b715ed6f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput\dxinput">
-      <UniqueIdentifier>{aea49dac-717d-4ccd-a9ef-c6335c15dc2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput\key">
-      <UniqueIdentifier>{fcc622f8-6fc0-4ddd-ba2e-f5b5bd4a3879}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput\key\key">
-      <UniqueIdentifier>{b5f70691-acd2-4e58-8d86-dcdb411116f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput\key\key_system">
-      <UniqueIdentifier>{13409ade-bb32-4bac-8624-b16e1c281405}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput\mouse">
-      <UniqueIdentifier>{a1eae7db-5da6-4a73-a04f-1f3204dfe8e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxinput\joypad">
-      <UniqueIdentifier>{924d8252-77ca-4442-b5b0-24aac9467f92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\dxcamera">
-      <UniqueIdentifier>{b3f14028-9561-4afc-99d6-40731c669d74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\display_object">
-      <UniqueIdentifier>{0fd7b4ab-d00c-4291-b82a-8c382e6b6304}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\box">
-      <UniqueIdentifier>{3b150fe3-1815-4358-b8d9-831905fd46c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\billboard">
-      <UniqueIdentifier>{ee1eca32-cfe1-497b-8053-466df24c1c08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\anime">
-      <UniqueIdentifier>{65e54c13-7ff7-4301-8510-01d230f6b16f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\anime\anime_data">
-      <UniqueIdentifier>{c943bc38-2a6d-435b-8b7f-ddacb2db605b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\anime\anime">
-      <UniqueIdentifier>{65db99cd-6398-4e0b-b886-02d7fbc3bafd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\anime\canimer">
-      <UniqueIdentifier>{828ced71-7f21-4697-859b-198c7fe1956e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\leaf">
-      <UniqueIdentifier>{b078d995-5075-4c85-9504-f25043de4a19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sound">
-      <UniqueIdentifier>{1c2f7fef-11ae-4674-8f02-d5f33fe105bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sound\se">
-      <UniqueIdentifier>{e9f9d4d6-7fb0-4cc3-87e2-3db1ed4f1576}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sound\sound_data">
-      <UniqueIdentifier>{f3f37cd5-a2dc-439a-b07b-50c51dfb0f1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sound\sound_manager">
-      <UniqueIdentifier>{6b593b59-e81c-4cf0-a01e-d7f679c85c6b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sound\unique_sound">
-      <UniqueIdentifier>{fbf8b5de-418e-404f-96ac-1159daddbf96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\bunisher">
-      <UniqueIdentifier>{62c4f4ff-4c7d-4e3f-811a-a25aa7ce5ea8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\bunisher\bunish_data">
-      <UniqueIdentifier>{e305862c-e470-482f-b7d3-6bf9a4761dd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\bunisher\ModelDustConverter">
-      <UniqueIdentifier>{3445a89d-93a1-4f5b-aeaa-ba6040ef9893}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sky_dome">
-      <UniqueIdentifier>{48feca6f-014a-42fd-bf39-dbf6cc98c518}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sky_dome\sky_dome_mini">
-      <UniqueIdentifier>{bde5dcba-1caa-4965-91d4-1c0dc3bb3b8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sky_dome\sky_dome">
-      <UniqueIdentifier>{fafaa3b5-00b6-4065-af98-938d50d4eae8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\box\box_data">
-      <UniqueIdentifier>{39d49c9c-460a-413b-948c-708b121848d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D">
-      <UniqueIdentifier>{5ba818ac-3788-411e-afeb-74c270d50527}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\MotionData">
-      <UniqueIdentifier>{43e89cf8-9465-4706-be02-813c97ff1ae1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData">
-      <UniqueIdentifier>{be37439e-f3bb-43db-8dd3-aff95f9c00a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\Motion3D">
-      <UniqueIdentifier>{ed4fc1f4-e0fc-44c4-a5b0-a6ab4a052853}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\BoneMap">
-      <UniqueIdentifier>{6898c3d2-4337-46e3-98b0-2fc19e7ccda3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\MotionData\MotionData">
-      <UniqueIdentifier>{637686ce-8b0c-4852-8c83-772bc7d48a9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\utility\MMD">
-      <UniqueIdentifier>{c45cc964-cd13-43ad-a5bf-252389faf269}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch">
-      <UniqueIdentifier>{b63ccf8d-babf-4d64-b924-b3390bf7b8b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch\Bone">
-      <UniqueIdentifier>{2f1b8c7c-f1f7-4869-864b-9cf2e8d4ffb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop">
-      <UniqueIdentifier>{5ce105c9-5a15-45b5-b2c1-f264e1191179}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\MotionData\BoneMotion">
-      <UniqueIdentifier>{c6b006d8-6415-4f3b-afd3-8d811dedf9cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\sky_dome\sky_dome_data">
-      <UniqueIdentifier>{4f6b4524-59f7-4495-a1bd-c01e8bf4da1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\utility\coor3">
-      <UniqueIdentifier>{592fc762-5e7e-4e0b-b5c0-0d69d394854b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\utility\Quaternion">
-      <UniqueIdentifier>{1bb93c58-356c-4c0b-898f-806723b90657}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="..\..\simplect3D_cpp\dxmanager.cpp">
-      <Filter>simplect3D\manager\dxmanager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\fps60.cpp">
-      <Filter>simplect3D\fps60</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\display_manager.cpp">
-      <Filter>simplect3D\manager\display_manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\dxlight.cpp">
-      <Filter>simplect3D\dxlight</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\manager.cpp">
-      <Filter>simplect3D\manager\manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\model.cpp">
-      <Filter>simplect3D\model\model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\dxinput.cpp">
-      <Filter>simplect3D\dxinput\dxinput</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\key_system.cpp">
-      <Filter>simplect3D\dxinput\key\key_system</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\key.cpp">
-      <Filter>simplect3D\dxinput\key\key</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\camera.cpp">
-      <Filter>simplect3D\dxcamera</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\matrix.cpp">
-      <Filter>simplect3D\matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\mouse.cpp">
-      <Filter>simplect3D\dxinput\mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\image_data.cpp">
-      <Filter>simplect3D\image_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sphere.cpp">
-      <Filter>simplect3D\sphere</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sphere_data.cpp">
-      <Filter>simplect3D\sphere_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\box.cpp">
-      <Filter>simplect3D\box</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\box_data.cpp">
-      <Filter>simplect3D\box\box_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\utility.cpp">
-      <Filter>simplect3D\utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\billboard.cpp">
-      <Filter>simplect3D\billboard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\anime.cpp">
-      <Filter>simplect3D\anime\anime</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\anime_data.cpp">
-      <Filter>simplect3D\anime\anime_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\leaf.cpp">
-      <Filter>simplect3D\leaf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\canimer.cpp">
-      <Filter>simplect3D\anime\canimer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\se.cpp">
-      <Filter>simplect3D\sound\se</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sound_data.cpp">
-      <Filter>simplect3D\sound\sound_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sound_manager.cpp">
-      <Filter>simplect3D\sound\sound_manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\unique_sound.cpp">
-      <Filter>simplect3D\sound\unique_sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\bunisher.cpp">
-      <Filter>simplect3D\bunisher</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\bunish_data.cpp">
-      <Filter>simplect3D\bunisher\bunish_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp">
-      <Filter>simplect3D\model\model_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\si3_ModelDustConverter.cpp">
-      <Filter>simplect3D\bunisher\ModelDustConverter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\si3_normalize_vector.cpp">
-      <Filter>simplect3D\utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\si3_triangle_gravity_center.cpp">
-      <Filter>simplect3D\utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sky_dome_mini.cpp">
-      <Filter>simplect3D\sky_dome\sky_dome_mini</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp">
-      <Filter>simplect3D\sky_dome\sky_dome</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp">
-      <Filter>simplect3D\Motion3D\ModelData</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp">
-      <Filter>simplect3D\Motion3D\Motion3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\BoneMap.cpp">
-      <Filter>simplect3D\Motion3D\BoneMap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp">
-      <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\get_text.cpp">
-      <Filter>simplect3D\utility\MMD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\BoneBranch.cpp">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\Bone.cpp">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\BonedTop.cpp">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\BoneMotion.cpp">
-      <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\sky_dome_data.cpp">
-      <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\si3_coor3.cpp">
-      <Filter>simplect3D\utility\coor3</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\Quaternion.cpp">
-      <Filter>simplect3D\utility\Quaternion</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_project\use_simplect3D\WinMain.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\anime_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\billboard.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\box.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\box_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\bunish_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\bunisher.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\camera.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\canimer.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\display_manager.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\dxinput.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\dxlight.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\dxmanager.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\fps60.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\image_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\key.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\key_system.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\leaf.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\manager.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\matrix.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\model.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\model_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\mouse.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\se.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\si3_coor3.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\si3_ModelDustConverter.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\si3_normalize_vector.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\si3_triangle_gravity_center.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\sound_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\sound_manager.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\sphere.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\sphere_data.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\unique_sound.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\utility.cpp" />
+    <ClCompile Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D_cpp\anime.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\simplect3D\display_object.h">
-      <Filter>simplect3D\display_object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\popular.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\dxmanager.h">
-      <Filter>simplect3D\manager\dxmanager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\fps60.h">
-      <Filter>simplect3D\fps60</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\utility.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\display_manager.h">
-      <Filter>simplect3D\manager\display_manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\dxlight.h">
-      <Filter>simplect3D\dxlight</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\manager.h">
-      <Filter>simplect3D\manager\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\model.h">
-      <Filter>simplect3D\model\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\model_coor.h">
-      <Filter>simplect3D\model\model_coor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\dxinput.h">
-      <Filter>simplect3D\dxinput\dxinput</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\key_system.h">
-      <Filter>simplect3D\dxinput\key\key_system</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\key.h">
-      <Filter>simplect3D\dxinput\key\key</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\camera.h">
-      <Filter>simplect3D\dxcamera</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\matrix.h">
-      <Filter>simplect3D\matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\mouse.h">
-      <Filter>simplect3D\dxinput\mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\image_data.h">
-      <Filter>simplect3D\image_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\top4.h">
-      <Filter>simplect3D\image_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\diffuse.h">
-      <Filter>simplect3D\image_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sphere.h">
-      <Filter>simplect3D\sphere</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sphere_data.h">
-      <Filter>simplect3D\sphere_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\box.h">
-      <Filter>simplect3D\box</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\box_data.h">
-      <Filter>simplect3D\box\box_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\billboard.h">
-      <Filter>simplect3D\billboard</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\simplect3D.h">
-      <Filter>simplect3D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\anime.h">
-      <Filter>simplect3D\anime\anime</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\anime_data.h">
-      <Filter>simplect3D\anime\anime_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\leaf.h">
-      <Filter>simplect3D\leaf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\canimer.h">
-      <Filter>simplect3D\anime\canimer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\saferelease.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\se.h">
-      <Filter>simplect3D\sound\se</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sound_data.h">
-      <Filter>simplect3D\sound\sound_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sound_manager.h">
-      <Filter>simplect3D\sound\sound_manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\unique_sound.h">
-      <Filter>simplect3D\sound\unique_sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\bunisher.h">
-      <Filter>simplect3D\bunisher</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\bunish_data.h">
-      <Filter>simplect3D\bunisher\bunish_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\model_data.h">
-      <Filter>simplect3D\model\model_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_ModelDustConverter.h">
-      <Filter>simplect3D\bunisher\ModelDustConverter</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_blendmode.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_top_type.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sky_dome_mini.h">
-      <Filter>simplect3D\sky_dome\sky_dome_mini</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\rot_mode.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sky_dome.h">
-      <Filter>simplect3D\sky_dome\sky_dome</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\ModelData.h">
-      <Filter>simplect3D\Motion3D\ModelData</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Motion3D.h">
-      <Filter>simplect3D\Motion3D\Motion3D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneMap.h">
-      <Filter>simplect3D\Motion3D\BoneMap</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\MotionData.h">
-      <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Top_pmd.h">
-      <Filter>simplect3D\utility\MMD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\util_MMD.h">
-      <Filter>simplect3D\utility\MMD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneBranch.h">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Bone.h">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BonedTop.h">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneMotion.h">
-      <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sky_dome_data.h">
-      <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_coor3.h">
-      <Filter>simplect3D\utility\coor3</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_Quaternion.h">
-      <Filter>simplect3D\utility\Quaternion</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\display_manager.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\display_object.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\dxinput.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\dxlight.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\dxmanager.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\fps60.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\image_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\key.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\key_system.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\leaf.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\manager.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\matrix.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\model.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\model_coor.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\model_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\mouse.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\popular.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\saferelease.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\se.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\si3_blendmode.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\si3_coor3.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\si3_ModelDustConverter.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\si3_top_type.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\simplect3D.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\sound_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\sound_manager.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\sphere.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\sphere_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\top4.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\unique_sound.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\utility.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\anime.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\anime_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\billboard.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\box.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\box_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\bunish_data.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\bunisher.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\camera.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\canimer.h" />
+    <ClInclude Include="..\..\..\..\..\HAL\GM\GM31_No.01_2.1.0(bunish)\projects\Z_sort_version\simplect3D\diffuse.h" />
   </ItemGroup>
 </Project>
