@@ -38,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_z(0.0f);
 
 	si3::Motion3D yuuki;
-	yuuki.load(si3m, "data/yuuki/yuuki_before.pmd", "data/motion.vmd");
+	yuuki.load(si3m, "data/yuuki/yuuki_before.pmd", "data/motion05.vmd");
 //	yuuki.pause();
 	yuuki.pos.x = 0.0f;
 	yuuki.pos.y = 0.0f;
