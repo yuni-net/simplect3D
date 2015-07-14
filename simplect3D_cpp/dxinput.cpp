@@ -46,7 +46,7 @@ namespace si3
 
 	dxinput::~dxinput()
 	{
-		saferelease(diinterface);
+		dxsaferelease(diinterface);
 	}
 
 

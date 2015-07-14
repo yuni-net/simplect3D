@@ -184,19 +184,19 @@ namespace si3
 
 	void billboard::setblend_normal()
 	{
-		blendmode = anime_data::normal_blend;
+		BlendMode = anime_data::normal_blend;
 	}
 	void billboard::setblend_alpha()
 	{
-		blendmode = anime_data::alpha_blend;
+		BlendMode = anime_data::alpha_blend;
 	}
 	void billboard::setblend_add()
 	{
-		blendmode = anime_data::add_blend;
+		BlendMode = anime_data::add_blend;
 	}
 	void billboard::setblend_sub()
 	{
-		blendmode = anime_data::sub_blend;
+		BlendMode = anime_data::sub_blend;
 	}
 
 
@@ -275,7 +275,7 @@ namespace si3
 		D3DXMATRIX world_mat;
 		D3DXMatrixMultiply(&world_mat, &scale_rot, &trans_mat);
 
-		imaged->draw_alpha(world_mat, material(), blendmode);
+		imaged->draw_alpha(world_mat, material(), BlendMode);
 	}
 
 

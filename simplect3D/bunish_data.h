@@ -10,10 +10,10 @@ namespace si3
 	class bunish_data
 	{
 	public:
-		void set_local_pos(uint index, const coor3 & dust);
-		void set_first_pos(const coor3 & value);
-		void set_bunish_vec(const coor3 & value);
-		void set_rot_speed(const coor3 & value);
+		void set_local_pos(uint index, const Coor3 & dust);
+		void set_first_pos(const Coor3 & value);
+		void set_bunish_vec(const Coor3 & value);
+		void set_rot_speed(const Coor3 & value);
 		void bunish(const si3::Manager & si3m);
 		D3DVECTOR compute_local_pos(uint index) const;
 
@@ -23,15 +23,15 @@ namespace si3
 
 		bunish_data();
 	private:
-		coor3 bunish_vec;
-		coor3 rot_speed;
+		Coor3 bunish_vec;
+		Coor3 rot_speed;
 
-		coor3 pos;
-		coor3 radian;
+		Coor3 pos;
+		Coor3 radian;
 		matrix world_mat;
 		float z;
 
-		coor3 local_pos_list[3];
+		Coor3 local_pos_list[3];
 
 
 		void compute_world_mat();

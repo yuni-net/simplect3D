@@ -2,6 +2,7 @@
 
 #include <utility.h>
 #include <sphere_data.h>
+#include <saferelease.h>
 
 static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
@@ -82,8 +83,8 @@ namespace si3
 	}
 	void sphere_data::release()
 	{
-		saferelease(mesh);
-		saferelease(texture);
+		dxsaferelease(mesh);
+		dxsaferelease(texture);
 	}
 
 

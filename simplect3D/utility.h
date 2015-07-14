@@ -6,6 +6,7 @@
 #include "si3_coor3.h"
 #include "si3_top_type.h"
 #include "si3_Quaternion.h"
+#include "saferelease.h"
 
 namespace si3
 {
@@ -19,22 +20,30 @@ namespace si3
 
 
 
-
+	/***
+	@brief ベクトルを長さ1のベクトルに変換します。
+	@param
+	    from: 変換前のベクトルを指定します。
+		to: 変換後のベクトルを受け取る変数をここに指定します。
+	*/
 	void vector_to_unit_vector(const D3DVECTOR & from, D3DVECTOR & to);
 
-	template<class T>
-	void saferelease(T * pointer)
-	{
-		if (pointer != nullptr)
-		{
-			pointer->Release();
-			pointer = nullptr;
-		}
-	}
 
+	/***
+	@brief 実数を丸めてunsigned charの値の範囲内に収めます。
+	*/
 	uchar round_uchar(float fVal);
 
 
-	coor3 normalize_vector(const coor3 & base);
-	coor3 triangle_gravity_center(const D3DVECTOR & pos0, const D3DVECTOR & pos1, const D3DVECTOR & pos2);
+	/***
+	@brief ベクトルを長さ1のベクトルに変換します。
+	@param 変換前のベクトルを指定します。
+	@return 変換後のベクトルが返ります。
+	*/
+	Coor3 normalize_vector(const Coor3 & base);
+
+	/***
+	三角形の重心を求めます。
+	*/
+	Coor3 triangle_gravity_center(const D3DVECTOR & pos0, const D3DVECTOR & pos1, const D3DVECTOR & pos2);
 }

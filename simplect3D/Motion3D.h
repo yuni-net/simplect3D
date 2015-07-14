@@ -14,8 +14,8 @@ namespace si3
 	class Motion3D :public display_object
 	{
 	public:
-		coor3 pos;
-		coor3 radian;
+		Coor3 pos;
+		Coor3 radian;
 
 		/***
 		** モデルデータとモーションデータを読み込みます。

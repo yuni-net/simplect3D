@@ -3,9 +3,9 @@
 
 namespace si3
 {
-	coor3 triangle_gravity_center(const D3DVECTOR & pos0, const D3DVECTOR & pos1, const D3DVECTOR & pos2)
+	Coor3 triangle_gravity_center(const D3DVECTOR & pos0, const D3DVECTOR & pos1, const D3DVECTOR & pos2)
 	{
-		coor3 center;
+		Coor3 center;
 
 		center.x = (pos0.x + pos1.x + pos2.x) / 3.0f;
 		center.y = (pos0.y + pos1.y + pos2.y) / 3.0f;

@@ -144,7 +144,7 @@ namespace si3
 
 	mouse::~mouse()
 	{
-		saferelease(device);
+		dxsaferelease(device);
 	}
 
 }

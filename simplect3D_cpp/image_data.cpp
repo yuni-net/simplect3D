@@ -20,15 +20,6 @@ struct land_vertex
 	float       u, v;
 };
 
-template<class T>
-void dxsaferelease(T * pointer)
-{
-	if (pointer != nullptr)
-	{
-		pointer->Release();
-		pointer = nullptr;
-	}
-}
 
 bool si3::image_data::init_vertex(
 	LPDIRECT3DDEVICE9 device,			// in
@@ -371,7 +362,7 @@ namespace si3
 
 		return draw(world_mat, material);
 	}
-	bool image_data::draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int blendmode, bool bCulling) const
+	bool image_data::draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int BlendMode, bool bCulling) const
 	{
 		// 半透明表示を可能にする(αブレンディング有効化)
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
@@ -401,13 +392,13 @@ namespace si3
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 
 		// 加算合成有効化
-		if (blendmode == add_blend)
+		if (BlendMode == add_blend)
 		{
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 		}
 
 		// 減算合成有効化
-		if (blendmode == sub_blend)
+		if (BlendMode == sub_blend)
 		{
 			device->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_REVSUBTRACT);
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
@@ -416,13 +407,13 @@ namespace si3
 		bool result = draw(world_mat, material);
 
 		// 加算合成解除
-		if (blendmode == add_blend)
+		if (BlendMode == add_blend)
 		{
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 		}
 
 		// 減算合成解除
-		if (blendmode == sub_blend)
+		if (BlendMode == sub_blend)
 		{
 			device->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);

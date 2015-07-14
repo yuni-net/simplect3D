@@ -5,7 +5,7 @@
 
 namespace si3
 {
-	struct top_type
+	struct DxTop
 	{
 		D3DVECTOR   pos;
 		D3DVECTOR   normal;

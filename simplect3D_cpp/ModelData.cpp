@@ -19,7 +19,7 @@ namespace si3
 		construct();
 		load(manageri, path);
 	}
-	ModelData::ModelData(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	ModelData::ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		load(manageri, path, center);
 	}
@@ -131,7 +131,7 @@ namespace si3
 	{
 		// 頂点情報格納バッファを作成
 		HRESULT hr = device->CreateVertexBuffer(
-			sizeof(top_type)* top_num,
+			sizeof(DxTop)* top_num,
 			D3DUSAGE_WRITEONLY,
 			model_fvf,
 			D3DPOOL_MANAGED,
@@ -143,7 +143,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_top_center(FILE * fp, const si3::coor3 & center)
+	bool ModelData::load_top_center(FILE * fp, const si3::Coor3 & center)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -157,7 +157,7 @@ namespace si3
 		}
 
 		// バッファをロックをして書き込みを開始する
-		top_type * top_head = nullptr;
+		DxTop * top_head = nullptr;
 		HRESULT hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_head), 0);
 		if (FAILED(hr)) return false;
 
@@ -166,7 +166,7 @@ namespace si3
 			top_data top_data_;
 			fread(&top_data_, sizeof(top_data), 1, fp);
 
-			top_type & top = top_head[top_No];
+			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0] - center.x;
 			top.pos.y = top_data_.pos[1] - center.y;
 			top.pos.z = top_data_.pos[2] - center.z;
@@ -196,7 +196,7 @@ namespace si3
 		}
 
 		// バッファをロックをして書き込みを開始する
-		top_type * top_head = nullptr;
+		DxTop * top_head = nullptr;
 		HRESULT hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_head), 0);
 		if (FAILED(hr)) return false;
 
@@ -206,7 +206,7 @@ namespace si3
 			top_data top_data_;
 			fread(&top_data_, sizeof(top_data), 1, fp);
 
-			top_type & top = top_head[top_No];
+			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0];
 			top.pos.y = top_data_.pos[1];
 			top.pos.z = top_data_.pos[2];
@@ -236,7 +236,7 @@ namespace si3
 		}
 
 		// バッファをロックをして書き込みを開始する
-		top_type * top_head = nullptr;
+		DxTop * top_head = nullptr;
 		HRESULT hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_head), 0);
 		if (FAILED(hr)) return false;
 
@@ -250,7 +250,7 @@ namespace si3
 			const int bone_index = top_data_.bone_num[0];
 			bone_tree[bone_index].add_top(top_No, top_data_);
 
-			top_type & top = top_head[top_No];
+			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0];
 			top.pos.y = top_data_.pos[1];
 			top.pos.z = top_data_.pos[2];
@@ -425,7 +425,7 @@ namespace si3
 	}
 
 
-	bool ModelData::load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	bool ModelData::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
@@ -548,9 +548,9 @@ namespace si3
 		return index_num_;
 	}
 
-	top_type * ModelData::lock_top_buffer() const
+	DxTop * ModelData::lock_top_buffer() const
 	{
-		top_type * top_header;
+		DxTop * top_header;
 		vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
 		return top_header;
 	}
@@ -667,7 +667,7 @@ namespace si3
 			//テクスチャ設定
 			device->SetTexture(0, texture_);
 
-			device->SetStreamSource(0, vertbuff, 0, sizeof(top_type));
+			device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 			device->SetIndices(indexbuff);
 
 			uint index_num = use_top_num;
@@ -744,7 +744,7 @@ namespace si3
 			//テクスチャ設定
 			device->SetTexture(0, texture_);
 
-			device->SetStreamSource(0, vertbuff, 0, sizeof(top_type));
+			device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 			device->SetIndices(indexbuff);
 
 			uint index_num = use_top_num;
@@ -772,12 +772,12 @@ namespace si3
 
 	void ModelData::release()
 	{
-		saferelease(vertbuff);
-		saferelease(indexbuff);
+		dxsaferelease(vertbuff);
+		dxsaferelease(indexbuff);
 
 		for (uint attbute_No = 0; attbute_No < attbute_list.size(); ++attbute_No)
 		{
-			saferelease(attbute_list[attbute_No].texture);
+			dxsaferelease(attbute_list[attbute_No].texture);
 		}
 	}
 

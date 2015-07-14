@@ -20,15 +20,6 @@ struct land_vertex
 	float       u, v;
 };
 
-template<class T>
-void dxsaferelease(T * pointer)
-{
-	if (pointer != nullptr)
-	{
-		pointer->Release();
-		pointer = nullptr;
-	}
-}
 
 bool si3::anime_data::init_vertex(
 	LPDIRECT3DDEVICE9 device,			// in
@@ -495,13 +486,13 @@ namespace si3
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 
 		// ‰ÁŽZ‡¬—LŒø‰»
-		if (nBlendmode == blendmode::add)
+		if (nBlendmode == BlendMode::add)
 		{
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 		}
 
 		// Œ¸ŽZ‡¬—LŒø‰»
-		if (nBlendmode == blendmode::sub)
+		if (nBlendmode == BlendMode::sub)
 		{
 			device->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_REVSUBTRACT);
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
@@ -510,13 +501,13 @@ namespace si3
 		bool result = draw(world_mat, material, uNo);
 
 		// ‰ÁŽZ‡¬‰ðœ
-		if (nBlendmode == blendmode::add)
+		if (nBlendmode == BlendMode::add)
 		{
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 		}
 
 		// Œ¸ŽZ‡¬‰ðœ
-		if (nBlendmode == blendmode::sub)
+		if (nBlendmode == BlendMode::sub)
 		{
 			device->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);

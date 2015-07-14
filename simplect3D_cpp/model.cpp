@@ -19,7 +19,7 @@ namespace si3
 		construct();
 		model_data(manageri, modeld);
 	}
-	model::model(const Manager & manageri, const TCHAR * path, const coor3 & center)
+	model::model(const Manager & manageri, const TCHAR * path, const Coor3 & center)
 	{
 		construct();
 		load(manageri, path, center);
@@ -45,7 +45,7 @@ namespace si3
 		release();
 		this->modeld = &modeld;
 	}
-	bool model::load(const Manager & manageri, const TCHAR * path, const coor3 & center)
+	bool model::load(const Manager & manageri, const TCHAR * path, const Coor3 & center)
 	{
 		dxdevice = manageri.get_dxdevice();
 		release();
@@ -139,7 +139,7 @@ namespace si3
 	* x,y,zの回転の順序を設定する。
 	* デフォルトでは y→x→z の順
 	*/
-	void model::set_rot_mode(rot_mode::ERotMode first, rot_mode::ERotMode second, rot_mode::ERotMode third)
+	void model::set_rot_mode(RotMode::ERotMode first, RotMode::ERotMode second, RotMode::ERotMode third)
 	{
 		first_rot_mode = first;
 		second_rot_mode = second;
@@ -194,9 +194,9 @@ namespace si3
 		coor.radian_y = 0.0f;
 		coor.radian_z = 0.0f;
 
-		first_rot_mode = rot_mode::y;
-		second_rot_mode = rot_mode::x;
-		third_rot_mode = rot_mode::z;
+		first_rot_mode = RotMode::y;
+		second_rot_mode = RotMode::x;
+		third_rot_mode = RotMode::z;
 
 		bComputedWorldMat = false;
 		bCulling = true;
@@ -216,19 +216,19 @@ namespace si3
 		ownership = false;
 	}
 
-	void model::set_rot_mat(matrix & rot_mat, rot_mode::ERotMode rot_mode_) const
+	void model::set_rot_mat(matrix & rot_mat, RotMode::ERotMode rot_mode_) const
 	{
-		if (rot_mode_ == rot_mode::x)
+		if (rot_mode_ == RotMode::x)
 		{
 			rot_mat.rotate_x(coor.radian_x);
 		}
 
-		if (rot_mode_ == rot_mode::y)
+		if (rot_mode_ == RotMode::y)
 		{
 			rot_mat.rotate_y(coor.radian_y);
 		}
 
-		if (rot_mode_ == rot_mode::z)
+		if (rot_mode_ == RotMode::z)
 		{
 			rot_mat.rotate_z(coor.radian_z);
 		}

@@ -14,7 +14,7 @@ namespace si3
 	public:
 		void add_top(const int top_index, const Top_pmd & top_data_);
 
-		void renew_tops(top_type * top_buffer, const matrix & trans_mat, const matrix & rot_mat);
+		void renew_tops(DxTop * top_buffer, const matrix & trans_mat, const matrix & rot_mat);
 
 
 

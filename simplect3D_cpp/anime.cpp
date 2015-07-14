@@ -155,19 +155,19 @@ namespace si3
 
 	void anime::setblend_normal()
 	{
-		nBlendmode = blendmode::normal;
+		nBlendmode = BlendMode::normal;
 	}
 	void anime::setblend_alpha()
 	{
-		nBlendmode = blendmode::alpha;
+		nBlendmode = BlendMode::alpha;
 	}
 	void anime::setblend_add()
 	{
-		nBlendmode = blendmode::add;
+		nBlendmode = BlendMode::add;
 	}
 	void anime::setblend_sub()
 	{
-		nBlendmode = blendmode::sub;
+		nBlendmode = BlendMode::sub;
 	}
 
 
@@ -215,7 +215,7 @@ namespace si3
 	{
 		compute_world_mat();
 
-		if (nBlendmode!=blendmode::normal)	// 半透明処理が必要だからここでは書き込まない
+		if (nBlendmode!=BlendMode::normal)	// 半透明処理が必要だからここでは書き込まない
 		{
 			return;
 		}
@@ -226,7 +226,7 @@ namespace si3
 	void anime::draw_alpha() const
 	{
 		// 完全不透明なら、既に書き込まれているからここでは書き込まない
-		if (nBlendmode==blendmode::normal)
+		if (nBlendmode==BlendMode::normal)
 		{
 			return;
 		}

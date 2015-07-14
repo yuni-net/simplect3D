@@ -2,7 +2,7 @@
 
 #include "popular.h"
 #include "display_object.h"
-#include "dxmanager.h"
+#include "DxManager.h"
 #include "display_manager.h"
 #include "fps60.h"
 #include "dxlight.h"
@@ -63,7 +63,7 @@ namespace si3
 		/***
 		@brief ディスプレイを管理するクラスのインスタンスを得る。
 		*/
-		::si3::display_manager & display_manager();
+		::si3::DisplayManager & DisplayManager();
 
 
 		/*
@@ -80,8 +80,8 @@ namespace si3
 
 	private:
 		fw::Window windowi;
-		dxmanager dxm;
-		::si3::display_manager displaym;
+		DxManager dxm;
+		::si3::DisplayManager displaym;
 		fps60 fps60i;
 		dxlight dxlighti;
 		::si3::camera dxcamerai;

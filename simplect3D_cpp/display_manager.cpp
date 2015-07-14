@@ -3,12 +3,12 @@
 
 namespace si3
 {
-	display_manager::display_manager()
+	DisplayManager::DisplayManager()
 	{
 		context_color(1.0f, 1.0f, 1.0f);
 	}
 
-	void display_manager::init(D3DPRESENT_PARAMETERS * present_parameters, LPDIRECT3DDEVICE9 dxdevice)
+	void DisplayManager::init(D3DPRESENT_PARAMETERS * present_parameters, LPDIRECT3DDEVICE9 dxdevice)
 	{
 		this->present_parameters = present_parameters;
 		this->dxdevice = dxdevice;
@@ -22,42 +22,42 @@ namespace si3
 
 	}
 
-	void display_manager::register_display_object(const display_object & display_objecti)
+	void DisplayManager::register_display_object(const display_object & display_objecti)
 	{
 		display_objects.add(&display_objecti);
 	}
 
 
-	void display_manager::context_color(float r, float g, float b)
+	void DisplayManager::context_color(float r, float g, float b)
 	{
-		fRed_ = r;
-		fGreen_ = g;
-		fBlue_ = b;
+		red_ = r;
+		green_ = g;
+		blue_ = b;
 	}
 
-	float display_manager::context_red() const
+	float DisplayManager::context_red() const
 	{
-		return fRed_;
+		return red_;
 	}
-	float display_manager::context_green() const
+	float DisplayManager::context_green() const
 	{
-		return fGreen_;
+		return green_;
 	}
-	float display_manager::context_blue() const
+	float DisplayManager::context_blue() const
 	{
-		return fBlue_;
+		return blue_;
 	}
 
 
 
-	void display_manager::draw()
+	void DisplayManager::draw()
 	{
 		// ビューポートをクリア
 		dxdevice->Clear(
 			0,
 			NULL,
 			D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL,
-			D3DCOLOR_XRGB(round_uchar(255 * fRed_), round_uchar(255 * fGreen_), round_uchar(255 * fBlue_)),
+			D3DCOLOR_XRGB(round_uchar(255 * red_), round_uchar(255 * green_), round_uchar(255 * blue_)),
 			1.0f,
 			0);
 
@@ -86,7 +86,7 @@ namespace si3
 		register_display_object(skydome);
 	}
 
-	sky_dome_mini & display_manager::get_skydome()
+	sky_dome_mini & DisplayManager::get_skydome()
 	{
 		return skydome;
 	}

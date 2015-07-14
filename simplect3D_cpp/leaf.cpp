@@ -147,19 +147,19 @@ namespace si3
 
 	void leaf::setblend_normal()
 	{
-		blendmode = image_data::normal_blend;
+		BlendMode = image_data::normal_blend;
 	}
 	void leaf::setblend_alpha()
 	{
-		blendmode = image_data::alpha_blend;
+		BlendMode = image_data::alpha_blend;
 	}
 	void leaf::setblend_add()
 	{
-		blendmode = image_data::add_blend;
+		BlendMode = image_data::add_blend;
 	}
 	void leaf::setblend_sub()
 	{
-		blendmode = image_data::sub_blend;
+		BlendMode = image_data::sub_blend;
 	}
 
 	void leaf::culling(bool bEnable)
@@ -188,7 +188,7 @@ namespace si3
 		compute_world_mat();
 		bComputedWorldMat = false;
 
-		if (blendmode!=image_data::normal_blend)	// 半透明処理が必要だからここでは書き込まない
+		if (BlendMode!=image_data::normal_blend)	// 半透明処理が必要だからここでは書き込まない
 		{
 			return;
 		}
@@ -198,12 +198,12 @@ namespace si3
 	void leaf::draw_alpha() const
 	{
 		// 完全不透明なら、既に書き込まれているからここでは書き込まない
-		if (blendmode==image_data::normal_blend)
+		if (BlendMode==image_data::normal_blend)
 		{
 			return;
 		}
 
-		imaged->draw_alpha(world_mat.dxmat(), material(), blendmode, bCulling);
+		imaged->draw_alpha(world_mat.dxmat(), material(), BlendMode, bCulling);
 
 	}
 

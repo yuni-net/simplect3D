@@ -61,7 +61,7 @@ namespace si3
 		return dxcamerai;
 	}
 
-	::si3::display_manager & Manager::display_manager()
+	::si3::DisplayManager & Manager::DisplayManager()
 	{
 		return displaym;
 	}

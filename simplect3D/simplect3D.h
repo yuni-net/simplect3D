@@ -78,7 +78,7 @@
 *anime_data, anime を実装
 *anime, leaf で、compute_world_matの呼び出し位置を修正
 *billboardに既定のコンストラクタを実装
-*display_managerにてcontext colorを設定することができるようになった
+*DisplayManagerにてcontext colorを設定することができるようになった
 
 [1.0.2]
 *animeを追加したが、leafをコピーしただけ。

@@ -93,7 +93,7 @@ namespace si3
 		float rot_z_;
 		float scale_;
 		float piece_size_;
-		int blendmode;
+		int BlendMode;
 		bool bCulling;
 		mutable bool bComputedWorldMat;
 

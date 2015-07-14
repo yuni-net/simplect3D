@@ -3,17 +3,17 @@
 
 namespace si3
 {
-	struct coor3
+	struct Coor3
 	{
 		float x;
 		float y;
 		float z;
 
-		bool operator !=(const coor3 & another) const;
-		coor3 & operator+=(const coor3 & another);
-		coor3 operator+(const coor3 & another) const;
-		coor3 operator-(const coor3 & another) const;
-		coor3 operator*(const float magni) const;
+		bool operator !=(const Coor3 & another) const;
+		Coor3 & operator+=(const Coor3 & another);
+		Coor3 operator+(const Coor3 & another) const;
+		Coor3 operator-(const Coor3 & another) const;
+		Coor3 operator*(const float magni) const;
 	};
 
 }

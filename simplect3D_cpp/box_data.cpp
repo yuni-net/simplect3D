@@ -187,8 +187,8 @@ namespace si3
 
 	void box_data::release()
 	{
-		saferelease(vertbuff);
-		saferelease(indexbuff);
+		dxsaferelease(vertbuff);
+		dxsaferelease(indexbuff);
 	}
 
 	box_data::~box_data()

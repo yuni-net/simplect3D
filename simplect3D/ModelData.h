@@ -19,15 +19,15 @@ namespace si3
 	public:
 		ModelData(const Manager & manageri, const TCHAR * path);
 		ModelData(const Manager & manageri, const tstring & path);
-		ModelData(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
 
 		bool load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
 		bool load(const Manager & manageri, const TCHAR * path);
 		bool load(const Manager & manageri, const tstring & path);
-		bool load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		bool load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
 
 		unsigned long index_num() const;
-		top_type * lock_top_buffer() const;
+		DxTop * lock_top_buffer() const;
 		unsigned short * lock_index_buffer() const;
 		void unlock_top_buffer() const;
 		void unlock_index_buffer() const;
@@ -98,7 +98,7 @@ namespace si3
 		bool load_header(FILE * fp);
 		bool load_bone(FILE * fp, BoneMap & bone_map);
 		bool create_top_buffer(unsigned long top_num);
-		bool load_top_center(FILE * fp, const si3::coor3 & center);
+		bool load_top_center(FILE * fp, const si3::Coor3 & center);
 		bool load_top(FILE * fp);
 		bool load_top(FILE * fp, MotionData & motion_data);
 		bool create_index_buffer(unsigned long index_num);

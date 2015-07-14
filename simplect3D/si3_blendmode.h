@@ -3,7 +3,7 @@
 
 namespace si3
 {
-	struct blendmode
+	struct BlendMode
 	{
 		enum{
 			normal,

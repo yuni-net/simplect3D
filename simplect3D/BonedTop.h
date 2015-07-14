@@ -13,7 +13,7 @@ namespace si3
 		void init(const int top_index, const Top_pmd & top_data_);
 
 		void renew_tops(
-			top_type * top_buffer,
+			DxTop * top_buffer,
 			const matrix & trans_mat,
 			const matrix & rot_mat) const;
 

@@ -4,7 +4,7 @@ namespace si3
 {
 
 	template<typename T>
-	void saferelease(T * p)
+	void safedelete(T * p)
 	{
 		if (p)
 		{

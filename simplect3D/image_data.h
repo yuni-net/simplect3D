@@ -31,7 +31,7 @@ namespace si3
 		uint height() const;
 
 		bool draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, bool bCulling) const;
-		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int blendmode, bool bCulling) const;
+		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int BlendMode, bool bCulling) const;
 
 
 

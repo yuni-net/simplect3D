@@ -18,12 +18,12 @@ namespace si3
 		model(const Manager & manageri, const TCHAR * path);
 		model(const Manager & manageri, const tstring & path);
 		model(const Manager & manageri, const si3::model_data & modeld);
-		model(const Manager & manageri, const TCHAR * path, const coor3 & center);
+		model(const Manager & manageri, const TCHAR * path, const Coor3 & center);
 
 		bool load(const Manager & manageri, const TCHAR * path);
 		bool load(const Manager & manageri, const tstring & path);
 		void model_data(const Manager & manageri, const si3::model_data & modeld);
-		bool load(const Manager & manageri, const TCHAR * path, const coor3 & center);
+		bool load(const Manager & manageri, const TCHAR * path, const Coor3 & center);
 
 
 		const si3::model_data & model_data() const;
@@ -56,7 +56,7 @@ namespace si3
 		 * x,y,zの回転の順序を設定する。
 		 * デフォルトでは y→x→z の順
 		 */
-		void set_rot_mode(rot_mode::ERotMode first, rot_mode::ERotMode second, rot_mode::ERotMode third);
+		void set_rot_mode(RotMode::ERotMode first, RotMode::ERotMode second, RotMode::ERotMode third);
 
 
 		model();
@@ -73,15 +73,15 @@ namespace si3
 		const si3::model_data * modeld;
 		model_coor coor;
 		mutable matrix world_mat;
-		rot_mode::ERotMode first_rot_mode;
-		rot_mode::ERotMode second_rot_mode;
-		rot_mode::ERotMode third_rot_mode;
+		RotMode::ERotMode first_rot_mode;
+		RotMode::ERotMode second_rot_mode;
+		RotMode::ERotMode third_rot_mode;
 		mutable bool bComputedWorldMat;
 		bool bCulling;
 
 		void construct();
 		void release();
 		void compute_world_mat() const;
-		void set_rot_mat(matrix & rot_mat, rot_mode::ERotMode rot_mode_) const;
+		void set_rot_mat(matrix & rot_mat, RotMode::ERotMode rot_mode_) const;
 	};
 }

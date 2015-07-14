@@ -16,14 +16,14 @@ namespace si3
 	public:
 		model_data(const Manager & manageri, const TCHAR * path);
 		model_data(const Manager & manageri, const tstring & path);
-		model_data(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		model_data(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
 
 		bool load(const Manager & manageri, const TCHAR * path);
 		bool load(const Manager & manageri, const tstring & path);
-		bool load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		bool load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
 
 		unsigned long index_num() const;
-		top_type * lock_top_buffer() const;
+		DxTop * lock_top_buffer() const;
 		unsigned short * lock_index_buffer() const;
 		void unlock_top_buffer() const;
 		void unlock_index_buffer() const;
@@ -73,7 +73,7 @@ namespace si3
 
 		bool load_header(FILE * fp);
 		bool create_top_buffer(unsigned long top_num);
-		bool load_top_center(FILE * fp, const si3::coor3 & center);
+		bool load_top_center(FILE * fp, const si3::Coor3 & center);
 		bool load_top(FILE * fp);
 		bool create_index_buffer(unsigned long index_num);
 		bool load_index(FILE * fp);
@@ -86,7 +86,7 @@ namespace si3
 		void add_normal(LPD3DXMESH & mesh, const LPDIRECT3DDEVICE9 & device, LPD3DXMESH & pMeshWk);
 		bool get_table(LPD3DXMESH & pMeshWk, LPD3DXBUFFER & pMtrlBuf);
 		void compute_tops(LPD3DXMESH & mesh);
-		void compute_tops_center(LPD3DXMESH & mesh, const coor3 & center);
+		void compute_tops_center(LPD3DXMESH & mesh, const Coor3 & center);
 		void get_material(const TCHAR * path, LPD3DXBUFFER	pMtrlBuf, const LPDIRECT3DDEVICE9 & device);
 		void judge_with_alpha();
 #endif

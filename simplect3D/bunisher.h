@@ -74,8 +74,8 @@ namespace si3
 		void release();
 
 		bool create_buffer(unsigned long buffer_size);
-		void convert_without_index(top_type * planebuff, unsigned short * indexbuff, unsigned long index_num);
-	//	void set_bunish_vec_list(top_type * top_head, unsigned long top_No);
+		void convert_without_index(DxTop * planebuff, unsigned short * indexbuff, unsigned long index_num);
+	//	void set_bunish_vec_list(DxTop * top_head, unsigned long top_No);
 
 	};
 }

@@ -24,7 +24,7 @@ namespace si3
 
 		// 頂点情報格納バッファを作成
 		HRESULT hr = device->CreateVertexBuffer(
-			sizeof(top_type)* buffer_size,
+			sizeof(DxTop)* buffer_size,
 			D3DUSAGE_WRITEONLY,
 			model_fvf,
 			D3DPOOL_MANAGED,
@@ -50,7 +50,7 @@ namespace si3
 		bunish_data_list.resize(triangle_num);
 		create_buffer(top_num);
 
-		top_type * planebuff = modeld.lock_top_buffer();
+		DxTop * planebuff = modeld.lock_top_buffer();
 		ushort * indexbuff = modeld.lock_index_buffer();
 
 		convert_without_index(planebuff, indexbuff, modeld.index_num());
@@ -65,7 +65,7 @@ namespace si3
 
 	void bunisher::bunish()
 	{
-		top_type * top_header;
+		DxTop * top_header;
 		listbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
 		if (top_header == nullptr)
 		{
@@ -153,7 +153,7 @@ namespace si3
 		//マテリアル設定
 		device->SetMaterial(&material_);
 
-		device->SetStreamSource(0, listbuff, 0, sizeof(top_type));
+		device->SetStreamSource(0, listbuff, 0, sizeof(DxTop));
 
 
 
@@ -180,13 +180,13 @@ namespace si3
 
 	void bunisher::release()
 	{
-		saferelease(listbuff);
+		dxsaferelease(listbuff);
 	}
 
 
-	void bunisher::convert_without_index(top_type * planebuff, unsigned short * indexbuff, unsigned long index_num)
+	void bunisher::convert_without_index(DxTop * planebuff, unsigned short * indexbuff, unsigned long index_num)
 	{
-		top_type * top_header;
+		DxTop * top_header;
 		listbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
 		if (top_header == nullptr)
 		{
@@ -218,7 +218,7 @@ namespace si3
 
 #if 0
 
-	void bunisher::set_bunish_vec_list(top_type * top_head, unsigned long top_No)
+	void bunisher::set_bunish_vec_list(DxTop * top_head, unsigned long top_No)
 	{
 		if (top_No % 3 != 0)
 		{

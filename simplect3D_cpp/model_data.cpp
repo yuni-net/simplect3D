@@ -15,7 +15,7 @@ namespace si3
 		construct();
 		load(manageri, path);
 	}
-	model_data::model_data(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	model_data::model_data(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		load(manageri, path, center);
 	}
@@ -50,7 +50,7 @@ namespace si3
 	{
 		// 頂点情報格納バッファを作成
 		HRESULT hr = device->CreateVertexBuffer(
-			sizeof(top_type)* top_num,
+			sizeof(DxTop)* top_num,
 			D3DUSAGE_WRITEONLY,
 			model_fvf,
 			D3DPOOL_MANAGED,
@@ -62,7 +62,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_top_center(FILE * fp, const si3::coor3 & center)
+	bool model_data::load_top_center(FILE * fp, const si3::Coor3 & center)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -76,7 +76,7 @@ namespace si3
 		}
 
 		// バッファをロックをして書き込みを開始する
-		top_type * top_head = nullptr;
+		DxTop * top_head = nullptr;
 		HRESULT hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_head), 0);
 		if (FAILED(hr)) return false;
 
@@ -95,7 +95,7 @@ namespace si3
 			top_data top_data_;
 			fread(&top_data_, sizeof(top_data), 1, fp);
 
-			top_type & top = top_head[top_No];
+			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0] - center.x;
 			top.pos.y = top_data_.pos[1] - center.y;
 			top.pos.z = top_data_.pos[2] - center.z;
@@ -125,7 +125,7 @@ namespace si3
 		}
 
 		// バッファをロックをして書き込みを開始する
-		top_type * top_head = nullptr;
+		DxTop * top_head = nullptr;
 		HRESULT hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_head), 0);
 		if (FAILED(hr)) return false;
 
@@ -144,7 +144,7 @@ namespace si3
 			top_data top_data_;
 			fread(&top_data_, sizeof(top_data), 1, fp);
 
-			top_type & top = top_head[top_No];
+			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0];
 			top.pos.y = top_data_.pos[1];
 			top.pos.z = top_data_.pos[2];
@@ -319,7 +319,7 @@ namespace si3
 	}
 
 
-	bool model_data::load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	bool model_data::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
@@ -403,9 +403,9 @@ namespace si3
 		return index_num_;
 	}
 
-	top_type * model_data::lock_top_buffer() const
+	DxTop * model_data::lock_top_buffer() const
 	{
-		top_type * top_header;
+		DxTop * top_header;
 		vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
 		return top_header;
 	}
@@ -525,7 +525,7 @@ namespace si3
 			//テクスチャ設定
 			device->SetTexture(0, texture_);
 
-			device->SetStreamSource(0, vertbuff, 0, sizeof(top_type));
+			device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 			device->SetIndices(indexbuff);
 
 			uint index_num = use_top_num;
@@ -622,7 +622,7 @@ namespace si3
 			//テクスチャ設定
 			device->SetTexture(0, texture_);
 
-			device->SetStreamSource(0, vertbuff, 0, sizeof(top_type));
+			device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 			device->SetIndices(indexbuff);
 
 			uint index_num = use_top_num;
@@ -658,18 +658,18 @@ namespace si3
 
 	void model_data::release()
 	{
-		saferelease(vertbuff);
-		saferelease(indexbuff);
+		dxsaferelease(vertbuff);
+		dxsaferelease(indexbuff);
 
 		for (uint attbute_No = 0; attbute_No < attbute_list.size(); ++attbute_No)
 		{
-			saferelease(attbute_list[attbute_No].texture);
+			dxsaferelease(attbute_list[attbute_No].texture);
 		}
 	}
 
 #if 0
 
-	bool model_data::load_x(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	bool model_data::load_x(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
@@ -773,15 +773,15 @@ namespace si3
 			mesh = pMeshWk;
 		}
 		else {
-			saferelease(pMtrlBuf);
+			dxsaferelease(pMtrlBuf);
 			return false;
 		}
 
 		// 属性テーブル取得
 		hr = mesh->GetAttributeTable(NULL, &attribute_num);
 		if (FAILED(hr)) {
-			saferelease(pMtrlBuf);
-			saferelease(mesh);
+			dxsaferelease(pMtrlBuf);
+			dxsaferelease(mesh);
 			return false;
 		}
 		attribute = new D3DXATTRIBUTERANGE[attribute_num];
@@ -829,7 +829,7 @@ namespace si3
 		// 頂点バッファ解放
 		mesh->UnlockVertexBuffer();
 	}
-	void model_data::compute_tops_center(LPD3DXMESH & mesh, const coor3 & center)
+	void model_data::compute_tops_center(LPD3DXMESH & mesh, const Coor3 & center)
 	{
 		// 頂点バッファ固定
 		LPD3DXVECTOR3 pVtx;

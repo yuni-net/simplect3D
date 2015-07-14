@@ -25,7 +25,7 @@ namespace si3
 	}
 
 	void BoneBranch::renew_tops(
-		top_type * top_buffer,
+		DxTop * top_buffer,
 		MotionData & motion_data,
 		const matrix & parent_trans_mat,
 		const matrix & parent_rot_mat,

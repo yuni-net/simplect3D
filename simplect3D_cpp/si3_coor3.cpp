@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	bool coor3::operator !=(const coor3 & another) const
+	bool Coor3::operator !=(const Coor3 & another) const
 	{
 		if (x != another.x) return true;
 		if (y != another.y) return true;
@@ -11,7 +11,7 @@ namespace si3
 		return false;
 	}
 
-	coor3 & coor3::operator+=(const coor3 & another)
+	Coor3 & Coor3::operator+=(const Coor3 & another)
 	{
 		x += another.x;
 		y += another.y;
@@ -20,27 +20,27 @@ namespace si3
 		return *this;
 	}
 
-	coor3 coor3::operator+(const coor3 & another) const
+	Coor3 Coor3::operator+(const Coor3 & another) const
 	{
-		coor3 result;
+		Coor3 result;
 		result.x = this->x + another.x;
 		result.y = this->y + another.y;
 		result.z = this->z + another.z;
 		return result;
 	}
 
-	coor3 coor3::operator-(const coor3 & another) const
+	Coor3 Coor3::operator-(const Coor3 & another) const
 	{
-		coor3 result;
+		Coor3 result;
 		result.x = this->x - another.x;
 		result.y = this->y - another.y;
 		result.z = this->z - another.z;
 		return result;
 	}
 
-	coor3 coor3::operator*(const float magni) const
+	Coor3 Coor3::operator*(const float magni) const
 	{
-		coor3 result;
+		Coor3 result;
 		result.x = this->x * magni;
 		result.y = this->y * magni;
 		result.z = this->z * magni;

@@ -41,7 +41,7 @@ namespace si3
 		bool compute_trans_mat(
 			matrix & trans_mat,
 			matrix & rot_mat,
-			const coor3 & bone_pos,
+			const Coor3 & bone_pos,
 			const int now_frame);
 
 
@@ -50,7 +50,7 @@ namespace si3
 		struct KeyFrame
 		{
 			int frame;
-			coor3 pos;
+			Coor3 pos;
 			Quaternion quate;
 
 			bool operator<(const KeyFrame & another) const
@@ -111,11 +111,11 @@ namespace si3
 		matrix trans_mat_of_bone(
 			const MoveData & move_data,
 			const float percent,
-			const coor3 & bone_top,
+			const Coor3 & bone_top,
 			const D3DXQUATERNION & quate) const;
 
 
-		bool axis_is_unit(const coor3 & axis) const;
+		bool axis_is_unit(const Coor3 & axis) const;
 	};
 }
 

@@ -25,7 +25,7 @@ namespace si3
 		uint enable_num() const;
 
 		bool draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint uNo) const;
-		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int blendmode, uint uNo) const;
+		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int BlendMode, uint uNo) const;
 
 
 

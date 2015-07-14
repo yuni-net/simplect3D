@@ -3,7 +3,7 @@
 
 namespace si3
 {
-	struct rot_mode
+	struct RotMode
 	{
 		enum ERotMode
 		{

@@ -2,6 +2,7 @@
 
 #include <utility.h>
 #include <sky_dome_data.h>
+#include <saferelease.h>
 
 static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
@@ -271,9 +272,9 @@ namespace si3
 	}
 	void sky_dome_data::release()
 	{
-		saferelease(vertbuff);
-		saferelease(indexbuff);
-		saferelease(texture);
+		dxsaferelease(vertbuff);
+		dxsaferelease(indexbuff);
+		dxsaferelease(texture);
 	}
 
 

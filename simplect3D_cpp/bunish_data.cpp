@@ -2,22 +2,22 @@
 
 namespace si3
 {
-	void bunish_data::set_local_pos(uint index, const coor3 & dust)
+	void bunish_data::set_local_pos(uint index, const Coor3 & dust)
 	{
 		local_pos_list[index] = dust;
 	}
 
-	void bunish_data::set_first_pos(const coor3 & value)
+	void bunish_data::set_first_pos(const Coor3 & value)
 	{
 		pos = value;
 	}
 
-	void bunish_data::set_bunish_vec(const coor3 & value)
+	void bunish_data::set_bunish_vec(const Coor3 & value)
 	{
 		bunish_vec = value;
 	}
 
-	void bunish_data::set_rot_speed(const coor3 & value)
+	void bunish_data::set_rot_speed(const Coor3 & value)
 	{
 		rot_speed = value;
 	}

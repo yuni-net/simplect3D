@@ -43,7 +43,7 @@ namespace si3
 	bool BoneMotion::compute_trans_mat(
 		matrix & trans_mat,
 		matrix & rot_mat,
-		const coor3 & bone_pos,
+		const Coor3 & bone_pos,
 		const int now_frame)
 	{
 		MoveData move_data;
@@ -223,9 +223,9 @@ namespace si3
 #if 0
 	matrix BoneMotion::para_mat_of_bone(const MoveData & move_data, const float percent) const
 	{
-		const coor3 & beg_pos = move_data.beg->pos;
-		const coor3 & end_pos = move_data.end->pos;
-		coor3 now_pos = (beg_pos + end_pos)*percent;
+		const Coor3 & beg_pos = move_data.beg->pos;
+		const Coor3 & end_pos = move_data.end->pos;
+		Coor3 now_pos = (beg_pos + end_pos)*percent;
 		return matrix().parallel(now_pos.x, now_pos.y, now_pos.z);
 	}
 #endif
@@ -239,11 +239,11 @@ namespace si3
 	*  quate: 回転に使用するクォータニオンをここに指定します。
 	* @return 現在のフレームの変換行列を返す。
 	*/
-	matrix BoneMotion::trans_mat_of_bone(const MoveData & move_data, const float percent, const coor3 & bone_top, const D3DXQUATERNION & quate) const
+	matrix BoneMotion::trans_mat_of_bone(const MoveData & move_data, const float percent, const Coor3 & bone_top, const D3DXQUATERNION & quate) const
 	{
-		const coor3 & beg_pos = move_data.beg->pos;
-		const coor3 & end_pos = move_data.end->pos;
-		coor3 now_pos = beg_pos + (end_pos - beg_pos)*percent;
+		const Coor3 & beg_pos = move_data.beg->pos;
+		const Coor3 & end_pos = move_data.end->pos;
+		Coor3 now_pos = beg_pos + (end_pos - beg_pos)*percent;
 
 		D3DXVECTOR3 scaling;
 		scaling.x = 1.0f;
@@ -273,7 +273,7 @@ namespace si3
 		return matrix(trans_mat);
 	}
 
-	bool BoneMotion::axis_is_unit(const coor3 & axis) const
+	bool BoneMotion::axis_is_unit(const Coor3 & axis) const
 	{
 		if (abs(axis.x) >= 0.00001f)
 		{

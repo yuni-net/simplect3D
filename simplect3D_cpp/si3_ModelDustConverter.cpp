@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	void ModelDustConverter::init(top_type * planebuff, unsigned short * indexbuff, unsigned short index)
+	void ModelDustConverter::init(DxTop * planebuff, unsigned short * indexbuff, unsigned short index)
 	{
 		this->planebuff = planebuff;
 		this->indexbuff = indexbuff;
@@ -21,17 +21,17 @@ namespace si3
 		bunishd.set_local_pos(1, convert_pos_to_dust(get_plane_pos(1)));
 		bunishd.set_local_pos(2, convert_pos_to_dust(get_plane_pos(2)));
 
-		coor3 first_pos = center_pos;
+		Coor3 first_pos = center_pos;
 	//	first_pos*model_mat;	// todo Œ³‚Ìmodel‚Ìworld matrix‚ð‚©‚¯‚é•K—v‚ª‚ ‚é
 		bunishd.set_first_pos(first_pos);
 
-		coor3 bunish_vec = normalize_vector(center_pos);
+		Coor3 bunish_vec = normalize_vector(center_pos);
 		bunish_vec.x *= 0.03f;
 		bunish_vec.y *= 0.03f;
 		bunish_vec.z *= 0.03f;
 		bunishd.set_bunish_vec(bunish_vec);
 
-		coor3 rot_speed;
+		Coor3 rot_speed;
 		rot_speed.x = (fw::xrandom() % 10000)*0.16f*0.0001f + 0.06f;
 		rot_speed.y = (fw::xrandom() % 10000)*0.16f*0.0001f + 0.06f;
 		rot_speed.z = (fw::xrandom() % 10000)*0.16f*0.0001f + 0.06f;
@@ -39,16 +39,16 @@ namespace si3
 		bunishd.set_rot_speed(rot_speed);
 	}
 
-	const top_type & ModelDustConverter::get_top_data(uint offset) const
+	const DxTop & ModelDustConverter::get_top_data(uint offset) const
 	{
 		return planebuff[indexbuff[index + offset]];
 	}
 
 
 
-	coor3 ModelDustConverter::convert_pos_to_dust(const D3DVECTOR & model_pos)
+	Coor3 ModelDustConverter::convert_pos_to_dust(const D3DVECTOR & model_pos)
 	{
-		coor3 dust;
+		Coor3 dust;
 
 		dust.x = model_pos.x - center_pos.x;
 		dust.y = model_pos.y - center_pos.y;

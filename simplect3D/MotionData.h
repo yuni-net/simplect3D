@@ -69,7 +69,7 @@ namespace si3
 		bool compute_trans_mat(
 			matrix & trans_mat,
 			matrix & rot_mat,
-			const coor3 & bone_pos,
+			const Coor3 & bone_pos,
 			const int bone_No);
 
 
