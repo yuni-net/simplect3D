@@ -1,7 +1,7 @@
 #if 1
 
 #include <sphere.h>
-#include <manager.h>
+#include <Manager.h>
 #include <matrix.h>
 
 namespace si3
@@ -87,13 +87,13 @@ namespace si3
 		construct();
 	}
 
-	sphere::sphere(const manager & si3m, const char * path, float smoothness, float radius)
+	sphere::sphere(const Manager & si3m, const char * path, float smoothness, float radius)
 	{
 		construct();
 		create(si3m, path, smoothness, radius);
 	}
 
-	void sphere::create(const manager & si3m, const char * path, float smoothness, float radius)
+	void sphere::create(const Manager & si3m, const char * path, float smoothness, float radius)
 	{
 		device = si3m.get_dxdevice();
 		radius_ = radius;

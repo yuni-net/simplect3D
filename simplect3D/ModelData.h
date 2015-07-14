@@ -10,21 +10,21 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 	class MotionData;
 	class BoneMap;
 
 	class ModelData
 	{
 	public:
-		ModelData(const manager & manageri, const TCHAR * path);
-		ModelData(const manager & manageri, const tstring & path);
-		ModelData(const manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		ModelData(const Manager & manageri, const TCHAR * path);
+		ModelData(const Manager & manageri, const tstring & path);
+		ModelData(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
 
-		bool load(const manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
-		bool load(const manager & manageri, const TCHAR * path);
-		bool load(const manager & manageri, const tstring & path);
-		bool load(const manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		bool load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
+		bool load(const Manager & manageri, const TCHAR * path);
+		bool load(const Manager & manageri, const tstring & path);
+		bool load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
 
 		unsigned long index_num() const;
 		top_type * lock_top_buffer() const;

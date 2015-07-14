@@ -8,14 +8,14 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 
 	class sphere :public display_object
 	{
 	public:
 		sphere();
-		sphere(const manager & si3m, const char * path, float smoothness, float radius);
-		void create(const manager & si3m, const char * path, float smoothness, float radius);
+		sphere(const Manager & si3m, const char * path, float smoothness, float radius);
+		void create(const Manager & si3m, const char * path, float smoothness, float radius);
 
 		void x(float value);
 		float x() const;

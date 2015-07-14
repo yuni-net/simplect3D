@@ -1,10 +1,10 @@
-#include "manager.h"
+#include "Manager.h"
 
 
 namespace si3
 {
 
-	bool manager::init()
+	bool Manager::init()
 	{
 		fps60i.init();
 
@@ -27,50 +27,50 @@ namespace si3
 	* 続行可能ならtrue、不可能ならfalseを返す
 	*
 	*/
-	bool manager::begin_frame()
+	bool Manager::begin_frame()
 	{
 		dxinputi.update();
 		// todo
-		return fw::Window::processage();
+		return fw::Window::processage();	// プロセスメッセージを処理する
 	}
 
-	void manager::register_display_object(const display_object & display_objecti)
+	void Manager::register_display_object(const display_object & display_objecti)
 	{
 		displaym.register_display_object(display_objecti);
 	}
 
-	const ::si3::key & manager::key() const
+	const ::si3::key & Manager::key() const
 	{
 		return dxinputi.key();
 	}
-	const ::si3::mouse & manager::mouse() const
+	const ::si3::mouse & Manager::mouse() const
 	{
 		return dxinputi.mouse();
 	}
-	sound_manager & manager::get_sound_manager()
+	sound_manager & Manager::get_sound_manager()
 	{
 		return soundm;
 	}
 
-	::si3::camera & manager::camera()
+	::si3::camera & Manager::camera()
 	{
 		return dxcamerai;
 	}
-	const ::si3::camera & manager::camera() const
+	const ::si3::camera & Manager::camera() const
 	{
 		return dxcamerai;
 	}
 
-	::si3::display_manager & manager::display_manager()
+	::si3::display_manager & Manager::display_manager()
 	{
 		return displaym;
 	}
 
-	LPDIRECT3DDEVICE9 manager::get_dxdevice()
+	LPDIRECT3DDEVICE9 Manager::get_dxdevice()
 	{
 		return dxm.get_dxdevice();
 	}
-	const LPDIRECT3DDEVICE9 manager::get_dxdevice() const
+	const LPDIRECT3DDEVICE9 Manager::get_dxdevice() const
 	{
 		return dxm.get_dxdevice();
 	}
@@ -79,7 +79,7 @@ namespace si3
 	* 描画内容を画面に反映する
 	*
 	*/
-	void manager::show()
+	void Manager::show()
 	{
 		dxcamerai.update();
 		displaym.draw();

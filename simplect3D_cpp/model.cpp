@@ -1,32 +1,32 @@
 #include <model.h>
-#include <manager.h>
+#include <Manager.h>
 #include <model_data.h>
 
 namespace si3
 {
-	model::model(const manager & manageri, const TCHAR * path)
+	model::model(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	model::model(const manager & manageri, const tstring & path)
+	model::model(const Manager & manageri, const tstring & path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	model::model(const manager & manageri, const si3::model_data & modeld)
+	model::model(const Manager & manageri, const si3::model_data & modeld)
 	{
 		construct();
 		model_data(manageri, modeld);
 	}
-	model::model(const manager & manageri, const TCHAR * path, const coor3 & center)
+	model::model(const Manager & manageri, const TCHAR * path, const coor3 & center)
 	{
 		construct();
 		load(manageri, path, center);
 	}
 
 
-	bool model::load(const manager & manageri, const TCHAR * path)
+	bool model::load(const Manager & manageri, const TCHAR * path)
 	{
 		dxdevice = manageri.get_dxdevice();
 		release();
@@ -35,17 +35,17 @@ namespace si3
 
 		return true;
 	}
-	bool model::load(const manager & manageri, const tstring & path)
+	bool model::load(const Manager & manageri, const tstring & path)
 	{
 		return load(manageri, path.c_str());
 	}
-	void model::model_data(const manager & manageri, const si3::model_data & modeld)
+	void model::model_data(const Manager & manageri, const si3::model_data & modeld)
 	{
 		dxdevice = manageri.get_dxdevice();
 		release();
 		this->modeld = &modeld;
 	}
-	bool model::load(const manager & manageri, const TCHAR * path, const coor3 & center)
+	bool model::load(const Manager & manageri, const TCHAR * path, const coor3 & center)
 	{
 		dxdevice = manageri.get_dxdevice();
 		release();

@@ -1,12 +1,12 @@
 #include "sound_data.h"
 #include "sound_manager.h"
-#include "manager.h"
+#include "Manager.h"
 #include "saferelease.h"
 
 namespace si3
 {
 
-	bool sound_data::load(manager & si3m, uint uID)
+	bool sound_data::load(Manager & si3m, uint uID)
 	{
 		this->uID = uID;
 		si3mp = &si3m;
@@ -114,7 +114,7 @@ namespace si3
 	{
 		construct();
 	}
-	sound_data::sound_data(manager & si3m, uint uID)
+	sound_data::sound_data(Manager & si3m, uint uID)
 	{
 		construct();
 		load(si3m, uID);

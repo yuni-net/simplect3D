@@ -1,5 +1,5 @@
 #include "unique_sound.h"
-#include "manager.h"
+#include "Manager.h"
 #include "saferelease.h"
 
 namespace si3
@@ -15,7 +15,7 @@ namespace si3
 	{
 		construct();
 	}
-	unique_sound::unique_sound(manager & si3m, uint uID)
+	unique_sound::unique_sound(Manager & si3m, uint uID)
 	{
 		construct();
 		load(si3m, uID);
@@ -26,7 +26,7 @@ namespace si3
 		set_sound_data(soundd);
 	}
 
-	bool unique_sound::load(manager & si3m, uint uID)
+	bool unique_sound::load(Manager & si3m, uint uID)
 	{
 		sound_data * pSoundData = new sound_data();
 		bool bResult = pSoundData->load(si3m, uID);

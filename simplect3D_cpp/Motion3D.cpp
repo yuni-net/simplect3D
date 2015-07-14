@@ -1,5 +1,5 @@
 #include <Motion3D.h>
-#include <manager.h>
+#include <Manager.h>
 
 namespace si3
 {
@@ -8,7 +8,7 @@ namespace si3
 	** モデルデータはpmd形式、モーションデータはvmd形式のみ対応です。
 	** この時点でアニメーション位置が先頭に設定されます。
 	*/
-	void Motion3D::load(manager & si3m, const char * model_path, const char * motion_path)
+	void Motion3D::load(Manager & si3m, const char * model_path, const char * motion_path)
 	{
 		device = si3m.get_dxdevice();
 		model_data.load(si3m, model_path, motion_data, bone_map);

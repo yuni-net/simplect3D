@@ -1,5 +1,5 @@
 #include <image_data.h>
-#include <manager.h>
+#include <Manager.h>
 #include <utility.h>
 #include <top4.h>
 #include <diffuse.h>
@@ -293,18 +293,18 @@ namespace si3
 	{
 		construct();
 	}
-	image_data::image_data(const manager & manageri, const char * path, float piece_size)
+	image_data::image_data(const Manager & manageri, const char * path, float piece_size)
 	{
 		construct();
 		load(manageri, path, piece_size);
 	}
-	image_data::image_data(const manager & manageri, const std::string & path, float piece_size)
+	image_data::image_data(const Manager & manageri, const std::string & path, float piece_size)
 	{
 		construct();
 		load(manageri, path, piece_size);
 	}
 
-	bool image_data::load(const manager & manageri, const char * path, float piece_size)
+	bool image_data::load(const Manager & manageri, const char * path, float piece_size)
 	{
 		device = manageri.get_dxdevice();
 
@@ -322,7 +322,7 @@ namespace si3
 
 		return true;
 	}
-	bool image_data::load(const manager & manageri, const std::string & path, float piece_size)
+	bool image_data::load(const Manager & manageri, const std::string & path, float piece_size)
 	{
 		return load(manageri, path.c_str(), piece_size);
 	}
@@ -499,7 +499,7 @@ namespace si3
 #if 0
 
 #include <image_data.h>
-#include <manager.h>
+#include <Manager.h>
 #include <utility.h>
 #include <top4.h>
 #include <diffuse.h>
@@ -800,18 +800,18 @@ namespace si3
 	{
 		construct();
 	}
-	image_data::image_data(const manager & manageri, const char * path, float piece_size)
+	image_data::image_data(const Manager & manageri, const char * path, float piece_size)
 	{
 		construct();
 		load(manageri, path, piece_size);
 	}
-	image_data::image_data(const manager & manageri, const std::string & path, float piece_size)
+	image_data::image_data(const Manager & manageri, const std::string & path, float piece_size)
 	{
 		construct();
 		load(manageri, path, piece_size);
 	}
 
-	bool image_data::load(const manager & manageri, const char * path, float piece_size)
+	bool image_data::load(const Manager & manageri, const char * path, float piece_size)
 	{
 #if 0
 		const uint piece_size = 500;
@@ -961,7 +961,7 @@ namespace si3
 
 		return true;
 	}
-	bool image_data::load(const manager & manageri, const std::string & path, float piece_size)
+	bool image_data::load(const Manager & manageri, const std::string & path, float piece_size)
 	{
 		return load(manageri, path.c_str(), piece_size);
 	}

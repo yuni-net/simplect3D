@@ -12,18 +12,18 @@ namespace si3
 		construct();
 	}
 #if 0
-	anime::anime(const manager & manageri, const TCHAR * path)
+	anime::anime(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	anime::anime(const manager & manageri, const std::string & path)
+	anime::anime(const Manager & manageri, const std::string & path)
 	{
 		construct();
 		load(manageri, path);
 	}
 #endif
-	anime::anime(const manager & manageri, const ::si3::anime_data & animed)
+	anime::anime(const Manager & manageri, const ::si3::anime_data & animed)
 	{
 		construct();
 		anime_data(manageri, animed);
@@ -39,7 +39,7 @@ namespace si3
 	}
 
 #if 0
-	bool anime::load(const manager & manageri, const TCHAR * path)
+	bool anime::load(const Manager & manageri, const TCHAR * path)
 	{
 		pManager = &manageri;
 		::si3::image_data * imgd = new ::si3::image_data();
@@ -48,12 +48,12 @@ namespace si3
 		ownership = true;
 		return result;
 	}
-	bool anime::load(const manager & manageri, const std::string & path)
+	bool anime::load(const Manager & manageri, const std::string & path)
 	{
 		return load(manageri, path.c_str());
 	}
 #endif
-	void anime::anime_data(const manager & manageri, const ::si3::anime_data & animed)
+	void anime::anime_data(const Manager & manageri, const ::si3::anime_data & animed)
 	{
 		const int c_nDefaultResistor = 4;
 

@@ -9,15 +9,15 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 
 
 	class sky_dome_mini :public display_object
 	{
 	public:
 		sky_dome_mini();
-		sky_dome_mini(const manager & manageri, const TCHAR * path);
-		void load(const manager & manageri, const TCHAR * path);
+		sky_dome_mini(const Manager & manageri, const TCHAR * path);
+		void load(const Manager & manageri, const TCHAR * path);
 
 
 
@@ -32,7 +32,7 @@ namespace si3
 
 
 	private:
-		const manager * managerp;;
+		const Manager * managerp;;
 		sky_dome_data sphered;
 		bool loaded;
 

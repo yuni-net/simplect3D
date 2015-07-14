@@ -9,18 +9,18 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 
 	class model_data
 	{
 	public:
-		model_data(const manager & manageri, const TCHAR * path);
-		model_data(const manager & manageri, const tstring & path);
-		model_data(const manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		model_data(const Manager & manageri, const TCHAR * path);
+		model_data(const Manager & manageri, const tstring & path);
+		model_data(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
 
-		bool load(const manager & manageri, const TCHAR * path);
-		bool load(const manager & manageri, const tstring & path);
-		bool load(const manager & manageri, const TCHAR * path, const si3::coor3 & center);
+		bool load(const Manager & manageri, const TCHAR * path);
+		bool load(const Manager & manageri, const tstring & path);
+		bool load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center);
 
 		unsigned long index_num() const;
 		top_type * lock_top_buffer() const;

@@ -7,16 +7,16 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 	class anime_data;
 
 	class billboard :public leaf
 	{
 	public:
 		billboard();
-		billboard(const manager & manageri, const TCHAR * path);
-		billboard(const manager & manageri, const std::string & path);
-		billboard(const manager & manageri, const ::si3::image_data & imaged);
+		billboard(const Manager & manageri, const TCHAR * path);
+		billboard(const Manager & manageri, const std::string & path);
+		billboard(const Manager & manageri, const ::si3::image_data & imaged);
 
 
 

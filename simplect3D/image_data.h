@@ -7,7 +7,7 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 
 	class image_data
 	{
@@ -21,11 +21,11 @@ namespace si3
 		};
 
 		image_data();
-		image_data(const manager & manageri, const char * path, float piece_size);
-		image_data(const manager & manageri, const std::string & path, float piece_size);
+		image_data(const Manager & manageri, const char * path, float piece_size);
+		image_data(const Manager & manageri, const std::string & path, float piece_size);
 
-		bool load(const manager & manageri, const char * path, float piece_size);
-		bool load(const manager & manageri, const std::string & path, float piece_size);
+		bool load(const Manager & manageri, const char * path, float piece_size);
+		bool load(const Manager & manageri, const std::string & path, float piece_size);
 
 		uint width() const;
 		uint height() const;

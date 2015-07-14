@@ -10,7 +10,7 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 	class ModelData;
 
 	class MotionData
@@ -21,7 +21,7 @@ namespace si3
 		** この時点でアニメーション位置が先頭に設定されます。
 		** また、アニメーションを再生状態にします。
 		*/
-		void load(manager & si3m, const char * path, const BoneMap & bone_map, const int bone_num);
+		void load(Manager & si3m, const char * path, const BoneMap & bone_map, const int bone_num);
 
 		/***
 		** アニメーションを再生状態にします

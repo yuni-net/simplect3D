@@ -3,7 +3,7 @@
 #include <diffuse.h>
 #include <anime_data.h>
 #include <model_coor.h>
-#include <manager.h>
+#include <Manager.h>
 
 namespace si3
 {
@@ -11,15 +11,15 @@ namespace si3
 	{
 		// Nothing
 	}
-	billboard::billboard(const manager & manageri, const TCHAR * path)
+	billboard::billboard(const Manager & manageri, const TCHAR * path)
 	{
 		load(manageri, path);
 	}
-	billboard::billboard(const manager & manageri, const std::string & path)
+	billboard::billboard(const Manager & manageri, const std::string & path)
 	{
 		load(manageri, path);
 	}
-	billboard::billboard(const manager & manageri, const ::si3::image_data & imaged)
+	billboard::billboard(const Manager & manageri, const ::si3::image_data & imaged)
 	{
 		image_data(manageri, imaged);
 	}
@@ -74,17 +74,17 @@ namespace si3
 	{
 		construct();
 	}
-	billboard::billboard(const manager & manageri, const TCHAR * path)
+	billboard::billboard(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	billboard::billboard(const manager & manageri, const std::string & path)
+	billboard::billboard(const Manager & manageri, const std::string & path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	billboard::billboard(const manager & manageri, const ::si3::anime_data & imaged)
+	billboard::billboard(const Manager & manageri, const ::si3::anime_data & imaged)
 	{
 		construct();
 		anime_data(manageri, imaged);
@@ -99,7 +99,7 @@ namespace si3
 		return piece_size_;
 	}
 
-	bool billboard::load(const manager & manageri, const TCHAR * path)
+	bool billboard::load(const Manager & manageri, const TCHAR * path)
 	{
 		si3m = &manageri;
 		::si3::anime_data * imgd = new ::si3::anime_data();
@@ -108,11 +108,11 @@ namespace si3
 		ownership = true;
 		return result;
 	}
-	bool billboard::load(const manager & manageri, const std::string & path)
+	bool billboard::load(const Manager & manageri, const std::string & path)
 	{
 		return load(manageri, path.c_str());
 	}
-	void billboard::anime_data(const manager & manageri, const ::si3::anime_data & imaged)
+	void billboard::anime_data(const Manager & manageri, const ::si3::anime_data & imaged)
 	{
 		release();
 		si3m = &manageri;

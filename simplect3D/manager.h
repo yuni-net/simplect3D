@@ -13,7 +13,10 @@
 
 namespace si3
 {
-	class manager
+	/***
+	simplect3Dライブラリ全体を管理するクラス。
+	*/
+	class Manager
 	{
 	public:
 		/*
@@ -29,15 +32,37 @@ namespace si3
 		 */
 		bool begin_frame();
 
+		/***
+		@brief 表示リストにオブジェクトを登録する。
+		@detail この登録はこのフレームでのみ有効であるため、
+		        毎フレーム描画したければ毎フレーム登録し直す必要がある。
+		*/
 		void register_display_object(const display_object & display_objecti);
 
+		/***
+		@brief キーボード情報を管理するクラスのインスタンスを得る。
+		*/
 		const ::si3::key & key() const;
+
+		/***
+		@brief マウス情報を管理するクラスのインスタンスを得る。
+		*/
 		const ::si3::mouse & mouse() const;
+
+		/***
+		@brief サウンド情報を管理するクラスのインスタンスを得る。
+		*/
 		sound_manager & get_sound_manager();
 
+		/***
+		@brief カメラを管理するクラスのインスタンスを得る。
+		*/
 		::si3::camera & camera();
 		const ::si3::camera & camera() const;
 
+		/***
+		@brief ディスプレイを管理するクラスのインスタンスを得る。
+		*/
 		::si3::display_manager & display_manager();
 
 

@@ -11,8 +11,8 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 {
 	fw::xrandom_init(static_cast<unsigned long>(time(NULL)));
 
-	si3::manager * si3mp = new si3::manager();
-	si3::manager & si3m = *si3mp;
+	si3::Manager * si3mp = new si3::Manager();
+	si3::Manager & si3m = *si3mp;
 	if (si3m.init() == false)
 	{
 		fw::popup("failed");

@@ -1,21 +1,21 @@
 #include <model_data.h>
-#include <manager.h>
+#include <Manager.h>
 
 namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-	model_data::model_data(const manager & manageri, const TCHAR * path)
+	model_data::model_data(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	model_data::model_data(const manager & manageri, const tstring & path)
+	model_data::model_data(const Manager & manageri, const tstring & path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	model_data::model_data(const manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	model_data::model_data(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
 	{
 		load(manageri, path, center);
 	}
@@ -319,7 +319,7 @@ namespace si3
 	}
 
 
-	bool model_data::load(const manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	bool model_data::load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
 	{
 		release();
 
@@ -353,7 +353,7 @@ namespace si3
 
 		return true;
 	}
-	bool model_data::load(const manager & manageri, const TCHAR * path)
+	bool model_data::load(const Manager & manageri, const TCHAR * path)
 	{
 		release();
 
@@ -391,7 +391,7 @@ namespace si3
 #pragma pack(pop)
 
 
-	bool model_data::load(const manager & manageri, const tstring & path)
+	bool model_data::load(const Manager & manageri, const tstring & path)
 	{
 		return load(manageri, path.c_str());
 	}
@@ -669,7 +669,7 @@ namespace si3
 
 #if 0
 
-	bool model_data::load_x(const manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	bool model_data::load_x(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
 	{
 		release();
 
@@ -707,7 +707,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_x(const manager & manageri, const TCHAR * path)
+	bool model_data::load_x(const Manager & manageri, const TCHAR * path)
 	{
 		release();
 

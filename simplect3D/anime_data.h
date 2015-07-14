@@ -7,18 +7,18 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 
 	class anime_data
 	{
 	public:
 
 		anime_data();
-		anime_data(const manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
-		anime_data(const manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
+		anime_data(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
+		anime_data(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
 
-		bool load(const manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
-		bool load(const manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
+		bool load(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
+		bool load(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
 
 		uint width() const;
 		uint height() const;

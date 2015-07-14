@@ -2,7 +2,7 @@
 #define biringal3D_sound_data_h_
 
 #include "popular.h"
-#include "manager.h"
+#include "Manager.h"
 
 namespace si3
 {
@@ -10,9 +10,9 @@ namespace si3
 	{
 	public:
 		sound_data();
-		sound_data(manager & si3m, uint uID);
+		sound_data(Manager & si3m, uint uID);
 
-		bool load(manager & si3m, uint uID);
+		bool load(Manager & si3m, uint uID);
 		uint getID() const;
 
 
@@ -20,7 +20,7 @@ namespace si3
 		bool create_buffer(IDirectSoundBuffer8 * & secondarysb) const;
 	private:
 		uint uID;
-		manager * si3mp;
+		Manager * si3mp;
 
 		fw::Wav wav_data;
 		WAVEFORMATEX wfe;

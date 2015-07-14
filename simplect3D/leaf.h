@@ -7,25 +7,25 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 	class image_data;
 
 	class leaf :public display_object
 	{
 	public:
 		leaf();
-		leaf(const manager & manageri, const TCHAR * path);
-		leaf(const manager & manageri, const std::string & path);
-		leaf(const manager & manageri, const ::si3::image_data & imaged);
+		leaf(const Manager & manageri, const TCHAR * path);
+		leaf(const Manager & manageri, const std::string & path);
+		leaf(const Manager & manageri, const ::si3::image_data & imaged);
 
 		// ˆê‚Â‚ÌOŠpƒ|ƒŠƒSƒ“‚ÌÅ‘å‚Ì‘å‚«‚³‚ğ‚±‚±‚Åİ’è‚·‚é
 		// OŠpƒ|ƒŠƒSƒ“‚Ì‘å‚«‚³‚ª‚±‚ê‚ğ’´‚¦‚È‚¢‚æ‚¤‚ÉA”Âƒ|ƒŠƒSƒ“‚Í‚¢‚­‚Â‚©‚É•ªŠ„‚³‚ê‚ÄŠÇ—‚³‚ê‚é
 		void piece_size(float value);
 		float piece_size() const;
 
-		bool load(const manager & manageri, const TCHAR * path);
-		bool load(const manager & manageri, const std::string & path);
-		void image_data(const manager & manageri, const ::si3::image_data & imaged);
+		bool load(const Manager & manageri, const TCHAR * path);
+		bool load(const Manager & manageri, const std::string & path);
+		void image_data(const Manager & manageri, const ::si3::image_data & imaged);
 
 		void x(float value);
 		float x() const;
@@ -78,7 +78,7 @@ namespace si3
 
 	protected:
 		mutable matrix world_mat;
-		const manager * pManager;
+		const Manager * pManager;
 
 	private:
 		const ::si3::image_data * imaged;

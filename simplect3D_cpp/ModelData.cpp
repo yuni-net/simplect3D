@@ -1,5 +1,5 @@
 #include <ModelData.h>
-#include <manager.h>
+#include <Manager.h>
 #include <MotionData.h>
 #include <Top_pmd.h>
 #include <cstdint>
@@ -9,17 +9,17 @@ namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-	ModelData::ModelData(const manager & manageri, const TCHAR * path)
+	ModelData::ModelData(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	ModelData::ModelData(const manager & manageri, const tstring & path)
+	ModelData::ModelData(const Manager & manageri, const tstring & path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	ModelData::ModelData(const manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	ModelData::ModelData(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
 	{
 		load(manageri, path, center);
 	}
@@ -425,7 +425,7 @@ namespace si3
 	}
 
 
-	bool ModelData::load(const manager & manageri, const TCHAR * path, const si3::coor3 & center)
+	bool ModelData::load(const Manager & manageri, const TCHAR * path, const si3::coor3 & center)
 	{
 		release();
 
@@ -459,7 +459,7 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData::load(const manager & manageri, const TCHAR * path)
+	bool ModelData::load(const Manager & manageri, const TCHAR * path)
 	{
 		release();
 
@@ -493,7 +493,7 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData::load(const manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
+	bool ModelData::load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
 	{
 		release();
 
@@ -536,7 +536,7 @@ namespace si3
 
 
 
-	bool ModelData::load(const manager & manageri, const tstring & path)
+	bool ModelData::load(const Manager & manageri, const tstring & path)
 	{
 		return load(manageri, path.c_str());
 	}

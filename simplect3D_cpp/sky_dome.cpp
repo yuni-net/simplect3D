@@ -1,5 +1,5 @@
 #include "sky_dome.h"
-#include "manager.h"
+#include "Manager.h"
 #include "saferelease.h"
 #include "matrix.h"
 
@@ -9,12 +9,12 @@ namespace si3
 	{
 		construct();
 	}
-	sky_dome::sky_dome(const manager & manageri, const TCHAR * path)
+	sky_dome::sky_dome(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	void sky_dome::load(const manager & manageri, const TCHAR * path)
+	void sky_dome::load(const Manager & manageri, const TCHAR * path)
 	{
 		managerp = &manageri;
 		sphered.load(manageri.get_dxdevice(), path, 0.1f);

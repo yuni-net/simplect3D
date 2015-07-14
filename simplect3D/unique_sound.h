@@ -10,10 +10,10 @@ namespace si3
 	{
 	public:
 		unique_sound();
-		unique_sound(manager & si3m, uint uID);
+		unique_sound(Manager & si3m, uint uID);
 		unique_sound(const sound_data & soundd);
 
-		bool load(manager & si3m, uint uID);
+		bool load(Manager & si3m, uint uID);
 		bool set_sound_data(const sound_data & soundd);
 
 		void replay();	// Ä¶‚ğŠJn‚·‚éBŠù‚ÉÄ¶’†‚È‚çÅ‰‚©‚çÄ¶‚µ’¼‚·

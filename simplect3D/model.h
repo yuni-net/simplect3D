@@ -10,20 +10,20 @@
 namespace si3
 {
 
-	class manager;
+	class Manager;
 
 	class model :public display_object
 	{
 	public:
-		model(const manager & manageri, const TCHAR * path);
-		model(const manager & manageri, const tstring & path);
-		model(const manager & manageri, const si3::model_data & modeld);
-		model(const manager & manageri, const TCHAR * path, const coor3 & center);
+		model(const Manager & manageri, const TCHAR * path);
+		model(const Manager & manageri, const tstring & path);
+		model(const Manager & manageri, const si3::model_data & modeld);
+		model(const Manager & manageri, const TCHAR * path, const coor3 & center);
 
-		bool load(const manager & manageri, const TCHAR * path);
-		bool load(const manager & manageri, const tstring & path);
-		void model_data(const manager & manageri, const si3::model_data & modeld);
-		bool load(const manager & manageri, const TCHAR * path, const coor3 & center);
+		bool load(const Manager & manageri, const TCHAR * path);
+		bool load(const Manager & manageri, const tstring & path);
+		void model_data(const Manager & manageri, const si3::model_data & modeld);
+		bool load(const Manager & manageri, const TCHAR * path, const coor3 & center);
 
 
 		const si3::model_data & model_data() const;

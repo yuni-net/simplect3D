@@ -11,15 +11,15 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 	class model;
 
 	class bunisher :public display_object
 	{
 	public:
-		bunisher(const manager & manageri, const model & model_);
+		bunisher(const Manager & manageri, const model & model_);
 
-		void init(const manager & manageri, const model & model_);
+		void init(const Manager & manageri, const model & model_);
 
 		void bunish();
 
@@ -59,7 +59,7 @@ namespace si3
 #pragma pack(pop)
 #endif
 
-		const manager * si3m;
+		const Manager * si3m;
 		LPDIRECT3DDEVICE9 device;
 		IDirect3DVertexBuffer9 * listbuff;
 	//	fw::Array<attbute> attbute_list;

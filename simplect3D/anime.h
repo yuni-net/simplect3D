@@ -8,25 +8,25 @@
 
 namespace si3
 {
-	class manager;
+	class Manager;
 	class anime_data;
 
 	class anime :public display_object
 	{
 	public:
 		anime();
-	//	anime(const manager & manageri, const TCHAR * path);
-	//	anime(const manager & manageri, const std::string & path);
-		anime(const manager & manageri, const ::si3::anime_data & imaged);
+	//	anime(const Manager & manageri, const TCHAR * path);
+	//	anime(const Manager & manageri, const std::string & path);
+		anime(const Manager & manageri, const ::si3::anime_data & imaged);
 
 		// ˆê‚Â‚ÌOŠpƒ|ƒŠƒSƒ“‚ÌÅ‘å‚Ì‘å‚«‚³‚ğ‚±‚±‚Åİ’è‚·‚é
 		// OŠpƒ|ƒŠƒSƒ“‚Ì‘å‚«‚³‚ª‚±‚ê‚ğ’´‚¦‚È‚¢‚æ‚¤‚ÉA”Âƒ|ƒŠƒSƒ“‚Í‚¢‚­‚Â‚©‚É•ªŠ„‚³‚ê‚ÄŠÇ—‚³‚ê‚é
 		void piece_size(float value);
 		float piece_size() const;
 
-	//	bool load(const manager & manageri, const TCHAR * path);
-	//	bool load(const manager & manageri, const std::string & path);
-		void anime_data(const manager & manageri, const ::si3::anime_data & imaged);
+	//	bool load(const Manager & manageri, const TCHAR * path);
+	//	bool load(const Manager & manageri, const std::string & path);
+		void anime_data(const Manager & manageri, const ::si3::anime_data & imaged);
 
 		void x(float value);
 		float x() const;
@@ -83,7 +83,7 @@ namespace si3
 
 	protected:
 		mutable D3DXMATRIX world_mat;
-		const manager * pManager;
+		const Manager * pManager;
 
 	private:
 		const ::si3::anime_data * animed;

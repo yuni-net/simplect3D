@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "manager.h"
+#include "Manager.h"
 #include "model.h"
 #include "model_data.h"
 #include "leaf.h"
@@ -62,9 +62,9 @@
 *matrixをD3DXMATRIXで初期化できる機能を追加
 *leafおよびbillboardにaffin関数を追加
 *matrixが生成する回転行列を修正
-*leaf::image_data(), billboard::image_data()を用いた際にmanagerのポインタを取得するように修正
+*leaf::image_data(), billboard::image_data()を用いた際にManagerのポインタを取得するように修正
 *modelでカリングの有効無効を指定する機能を追加
-*modelでmodel_dataを指定するときにもmanagerのインスタンスを指定するよう変更
+*modelでmodel_dataを指定するときにもManagerのインスタンスを指定するよう変更
 
 [1.2.0]
 *context colorが反映されるように修正

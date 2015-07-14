@@ -50,7 +50,7 @@ namespace si3
 	}
 
 
-	void bunish_data::bunish(const si3::manager & si3m)
+	void bunish_data::bunish(const si3::Manager & si3m)
 	{
 		pos += bunish_vec;
 		radian += rot_speed;
@@ -68,7 +68,7 @@ namespace si3
 		world_mat *= matrix().parallel(pos.x, pos.y, pos.z);
 	}
 
-	void bunish_data::compute_z(const si3::manager & si3m)
+	void bunish_data::compute_z(const si3::Manager & si3m)
 	{
 		// reference http://marupeke296.com/DXG_No43_ZBufferTexture.html
 

@@ -1,5 +1,5 @@
 #include <anime_data.h>
-#include <manager.h>
+#include <Manager.h>
 #include <utility.h>
 #include <top4.h>
 #include <diffuse.h>
@@ -244,18 +244,18 @@ namespace si3
 	{
 		construct();
 	}
-	anime_data::anime_data(const manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	anime_data::anime_data(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
 	{
 		construct();
 		load(manageri, path, piece_size, uPieceWidth, uPieceHeight, uEnableNum);
 	}
-	anime_data::anime_data(const manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	anime_data::anime_data(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
 	{
 		construct();
 		load(manageri, path, piece_size, uPieceWidth, uPieceHeight, uEnableNum);
 	}
 
-	bool anime_data::load(const manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	bool anime_data::load(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
 	{
 		release();
 
@@ -441,7 +441,7 @@ namespace si3
 
 		return true;
 	}
-	bool anime_data::load(const manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	bool anime_data::load(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
 	{
 		return load(manageri, path.c_str(), piece_size, uPieceWidth, uPieceHeight, uEnableNum);
 	}
@@ -614,7 +614,7 @@ namespace si3
 #if 0
 
 #include <anime_data.h>
-#include <manager.h>
+#include <Manager.h>
 #include <utility.h>
 #include <top4.h>
 #include <diffuse.h>
@@ -915,18 +915,18 @@ namespace si3
 	{
 		construct();
 	}
-	anime_data::anime_data(const manager & manageri, const char * path, float piece_size)
+	anime_data::anime_data(const Manager & manageri, const char * path, float piece_size)
 	{
 		construct();
 		load(manageri, path, piece_size);
 	}
-	anime_data::anime_data(const manager & manageri, const std::string & path, float piece_size)
+	anime_data::anime_data(const Manager & manageri, const std::string & path, float piece_size)
 	{
 		construct();
 		load(manageri, path, piece_size);
 	}
 
-	bool anime_data::load(const manager & manageri, const char * path, float piece_size)
+	bool anime_data::load(const Manager & manageri, const char * path, float piece_size)
 	{
 #if 0
 		const uint piece_size = 500;
@@ -1076,7 +1076,7 @@ namespace si3
 
 		return true;
 	}
-	bool anime_data::load(const manager & manageri, const std::string & path, float piece_size)
+	bool anime_data::load(const Manager & manageri, const std::string & path, float piece_size)
 	{
 		return load(manageri, path.c_str(), piece_size);
 	}

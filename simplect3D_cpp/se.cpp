@@ -9,12 +9,12 @@ namespace si3
 	{
 		construct();
 	}
-	se::se(manager & si3m, uint uID)
+	se::se(Manager & si3m, uint uID)
 	{
 		construct();
 		load(si3m, uID);
 	}
-	se::se(manager & si3m, uint uID, int nMaxMoment)
+	se::se(Manager & si3m, uint uID, int nMaxMoment)
 	{
 		construct();
 		load(si3m, uID, nMaxMoment);
@@ -30,11 +30,11 @@ namespace si3
 		set_sound_data(soundd, nMaxMoment);
 	}
 
-	bool se::load(manager & si3m, uint uID)
+	bool se::load(Manager & si3m, uint uID)
 	{
 		return load(si3m, uID, 16);
 	}
-	bool se::load(manager & si3m, uint uID, int nMaxMoment)
+	bool se::load(Manager & si3m, uint uID, int nMaxMoment)
 	{
 		bool bResult = true;
 

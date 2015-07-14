@@ -10,8 +10,8 @@ namespace si3
 	{
 	public:
 		sky_dome();
-		sky_dome(const manager & manageri, const TCHAR * path);
-		void load(const manager & manageri, const TCHAR * path);
+		sky_dome(const Manager & manageri, const TCHAR * path);
+		void load(const Manager & manageri, const TCHAR * path);
 
 
 		void x(float value);
@@ -35,7 +35,7 @@ namespace si3
 
 
 	private:
-		const manager * managerp;;
+		const Manager * managerp;;
 		sky_dome_data sphered;
 		bool loaded;
 

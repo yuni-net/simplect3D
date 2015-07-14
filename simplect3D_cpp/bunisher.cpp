@@ -1,5 +1,5 @@
 #include <bunisher.h>
-#include <manager.h>
+#include <Manager.h>
 #include <model.h>
 #include <utility.h>
 #include <si3_ModelDustConverter.h>
@@ -12,7 +12,7 @@ namespace si3
 
 
 
-	bunisher::bunisher(const manager & manageri, const model & model_)
+	bunisher::bunisher(const Manager & manageri, const model & model_)
 	{
 		construct();
 		init(manageri, model_);
@@ -37,7 +37,7 @@ namespace si3
 	}
 
 
-	void bunisher::init(const manager & manageri, const model & model_)
+	void bunisher::init(const Manager & manageri, const model & model_)
 	{
 		typedef unsigned short ushort;
 
