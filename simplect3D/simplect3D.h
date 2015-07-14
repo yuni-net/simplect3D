@@ -18,7 +18,7 @@
 #include "Anime.h"
 #include "sound_data.h"
 #include "unique_sound.h"
-#include "se.h"
+#include "SE.h"
 #include "bunisher.h"
 #include "sky_dome.h"
 #include "sky_dome_mini.h"
@@ -46,7 +46,7 @@
 *bunisher was implemented
 
 [3.1.0]
-*unique_sound, sound_manager, sound_data, se を実装
+*UniqueSound, SoundManager, SoundData, SE を実装
 
 [3.0.0]
 *xファイルのサポートを廃止

@@ -47,7 +47,7 @@ namespace si3
 	{
 		return dxinputi.mouse();
 	}
-	sound_manager & Manager::get_sound_manager()
+	SoundManager & Manager::get_sound_manager()
 	{
 		return soundm;
 	}

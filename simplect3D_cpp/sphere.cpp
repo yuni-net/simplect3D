@@ -1,109 +1,109 @@
 #if 1
 
-#include <sphere.h>
+#include <Sphere.h>
 #include <Manager.h>
 #include <Matrix.h>
 
 namespace si3
 {
-	void sphere::x(float value)
+	void Sphere::x(float value)
 	{
 		x_ = value;
 	}
-	float sphere::x() const
+	float Sphere::x() const
 	{
 		return x_;
 	}
 
-	void sphere::y(float value)
+	void Sphere::y(float value)
 	{
 		y_ = value;
 	}
-	float sphere::y() const
+	float Sphere::y() const
 	{
 		return y_;
 	}
 
-	void sphere::z(float value)
+	void Sphere::z(float value)
 	{
 		z_ = value;
 	}
-	float sphere::z() const
+	float Sphere::z() const
 	{
 		return z_;
 	}
 
-	float sphere::radius() const
+	float Sphere::radius() const
 	{
 		return radius_;
 	}
 
 #if 1
-	void sphere::red(float value)
+	void Sphere::red(float value)
 	{
 		red_ = value;
 	}
-	float sphere::red() const
+	float Sphere::red() const
 	{
 		return red_;
 	}
 
-	void sphere::green(float value)
+	void Sphere::green(float value)
 	{
 		green_ = value;
 	}
-	float sphere::green() const
+	float Sphere::green() const
 	{
 		return green_;
 	}
 
-	void sphere::blue(float value)
+	void Sphere::blue(float value)
 	{
 		blue_ = value;
 	}
-	float sphere::blue() const
+	float Sphere::blue() const
 	{
 		return blue_;
 	}
 
-	void sphere::alpha(float value)
+	void Sphere::alpha(float value)
 	{
 		alpha_ = value;
 	}
-	float sphere::alpha() const
+	float Sphere::alpha() const
 	{
 		return alpha_;
 	}
 #endif
 
-	void sphere::construct()
+	void Sphere::construct()
 	{
 		sphered = nullptr;
 		ownership = false;
 	}
 
-	sphere::sphere()
+	Sphere::Sphere()
 	{
 		construct();
 	}
 
-	sphere::sphere(const Manager & si3m, const char * path, float smoothness, float radius)
+	Sphere::Sphere(const Manager & si3m, const char * path, float smoothness, float radius)
 	{
 		construct();
 		create(si3m, path, smoothness, radius);
 	}
 
-	void sphere::create(const Manager & si3m, const char * path, float smoothness, float radius)
+	void Sphere::create(const Manager & si3m, const char * path, float smoothness, float radius)
 	{
 		device = si3m.get_dxdevice();
 		radius_ = radius;
-		sphered = new sphere_data(si3m.get_dxdevice(), path, smoothness, radius);
+		sphered = new SphereData(si3m.get_dxdevice(), path, smoothness, radius);
 		ownership = true;
 	}
 
 
 
-	sphere::~sphere()
+	Sphere::~Sphere()
 	{
 		if (ownership)
 		{
@@ -117,36 +117,36 @@ namespace si3
 		ownership = false;
 	}
 
-	void sphere::rot_x(float value)
+	void Sphere::rot_x(float value)
 	{
 		rot_x_ = value;
 	}
-	float sphere::rot_x() const
+	float Sphere::rot_x() const
 	{
 		return rot_x_;
 	}
 
-	void sphere::rot_y(float value)
+	void Sphere::rot_y(float value)
 	{
 		rot_y_ = value;
 	}
-	float sphere::rot_y() const
+	float Sphere::rot_y() const
 	{
 		return rot_y_;
 	}
 
-	void sphere::rot_z(float value)
+	void Sphere::rot_z(float value)
 	{
 		rot_z_ = value;
 	}
-	float sphere::rot_z() const
+	float Sphere::rot_z() const
 	{
 		return rot_z_;
 	}
 
 
 
-	void sphere::draw_no_alpha() const
+	void Sphere::draw_no_alpha() const
 	{
 		if (alpha() < 1.0f)
 		{
@@ -193,7 +193,7 @@ namespace si3
 
 		sphered->draw(world_mat.dxmat());
 	}
-	void sphere::draw_alpha() const
+	void Sphere::draw_alpha() const
 	{
 		if (alpha() >= 1.0f)
 		{

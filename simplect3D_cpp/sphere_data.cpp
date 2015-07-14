@@ -8,17 +8,17 @@ static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
 namespace si3
 {
-	sphere_data::sphere_data()
+	SphereData::SphereData()
 	{
 		construct();
 	}
-	sphere_data::sphere_data(LPDIRECT3DDEVICE9 device, const char * path, float smoothness, float radius)
+	SphereData::SphereData(LPDIRECT3DDEVICE9 device, const char * path, float smoothness, float radius)
 	{
 		construct();
 		load(device, path, smoothness, radius);
 	}
 
-	void sphere_data::load(LPDIRECT3DDEVICE9 device, const char * path, float smoothness, float radius)
+	void SphereData::load(LPDIRECT3DDEVICE9 device, const char * path, float smoothness, float radius)
 	{
 		this->device = device;
 
@@ -54,7 +54,7 @@ namespace si3
 	}
 
 
-	void sphere_data::draw(const D3DXMATRIX & world_mat) const
+	void SphereData::draw(const D3DXMATRIX & world_mat) const
 	{
 		// ƒ[ƒ‹ƒh•ÏŠ·s—ñÝ’è
 		device->SetTransform(D3DTS_WORLD, &world_mat);
@@ -70,18 +70,18 @@ namespace si3
 	}
 
 
-	sphere_data::~sphere_data()
+	SphereData::~SphereData()
 	{
 		release();
 	}
 
-	void sphere_data::construct()
+	void SphereData::construct()
 	{
 		device = nullptr;
 		mesh = nullptr;
 		texture = nullptr;
 	}
-	void sphere_data::release()
+	void SphereData::release()
 	{
 		dxsaferelease(mesh);
 		dxsaferelease(texture);

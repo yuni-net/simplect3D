@@ -8,17 +8,17 @@ static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
 namespace si3
 {
-	sky_dome_data::sky_dome_data()
+	SkydomeData::SkydomeData()
 	{
 		construct();
 	}
-	sky_dome_data::sky_dome_data(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
+	SkydomeData::SkydomeData(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
 	{
 		construct();
 		load(device, path, roughness);
 	}
 
-	void sky_dome_data::load(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
+	void SkydomeData::load(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
 	{
 		this->device = device;
 
@@ -89,7 +89,7 @@ namespace si3
 		if (result == false) return;
 	}
 
-	bool sky_dome_data::init_vertex(
+	bool SkydomeData::init_vertex(
 		LPDIRECT3DDEVICE9 device,			// in
 		int top_num_x,						// in
 		int top_num_y,						// in
@@ -168,7 +168,7 @@ namespace si3
 		return true;
 	}
 
-	bool sky_dome_data::init_index(
+	bool SkydomeData::init_index(
 		LPDIRECT3DDEVICE9 device,			// in
 		int index_num,						// in
 		IDirect3DIndexBuffer9 ** indexbuff,	// out
@@ -231,7 +231,7 @@ namespace si3
 		return true;
 	}
 
-	void sky_dome_data::draw(const D3DXMATRIX & world_mat) const
+	void SkydomeData::draw(const D3DXMATRIX & world_mat) const
 	{
 		// ƒ[ƒ‹ƒh•ÏŠ·s—ñÝ’è
 		device->SetTransform(D3DTS_WORLD, &world_mat);
@@ -258,19 +258,19 @@ namespace si3
 	}
 
 
-	sky_dome_data::~sky_dome_data()
+	SkydomeData::~SkydomeData()
 	{
 		release();
 	}
 
-	void sky_dome_data::construct()
+	void SkydomeData::construct()
 	{
 		device = nullptr;
 		vertbuff = nullptr;
 		indexbuff = nullptr;
 		texture = nullptr;
 	}
-	void sky_dome_data::release()
+	void SkydomeData::release()
 	{
 		dxsaferelease(vertbuff);
 		dxsaferelease(indexbuff);

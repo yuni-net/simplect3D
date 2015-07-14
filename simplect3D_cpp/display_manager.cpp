@@ -86,7 +86,7 @@ namespace si3
 		register_display_object(skydome);
 	}
 
-	sky_dome_mini & DisplayManager::get_skydome()
+	Skydome_mini & DisplayManager::get_skydome()
 	{
 		return skydome;
 	}

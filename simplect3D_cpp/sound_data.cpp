@@ -6,13 +6,13 @@
 namespace si3
 {
 
-	bool sound_data::load(Manager & si3m, uint uID)
+	bool SoundData::load(Manager & si3m, uint id)
 	{
-		this->uID = uID;
+		this->id = id;
 		si3mp = &si3m;
 
-		sound_manager & soundm = si3m.get_sound_manager();
-		const char * path = soundm.get_path(uID);
+		SoundManager & soundm = si3m.get_sound_manager();
+		const char * path = soundm.get_path(id);
 
 		// WAVEファイルを開く
 		if (wav_data.load(path) == false)
@@ -45,28 +45,28 @@ namespace si3
 		return true;
 	}
 
-	uint sound_data::getID() const
+	uint SoundData::get_ID() const
 	{
-		return uID;
+		return id;
 	}
 
 
-	bool sound_data::create_buffer(IDirectSoundBuffer8 * & secondarysb) const
+	bool SoundData::create_buffer(IDirectSoundBuffer8 * & secondarysb) const
 	{
 		HRESULT hr;
 
-		sound_manager & soundm = si3mp->get_sound_manager();
+		SoundManager & soundm = si3mp->get_sound_manager();
 
 		// バッファを作る
-		LPDIRECTSOUNDBUFFER pDSB;
-		hr = soundm.get_interface()->CreateSoundBuffer(&dsbdesc, &pDSB, NULL);
+		LPDIRECTSOUNDBUFFER dsbuffer;
+		hr = soundm.get_interface()->CreateSoundBuffer(&dsbdesc, &dsbuffer, NULL);
 		if (FAILED(hr))
 		{
 			fw::popup("failed to secondary buffer");
 			return false;
 		}
-		hr = pDSB->QueryInterface(IID_IDirectSoundBuffer8, reinterpret_cast<LPVOID *>(&secondarysb));
-		dxsaferelease(pDSB);
+		hr = dsbuffer->QueryInterface(IID_IDirectSoundBuffer8, reinterpret_cast<LPVOID *>(&secondarysb));
+		dxsaferelease(dsbuffer);
 		if (FAILED(hr))
 		{
 			fw::popup("IDirectSoundBuffer8インターフェイスの取得に失敗");
@@ -74,18 +74,18 @@ namespace si3
 		}
 
 		// セカンダリ・バッファにWaveデータを書き込む
-		LPVOID lpvPtr1; 	// 最初のブロックのポインタ
-		DWORD dwBytes1; 	// 最初のブロックのサイズ
-		LPVOID lpvPtr2; 	// ２番目のブロックのポインタ
-		DWORD dwBytes2; 	// ２番目のブロックのサイズ
+		LPVOID block_ptr1; 	// 最初のブロックのポインタ
+		DWORD block_bytes1; 	// 最初のブロックのサイズ
+		LPVOID block_ptr2; 	// ２番目のブロックのポインタ
+		DWORD block_bytes2; 	// ２番目のブロックのサイズ
 
-		hr = secondarysb->Lock(0, wav_data.size(), &lpvPtr1, &dwBytes1, &lpvPtr2, &dwBytes2, 0);
+		hr = secondarysb->Lock(0, wav_data.size(), &block_ptr1, &block_bytes1, &block_ptr2, &block_bytes2, 0);
 
 		// DSERR_BUFFERLOSTが返された場合，Restoreメソッドを使ってバッファを復元する
 		if (DSERR_BUFFERLOST == hr)
 		{
 			secondarysb->Restore();
-			hr = secondarysb->Lock(0, wav_data.size(), &lpvPtr1, &dwBytes1, &lpvPtr2, &dwBytes2, 0);
+			hr = secondarysb->Lock(0, wav_data.size(), &block_ptr1, &block_bytes1, &block_ptr2, &block_bytes2, 0);
 		}
 		if (FAILED(hr))
 		{
@@ -97,11 +97,11 @@ namespace si3
 
 		// ここで，バッファに書き込む
 		// バッファにデータをコピーする
-		memcpy(lpvPtr1, wav_data.data(), dwBytes1);
-		if (0 != dwBytes2) memcpy(lpvPtr2, fw::pointer_cast<const char *>(wav_data.data()) + dwBytes1, dwBytes2);
+		memcpy(block_ptr1, wav_data.data(), block_bytes1);
+		if (0 != block_bytes2) memcpy(block_ptr2, fw::pointer_cast<const char *>(wav_data.data()) + block_bytes1, block_bytes2);
 
 		// 書き込みが終わったらすぐにUnlockする．
-		hr = secondarysb->Unlock(lpvPtr1, dwBytes1, lpvPtr2, dwBytes2);
+		hr = secondarysb->Unlock(block_ptr1, block_bytes1, block_ptr2, block_bytes2);
 		if (FAILED(hr)) return false;
 
 		return true;
@@ -110,18 +110,18 @@ namespace si3
 
 
 
-	sound_data::sound_data()
+	SoundData::SoundData()
 	{
 		construct();
 	}
-	sound_data::sound_data(Manager & si3m, uint uID)
+	SoundData::SoundData(Manager & si3m, uint id)
 	{
 		construct();
-		load(si3m, uID);
+		load(si3m, id);
 	}
 
 
-	void sound_data::construct()
+	void SoundData::construct()
 	{
 		// Nothing
 	}

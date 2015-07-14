@@ -6,19 +6,19 @@
 
 namespace si3
 {
-	class sound_manager
+	class SoundManager
 	{
 	public:
 		bool init();
-		void reserve4ID_path(int nReserveSize);
-		void register_ID_path(uint nID, const char * pszPath);
+		void reserve4ID_path(int reserve_size);
+		void register_ID_path(uint id, const char * path);
 
 
 
 
-		const char * get_path(uint nID) const;
+		const char * get_path(uint id) const;
 		LPDIRECTSOUND8 get_interface() const;
-		~sound_manager();
+		~SoundManager();
 
 	private:
 		fw::Array<const char *> idpath_list;

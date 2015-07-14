@@ -52,7 +52,7 @@ namespace si3
 		/***
 		@brief サウンド情報を管理するクラスのインスタンスを得る。
 		*/
-		sound_manager & get_sound_manager();
+		SoundManager & get_sound_manager();
 
 		/***
 		@brief カメラを管理するクラスのインスタンスを得る。
@@ -86,6 +86,6 @@ namespace si3
 		DxLight dxlighti;
 		::si3::Camera dxcamerai;
 		DxInput dxinputi;
-		sound_manager soundm;
+		SoundManager soundm;
 	};
 }

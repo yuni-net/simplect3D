@@ -6,17 +6,17 @@
 
 namespace si3
 {
-	class sky_dome_data
+	class SkydomeData
 	{
 	public:
-		sky_dome_data();
+		SkydomeData();
 		/*
 		** roughness:球の曲面の粗さ。この数値が大きいほど粗くなる。
 		** 1.0で最も粗くなり、長方形の板が表示される。
 		** マイナス値を指定してはいけない。
 		** 0.0も指定してはいけない。
 		*/
-		sky_dome_data(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
+		SkydomeData(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
 		void load(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
 		void draw(const D3DXMATRIX & world_mat) const;
 
@@ -25,7 +25,7 @@ namespace si3
 
 
 
-		~sky_dome_data();
+		~SkydomeData();
 	private:
 		struct land_vertex
 		{

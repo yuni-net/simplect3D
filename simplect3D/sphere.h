@@ -10,11 +10,17 @@ namespace si3
 {
 	class Manager;
 
-	class sphere :public DisplayObject
+	class Sphere :public DisplayObject
 	{
 	public:
-		sphere();
-		sphere(const Manager & si3m, const char * path, float smoothness, float radius);
+		Sphere();
+
+		/*
+		** smoothness:球の曲面のなめらかさ。この数値が大きいほど滑らかになる。
+		** 1.0で最も滑らかくなる。
+		** マイナス値を指定してはいけない。
+		*/
+		Sphere(const Manager & si3m, const char * path, float smoothness, float radius);
 		void create(const Manager & si3m, const char * path, float smoothness, float radius);
 
 		void x(float value);
@@ -57,7 +63,7 @@ namespace si3
 		void draw_no_alpha() const;
 		void draw_alpha() const;
 
-		~sphere();
+		~Sphere();
 
 	private:
 		LPDIRECT3DDEVICE9 device;
@@ -75,7 +81,7 @@ namespace si3
 		float rot_y_;
 		float rot_z_;
 
-		sphere_data * sphered;
+		SphereData * sphered;
 		bool ownership;
 
 

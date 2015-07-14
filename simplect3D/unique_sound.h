@@ -6,34 +6,34 @@
 
 namespace si3
 {
-	class unique_sound
+	class UniqueSound
 	{
 	public:
-		unique_sound();
-		unique_sound(Manager & si3m, uint uID);
-		unique_sound(const sound_data & soundd);
+		UniqueSound();
+		UniqueSound(Manager & si3m, uint id);
+		UniqueSound(const SoundData & soundd);
 
-		bool load(Manager & si3m, uint uID);
-		bool set_sound_data(const sound_data & soundd);
+		bool load(Manager & si3m, uint id);
+		bool set_sound_data(const SoundData & soundd);
 
 		void replay();	// 再生を開始する。既に再生中なら最初から再生し直す
 		void reloop();	// ループ再生を開始する。既に再生中なら最初から再生し直す
 	//	void play();	// 再生されている状態にする。つまり既に再生中なら何もしない
 	//	void loop();	// ループ再生されている状態にする。つまり既に再生中なら何もしない
 		void stop();
-		void replay(bool bLoopFlag);
+		void replay(bool do_loop);
 		void volume(float percent);
 		float volume() const;
 
 
 
-		~unique_sound();
+		~UniqueSound();
 	private:
-		const sound_data * pSoundData;
+		const SoundData * soundd;
 		bool ownership;
 
 		IDirectSoundBuffer8 * secondarysb;
-		DWORD BaseFreq;
+		DWORD base_freq;
 
 		void construct();
 		void release();

@@ -12,17 +12,17 @@ namespace si3
 	class Manager;
 
 
-	class sky_dome_mini :public DisplayObject
+	class Skydome_mini :public DisplayObject
 	{
 	public:
-		sky_dome_mini();
-		sky_dome_mini(const Manager & manageri, const TCHAR * path);
+		Skydome_mini();
+		Skydome_mini(const Manager & manageri, const TCHAR * path);
 		void load(const Manager & manageri, const TCHAR * path);
 
 
 
 
-		~sky_dome_mini();
+		~Skydome_mini();
 
 		// @override
 		void draw_no_alpha() const;
@@ -33,7 +33,7 @@ namespace si3
 
 	private:
 		const Manager * managerp;;
-		sky_dome_data sphered;
+		SkydomeData sphered;
 		bool loaded;
 
 		void construct();

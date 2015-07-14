@@ -6,20 +6,20 @@
 
 namespace si3
 {
-	class sound_data
+	class SoundData
 	{
 	public:
-		sound_data();
-		sound_data(Manager & si3m, uint uID);
+		SoundData();
+		SoundData(Manager & si3m, uint id);
 
-		bool load(Manager & si3m, uint uID);
-		uint getID() const;
+		bool load(Manager & si3m, uint id);
+		uint get_ID() const;
 
 
 
 		bool create_buffer(IDirectSoundBuffer8 * & secondarysb) const;
 	private:
-		uint uID;
+		uint id;
 		Manager * si3mp;
 
 		fw::Wav wav_data;

@@ -4,66 +4,66 @@
 
 namespace si3
 {
-	void unique_sound::construct()
+	void UniqueSound::construct()
 	{
-		pSoundData = 0;	// NULL
+		soundd = 0;	// NULL
 		ownership = false;
 		secondarysb = nullptr;
 	}
 
-	unique_sound::unique_sound()
+	UniqueSound::UniqueSound()
 	{
 		construct();
 	}
-	unique_sound::unique_sound(Manager & si3m, uint uID)
+	UniqueSound::UniqueSound(Manager & si3m, uint id)
 	{
 		construct();
-		load(si3m, uID);
+		load(si3m, id);
 	}
-	unique_sound::unique_sound(const sound_data & soundd)
+	UniqueSound::UniqueSound(const SoundData & soundd)
 	{
 		construct();
 		set_sound_data(soundd);
 	}
 
-	bool unique_sound::load(Manager & si3m, uint uID)
+	bool UniqueSound::load(Manager & si3m, uint id)
 	{
-		sound_data * pSoundData = new sound_data();
-		bool bResult = pSoundData->load(si3m, uID);
-		set_sound_data(*pSoundData);
+		SoundData * soundd = new SoundData();
+		bool bResult = soundd->load(si3m, id);
+		set_sound_data(*soundd);
 		ownership = true;
 
 		return bResult;
 	}
-	bool unique_sound::set_sound_data(const sound_data & soundd)
+	bool UniqueSound::set_sound_data(const SoundData & soundd)
 	{
-		bool bResult = true;
+		bool result = true;
 		release();
 
-		pSoundData = &soundd;
+		this->soundd = &soundd;
 		ownership = false;
 
 
-		bResult = pSoundData->create_buffer(secondarysb);
-		secondarysb->GetFrequency(&BaseFreq);
+		result = soundd.create_buffer(secondarysb);
+		secondarysb->GetFrequency(&base_freq);
 
-		return bResult;
+		return result;
 	}
 
-	void unique_sound::replay()	// 再生を開始する。既に再生中なら最初から再生し直す
+	void UniqueSound::replay()	// 再生を開始する。既に再生中なら最初から再生し直す
 	{
 		replay(false);
 	}
-	void unique_sound::reloop()	// ループ再生を開始する。既に再生中なら最初から再生し直す
+	void UniqueSound::reloop()	// ループ再生を開始する。既に再生中なら最初から再生し直す
 	{
 		replay(true);
 	}
-	void unique_sound::stop()
+	void UniqueSound::stop()
 	{
 		secondarysb->Stop();
 		secondarysb->SetCurrentPosition(0);
 	}
-	void unique_sound::replay(bool bLoopFlag)
+	void UniqueSound::replay(bool bLoopFlag)
 	{
 		DWORD dwFlag = NULL;
 		if (bLoopFlag) dwFlag = DSBPLAY_LOOPING;
@@ -74,13 +74,13 @@ namespace si3
 		if (result == DSERR_BUFFERLOST)	// バッファロストの場合はセカンダリバッファを作成し直す
 		{
 			secondarysb->Restore();
-			pSoundData->create_buffer(secondarysb);
-			secondarysb->GetFrequency(&BaseFreq);
+			soundd->create_buffer(secondarysb);
+			secondarysb->GetFrequency(&base_freq);
 		}
 	}
 
 
-	void unique_sound::volume(float percent)
+	void UniqueSound::volume(float percent)
 	{
 		HRESULT result = secondarysb->SetVolume(static_cast<long>(10000 * percent));
 		if (SUCCEEDED(result))
@@ -92,7 +92,7 @@ namespace si3
 			result -= 0;
 		}
 	}
-	float unique_sound::volume() const
+	float UniqueSound::volume() const
 	{
 		long val;
 		secondarysb->GetVolume(&val);
@@ -100,22 +100,22 @@ namespace si3
 	}
 
 
-	void unique_sound::release()
+	void UniqueSound::release()
 	{
 		if (ownership)
 		{
-			if(pSoundData)
+			if(soundd)
 			{
-				delete pSoundData;
+				delete soundd;
 			}
 		}
 
-		pSoundData = 0;	// NULL
+		soundd = 0;	// NULL
 
 		dxsaferelease(secondarysb);
 	}
 
-	unique_sound::~unique_sound()
+	UniqueSound::~UniqueSound()
 	{
 		release();
 	}

@@ -19,7 +19,7 @@ namespace si3
 		float context_green() const;
 		float context_blue() const;
 
-		sky_dome_mini & get_skydome();
+		Skydome_mini & get_skydome();
 
 		void draw();
 
@@ -33,6 +33,6 @@ namespace si3
 		float red_;
 		float green_;
 		float blue_;
-		sky_dome_mini skydome;
+		Skydome_mini skydome;
 	};
 }

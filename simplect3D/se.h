@@ -7,36 +7,36 @@
 
 namespace si3
 {
-	class se
+	class SE
 	{
 	public:
-		// nMaxMomentで、同時に再生できるseの最大数を設定する。
+		// max_momentで、同時に再生できるSEの最大数を設定する。
 		// この数値が大きいほどメモリは多く消費される。
 		// 省略した場合はデフォルト値(16)が使用される。
-		se();
-		se(Manager & si3m, uint uID);
-		se(Manager & si3m, uint uID, int nMaxMoment);
-		se(const sound_data & soundd);
-		se(const sound_data & soundd, int nMaxMoment);
+		SE();
+		SE(Manager & si3m, uint uID);
+		SE(Manager & si3m, uint uID, int max_moment);
+		SE(const SoundData & soundd);
+		SE(const SoundData & soundd, int max_moment);
 
 		bool load(Manager & si3m, uint uID);
-		bool load(Manager & si3m, uint uID, int nMaxMoment);
-		bool set_sound_data(const sound_data & soundd);
-		bool set_sound_data(const sound_data & soundd, int nMaxMoment);
+		bool load(Manager & si3m, uint uID, int max_moment);
+		bool set_sound_data(const SoundData & soundd);
+		bool set_sound_data(const SoundData & soundd, int max_moment);
 
 		// 新しく再生を開始する。
 		// 既に再生されているものに影響を与えることはなく、逆に影響を受けることもない。
-		// ただし同時に再生できるseの最大数を超えた場合、最も古いものの再生を停止した後、新しく再生を開始する。
+		// ただし同時に再生できるSEの最大数を超えた場合、最も古いものの再生を停止した後、新しく再生を開始する。
 		void play();
 
 
 
-		~se();
+		~SE();
 	private:
-		fw::Array<unique_sound> se_list;
-		int nNextIndex;
-		const sound_data * pSoundData;
-		bool bOwnerShip;
+		fw::Array<UniqueSound> se_list;
+		int next_index;
+		const SoundData * soundd;
+		bool ownership;
 
 		void construct();
 		void release();

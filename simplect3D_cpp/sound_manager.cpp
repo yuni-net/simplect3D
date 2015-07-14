@@ -5,26 +5,26 @@ namespace si3
 {
 
 
-	void sound_manager::reserve4ID_path(int nReserveSize)
+	void SoundManager::reserve4ID_path(int reserve_size)
 	{
-		idpath_list.requre(nReserveSize);
+		idpath_list.requre(reserve_size);
 	}
-	void sound_manager::register_ID_path(uint nID, const char * pszPath)
+	void SoundManager::register_ID_path(uint id, const char * path)
 	{
-		idpath_list.reqsize(nID + 1);
-		idpath_list[nID] = pszPath;
-	}
-
-
-
-
-	const char * sound_manager::get_path(uint nID) const
-	{
-		return idpath_list[nID];
+		idpath_list.reqsize(id + 1);
+		idpath_list[id] = path;
 	}
 
 
-	bool sound_manager::init()
+
+
+	const char * SoundManager::get_path(uint id) const
+	{
+		return idpath_list[id];
+	}
+
+
+	bool SoundManager::init()
 	{
 		window_.invisible().create();	// 透明ウィンドウにしておくこと
 
@@ -87,13 +87,13 @@ namespace si3
 		return true;
 	}
 
-	LPDIRECTSOUND8 sound_manager::get_interface() const
+	LPDIRECTSOUND8 SoundManager::get_interface() const
 	{
 		return dxs;
 	}
 
 
-	sound_manager::~sound_manager()
+	SoundManager::~SoundManager()
 	{
 		dxsaferelease(primarysb);
 		dxsaferelease(dxs);

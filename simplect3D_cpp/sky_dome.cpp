@@ -5,16 +5,16 @@
 
 namespace si3
 {
-	sky_dome::sky_dome()
+	Skydome::Skydome()
 	{
 		construct();
 	}
-	sky_dome::sky_dome(const Manager & manageri, const TCHAR * path)
+	Skydome::Skydome(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	void sky_dome::load(const Manager & manageri, const TCHAR * path)
+	void Skydome::load(const Manager & manageri, const TCHAR * path)
 	{
 		managerp = &manageri;
 		sphered.load(manageri.get_dxdevice(), path, 0.1f);
@@ -22,49 +22,49 @@ namespace si3
 	}
 
 
-	void sky_dome::x(float value)
+	void Skydome::x(float value)
 	{
 		x_ = value;
 	}
-	float sky_dome::x() const
+	float Skydome::x() const
 	{
 		return x_;
 	}
-	void sky_dome::y(float value)
+	void Skydome::y(float value)
 	{
 		y_ = value;
 	}
-	float sky_dome::y() const
+	float Skydome::y() const
 	{
 		return y_;
 	}
-	void sky_dome::z(float value)
+	void Skydome::z(float value)
 	{
 		z_ = value;
 	}
-	float sky_dome::z() const
+	float Skydome::z() const
 	{
 		return z_;
 	}
 
-	void sky_dome::radius(float value)
+	void Skydome::radius(float value)
 	{
 		radius_ = value;
 	}
-	float sky_dome::radius() const
+	float Skydome::radius() const
 	{
 		return radius_;
 	}
 
 
 
-	sky_dome::~sky_dome()
+	Skydome::~Skydome()
 	{
 		release();
 	}
 
 	// @override
-	void sky_dome::draw_no_alpha() const
+	void Skydome::draw_no_alpha() const
 	{
 		if (loaded == false)
 		{
@@ -94,20 +94,20 @@ namespace si3
 	}
 
 	// @override
-	void sky_dome::draw_alpha() const
+	void Skydome::draw_alpha() const
 	{
 		// Nothing
 	}
 
 
 
-	void sky_dome::construct()
+	void Skydome::construct()
 	{
 		managerp = nullptr;
 		loaded = false;
 	}
 
-	void sky_dome::release()
+	void Skydome::release()
 	{
 		// Nothing
 	}

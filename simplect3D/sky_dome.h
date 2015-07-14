@@ -6,11 +6,11 @@
 
 namespace si3
 {
-	class sky_dome :public DisplayObject
+	class Skydome :public DisplayObject
 	{
 	public:
-		sky_dome();
-		sky_dome(const Manager & manageri, const TCHAR * path);
+		Skydome();
+		Skydome(const Manager & manageri, const TCHAR * path);
 		void load(const Manager & manageri, const TCHAR * path);
 
 
@@ -25,7 +25,7 @@ namespace si3
 		float radius() const;
 
 
-		~sky_dome();
+		~Skydome();
 
 		// @override
 		void draw_no_alpha() const;
@@ -35,8 +35,8 @@ namespace si3
 
 
 	private:
-		const Manager * managerp;;
-		sky_dome_data sphered;
+		const Manager * managerp;
+		SkydomeData sphered;
 		bool loaded;
 
 		float x_;
