@@ -4,7 +4,7 @@
 
 namespace si3
 {
-	class key_system
+	class Key_system
 	{
 	public:
 		bool init(LPDIRECTINPUT8 & diinterface, HWND windle);
@@ -12,8 +12,8 @@ namespace si3
 
 
 
-		key_system();
-		~key_system();
+		Key_system();
+		~Key_system();
 	private:
 		LPDIRECTINPUT8 diinterface;
 		LPDIRECTINPUTDEVICE8 device;

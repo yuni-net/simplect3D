@@ -4,7 +4,7 @@
 
 namespace si3
 {
-	class mouse
+	class Mouse
 	{
 	public:
 		enum
@@ -37,14 +37,14 @@ namespace si3
 
 
 
-		mouse();
+		Mouse();
 		bool init(LPDIRECTINPUT8 & diinterface, HWND windle);
 		void update();
-		~mouse();
+		~Mouse();
 
 	private:
-		bool abButtonStatus[2/*old, now*/][3/*button_left, button_middle, button_right*/];
-		bool bActiveIndex;
+		bool button_statuses[2/*old, now*/][3/*button_left, button_middle, button_right*/];
+		bool active_index;
 		int x_;
 		int y_;
 		int vx_;

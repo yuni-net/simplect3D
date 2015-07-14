@@ -15,14 +15,14 @@ namespace si3
 	}
 
 
-	void ModelDustConverter::set_bunish_data(bunish_data & bunishd)
+	void ModelDustConverter::set_bunish_data(BunishData & bunishd)
 	{
 		bunishd.set_local_pos(0, convert_pos_to_dust(get_plane_pos(0)));
 		bunishd.set_local_pos(1, convert_pos_to_dust(get_plane_pos(1)));
 		bunishd.set_local_pos(2, convert_pos_to_dust(get_plane_pos(2)));
 
 		Coor3 first_pos = center_pos;
-	//	first_pos*model_mat;	// todo 元のmodelのworld matrixをかける必要がある
+	//	first_pos*model_mat;	// todo 元のModelのworld Matrixをかける必要がある
 		bunishd.set_first_pos(first_pos);
 
 		Coor3 bunish_vec = normalize_vector(center_pos);

@@ -6,22 +6,22 @@
 
 namespace si3
 {
-	class dxinput
+	class DxInput
 	{
 	public:
 		bool init(HWND windle);
 		void update();
-		const ::si3::key & key() const;
-		const ::si3::mouse & mouse() const;
+		const ::si3::Key & key() const;
+		const ::si3::Mouse & mouse() const;
 
 
 
 
-		dxinput();
-		~dxinput();
+		DxInput();
+		~DxInput();
 	private:
 		LPDIRECTINPUT8 diinterface;
-		::si3::key keyi;
-		::si3::mouse mousei;
+		::si3::Key keyi;
+		::si3::Mouse mousei;
 	};
 }

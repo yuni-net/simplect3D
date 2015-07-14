@@ -19,9 +19,9 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 		return -1;
 	}
 
-	const si3::key & key = si3m.key();
-	si3::camera & camera = si3m.camera();
-	const si3::mouse & mouse = si3m.mouse();
+	const si3::Key & key = si3m.key();
+	si3::Camera & camera = si3m.camera();
+	const si3::Mouse & mouse = si3m.mouse();
 	auto & displaym = si3m.DisplayManager();
 
 	displaym.context_color(1.0f, 1.0f, 1.0f);

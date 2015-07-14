@@ -1,15 +1,15 @@
 #pragma once
 
-#include <matrix.h>
+#include <Matrix.h>
 
 namespace si3
 {
-	struct top4
+	struct Top4
 	{
-		matrix lt;
-		matrix rt;
-		matrix lb;
-		matrix rb;
+		Matrix lt;
+		Matrix rt;
+		Matrix lb;
+		Matrix rb;
 	};
 
 }

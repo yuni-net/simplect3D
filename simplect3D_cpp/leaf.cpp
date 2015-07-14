@@ -1,4 +1,4 @@
-#include <leaf.h>
+#include <Leaf.h>
 #include <top4.h>
 #include <diffuse.h>
 #include <image_data.h>
@@ -6,173 +6,173 @@
 
 namespace si3
 {
-	leaf::leaf()
+	Leaf::Leaf()
 	{
 		construct();
 	}
-	leaf::leaf(const Manager & manageri, const TCHAR * path)
-	{
-		construct();
-		load(manageri, path);
-	}
-	leaf::leaf(const Manager & manageri, const std::string & path)
+	Leaf::Leaf(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	leaf::leaf(const Manager & manageri, const ::si3::image_data & imaged)
+	Leaf::Leaf(const Manager & manageri, const std::string & path)
+	{
+		construct();
+		load(manageri, path);
+	}
+	Leaf::Leaf(const Manager & manageri, const ::si3::ImageData & imaged)
 	{
 		construct();
 		image_data(manageri, imaged);
 	}
 
-	void leaf::piece_size(float value)
+	void Leaf::piece_size(float value)
 	{
 		piece_size_ = value;
 	}
-	float leaf::piece_size() const
+	float Leaf::piece_size() const
 	{
 		return piece_size_;
 	}
 
-	bool leaf::load(const Manager & manageri, const TCHAR * path)
+	bool Leaf::load(const Manager & manageri, const TCHAR * path)
 	{
-		pManager = &manageri;
-		::si3::image_data * imgd = new ::si3::image_data();
+		manager = &manageri;
+		::si3::ImageData * imgd = new ::si3::ImageData();
 		bool result = imgd->load(manageri, path, piece_size());
 		image_data(manageri, *imgd);
 		ownership = true;
 		return result;
 	}
-	bool leaf::load(const Manager & manageri, const std::string & path)
+	bool Leaf::load(const Manager & manageri, const std::string & path)
 	{
 		return load(manageri, path.c_str());
 	}
-	void leaf::image_data(const Manager & manageri, const ::si3::image_data & imaged)
+	void Leaf::image_data(const Manager & manageri, const ::si3::ImageData & imaged)
 	{
-		pManager = &manageri;
+		manager = &manageri;
 		release();
 		this->imaged = &imaged;
 	}
 
-	void leaf::x(float value)
+	void Leaf::x(float value)
 	{
 		x_ = value;
 	}
-	float leaf::x() const
+	float Leaf::x() const
 	{
 		return x_;
 	}
 
-	void leaf::y(float value)
+	void Leaf::y(float value)
 	{
 		y_ = value;
 	}
-	float leaf::y() const
+	float Leaf::y() const
 	{
 		return y_;
 	}
 
-	void leaf::z(float value)
+	void Leaf::z(float value)
 	{
 		z_ = value;
 	}
-	float leaf::z() const
+	float Leaf::z() const
 	{
 		return z_;
 	}
 
-	void leaf::rot_x(float value)
+	void Leaf::rot_x(float value)
 	{
 		rot_x_ = value;
 	}
-	float leaf::rot_x() const
+	float Leaf::rot_x() const
 	{
 		return rot_x_;
 	}
 
-	void leaf::rot_y(float value)
+	void Leaf::rot_y(float value)
 	{
 		rot_y_ = value;
 	}
-	float leaf::rot_y() const
+	float Leaf::rot_y() const
 	{
 		return rot_y_;
 	}
 
-	void leaf::rot_z(float value)
+	void Leaf::rot_z(float value)
 	{
 		rot_z_ = value;
 	}
-	float leaf::rot_z() const
+	float Leaf::rot_z() const
 	{
 		return rot_z_;
 	}
 
-	void leaf::scale(float value)
+	void Leaf::scale(float value)
 	{
 		scale_ = value;
 	}
-	float leaf::scale() const
+	float Leaf::scale() const
 	{
 		return scale_;
 	}
 
-	uint leaf::base_width() const
+	uint Leaf::base_width() const
 	{
 		return this->imaged->width();
 	}
-	uint leaf::base_height() const
+	uint Leaf::base_height() const
 	{
 		return this->imaged->height();
 	}
 
-	float leaf::width() const
+	float Leaf::width() const
 	{
 		return base_width()*scale();
 	}
-	float leaf::height() const
+	float Leaf::height() const
 	{
 		return base_height()*scale();
 	}
 
-	D3DMATERIAL9 & leaf::material()
+	D3DMATERIAL9 & Leaf::material()
 	{
 		return material_;
 	}
-	const D3DMATERIAL9 & leaf::material() const
+	const D3DMATERIAL9 & Leaf::material() const
 	{
 		return material_;
 	}
 
-	void leaf::setblend_normal()
+	void Leaf::setblend_normal()
 	{
-		BlendMode = image_data::normal_blend;
+		blend_mode = ImageData::normal_blend;
 	}
-	void leaf::setblend_alpha()
+	void Leaf::setblend_alpha()
 	{
-		BlendMode = image_data::alpha_blend;
+		blend_mode = ImageData::alpha_blend;
 	}
-	void leaf::setblend_add()
+	void Leaf::setblend_add()
 	{
-		BlendMode = image_data::add_blend;
+		blend_mode = ImageData::add_blend;
 	}
-	void leaf::setblend_sub()
+	void Leaf::setblend_sub()
 	{
-		BlendMode = image_data::sub_blend;
-	}
-
-	void leaf::culling(bool bEnable)
-	{
-		bCulling = bEnable;
+		blend_mode = ImageData::sub_blend;
 	}
 
-	void leaf::affine(const matrix & world_mat)
+	void Leaf::culling(bool is_enable)
+	{
+		is_culling_on = is_enable;
+	}
+
+	void Leaf::affine(const Matrix & world_mat)
 	{
 		this->world_mat = world_mat;
-		bComputedWorldMat = true;
+		computed_world_mat = true;
 	}
-	const matrix & leaf::affine() const
+	const Matrix & Leaf::affine() const
 	{
 		compute_world_mat();
 
@@ -183,32 +183,32 @@ namespace si3
 
 
 
-	void leaf::draw_no_alpha() const
+	void Leaf::draw_no_alpha() const
 	{
 		compute_world_mat();
-		bComputedWorldMat = false;
+		computed_world_mat = false;
 
-		if (BlendMode!=image_data::normal_blend)	// 半透明処理が必要だからここでは書き込まない
+		if (blend_mode != ImageData::normal_blend)	// 半透明処理が必要だからここでは書き込まない
 		{
 			return;
 		}
 
-		imaged->draw_no_alpha(world_mat.dxmat(), material(), bCulling);
+		imaged->draw_no_alpha(world_mat.dxmat(), material(), is_culling_on);
 	}
-	void leaf::draw_alpha() const
+	void Leaf::draw_alpha() const
 	{
 		// 完全不透明なら、既に書き込まれているからここでは書き込まない
-		if (BlendMode==image_data::normal_blend)
+		if (blend_mode == ImageData::normal_blend)
 		{
 			return;
 		}
 
-		imaged->draw_alpha(world_mat.dxmat(), material(), BlendMode, bCulling);
+		imaged->draw_alpha(world_mat.dxmat(), material(), blend_mode, is_culling_on);
 
 	}
 
 
-	void leaf::construct()
+	void Leaf::construct()
 	{
 		imaged = nullptr;
 		piece_size(200.0f);
@@ -241,24 +241,24 @@ namespace si3
 
 		culling(true);
 
-		bComputedWorldMat = false;
+		computed_world_mat = false;
 	}
 
-	void leaf::compute_world_mat() const
+	void Leaf::compute_world_mat() const
 	{
-		if (bComputedWorldMat)
+		if (computed_world_mat)
 		{
 			return;
 		}
 
 		world_mat.scale(scale(), scale(), scale());
-		world_mat *= matrix().rotate_y(rot_y());
-		world_mat *= matrix().rotate_x(rot_x());
-		world_mat *= matrix().rotate_z(rot_z());
-		world_mat *= matrix().parallel(x(), y(), z());
+		world_mat *= Matrix().rotate_y(rot_y());
+		world_mat *= Matrix().rotate_x(rot_x());
+		world_mat *= Matrix().rotate_z(rot_z());
+		world_mat *= Matrix().parallel(x(), y(), z());
 	}
 
-	void leaf::release()
+	void Leaf::release()
 	{
 		if (imaged)
 		{
@@ -272,7 +272,7 @@ namespace si3
 		ownership = false;
 	}
 
-	leaf::~leaf()
+	Leaf::~Leaf()
 	{
 		release();
 	}

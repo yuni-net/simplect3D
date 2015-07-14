@@ -3,15 +3,15 @@
 #pragma once
 
 #include "popular.h"
-#include "matrix.h"
+#include "Matrix.h"
 
 namespace si3
 {
-	class box_data
+	class BoxData
 	{
 	public:
-		box_data();
-		box_data(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z);
+		BoxData();
+		BoxData(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z);
 		void create(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z);
 		void draw() const;
 
@@ -19,7 +19,7 @@ namespace si3
 		LPDIRECT3DDEVICE9 get_device() const;
 
 
-		~box_data();
+		~BoxData();
 
 	private:
 		struct land_vertex
@@ -54,9 +54,9 @@ namespace si3
 
 		void set(
 			land_vertex base[4],
-			const matrix & scale_mat,
-			const matrix & rot_mat,
-			land_vertex * pVtx,
+			const Matrix & scale_mat,
+			const Matrix & rot_mat,
+			land_vertex * vertex,
 			int face_No);
 	};
 }

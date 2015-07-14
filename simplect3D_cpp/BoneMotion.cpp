@@ -41,8 +41,8 @@ namespace si3
 	*  逆再生や、任意のフレームにテレポートした場合は当然変換する必要があるでしょう。
 	*/
 	bool BoneMotion::compute_trans_mat(
-		matrix & trans_mat,
-		matrix & rot_mat,
+		Matrix & trans_mat,
+		Matrix & rot_mat,
 		const Coor3 & bone_pos,
 		const int now_frame)
 	{
@@ -205,7 +205,7 @@ namespace si3
 	*  [out]quate: 計算の結果得られたクォータニオンがここに格納されます。
 	* @return 現在のフレームの回転行列を返す。
 	*/
-	matrix BoneMotion::rot_mat_of_bone(const MoveData & move_data, const float percent, D3DXQUATERNION & quate) const
+	Matrix BoneMotion::rot_mat_of_bone(const MoveData & move_data, const float percent, D3DXQUATERNION & quate) const
 	{
 		const Quaternion & quate_beg = move_data.beg->quate;
 		const Quaternion & quate_end = move_data.end->quate;
@@ -217,16 +217,16 @@ namespace si3
 		D3DXMATRIX rot_mat;
 		D3DXMatrixRotationQuaternion(&rot_mat, &quate);
 
-		return matrix(rot_mat);
+		return Matrix(rot_mat);
 	}
 
 #if 0
-	matrix BoneMotion::para_mat_of_bone(const MoveData & move_data, const float percent) const
+	Matrix BoneMotion::para_mat_of_bone(const MoveData & move_data, const float percent) const
 	{
 		const Coor3 & beg_pos = move_data.beg->pos;
 		const Coor3 & end_pos = move_data.end->pos;
 		Coor3 now_pos = (beg_pos + end_pos)*percent;
-		return matrix().parallel(now_pos.x, now_pos.y, now_pos.z);
+		return Matrix().parallel(now_pos.x, now_pos.y, now_pos.z);
 	}
 #endif
 
@@ -239,7 +239,7 @@ namespace si3
 	*  quate: 回転に使用するクォータニオンをここに指定します。
 	* @return 現在のフレームの変換行列を返す。
 	*/
-	matrix BoneMotion::trans_mat_of_bone(const MoveData & move_data, const float percent, const Coor3 & bone_top, const D3DXQUATERNION & quate) const
+	Matrix BoneMotion::trans_mat_of_bone(const MoveData & move_data, const float percent, const Coor3 & bone_top, const D3DXQUATERNION & quate) const
 	{
 		const Coor3 & beg_pos = move_data.beg->pos;
 		const Coor3 & end_pos = move_data.end->pos;
@@ -270,7 +270,7 @@ namespace si3
 			&quate,
 			&translation);
 
-		return matrix(trans_mat);
+		return Matrix(trans_mat);
 	}
 
 	bool BoneMotion::axis_is_unit(const Coor3 & axis) const

@@ -9,7 +9,7 @@ namespace si3
 		boned_top.init(top_index, top_data_);
 	}
 	
-	void Bone::renew_tops(DxTop * top_buffer, const matrix & trans_mat, const matrix & rot_mat)
+	void Bone::renew_tops(DxTop * top_buffer, const Matrix & trans_mat, const Matrix & rot_mat)
 	{
 		for (fw::uint boned_No = 0; boned_No < boned_top_list.size(); ++boned_No)
 		{

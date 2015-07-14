@@ -1,4 +1,4 @@
-#include <anime.h>
+#include <Anime.h>
 #include <top4.h>
 #include <diffuse.h>
 #include <image_data.h>
@@ -7,53 +7,53 @@
 
 namespace si3
 {
-	anime::anime()
+	Anime::Anime()
 	{
 		construct();
 	}
 #if 0
-	anime::anime(const Manager & manageri, const TCHAR * path)
+	Anime::Anime(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	anime::anime(const Manager & manageri, const std::string & path)
+	Anime::Anime(const Manager & manageri, const std::string & path)
 	{
 		construct();
 		load(manageri, path);
 	}
 #endif
-	anime::anime(const Manager & manageri, const ::si3::anime_data & animed)
+	Anime::Anime(const Manager & manageri, const ::si3::AnimeData & animed)
 	{
 		construct();
 		anime_data(manageri, animed);
 	}
 
-	void anime::piece_size(float value)
+	void Anime::piece_size(float value)
 	{
 		piece_size_ = value;
 	}
-	float anime::piece_size() const
+	float Anime::piece_size() const
 	{
 		return piece_size_;
 	}
 
 #if 0
-	bool anime::load(const Manager & manageri, const TCHAR * path)
+	bool Anime::load(const Manager & manageri, const TCHAR * path)
 	{
 		pManager = &manageri;
-		::si3::image_data * imgd = new ::si3::image_data();
+		::si3::ImageData * imgd = new ::si3::ImageData();
 		bool result = imgd->load(manageri, path, piece_size());
 		image_data(manageri, *imgd);
 		ownership = true;
 		return result;
 	}
-	bool anime::load(const Manager & manageri, const std::string & path)
+	bool Anime::load(const Manager & manageri, const std::string & path)
 	{
 		return load(manageri, path.c_str());
 	}
 #endif
-	void anime::anime_data(const Manager & manageri, const ::si3::anime_data & animed)
+	void Anime::anime_data(const Manager & manageri, const ::si3::AnimeData & animed)
 	{
 		const int c_nDefaultResistor = 4;
 
@@ -63,119 +63,119 @@ namespace si3
 		cnt.set(0);
 	}
 
-	void anime::x(float value)
+	void Anime::x(float value)
 	{
 		x_ = value;
 	}
-	float anime::x() const
+	float Anime::x() const
 	{
 		return x_;
 	}
 
-	void anime::y(float value)
+	void Anime::y(float value)
 	{
 		y_ = value;
 	}
-	float anime::y() const
+	float Anime::y() const
 	{
 		return y_;
 	}
 
-	void anime::z(float value)
+	void Anime::z(float value)
 	{
 		z_ = value;
 	}
-	float anime::z() const
+	float Anime::z() const
 	{
 		return z_;
 	}
 
-	void anime::rot_x(float value)
+	void Anime::rot_x(float value)
 	{
 		rot_x_ = value;
 	}
-	float anime::rot_x() const
+	float Anime::rot_x() const
 	{
 		return rot_x_;
 	}
 
-	void anime::rot_y(float value)
+	void Anime::rot_y(float value)
 	{
 		rot_y_ = value;
 	}
-	float anime::rot_y() const
+	float Anime::rot_y() const
 	{
 		return rot_y_;
 	}
 
-	void anime::rot_z(float value)
+	void Anime::rot_z(float value)
 	{
 		rot_z_ = value;
 	}
-	float anime::rot_z() const
+	float Anime::rot_z() const
 	{
 		return rot_z_;
 	}
 
-	void anime::scale(float value)
+	void Anime::scale(float value)
 	{
 		scale_ = value;
 	}
-	float anime::scale() const
+	float Anime::scale() const
 	{
 		return scale_;
 	}
 
-	uint anime::base_width() const
+	uint Anime::base_width() const
 	{
 		return this->animed->width();
 	}
-	uint anime::base_height() const
+	uint Anime::base_height() const
 	{
 		return this->animed->height();
 	}
 
-	float anime::width() const
+	float Anime::width() const
 	{
 		return base_width()*scale();
 	}
-	float anime::height() const
+	float Anime::height() const
 	{
 		return base_height()*scale();
 	}
 
-	D3DMATERIAL9 & anime::material()
+	D3DMATERIAL9 & Anime::material()
 	{
 		return material_;
 	}
-	const D3DMATERIAL9 & anime::material() const
+	const D3DMATERIAL9 & Anime::material() const
 	{
 		return material_;
 	}
 
-	void anime::setblend_normal()
+	void Anime::setblend_normal()
 	{
-		nBlendmode = BlendMode::normal;
+		blend_mode = BlendMode::normal;
 	}
-	void anime::setblend_alpha()
+	void Anime::setblend_alpha()
 	{
-		nBlendmode = BlendMode::alpha;
+		blend_mode = BlendMode::alpha;
 	}
-	void anime::setblend_add()
+	void Anime::setblend_add()
 	{
-		nBlendmode = BlendMode::add;
+		blend_mode = BlendMode::add;
 	}
-	void anime::setblend_sub()
+	void Anime::setblend_sub()
 	{
-		nBlendmode = BlendMode::sub;
+		blend_mode = BlendMode::sub;
 	}
 
 
-	void si3::anime::animation()
+	void si3::Anime::animation()
 	{
 		cnt.move(1);
 	}
-	void si3::anime::animation_once()
+	void si3::Anime::animation_once()
 	{
 		int pre = cnt.now();
 		cnt.move(1);
@@ -185,37 +185,37 @@ namespace si3
 		}
 	}
 
-	void si3::anime::resistor(int v)
+	void si3::Anime::resistor(int v)
 	{
 		cnt.resistor(v);
 	}
-	void si3::anime::replay()
+	void si3::Anime::replay()
 	{
 		cnt.set(0);
 	}
-	bool si3::anime::ifFinalFrame()
+	bool si3::Anime::is_final_frame()
 	{
-		return cnt.nowNo() >= cnt.maxNo();
+		return cnt.now_No() >= cnt.max_No();
 	}
 
-	void si3::anime::set(int nNo)
+	void si3::Anime::set(int nNo)
 	{
 		cnt.set(nNo);
 	}
-	int si3::anime::maxNo()
+	int si3::Anime::max_No()
 	{
-		return cnt.maxNo();
+		return cnt.max_No();
 	}
 
 
 
 
 
-	void anime::draw_no_alpha() const
+	void Anime::draw_no_alpha() const
 	{
 		compute_world_mat();
 
-		if (nBlendmode!=BlendMode::normal)	// 半透明処理が必要だからここでは書き込まない
+		if (blend_mode != BlendMode::normal)	// 半透明処理が必要だからここでは書き込まない
 		{
 			return;
 		}
@@ -223,19 +223,19 @@ namespace si3
 
 		animed->draw_no_alpha(world_mat, material(), cnt.now());
 	}
-	void anime::draw_alpha() const
+	void Anime::draw_alpha() const
 	{
 		// 完全不透明なら、既に書き込まれているからここでは書き込まない
-		if (nBlendmode==BlendMode::normal)
+		if (blend_mode == BlendMode::normal)
 		{
 			return;
 		}
 
-		animed->draw_alpha(world_mat, material(), nBlendmode, cnt.now());
+		animed->draw_alpha(world_mat, material(), blend_mode, cnt.now());
 	}
 
 
-	void anime::construct()
+	void Anime::construct()
 	{
 		animed = nullptr;
 		piece_size(200.0f);
@@ -267,7 +267,7 @@ namespace si3
 		material().Power = 1.0f;
 	}
 
-	void anime::compute_world_mat() const
+	void Anime::compute_world_mat() const
 	{
 		D3DXMATRIX scale_mat;
 		D3DXMatrixScaling(&scale_mat, scale(), scale(), scale());
@@ -293,7 +293,7 @@ namespace si3
 		D3DXMatrixMultiply(&world_mat, &world_mat, &trans_mat);
 	}
 
-	void anime::release()
+	void Anime::release()
 	{
 		if (animed)
 		{
@@ -307,7 +307,7 @@ namespace si3
 		ownership = false;
 	}
 
-	anime::~anime()
+	Anime::~Anime()
 	{
 		release();
 	}

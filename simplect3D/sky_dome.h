@@ -6,7 +6,7 @@
 
 namespace si3
 {
-	class sky_dome :public display_object
+	class sky_dome :public DisplayObject
 	{
 	public:
 		sky_dome();

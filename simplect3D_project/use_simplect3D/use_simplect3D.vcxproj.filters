@@ -139,9 +139,6 @@
     <Filter Include="simplect3D\Motion3D\MotionData">
       <UniqueIdentifier>{43e89cf8-9465-4706-be02-813c97ff1ae1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData">
-      <UniqueIdentifier>{be37439e-f3bb-43db-8dd3-aff95f9c00a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="simplect3D\Motion3D\Motion3D">
       <UniqueIdentifier>{ed4fc1f4-e0fc-44c4-a5b0-a6ab4a052853}</UniqueIdentifier>
     </Filter>
@@ -154,15 +151,6 @@
     <Filter Include="simplect3D\utility\MMD">
       <UniqueIdentifier>{c45cc964-cd13-43ad-a5bf-252389faf269}</UniqueIdentifier>
     </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch">
-      <UniqueIdentifier>{b63ccf8d-babf-4d64-b924-b3390bf7b8b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch\Bone">
-      <UniqueIdentifier>{2f1b8c7c-f1f7-4869-864b-9cf2e8d4ffb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop">
-      <UniqueIdentifier>{5ce105c9-5a15-45b5-b2c1-f264e1191179}</UniqueIdentifier>
-    </Filter>
     <Filter Include="simplect3D\Motion3D\MotionData\BoneMotion">
       <UniqueIdentifier>{c6b006d8-6415-4f3b-afd3-8d811dedf9cb}</UniqueIdentifier>
     </Filter>
@@ -174,6 +162,18 @@
     </Filter>
     <Filter Include="simplect3D\utility\Quaternion">
       <UniqueIdentifier>{1bb93c58-356c-4c0b-898f-806723b90657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\ModelData_pmd">
+      <UniqueIdentifier>{be37439e-f3bb-43db-8dd3-aff95f9c00a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\ModelData_pmd\BoneBranch">
+      <UniqueIdentifier>{b63ccf8d-babf-4d64-b924-b3390bf7b8b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone">
+      <UniqueIdentifier>{2f1b8c7c-f1f7-4869-864b-9cf2e8d4ffb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone\BonedTop">
+      <UniqueIdentifier>{5ce105c9-5a15-45b5-b2c1-f264e1191179}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -283,9 +283,6 @@
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp">
       <Filter>simplect3D\sky_dome\sky_dome</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp">
-      <Filter>simplect3D\Motion3D\ModelData</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp">
       <Filter>simplect3D\Motion3D\Motion3D</Filter>
     </ClCompile>
@@ -299,13 +296,13 @@
       <Filter>simplect3D\utility\MMD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\BoneBranch.cpp">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch</Filter>
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\Bone.cpp">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone</Filter>
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\BonedTop.cpp">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop</Filter>
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone\BonedTop</Filter>
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\BoneMotion.cpp">
       <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
@@ -318,6 +315,9 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\Quaternion.cpp">
       <Filter>simplect3D\utility\Quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\ModelData_pmd.cpp">
+      <Filter>simplect3D\Motion3D\ModelData_pmd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,9 +450,6 @@
     <ClInclude Include="..\..\simplect3D\sky_dome.h">
       <Filter>simplect3D\sky_dome\sky_dome</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\simplect3D\ModelData.h">
-      <Filter>simplect3D\Motion3D\ModelData</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\simplect3D\Motion3D.h">
       <Filter>simplect3D\Motion3D\Motion3D</Filter>
     </ClInclude>
@@ -469,13 +466,13 @@
       <Filter>simplect3D\utility\MMD</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\BoneBranch.h">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch</Filter>
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\Bone.h">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone</Filter>
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\BonedTop.h">
-      <Filter>simplect3D\Motion3D\ModelData\BoneBranch\Bone\BonedTop</Filter>
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone\BonedTop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\BoneMotion.h">
       <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
@@ -488,6 +485,9 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_Quaternion.h">
       <Filter>simplect3D\utility\Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\ModelData_pmd.h">
+      <Filter>simplect3D\Motion3D\ModelData_pmd</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

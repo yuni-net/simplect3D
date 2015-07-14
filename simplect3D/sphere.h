@@ -10,7 +10,7 @@ namespace si3
 {
 	class Manager;
 
-	class sphere :public display_object
+	class sphere :public DisplayObject
 	{
 	public:
 		sphere();

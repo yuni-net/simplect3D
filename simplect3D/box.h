@@ -8,10 +8,10 @@
 
 namespace si3
 {
-	class box :public display_object
+	class Box :public DisplayObject
 	{
 	public:
-		void set_box_data(const box_data & boxd);
+		void set_box_data(const BoxData & boxd);
 
 		void x(float value);
 		float x() const;
@@ -63,7 +63,7 @@ namespace si3
 		float rot_y_;
 		float rot_z_;
 
-		const box_data * boxd;
+		const BoxData * boxd;
 	};
 }
 

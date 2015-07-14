@@ -5,24 +5,24 @@ namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-	model_data::model_data(const Manager & manageri, const TCHAR * path)
+	ModelData::ModelData(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	model_data::model_data(const Manager & manageri, const tstring & path)
+	ModelData::ModelData(const Manager & manageri, const tstring & path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	model_data::model_data(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	ModelData::ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		load(manageri, path, center);
 	}
 
 #pragma pack(push, 1)
 
-	bool model_data::load_header(FILE * fp)
+	bool ModelData::load_header(FILE * fp)
 	{
 		struct header
 		{
@@ -46,7 +46,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::create_top_buffer(unsigned long top_num)
+	bool ModelData::create_top_buffer(unsigned long top_num)
 	{
 		// 頂点情報格納バッファを作成
 		HRESULT hr = device->CreateVertexBuffer(
@@ -62,7 +62,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_top_center(FILE * fp, const si3::Coor3 & center)
+	bool ModelData::load_top_center(FILE * fp, const si3::Coor3 & center)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -111,7 +111,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_top(FILE * fp)
+	bool ModelData::load_top(FILE * fp)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -160,7 +160,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::create_index_buffer(unsigned long index_num)
+	bool ModelData::create_index_buffer(unsigned long index_num)
 	{
 		// 頂点インデックスバッファ作成
 		HRESULT hr = device->CreateIndexBuffer(
@@ -176,7 +176,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_index(FILE * fp)
+	bool ModelData::load_index(FILE * fp)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -205,7 +205,7 @@ namespace si3
 		return true;
 	}
 
-	void model_data::load_material(D3DMATERIAL9 & mate, const pmd_mate_data & mate_data)
+	void ModelData::load_material(D3DMATERIAL9 & mate, const Pmd_mate_data & mate_data)
 	{
 		mate.Diffuse.r = mate_data.diffuse[0];
 		mate.Diffuse.g = mate_data.diffuse[1];
@@ -224,7 +224,7 @@ namespace si3
 		mate.Emissive.a = 0.0f;
 	}
 
-	bool model_data::load_texture(LPDIRECT3DTEXTURE9 & texture, char tex_name[20], const TCHAR * path)
+	bool ModelData::load_texture(LPDIRECT3DTEXTURE9 & texture, char tex_name[20], const TCHAR * path)
 	{
 		if (tex_name[0] == '\0')
 		{
@@ -278,7 +278,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_attbute(FILE * fp, const TCHAR * path)
+	bool ModelData::load_attbute(FILE * fp, const TCHAR * path)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -299,10 +299,10 @@ namespace si3
 				attbute_No = 29;
 			}
 
-			pmd_mate_data mate_data;
-			fread(&mate_data, sizeof(pmd_mate_data), 1, fp);
+			Pmd_mate_data mate_data;
+			fread(&mate_data, sizeof(Pmd_mate_data), 1, fp);
 
-			attbute & attbute_ = attbute_list[attbute_No];
+			Attbute & attbute_ = attbute_list[attbute_No];
 
 			auto & mate = attbute_.material;
 			load_material(mate, mate_data);
@@ -319,7 +319,7 @@ namespace si3
 	}
 
 
-	bool model_data::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	bool ModelData::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
@@ -353,7 +353,7 @@ namespace si3
 
 		return true;
 	}
-	bool model_data::load(const Manager & manageri, const TCHAR * path)
+	bool ModelData::load(const Manager & manageri, const TCHAR * path)
 	{
 		release();
 
@@ -391,53 +391,53 @@ namespace si3
 #pragma pack(pop)
 
 
-	bool model_data::load(const Manager & manageri, const tstring & path)
+	bool ModelData::load(const Manager & manageri, const tstring & path)
 	{
 		return load(manageri, path.c_str());
 	}
 
 
 
-	unsigned long model_data::index_num() const
+	unsigned long ModelData::index_num() const
 	{
 		return index_num_;
 	}
 
-	DxTop * model_data::lock_top_buffer() const
+	DxTop * ModelData::lock_top_buffer() const
 	{
 		DxTop * top_header;
 		vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
 		return top_header;
 	}
-	void model_data::unlock_top_buffer() const
+	void ModelData::unlock_top_buffer() const
 	{
 		vertbuff->Unlock();
 	}
 
-	unsigned short * model_data::lock_index_buffer() const
+	unsigned short * ModelData::lock_index_buffer() const
 	{
 		unsigned short * index_header;
 		indexbuff->Lock(0, 0, fw::pointer_cast<void **>(&index_header), 0);
 		return index_header;
 	}
-	void model_data::unlock_index_buffer() const
+	void ModelData::unlock_index_buffer() const
 	{
 		indexbuff->Unlock();
 	}
 
 
 
-	model_data::model_data()
+	ModelData::ModelData()
 	{
 		construct();
 	}
 
-	model_data::~model_data()
+	ModelData::~ModelData()
 	{
 		release();
 	}
 
-	void model_data::draw_no_alpha(const matrix & world_mat, bool is_culling) const
+	void ModelData::draw_no_alpha(const Matrix & world_mat, bool is_culling) const
 	{
 		// ワールド変換行列設定
 		device->SetTransform(D3DTS_WORLD, world_mat.dxpointer());
@@ -542,7 +542,7 @@ namespace si3
 		}
 	}
 
-	void model_data::draw_alpha(const matrix & world_mat) const
+	void ModelData::draw_alpha(const Matrix & world_mat) const
 	{
 		// ワールド変換行列設定
 		device->SetTransform(D3DTS_WORLD, world_mat.dxpointer());
@@ -649,14 +649,14 @@ namespace si3
 	}
 
 
-	void model_data::construct()
+	void ModelData::construct()
 	{
 		device = nullptr;
 		vertbuff = nullptr;
 		indexbuff = nullptr;
 	}
 
-	void model_data::release()
+	void ModelData::release()
 	{
 		dxsaferelease(vertbuff);
 		dxsaferelease(indexbuff);
@@ -669,7 +669,7 @@ namespace si3
 
 #if 0
 
-	bool model_data::load_x(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	bool ModelData::load_x(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
@@ -707,7 +707,7 @@ namespace si3
 		return true;
 	}
 
-	bool model_data::load_x(const Manager & manageri, const TCHAR * path)
+	bool ModelData::load_x(const Manager & manageri, const TCHAR * path)
 	{
 		release();
 
@@ -745,7 +745,7 @@ namespace si3
 		return true;
 	}
 
-	void model_data::add_normal(LPD3DXMESH & mesh, const LPDIRECT3DDEVICE9 & device, LPD3DXMESH & pMeshWk)
+	void ModelData::add_normal(LPD3DXMESH & mesh, const LPDIRECT3DDEVICE9 & device, LPD3DXMESH & pMeshWk)
 	{
 		// 法線が無い場合は強制的に追加
 		DWORD dwFVF = mesh->GetFVF();
@@ -764,7 +764,7 @@ namespace si3
 		}
 	}
 
-	bool model_data::get_table(LPD3DXMESH & pMeshWk, LPD3DXBUFFER & pMtrlBuf)
+	bool ModelData::get_table(LPD3DXMESH & pMeshWk, LPD3DXBUFFER & pMtrlBuf)
 	{
 		// 属性テーブルを生成するための最適化
 		HRESULT hr = mesh->Optimize(D3DXMESHOPT_ATTRSORT, NULL, NULL, NULL, NULL, &pMeshWk);
@@ -790,7 +790,7 @@ namespace si3
 		return true;
 	}
 
-	void model_data::compute_tops(LPD3DXMESH & mesh)
+	void ModelData::compute_tops(LPD3DXMESH & mesh)
 	{
 		// 頂点バッファ固定
 		LPD3DXVECTOR3 pVtx;
@@ -829,7 +829,7 @@ namespace si3
 		// 頂点バッファ解放
 		mesh->UnlockVertexBuffer();
 	}
-	void model_data::compute_tops_center(LPD3DXMESH & mesh, const Coor3 & center)
+	void ModelData::compute_tops_center(LPD3DXMESH & mesh, const Coor3 & center)
 	{
 		// 頂点バッファ固定
 		LPD3DXVECTOR3 pVtx;
@@ -869,7 +869,7 @@ namespace si3
 		mesh->UnlockVertexBuffer();
 	}
 
-	void model_data::get_material(const TCHAR * path, LPD3DXBUFFER	pMtrlBuf, const LPDIRECT3DDEVICE9 & device)
+	void ModelData::get_material(const TCHAR * path, LPD3DXBUFFER	pMtrlBuf, const LPDIRECT3DDEVICE9 & device)
 	{
 		TCHAR			szDir[_MAX_DIR];
 		TCHAR			szSaveDir[_MAX_DIR];
@@ -906,7 +906,7 @@ namespace si3
 		pMtrlBuf->Release();
 	}
 
-	void model_data::judge_with_alpha()
+	void ModelData::judge_with_alpha()
 	{
 		for (DWORD i = 0; i < attribute_num; i++) {
 			DWORD id = attribute[i].AttribId;
@@ -920,7 +920,7 @@ namespace si3
 
 
 
-	void model_data::compute_world_mat(D3DXMATRIX & mat, const model_coor & coor) const
+	void ModelData::compute_world_mat(D3DXMATRIX & mat, const ModelCoor & coor) const
 	{
 		D3DXMATRIX matRot, matMove;
 		D3DXMatrixRotationYawPitchRoll(&matRot, coor.radian_y, coor.radian_x, coor.radian_z);

@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	struct model_coor
+	struct ModelCoor
 	{
 		float x;
 		float y;

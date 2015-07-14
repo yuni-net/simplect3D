@@ -1,49 +1,49 @@
 #include "canimer.h"
 #include <assert.h>
 
-si3::canimer::canimer()
+si3::AniCounter::AniCounter()
 {
 	counter = 0;
-	nFrame = 1;
+	frame_ = 1;
 }
-void si3::canimer::config(int frame, int resistor)
+void si3::AniCounter::config(int frame, int resistor)
 {
-	this->nFrame = abs(frame) * abs(resistor);
-	assert(this->nFrame > 0);
-	this->nResistor = abs(resistor);
+	this->frame_ = abs(frame) * abs(resistor);
+	assert(this->frame_ > 0);
+	this->resistor_ = abs(resistor);
 
-	counter %= this->nFrame;
+	counter %= this->frame_;
 }
-void si3::canimer::frame(int v)
+void si3::AniCounter::frame(int v)
 {
-	config(v, nResistor);
+	config(v, resistor_);
 }
-void si3::canimer::resistor(int v)
+void si3::AniCounter::resistor(int v)
 {
-	config(nFrame, v);
+	config(frame_, v);
 }
-void si3::canimer::set(int No)
+void si3::AniCounter::set(int No)
 {
 	if (No < 0)
 	{
-		No %= nFrame;
-		No = nFrame + No;
+		No %= frame_;
+		No = frame_ + No;
 	}
-	counter = No%nFrame;
+	counter = No%frame_;
 }
-void si3::canimer::move(int num)
+void si3::AniCounter::move(int num)
 {
 	set(counter + num);
 }
-int si3::canimer::now() const
+int si3::AniCounter::now() const
 {
-	return counter / nResistor;
+	return counter / resistor_;
 }
-int si3::canimer::nowNo() const
+int si3::AniCounter::now_No() const
 {
 	return counter;
 }
-int si3::canimer::maxNo() const
+int si3::AniCounter::max_No() const
 {
-	return nFrame - 1;
+	return frame_ - 1;
 }

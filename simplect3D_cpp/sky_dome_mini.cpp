@@ -1,7 +1,7 @@
 #include "sky_dome_mini.h"
 #include "Manager.h"
 #include "saferelease.h"
-#include "matrix.h"
+#include "Matrix.h"
 
 namespace si3
 {
@@ -50,18 +50,18 @@ namespace si3
 		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
 
 
-		const si3::camera & camera = managerp->camera();
+		const si3::Camera & camera = managerp->camera();
 		float near_clip = camera.near_clip()+0.1f;
 
-		matrix scale_mat;
+		Matrix scale_mat;
 		scale_mat.scale(near_clip, near_clip, near_clip);
 
-		matrix parallel_mat;
+		Matrix parallel_mat;
 		parallel_mat.x(camera.x());
 		parallel_mat.y(camera.y());
 		parallel_mat.z(camera.z());
 
-		matrix world_mat = scale_mat * parallel_mat;
+		Matrix world_mat = scale_mat * parallel_mat;
 
 		//É}ÉeÉäÉAÉãê›íË
 		static const D3DMATERIAL9 material = {

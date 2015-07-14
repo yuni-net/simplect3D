@@ -1,5 +1,5 @@
 #include <MotionData.h>
-#include <ModelData.h>
+#include <ModelData_pmd.h>
 #include <cstdint>
 #include <BoneMap.h>
 #include <util_MMD.h>
@@ -144,8 +144,8 @@ namespace si3
 	*  逆再生や、任意のフレームにテレポートした場合は当然変換する必要があるでしょう。
 	*/
 	bool MotionData::compute_trans_mat(
-		matrix & trans_mat,
-		matrix & rot_mat,
+		Matrix & trans_mat,
+		Matrix & rot_mat,
 		const Coor3 & bone_pos,
 		const int bone_No)
 	{

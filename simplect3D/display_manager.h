@@ -6,13 +6,13 @@
 
 namespace si3
 {
-	typedef fw::Array<const display_object *> vdisplay_object;
+	typedef fw::Array<const DisplayObject *> vdisplay_object;
 
 	class DisplayManager
 	{
 	public:
 		void init(D3DPRESENT_PARAMETERS * present_parameters, LPDIRECT3DDEVICE9 dxdevice);
-		void register_display_object(const display_object & display_objecti);
+		void register_display_object(const DisplayObject & display_objecti);
 
 		void context_color(float r, float g, float b);
 		float context_red() const;

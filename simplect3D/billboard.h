@@ -2,21 +2,21 @@
 
 #include "popular.h"
 #include "display_object.h"
-#include "leaf.h"
+#include "Leaf.h"
 //#include <anime_data.h>
 
 namespace si3
 {
 	class Manager;
-	class anime_data;
+	class AnimeData;
 
-	class billboard :public leaf
+	class Billboard :public Leaf
 	{
 	public:
-		billboard();
-		billboard(const Manager & manageri, const TCHAR * path);
-		billboard(const Manager & manageri, const std::string & path);
-		billboard(const Manager & manageri, const ::si3::image_data & imaged);
+		Billboard();
+		Billboard(const Manager & manageri, const TCHAR * path);
+		Billboard(const Manager & manageri, const std::string & path);
+		Billboard(const Manager & manageri, const ::si3::ImageData & imaged);
 
 
 

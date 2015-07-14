@@ -27,15 +27,15 @@ namespace si3
 	void BoneBranch::renew_tops(
 		DxTop * top_buffer,
 		MotionData & motion_data,
-		const matrix & parent_trans_mat,
-		const matrix & parent_rot_mat,
+		const Matrix & parent_trans_mat,
+		const Matrix & parent_rot_mat,
 		bool todo_renew)
 	{
-		matrix trans_mat = parent_trans_mat;
-		matrix rot_mat = parent_rot_mat;
+		Matrix trans_mat = parent_trans_mat;
+		Matrix rot_mat = parent_rot_mat;
 
-		matrix my_trans_mat;
-		matrix my_rot_mat;
+		Matrix my_trans_mat;
+		Matrix my_rot_mat;
 
 		// debug
 		if (bone_name == "âEÇ–Ç∂" || bone_name=="ç∂Ç–Ç∂")

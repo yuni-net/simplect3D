@@ -2,21 +2,21 @@
 
 #include "popular.h"
 #include "display_object.h"
-#include "matrix.h"
+#include "Matrix.h"
 //#include <image_data.h>
 
 namespace si3
 {
 	class Manager;
-	class image_data;
+	class ImageData;
 
-	class leaf :public display_object
+	class Leaf :public DisplayObject
 	{
 	public:
-		leaf();
-		leaf(const Manager & manageri, const TCHAR * path);
-		leaf(const Manager & manageri, const std::string & path);
-		leaf(const Manager & manageri, const ::si3::image_data & imaged);
+		Leaf();
+		Leaf(const Manager & manageri, const TCHAR * path);
+		Leaf(const Manager & manageri, const std::string & path);
+		Leaf(const Manager & manageri, const ::si3::ImageData & imaged);
 
 		// ˆê‚Â‚ÌOŠpƒ|ƒŠƒSƒ“‚ÌÅ‘å‚Ì‘å‚«‚³‚ğ‚±‚±‚Åİ’è‚·‚é
 		// OŠpƒ|ƒŠƒSƒ“‚Ì‘å‚«‚³‚ª‚±‚ê‚ğ’´‚¦‚È‚¢‚æ‚¤‚ÉA”Âƒ|ƒŠƒSƒ“‚Í‚¢‚­‚Â‚©‚É•ªŠ„‚³‚ê‚ÄŠÇ—‚³‚ê‚é
@@ -25,7 +25,7 @@ namespace si3
 
 		bool load(const Manager & manageri, const TCHAR * path);
 		bool load(const Manager & manageri, const std::string & path);
-		void image_data(const Manager & manageri, const ::si3::image_data & imaged);
+		void image_data(const Manager & manageri, const ::si3::ImageData & imaged);
 
 		void x(float value);
 		float x() const;
@@ -62,10 +62,10 @@ namespace si3
 		void setblend_add();
 		void setblend_sub();
 
-		void culling(bool bEnable);
+		void culling(bool is_enable);
 
-		void affine(const matrix & world_mat);
-		const matrix & affine() const;
+		void affine(const Matrix & world_mat);
+		const Matrix & affine() const;
 
 
 
@@ -74,14 +74,14 @@ namespace si3
 		void draw_alpha() const;
 
 
-		~leaf();
+		~Leaf();
 
 	protected:
-		mutable matrix world_mat;
-		const Manager * pManager;
+		mutable Matrix world_mat;
+		const Manager * manager;
 
 	private:
-		const ::si3::image_data * imaged;
+		const ::si3::ImageData * imaged;
 		bool ownership;
 		D3DMATERIAL9 material_;
 
@@ -93,9 +93,9 @@ namespace si3
 		float rot_z_;
 		float scale_;
 		float piece_size_;
-		int BlendMode;
-		bool bCulling;
-		mutable bool bComputedWorldMat;
+		int blend_mode;
+		bool is_culling_on;
+		mutable bool computed_world_mat;
 
 
 		void construct();

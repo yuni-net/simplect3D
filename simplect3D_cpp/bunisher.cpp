@@ -1,6 +1,6 @@
 #include <bunisher.h>
 #include <Manager.h>
-#include <model.h>
+#include <Model.h>
 #include <utility.h>
 #include <si3_ModelDustConverter.h>
 
@@ -12,13 +12,13 @@ namespace si3
 
 
 
-	bunisher::bunisher(const Manager & manageri, const model & model_)
+	Bunisher::Bunisher(const Manager & manageri, const Model & model_)
 	{
 		construct();
 		init(manageri, model_);
 	}
 
-	bool bunisher::create_buffer(unsigned long buffer_size)
+	bool Bunisher::create_buffer(unsigned long buffer_size)
 	{
 		release();
 
@@ -37,14 +37,14 @@ namespace si3
 	}
 
 
-	void bunisher::init(const Manager & manageri, const model & model_)
+	void Bunisher::init(const Manager & manageri, const Model & model_)
 	{
 		typedef unsigned short ushort;
 
 		device = manageri.get_dxdevice();
 		si3m = &manageri;
 
-		const model_data & modeld = model_.model_data();
+		const ModelData & modeld = model_.model_data();
 		unsigned long top_num = modeld.index_num();
 		triangle_num = top_num/3;
 		bunish_data_list.resize(triangle_num);
@@ -63,7 +63,7 @@ namespace si3
 
 
 
-	void bunisher::bunish()
+	void Bunisher::bunish()
 	{
 		DxTop * top_header;
 		listbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
@@ -77,7 +77,7 @@ namespace si3
 
 		while (iter != bunish_data_list.end())
 		{
-			bunish_data & bunishd = *iter;
+			BunishData & bunishd = *iter;
 			bunishd.bunish(*si3m);
 
 			top_header[top_No + 0].pos = bunishd.compute_local_pos(0);
@@ -100,25 +100,25 @@ namespace si3
 
 
 
-	bunisher::bunisher()
+	Bunisher::Bunisher()
 	{
 		construct();
 	}
 
-	bunisher::~bunisher()
+	Bunisher::~Bunisher()
 	{
 		release();
 	}
 
-	void bunisher::draw_no_alpha() const
+	void Bunisher::draw_no_alpha() const
 	{
 		// Nothing
 	}
 
-	void bunisher::draw_alpha() const
+	void Bunisher::draw_alpha() const
 	{
 		// ワールド変換行列設定
-		device->SetTransform(D3DTS_WORLD, matrix().dxpointer());
+		device->SetTransform(D3DTS_WORLD, Matrix().dxpointer());
 
 		// Zバッファを更新しない
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
@@ -172,19 +172,19 @@ namespace si3
 	}
 
 
-	void bunisher::construct()
+	void Bunisher::construct()
 	{
 		device = nullptr;
 		listbuff = nullptr;
 	}
 
-	void bunisher::release()
+	void Bunisher::release()
 	{
 		dxsaferelease(listbuff);
 	}
 
 
-	void bunisher::convert_without_index(DxTop * planebuff, unsigned short * indexbuff, unsigned long index_num)
+	void Bunisher::convert_without_index(DxTop * planebuff, unsigned short * indexbuff, unsigned long index_num)
 	{
 		DxTop * top_header;
 		listbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
@@ -199,7 +199,7 @@ namespace si3
 
 		while (iter != bunish_data_list.end())
 		{
-			bunish_data & bunishd = *iter;
+			BunishData & bunishd = *iter;
 
 			ModelDustConverter verter;
 			verter.init(planebuff, indexbuff, top_No);
@@ -216,35 +216,6 @@ namespace si3
 		listbuff->Unlock();
 	}
 
-#if 0
-
-	void bunisher::set_bunish_vec_list(DxTop * top_head, unsigned long top_No)
-	{
-		if (top_No % 3 != 0)
-		{
-			return;
-		}
-
-		auto & top = top_head[top_No];
-		for (unsigned long top_count = 0; top_count < 3; ++top_count)
-		{
-			unsigned long bunish_No = top_No + top_count;
-			if (bunish_No >= top_num)
-			{
-				return;
-			}
-
-			bunish_vec_list[top_No + top_count].x = top.normal.x / 30.0f;
-			bunish_vec_list[top_No + top_count].y = top.normal.y / 30.0f;
-			bunish_vec_list[top_No + top_count].z = top.normal.z / 30.0f;
-		}
-	}
-
-
-
-
-
-#endif
 
 
 

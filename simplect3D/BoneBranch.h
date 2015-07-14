@@ -3,7 +3,7 @@
 
 #include "si3_top_type.h"
 #include "MotionData.h"
-#include "matrix.h"
+#include "Matrix.h"
 #include "Bone.h"
 
 namespace si3
@@ -22,8 +22,8 @@ namespace si3
 		void renew_tops(
 			DxTop * top_buffer,
 			MotionData & motion_data,
-			const matrix & parent_trans_mat,
-			const matrix & parent_rot_mat,
+			const Matrix & parent_trans_mat,
+			const Matrix & parent_rot_mat,
 			bool todo_renew);
 
 

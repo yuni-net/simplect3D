@@ -6,12 +6,14 @@
 
 namespace si3
 {
-	
+	/***
+	3Dモデルの頂点を一つ一つバラバラに動かします。
+	*/
 	class ModelDustConverter
 	{
 	public:
 		void init(DxTop * planebuff, unsigned short * indexbuff, unsigned short index);
-		void set_bunish_data(bunish_data & bunishd);
+		void set_bunish_data(BunishData & bunishd);
 		const DxTop & get_top_data(uint offset) const;
 
 

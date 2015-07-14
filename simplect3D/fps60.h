@@ -10,14 +10,14 @@
  */
 namespace si3
 {
-	class fps60
+	class Fps60
 	{
 	public:
 		void init();
 		void stop_if_need();
 
 
-		~fps60();
+		~Fps60();
 	private:
 		DWORD old_ms;
 	};

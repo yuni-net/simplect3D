@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	struct diffuse
+	struct Diffuse
 	{
 		unsigned char red;
 		unsigned char green;

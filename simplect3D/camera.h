@@ -4,7 +4,10 @@
 
 namespace si3
 {
-	class camera
+	/***
+	DirectXのカメラを司るクラスです。
+	*/
+	class Camera
 	{
 	public:
 		bool init(LPDIRECT3DDEVICE9 dxdevice, unsigned int screen_width, unsigned int screen_height);

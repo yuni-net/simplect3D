@@ -34,16 +34,16 @@ namespace si3
 		return fw::Window::processage();	// プロセスメッセージを処理する
 	}
 
-	void Manager::register_display_object(const display_object & display_objecti)
+	void Manager::register_display_object(const DisplayObject & display_objecti)
 	{
 		displaym.register_display_object(display_objecti);
 	}
 
-	const ::si3::key & Manager::key() const
+	const ::si3::Key & Manager::key() const
 	{
 		return dxinputi.key();
 	}
-	const ::si3::mouse & Manager::mouse() const
+	const ::si3::Mouse & Manager::mouse() const
 	{
 		return dxinputi.mouse();
 	}
@@ -52,11 +52,11 @@ namespace si3
 		return soundm;
 	}
 
-	::si3::camera & Manager::camera()
+	::si3::Camera & Manager::camera()
 	{
 		return dxcamerai;
 	}
-	const ::si3::camera & Manager::camera() const
+	const ::si3::Camera & Manager::camera() const
 	{
 		return dxcamerai;
 	}

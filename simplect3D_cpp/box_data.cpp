@@ -2,25 +2,25 @@
 
 #include <utility.h>
 #include <box_data.h>
-#include <matrix.h>
+#include <Matrix.h>
 
 //static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL;
 
 namespace si3
 {
-	box_data::box_data()
+	BoxData::BoxData()
 	{
 		construct();
 	}
 
-	box_data::box_data(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z)
+	BoxData::BoxData(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z)
 	{
 		construct();
 		create(device, size_x, size_y, size_z);
 	}
 
-	void box_data::create(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z)
+	void BoxData::create(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z)
 	{
 		this->device = device;
 
@@ -33,7 +33,7 @@ namespace si3
 		if (result == false) return;
 	}
 
-	bool box_data::init_vertex(float size_x, float size_y, float size_z)
+	bool BoxData::init_vertex(float size_x, float size_y, float size_z)
 	{
 		HRESULT	hr;
 
@@ -52,8 +52,8 @@ namespace si3
 		if (FAILED(hr)) return false;
 
 		// バッファをロックをして書き込みを開始する
-		land_vertex * pVtx = nullptr;
-		hr = (*vertbuff).Lock(0, 0, fw::pointer_cast<void **>(&pVtx), 0);
+		land_vertex * vertex = nullptr;
+		hr = (*vertbuff).Lock(0, 0, fw::pointer_cast<void **>(&vertex), 0);
 		if (FAILED(hr)) return false;
 
 		land_vertex base[4];
@@ -86,15 +86,15 @@ namespace si3
 		base[basedex].pos.y = 0.5f;
 		base[basedex].pos.z = -0.5f;
 
-		matrix scale_mat;
+		Matrix scale_mat;
 		scale_mat.scale(size_x, size_y, size_z);
 
-		set(base, scale_mat, matrix().rotate_y(0.0f), pVtx, 0);
-		set(base, scale_mat, matrix().rotate_y(pi*0.5f), pVtx, 1);
-		set(base, scale_mat, matrix().rotate_y(pi), pVtx, 2);
-		set(base, scale_mat, matrix().rotate_y(pi*1.5f), pVtx, 3);
-		set(base, scale_mat, matrix().rotate_x(-pi*0.5f), pVtx, 4);
-		set(base, scale_mat, matrix().rotate_x(pi*0.5f), pVtx, 5);
+		set(base, scale_mat, Matrix().rotate_y(0.0f), vertex, 0);
+		set(base, scale_mat, Matrix().rotate_y(pi*0.5f), vertex, 1);
+		set(base, scale_mat, Matrix().rotate_y(pi), vertex, 2);
+		set(base, scale_mat, Matrix().rotate_y(pi*1.5f), vertex, 3);
+		set(base, scale_mat, Matrix().rotate_x(-pi*0.5f), vertex, 4);
+		set(base, scale_mat, Matrix().rotate_x(pi*0.5f), vertex, 5);
 
 
 		// バッファをアンロックして書き込みを終了する
@@ -103,20 +103,20 @@ namespace si3
 		return true;
 	}
 
-	void box_data::set(
+	void BoxData::set(
 		land_vertex base[4],
-		const matrix & scale_mat,
-		const matrix & rot_mat,
-		land_vertex * pVtx,
+		const Matrix & scale_mat,
+		const Matrix & rot_mat,
+		land_vertex * vertex,
 		int face_No)
 	{
 
 		for (int top_No = 0; top_No < 4; ++top_No)
 		{
 			const land_vertex & abase = base[top_No];
-			land_vertex & target = pVtx[6 * face_No +1 + top_No];
+			land_vertex & target = vertex[6 * face_No + 1 + top_No];
 
-			matrix normal_mat;
+			Matrix normal_mat;
 			normal_mat.x(abase.normal.x);
 			normal_mat.y(abase.normal.y);
 			normal_mat.z(abase.normal.z);
@@ -127,9 +127,9 @@ namespace si3
 			target.normal.y = normal_mat.y();
 			target.normal.z = normal_mat.z();
 
-			matrix trans_mat = rot_mat*scale_mat;
+			Matrix trans_mat = rot_mat*scale_mat;
 
-			matrix pos_mat;
+			Matrix pos_mat;
 			pos_mat.x(abase.pos.x);
 			pos_mat.y(abase.pos.y);
 			pos_mat.z(abase.pos.z);
@@ -145,19 +145,19 @@ namespace si3
 		{
 			int index = 6 * face_No + 1 + 0;
 			int preindex = index - 1;
-			pVtx[preindex] = pVtx[index];
+			vertex[preindex] = vertex[index];
 		}
 
 		if (face_No < 5)
 		{
 			int index = 6 * face_No + 1 + 3;
 			int nextindex = index + 1;
-			pVtx[nextindex] = pVtx[index];
+			vertex[nextindex] = vertex[index];
 		}
 	}
 
 
-	void box_data::draw() const
+	void BoxData::draw() const
 	{
 		// 頂点フォーマット設定
 		device->SetFVF(LAND_FVF);
@@ -171,27 +171,27 @@ namespace si3
 	}
 
 
-	LPDIRECT3DDEVICE9 box_data::get_device() const
+	LPDIRECT3DDEVICE9 BoxData::get_device() const
 	{
 		return device;
 	}
 
 
 
-	void box_data::construct()
+	void BoxData::construct()
 	{
 		device = nullptr;
 		vertbuff = nullptr;
 		indexbuff = nullptr;
 	}
 
-	void box_data::release()
+	void BoxData::release()
 	{
 		dxsaferelease(vertbuff);
 		dxsaferelease(indexbuff);
 	}
 
-	box_data::~box_data()
+	BoxData::~BoxData()
 	{
 		release();
 	}

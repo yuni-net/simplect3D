@@ -2,7 +2,7 @@
 
 #include <sphere.h>
 #include <Manager.h>
-#include <matrix.h>
+#include <Matrix.h>
 
 namespace si3
 {
@@ -171,15 +171,15 @@ namespace si3
 		device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
 
 
-		matrix rot_mat =
-			matrix().rotate_y(rot_y()) *
-			matrix().rotate_x(rot_x()) *
-			matrix().rotate_z(rot_z());
+		Matrix rot_mat =
+			Matrix().rotate_y(rot_y()) *
+			Matrix().rotate_x(rot_x()) *
+			Matrix().rotate_z(rot_z());
 
-		matrix para_mat;
+		Matrix para_mat;
 		para_mat.parallel(x(), y(), z());
 
-		matrix world_mat = rot_mat*para_mat;
+		Matrix world_mat = rot_mat*para_mat;
 
 
 		//マテリアル設定
@@ -221,15 +221,15 @@ namespace si3
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 
 
-		matrix rot_mat =
-			matrix().rotate_y(rot_y()) *
-			matrix().rotate_x(rot_x()) *
-			matrix().rotate_z(rot_z());
+		Matrix rot_mat =
+			Matrix().rotate_y(rot_y()) *
+			Matrix().rotate_x(rot_x()) *
+			Matrix().rotate_z(rot_z());
 
-		matrix para_mat;
+		Matrix para_mat;
 		para_mat.parallel(x(), y(), z());
 
-		matrix world_mat = rot_mat*para_mat;
+		Matrix world_mat = rot_mat*para_mat;
 
 
 		//マテリアル設定

@@ -9,7 +9,7 @@ namespace si3
 {
 	class Manager;
 
-	class image_data
+	class ImageData
 	{
 	public:
 		enum
@@ -20,9 +20,9 @@ namespace si3
 			sub_blend
 		};
 
-		image_data();
-		image_data(const Manager & manageri, const char * path, float piece_size);
-		image_data(const Manager & manageri, const std::string & path, float piece_size);
+		ImageData();
+		ImageData(const Manager & manageri, const char * path, float piece_size);
+		ImageData(const Manager & manageri, const std::string & path, float piece_size);
 
 		bool load(const Manager & manageri, const char * path, float piece_size);
 		bool load(const Manager & manageri, const std::string & path, float piece_size);
@@ -30,28 +30,22 @@ namespace si3
 		uint width() const;
 		uint height() const;
 
-		bool draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, bool bCulling) const;
-		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int BlendMode, bool bCulling) const;
+		bool draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, bool is_culling_on) const;
+		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int blend_mode, bool is_culling_on) const;
 
 
 
 
-		~image_data();
+		~ImageData();
 
 
 	protected:
 
-		uint Width;
-		uint Height;
+		uint width_;
+		uint height_;
 
 
 
-		struct land_vertex
-		{
-			D3DVECTOR   pos;
-			D3DVECTOR   normal;
-			float       u, v;
-		};
 
 		LPDIRECT3DTEXTURE9 texture;
 		LPDIRECT3DDEVICE9 device;
@@ -65,9 +59,9 @@ namespace si3
 
 		bool draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material) const;
 
-		bool CreateRectanglePolygon(const top4 & xyz, const top4 & uv, const diffuse & rgba) const;
+		bool CreateRectanglePolygon(const Top4 & xyz, const Top4 & uv, const Diffuse & rgba) const;
 		void DrawWithoutCreatePolygon() const;
-		void compute_world_mat(D3DXMATRIX & mat, const model_coor & coor);
+		void compute_world_mat(D3DXMATRIX & mat, const ModelCoor & coor);
 
 		bool init_vertex(
 			LPDIRECT3DDEVICE9 device,			// in

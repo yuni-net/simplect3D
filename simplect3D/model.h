@@ -12,21 +12,21 @@ namespace si3
 
 	class Manager;
 
-	class model :public display_object
+	class Model :public DisplayObject
 	{
 	public:
-		model(const Manager & manageri, const TCHAR * path);
-		model(const Manager & manageri, const tstring & path);
-		model(const Manager & manageri, const si3::model_data & modeld);
-		model(const Manager & manageri, const TCHAR * path, const Coor3 & center);
+		Model(const Manager & manageri, const TCHAR * path);
+		Model(const Manager & manageri, const tstring & path);
+		Model(const Manager & manageri, const si3::ModelData & modeld);
+		Model(const Manager & manageri, const TCHAR * path, const Coor3 & center);
 
 		bool load(const Manager & manageri, const TCHAR * path);
 		bool load(const Manager & manageri, const tstring & path);
-		void model_data(const Manager & manageri, const si3::model_data & modeld);
+		void model_data(const Manager & manageri, const si3::ModelData & modeld);
 		bool load(const Manager & manageri, const TCHAR * path, const Coor3 & center);
 
 
-		const si3::model_data & model_data() const;
+		const si3::ModelData & model_data() const;
 
 		void x(float value);
 		float x() const;
@@ -47,10 +47,10 @@ namespace si3
 		void radian_z(float value);
 		float radian_z() const;
 
-		void affine(const matrix & world_mat);
-		const matrix & affine() const;
+		void affine(const Matrix & world_mat);
+		const Matrix & affine() const;
 
-		void culling(bool bCulling);
+		void culling(bool enable);
 
 		/*
 		 * x,y,zÇÃâÒì]ÇÃèáèòÇê›íËÇ∑ÇÈÅB
@@ -59,8 +59,8 @@ namespace si3
 		void set_rot_mode(RotMode::ERotMode first, RotMode::ERotMode second, RotMode::ERotMode third);
 
 
-		model();
-		~model();
+		Model();
+		~Model();
 
 		// @override
 		void draw_no_alpha() const;
@@ -70,18 +70,18 @@ namespace si3
 	private:
 		LPDIRECT3DDEVICE9 dxdevice;
 		bool ownership;
-		const si3::model_data * modeld;
-		model_coor coor;
-		mutable matrix world_mat;
+		const si3::ModelData * modeld;
+		ModelCoor coor;
+		mutable Matrix world_mat;
 		RotMode::ERotMode first_rot_mode;
 		RotMode::ERotMode second_rot_mode;
 		RotMode::ERotMode third_rot_mode;
-		mutable bool bComputedWorldMat;
-		bool bCulling;
+		mutable bool computed_world_mat;
+		bool is_culling_on;
 
 		void construct();
 		void release();
 		void compute_world_mat() const;
-		void set_rot_mat(matrix & rot_mat, RotMode::ERotMode rot_mode_) const;
+		void set_rot_mat(Matrix & rot_mat, RotMode::ERotMode rot_mode_) const;
 	};
 }

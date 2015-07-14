@@ -1,7 +1,7 @@
 #include "sky_dome.h"
 #include "Manager.h"
 #include "saferelease.h"
-#include "matrix.h"
+#include "Matrix.h"
 
 namespace si3
 {
@@ -80,15 +80,15 @@ namespace si3
 
 
 
-		matrix scale_mat;
+		Matrix scale_mat;
 		scale_mat.scale(radius(), radius(), radius());
 
-		matrix parallel_mat;
+		Matrix parallel_mat;
 		parallel_mat.x(x());
 		parallel_mat.y(y());
 		parallel_mat.z(z());
 
-		matrix world_mat = scale_mat * parallel_mat;
+		Matrix world_mat = scale_mat * parallel_mat;
 
 		sphered.draw(world_mat.dxmat());
 	}

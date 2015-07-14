@@ -3,7 +3,7 @@
 
 namespace si3
 {
-	bool dxinput::init(HWND windle)
+	bool DxInput::init(HWND windle)
 	{
 		HRESULT result;
 
@@ -20,18 +20,18 @@ namespace si3
 		return true;
 	}
 
-	void dxinput::update()
+	void DxInput::update()
 	{
 		keyi.update();
 		mousei.update();
 	}
 
-	const ::si3::key & dxinput::key() const
+	const ::si3::Key & DxInput::key() const
 	{
 		return keyi;
 	}
 
-	const ::si3::mouse & dxinput::mouse() const
+	const ::si3::Mouse & DxInput::mouse() const
 	{
 		return mousei;
 	}
@@ -39,12 +39,12 @@ namespace si3
 
 
 
-	dxinput::dxinput()
+	DxInput::DxInput()
 	{
 		diinterface = nullptr;
 	}
 
-	dxinput::~dxinput()
+	DxInput::~DxInput()
 	{
 		dxsaferelease(diinterface);
 	}

@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	bool key::init(LPDIRECTINPUT8 & diinterface, HWND windle)
+	bool Key::init(LPDIRECTINPUT8 & diinterface, HWND windle)
 	{
 		ZeroMemory(keystate[0], 256);
 		ZeroMemory(keystate[1], 256);
@@ -11,32 +11,32 @@ namespace si3
 
 	}
 
-	void key::update()
+	void Key::update()
 	{
 		key_systemi.update(keystate[!active]);
 		active = !active;
 	}
 
-	bool key::pushing(unsigned char key) const
+	bool Key::pushing(unsigned char Key) const
 	{
-		return (keystate[active][key] & 0x80) != 0;
+		return (keystate[active][Key] & 0x80) != 0;
 	}
-	bool key::freeing(unsigned char key) const
+	bool Key::freeing(unsigned char Key) const
 	{
-		return !pushing(key);
+		return !pushing(Key);
 	}
 
-	bool key::pushed(unsigned char key) const
+	bool Key::pushed(unsigned char Key) const
 	{
-		if ((keystate[active][key] & 0x80) == 0) return false;
-		if ((keystate[!active][key] & 0x80) != 0) return false;
+		if ((keystate[active][Key] & 0x80) == 0) return false;
+		if ((keystate[!active][Key] & 0x80) != 0) return false;
 
 		return true;
 	}
-	bool key::clicked(unsigned char key) const
+	bool Key::clicked(unsigned char Key) const
 	{
-		if ((keystate[active][key] & 0x80) != 0) return false;
-		if ((keystate[!active][key] & 0x80) == 0) return false;
+		if ((keystate[active][Key] & 0x80) != 0) return false;
+		if ((keystate[!active][Key] & 0x80) == 0) return false;
 
 		return true;
 	}

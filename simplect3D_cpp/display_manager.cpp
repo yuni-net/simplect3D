@@ -22,7 +22,7 @@ namespace si3
 
 	}
 
-	void DisplayManager::register_display_object(const display_object & display_objecti)
+	void DisplayManager::register_display_object(const DisplayObject & display_objecti)
 	{
 		display_objects.add(&display_objecti);
 	}

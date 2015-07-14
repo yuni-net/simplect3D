@@ -1,4 +1,4 @@
-#include <ModelData.h>
+#include <ModelData_pmd.h>
 #include <Manager.h>
 #include <MotionData.h>
 #include <Top_pmd.h>
@@ -9,23 +9,23 @@ namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-	ModelData::ModelData(const Manager & manageri, const TCHAR * path)
+	ModelData_pmd::ModelData_pmd(const Manager & manageri, const TCHAR * path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	ModelData::ModelData(const Manager & manageri, const tstring & path)
+	ModelData_pmd::ModelData_pmd(const Manager & manageri, const tstring & path)
 	{
 		construct();
 		load(manageri, path);
 	}
-	ModelData::ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	ModelData_pmd::ModelData_pmd(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		load(manageri, path, center);
 	}
 
 
-	bool ModelData::load_header(FILE * fp)
+	bool ModelData_pmd::load_header(FILE * fp)
 	{
 #pragma pack(push, 1)
 		struct header
@@ -51,7 +51,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_bone(FILE * fp, BoneMap & bone_map)
+	bool ModelData_pmd::load_bone(FILE * fp, BoneMap & bone_map)
 	{
 #pragma pack(push, 1)
 		struct BoneData
@@ -68,7 +68,7 @@ namespace si3
 		// seek top datas *******************************
 		unsigned long vert_num;
 		fread(&vert_num, sizeof(vert_num), 1, fp);
-		fseek(fp, sizeof(top_data)*vert_num, SEEK_CUR);
+		fseek(fp, sizeof(Pmd_top_data)*vert_num, SEEK_CUR);
 		// **********************************************
 
 		// seek index datas *****************************
@@ -80,7 +80,7 @@ namespace si3
 		// seek material datas **************************
 		unsigned long material_num;
 		fread(&material_num, sizeof(material_num), 1, fp);
-		fseek(fp, sizeof(pmd_mate_data)*material_num, SEEK_CUR);
+		fseek(fp, sizeof(Pmd_mate_data)*material_num, SEEK_CUR);
 		// **********************************************
 
 		unsigned short bone_num;
@@ -116,9 +116,9 @@ namespace si3
 		}
 
 		long reverse_byte =
-			sizeof(vert_num) + sizeof(top_data)*vert_num +
+			sizeof(vert_num) + sizeof(Pmd_top_data)*vert_num +
 			sizeof(index_num) + sizeof(unsigned short)*index_num +
-			sizeof(material_num) + sizeof(pmd_mate_data)*material_num +
+			sizeof(material_num) + sizeof(Pmd_mate_data)*material_num +
 			sizeof(bone_num) + sizeof(BoneData)*bone_num;
 
 		fseek(fp, -reverse_byte, SEEK_CUR);
@@ -127,7 +127,7 @@ namespace si3
 	}
 
 
-	bool ModelData::create_top_buffer(unsigned long top_num)
+	bool ModelData_pmd::create_top_buffer(unsigned long top_num)
 	{
 		// 頂点情報格納バッファを作成
 		HRESULT hr = device->CreateVertexBuffer(
@@ -143,7 +143,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_top_center(FILE * fp, const si3::Coor3 & center)
+	bool ModelData_pmd::load_top_center(FILE * fp, const si3::Coor3 & center)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -163,8 +163,8 @@ namespace si3
 
 		for (ulong top_No = 0; top_No < top_num; ++top_No)
 		{
-			top_data top_data_;
-			fread(&top_data_, sizeof(top_data), 1, fp);
+			Pmd_top_data top_data_;
+			fread(&top_data_, sizeof(Pmd_top_data), 1, fp);
 
 			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0] - center.x;
@@ -182,7 +182,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_top(FILE * fp)
+	bool ModelData_pmd::load_top(FILE * fp)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -203,8 +203,8 @@ namespace si3
 		for (ulong top_No = 0; top_No < top_num; ++top_No)
 		{
 
-			top_data top_data_;
-			fread(&top_data_, sizeof(top_data), 1, fp);
+			Pmd_top_data top_data_;
+			fread(&top_data_, sizeof(Pmd_top_data), 1, fp);
 
 			DxTop & top = top_head[top_No];
 			top.pos.x = top_data_.pos[0];
@@ -222,7 +222,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_top(FILE * fp, MotionData & motion_data)
+	bool ModelData_pmd::load_top(FILE * fp, MotionData & motion_data)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -266,7 +266,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::create_index_buffer(unsigned long index_num)
+	bool ModelData_pmd::create_index_buffer(unsigned long index_num)
 	{
 		// 頂点インデックスバッファ作成
 		HRESULT hr = device->CreateIndexBuffer(
@@ -282,7 +282,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_index(FILE * fp)
+	bool ModelData_pmd::load_index(FILE * fp)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -311,7 +311,7 @@ namespace si3
 		return true;
 	}
 
-	void ModelData::load_material(D3DMATERIAL9 & mate, const pmd_mate_data & mate_data)
+	void ModelData_pmd::load_material(D3DMATERIAL9 & mate, const Pmd_mate_data & mate_data)
 	{
 		mate.Diffuse.r = mate_data.diffuse[0];
 		mate.Diffuse.g = mate_data.diffuse[1];
@@ -330,7 +330,7 @@ namespace si3
 		mate.Emissive.a = 0.0f;
 	}
 
-	bool ModelData::load_texture(LPDIRECT3DTEXTURE9 & texture, char tex_name[20], const TCHAR * path)
+	bool ModelData_pmd::load_texture(LPDIRECT3DTEXTURE9 & texture, char tex_name[20], const TCHAR * path)
 	{
 		if (tex_name[0] == '\0')
 		{
@@ -384,7 +384,7 @@ namespace si3
 		return true;
 	}
 
-	bool ModelData::load_attbute(FILE * fp, const TCHAR * path)
+	bool ModelData_pmd::load_attbute(FILE * fp, const TCHAR * path)
 	{
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
@@ -405,10 +405,10 @@ namespace si3
 				attbute_No = 29;
 			}
 
-			pmd_mate_data mate_data;
-			fread(&mate_data, sizeof(pmd_mate_data), 1, fp);
+			Pmd_mate_data mate_data;
+			fread(&mate_data, sizeof(Pmd_mate_data), 1, fp);
 
-			attbute & attbute_ = attbute_list[attbute_No];
+			Attbute & attbute_ = attbute_list[attbute_No];
 
 			auto & mate = attbute_.material;
 			load_material(mate, mate_data);
@@ -425,7 +425,7 @@ namespace si3
 	}
 
 
-	bool ModelData::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	bool ModelData_pmd::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
@@ -459,7 +459,7 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData::load(const Manager & manageri, const TCHAR * path)
+	bool ModelData_pmd::load(const Manager & manageri, const TCHAR * path)
 	{
 		release();
 
@@ -493,7 +493,7 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData::load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
+	bool ModelData_pmd::load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
 	{
 		release();
 
@@ -536,47 +536,47 @@ namespace si3
 
 
 
-	bool ModelData::load(const Manager & manageri, const tstring & path)
+	bool ModelData_pmd::load(const Manager & manageri, const tstring & path)
 	{
 		return load(manageri, path.c_str());
 	}
 
 
 
-	unsigned long ModelData::index_num() const
+	unsigned long ModelData_pmd::index_num() const
 	{
 		return index_num_;
 	}
 
-	DxTop * ModelData::lock_top_buffer() const
+	DxTop * ModelData_pmd::lock_top_buffer() const
 	{
 		DxTop * top_header;
 		vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&top_header), 0);
 		return top_header;
 	}
-	void ModelData::unlock_top_buffer() const
+	void ModelData_pmd::unlock_top_buffer() const
 	{
 		vertbuff->Unlock();
 	}
 
-	unsigned short * ModelData::lock_index_buffer() const
+	unsigned short * ModelData_pmd::lock_index_buffer() const
 	{
 		unsigned short * index_header;
 		indexbuff->Lock(0, 0, fw::pointer_cast<void **>(&index_header), 0);
 		return index_header;
 	}
-	void ModelData::unlock_index_buffer() const
+	void ModelData_pmd::unlock_index_buffer() const
 	{
 		indexbuff->Unlock();
 	}
 
-	int ModelData::bone_num() const
+	int ModelData_pmd::bone_num() const
 	{
 		return bone_num_;
 	}
 
 
-	void ModelData::animation(MotionData & motion_data)
+	void ModelData_pmd::animation(MotionData & motion_data)
 	{
 		bool motion_is_not_needed = motion_data.animation();
 		if (motion_is_not_needed)
@@ -588,23 +588,23 @@ namespace si3
 
 		bool todo_renew = false;
 		auto & root = bone_tree[0];
-		root.renew_tops(top_buffer, motion_data, matrix(), matrix(), todo_renew);
+		root.renew_tops(top_buffer, motion_data, Matrix(), Matrix(), todo_renew);
 
 		unlock_top_buffer();
 	}
 
 
-	ModelData::ModelData()
+	ModelData_pmd::ModelData_pmd()
 	{
 		construct();
 	}
 
-	ModelData::~ModelData()
+	ModelData_pmd::~ModelData_pmd()
 	{
 		release();
 	}
 
-	void ModelData::draw_no_alpha() const
+	void ModelData_pmd::draw_no_alpha() const
 	{
 
 		uint beg_index = 0;
@@ -615,9 +615,9 @@ namespace si3
 		{
 			const uint beg_index_now = beg_index;
 
-			auto & attbute = attbute_list[attbute_No];
+			auto & Attbute = attbute_list[attbute_No];
 
-			uint use_top_num = attbute.use_top_num;
+			uint use_top_num = Attbute.use_top_num;
 			if (use_top_num == 0)
 			{
 				continue;
@@ -625,8 +625,8 @@ namespace si3
 
 			beg_index += use_top_num;
 
-			auto & material_ = attbute.material;
-			auto & texture_ = attbute.texture;
+			auto & material_ = Attbute.material;
+			auto & texture_ = Attbute.texture;
 
 			device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 
@@ -684,7 +684,7 @@ namespace si3
 		}
 	}
 
-	void ModelData::draw_alpha() const
+	void ModelData_pmd::draw_alpha() const
 	{
 
 		uint beg_index = 0;
@@ -694,9 +694,9 @@ namespace si3
 		{
 			const uint beg_index_now = beg_index;
 
-			auto & attbute = attbute_list[attbute_No];
+			auto & Attbute = attbute_list[attbute_No];
 
-			uint use_top_num = attbute.use_top_num;
+			uint use_top_num = Attbute.use_top_num;
 			if (use_top_num == 0)
 			{
 				continue;
@@ -704,8 +704,8 @@ namespace si3
 
 			beg_index += use_top_num;
 
-			auto & material_ = attbute.material;
-			auto & texture_ = attbute.texture;
+			auto & material_ = Attbute.material;
+			auto & texture_ = Attbute.texture;
 
 			float alpha = material_.Diffuse.a;
 			if (abs(alpha - 0.99f) < 0.00001f)
@@ -763,14 +763,14 @@ namespace si3
 	}
 
 
-	void ModelData::construct()
+	void ModelData_pmd::construct()
 	{
 		device = nullptr;
 		vertbuff = nullptr;
 		indexbuff = nullptr;
 	}
 
-	void ModelData::release()
+	void ModelData_pmd::release()
 	{
 		dxsaferelease(vertbuff);
 		dxsaferelease(indexbuff);

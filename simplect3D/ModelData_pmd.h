@@ -3,7 +3,7 @@
 #include "popular.h"
 #include "utility.h"
 #include "model_coor.h"
-#include "matrix.h"
+#include "Matrix.h"
 #include "model_data.h"
 #include "utility.h"
 #include "BoneBranch.h"
@@ -14,12 +14,15 @@ namespace si3
 	class MotionData;
 	class BoneMap;
 
-	class ModelData
+	/***
+	Motion3Dクラス用の3Dモデル管理クラスです。
+	*/
+	class ModelData_pmd
 	{
 	public:
-		ModelData(const Manager & manageri, const TCHAR * path);
-		ModelData(const Manager & manageri, const tstring & path);
-		ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
+		ModelData_pmd(const Manager & manageri, const TCHAR * path);
+		ModelData_pmd(const Manager & manageri, const tstring & path);
+		ModelData_pmd(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
 
 		bool load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
 		bool load(const Manager & manageri, const TCHAR * path);
@@ -38,15 +41,15 @@ namespace si3
 
 		void animation(MotionData & motion_data);
 
-		ModelData();
-		~ModelData();
+		ModelData_pmd();
+		~ModelData_pmd();
 
 		void draw_no_alpha() const;
 		void draw_alpha() const;
 
 	private:
 
-		struct attbute
+		struct Attbute
 		{
 			D3DMATERIAL9 material;
 			LPDIRECT3DTEXTURE9 texture;
@@ -54,7 +57,7 @@ namespace si3
 		};
 
 #pragma pack(push, 1)
-		struct top_data
+		struct Pmd_top_data
 		{
 			float pos[3];
 			float normal[3];
@@ -68,7 +71,7 @@ namespace si3
 
 #pragma pack(push, 1)
 
-		struct pmd_mate_data
+		struct Pmd_mate_data
 		{
 			float diffuse[3];
 			float alpha;
@@ -85,7 +88,7 @@ namespace si3
 #pragma pack(pop)
 
 		LPDIRECT3DDEVICE9 device;
-		fw::Array<attbute> attbute_list;
+		fw::Array<Attbute> attbute_list;
 		IDirect3DVertexBuffer9 * vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		unsigned long index_num_;
@@ -103,7 +106,7 @@ namespace si3
 		bool load_top(FILE * fp, MotionData & motion_data);
 		bool create_index_buffer(unsigned long index_num);
 		bool load_index(FILE * fp);
-		void load_material(D3DMATERIAL9 & mate, const pmd_mate_data & mate_data);
+		void load_material(D3DMATERIAL9 & mate, const Pmd_mate_data & mate_data);
 		bool load_texture(LPDIRECT3DTEXTURE9 & texture, char tex_name[20], const TCHAR * path);
 		bool load_attbute(FILE * fp, const TCHAR * path);
 

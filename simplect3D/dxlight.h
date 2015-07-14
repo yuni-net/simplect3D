@@ -4,7 +4,7 @@
 
 namespace si3
 {
-	class dxlight
+	class DxLight
 	{
 	public:
 		bool init(LPDIRECT3DDEVICE9 dxdevice);

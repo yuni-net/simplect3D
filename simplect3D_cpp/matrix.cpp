@@ -1,4 +1,4 @@
-#include <matrix.h>
+#include <Matrix.h>
 #include <assert.h>
 
 namespace si3
@@ -19,7 +19,7 @@ namespace si3
 		return inverse;
 	}
 
-	matrix::matrix()
+	Matrix::Matrix()
 	{
 		matrix_(0, 0) = 1.0f;
 		matrix_(0, 1) = 0.0f;
@@ -41,7 +41,7 @@ namespace si3
 		matrix_(3, 2) = 0.0f;
 		matrix_(3, 3) = 1.0f;
 	}
-	matrix::matrix(
+	Matrix::Matrix(
 		float _00, float _01, float _02,
 		float _10, float _11, float _12,
 		float _20, float _21, float _22)
@@ -66,34 +66,34 @@ namespace si3
 		matrix_(3, 2) = 0.0f;
 		matrix_(3, 3) = 1.0f;
 	}
-	matrix::matrix(const matrix & mat)
+	Matrix::Matrix(const Matrix & mat)
 	{
 		matrix_ = mat.matrix_;
 	}
-	matrix::matrix(const D3DXMATRIX & dxmat)
+	Matrix::Matrix(const D3DXMATRIX & dxmat)
 	{
 		matrix_ = dxmat;
 	}
-	matrix & matrix::operator=(const matrix & mat)
+	Matrix & Matrix::operator=(const Matrix & mat)
 	{
 		matrix_ = mat.matrix_;
 		return *this;
 	}
-	matrix & matrix::operator=(const D3DXMATRIX & dxmat)
+	Matrix & Matrix::operator=(const D3DXMATRIX & dxmat)
 	{
 		matrix_ = dxmat;
 		return *this;
 	}
-	float matrix::operator()(unsigned int y, unsigned int x)
+	float Matrix::operator()(unsigned int y, unsigned int x)
 	{
 		assert(x <= 3 && y <= 3);
 		return matrix_(y, x);
 	}
-	matrix matrix::operator*(const matrix & mat) const
+	Matrix Matrix::operator*(const Matrix & mat) const
 	{
 		D3DXMATRIX result9 = matrix_ * mat.matrix_;
 
-		matrix result(
+		Matrix result(
 			result9(0, 0), result9(0, 1), result9(0, 2),
 			result9(1, 0), result9(1, 1), result9(1, 2),
 			result9(2, 0), result9(2, 1), result9(2, 2));
@@ -104,7 +104,7 @@ namespace si3
 
 		return result;
 	}
-	matrix & matrix::operator*=(const matrix & mat)
+	Matrix & Matrix::operator*=(const Matrix & mat)
 	{
 		matrix_ *= mat.matrix_;
 		return *this;
@@ -113,120 +113,120 @@ namespace si3
 
 
 
-	matrix & matrix::parallel(float fVX, float fVY, float fVZ)
+	Matrix & Matrix::parallel(float vx, float vy, float vz)
 	{
-		*this = matrix(
+		*this = Matrix(
 			1.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f,
 			0.0f, 0.0f, 1.0f);
 
-		x(fVX);
-		y(fVY);
-		z(fVZ);
+		x(vx);
+		y(vy);
+		z(vz);
 
 		return *this;
 	}
-	matrix & matrix::scale(float fMagniX, float fMagniY, float fMagniZ)
+	Matrix & Matrix::scale(float magni_x, float magni_y, float magni_z)
 	{
-		*this = matrix(
-			fMagniX, 0.0f, 0.0f,
-			0.0f, fMagniY, 0.0f,
-			0.0f, 0.0f, fMagniZ );
+		*this = Matrix(
+			magni_x, 0.0f, 0.0f,
+			0.0f, magni_y, 0.0f,
+			0.0f, 0.0f, magni_z);
 
 		return *this;
 	}
-	matrix & matrix::rotate(float fRadian)
+	Matrix & Matrix::rotate(float radian)
 	{
-		return rotate_z(fRadian);
+		return rotate_z(radian);
 	}
-	matrix & matrix::rotate(float fSin, float fCos)
+	Matrix & Matrix::rotate(float sin, float cos)
 	{
-		return rotate_z(fSin, fCos);
+		return rotate_z(sin, cos);
 	}
-	matrix & matrix::affine(const matrix & scale, const matrix & rotate, const matrix & trans)
+	Matrix & Matrix::affine(const Matrix & scale, const Matrix & rotate, const Matrix & trans)
 	{
 		*this = scale*rotate*trans;
 		return *this;
 	}
 
-	matrix & matrix::rotate_x(float fRadian)
+	Matrix & Matrix::rotate_x(float radian)
 	{
-		return rotate_x(::sin(fRadian), ::cos(fRadian));
+		return rotate_x(::sin(radian), ::cos(radian));
 	}
-	matrix & matrix::rotate_y(float fRadian)
+	Matrix & Matrix::rotate_y(float radian)
 	{
-		return rotate_y(::sin(fRadian), ::cos(fRadian));
+		return rotate_y(::sin(radian), ::cos(radian));
 	}
-	matrix & matrix::rotate_z(float fRadian)
+	Matrix & Matrix::rotate_z(float radian)
 	{
-		return rotate_z(::sin(fRadian), ::cos(fRadian));
+		return rotate_z(::sin(radian), ::cos(radian));
 	}
 
 
-	matrix & matrix::rotate_x(float fSin, float fCos)
+	Matrix & Matrix::rotate_x(float sin, float cos)
 	{
-		*this = matrix(
+		*this = Matrix(
 			1.0f, 0.0f, 0.0f,
-			0.0f, fCos, -fSin,
-			0.0f, fSin, fCos);
+			0.0f, cos, -sin,
+			0.0f, sin, cos);
 
 		return *this;
 	}
-	matrix & matrix::rotate_y(float fSin, float fCos)
+	Matrix & Matrix::rotate_y(float sin, float cos)
 	{
-		*this = matrix(
-			fCos, 0.0f, fSin,
+		*this = Matrix(
+			sin, 0.0f, sin,
 			0.0f, 1.0f, 0.0f,
-			-fSin, 0.0f, fCos);
+			-sin, 0.0f, cos);
 
 		return *this;
 	}
-	matrix & matrix::rotate_z(float fSin, float fCos)
+	Matrix & Matrix::rotate_z(float sin, float cos)
 	{
-		*this = matrix(
-			fCos, -fSin, 0.0f,
-			fSin, fCos, 0.0f,
+		*this = Matrix(
+			cos, -sin, 0.0f,
+			sin, cos, 0.0f,
 			0.0f, 0.0f, 1.0f);
 
 		return *this;
 	}
 
 
-	void matrix::x(float fValue)
+	void Matrix::x(float value)
 	{
-		matrix_(3, 0) = fValue;
+		matrix_(3, 0) = value;
 	}
-	void matrix::y(float fValue)
+	void Matrix::y(float value)
 	{
-		matrix_(3, 1) = fValue;
+		matrix_(3, 1) = value;
 	}
-	void matrix::z(float fValue)
+	void Matrix::z(float value)
 	{
-		matrix_(3, 2) = fValue;
+		matrix_(3, 2) = value;
 	}
-	float  matrix::x() const
+	float  Matrix::x() const
 	{
 		return matrix_(3, 0);
 	}
-	float  matrix::y() const
+	float  Matrix::y() const
 	{
 		return matrix_(3, 1);
 	}
-	float  matrix::z() const
+	float  Matrix::z() const
 	{
 		return matrix_(3, 2);
 	}
-	float matrix::w() const
+	float Matrix::w() const
 	{
 		return matrix_(3, 3);
 	}
 
 
-	const D3DXMATRIX & matrix::dxmat() const
+	const D3DXMATRIX & Matrix::dxmat() const
 	{
 		return matrix_;
 	}
-	const D3DXMATRIX * matrix::dxpointer() const
+	const D3DXMATRIX * Matrix::dxpointer() const
 	{
 		return &dxmat();
 	}

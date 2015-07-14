@@ -12,7 +12,7 @@ namespace si3
 	class Manager;
 
 
-	class sky_dome_mini :public display_object
+	class sky_dome_mini :public DisplayObject
 	{
 	public:
 		sky_dome_mini();

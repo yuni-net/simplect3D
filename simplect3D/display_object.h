@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	class display_object
+	class DisplayObject
 	{
 	public:
 		virtual void draw_no_alpha() const=0;

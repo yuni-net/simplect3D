@@ -3,15 +3,15 @@
 
 #include "si3_coor3.h"
 #include "display_object.h"
-#include "matrix.h"
+#include "Matrix.h"
 #include "MotionData.h"
-#include "ModelData.h"
+#include "ModelData_pmd.h"
 
 namespace si3
 {
 	class Manager;
 
-	class Motion3D :public display_object
+	class Motion3D :public DisplayObject
 	{
 	public:
 		Coor3 pos;
@@ -61,10 +61,10 @@ namespace si3
 
 
 	private:
-		mutable ModelData model_data;
+		mutable ModelData_pmd model_data;
 		mutable MotionData motion_data;
 		BoneMap bone_map;
-		mutable matrix world_mat;
+		mutable Matrix world_mat;
 		LPDIRECT3DDEVICE9 device;
 
 		void compute_world_mat() const;

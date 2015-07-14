@@ -37,17 +37,17 @@ namespace si3
 		@detail この登録はこのフレームでのみ有効であるため、
 		        毎フレーム描画したければ毎フレーム登録し直す必要がある。
 		*/
-		void register_display_object(const display_object & display_objecti);
+		void register_display_object(const DisplayObject & display_objecti);
 
 		/***
 		@brief キーボード情報を管理するクラスのインスタンスを得る。
 		*/
-		const ::si3::key & key() const;
+		const ::si3::Key & key() const;
 
 		/***
 		@brief マウス情報を管理するクラスのインスタンスを得る。
 		*/
-		const ::si3::mouse & mouse() const;
+		const ::si3::Mouse & mouse() const;
 
 		/***
 		@brief サウンド情報を管理するクラスのインスタンスを得る。
@@ -57,8 +57,8 @@ namespace si3
 		/***
 		@brief カメラを管理するクラスのインスタンスを得る。
 		*/
-		::si3::camera & camera();
-		const ::si3::camera & camera() const;
+		::si3::Camera & camera();
+		const ::si3::Camera & camera() const;
 
 		/***
 		@brief ディスプレイを管理するクラスのインスタンスを得る。
@@ -82,10 +82,10 @@ namespace si3
 		fw::Window windowi;
 		DxManager dxm;
 		::si3::DisplayManager displaym;
-		fps60 fps60i;
-		dxlight dxlighti;
-		::si3::camera dxcamerai;
-		dxinput dxinputi;
+		Fps60 fps60i;
+		DxLight dxlighti;
+		::si3::Camera dxcamerai;
+		DxInput dxinputi;
 		sound_manager soundm;
 	};
 }

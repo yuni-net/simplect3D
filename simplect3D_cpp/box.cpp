@@ -1,108 +1,108 @@
 #if 1
 
-#include <box.h>
+#include <Box.h>
 
 namespace si3
 {
-	void box::set_box_data(const box_data & boxd)
+	void Box::set_box_data(const BoxData & boxd)
 	{
 		this->boxd = &boxd;
 	}
 
-	void box::x(float value)
+	void Box::x(float value)
 	{
 		x_ = value;
 	}
-	float box::x() const
+	float Box::x() const
 	{
 		return x_;
 	}
 
-	void box::y(float value)
+	void Box::y(float value)
 	{
 		y_ = value;
 	}
-	float box::y() const
+	float Box::y() const
 	{
 		return y_;
 	}
 
-	void box::z(float value)
+	void Box::z(float value)
 	{
 		z_ = value;
 	}
-	float box::z() const
+	float Box::z() const
 	{
 		return z_;
 	}
 
 
-	float box::rot_x() const
+	float Box::rot_x() const
 	{
 		return rot_x_;
 	}
-	void box::rot_x(float value)
+	void Box::rot_x(float value)
 	{
 		rot_x_ = value;
 	}
 
-	float box::rot_y() const
+	float Box::rot_y() const
 	{
 		return rot_y_;
 	}
-	void box::rot_y(float value)
+	void Box::rot_y(float value)
 	{
 		rot_y_ = value;
 	}
 
-	float box::rot_z() const
+	float Box::rot_z() const
 	{
 		return rot_z_;
 	}
-	void box::rot_z(float value)
+	void Box::rot_z(float value)
 	{
 		rot_z_ = value;
 	}
 
 
-	float box::red() const
+	float Box::red() const
 	{
 		return red_;
 	}
-	void box::red(float value)
+	void Box::red(float value)
 	{
 		red_ = value;
 	}
 
-	float box::green() const
+	float Box::green() const
 	{
 		return green_;
 	}
-	void box::green(float value)
+	void Box::green(float value)
 	{
 		green_ = value;
 	}
 
-	float box::blue() const
+	float Box::blue() const
 	{
 		return blue_;
 	}
-	void box::blue(float value)
+	void Box::blue(float value)
 	{
 		blue_ = value;
 	}
 
-	float box::alpha() const
+	float Box::alpha() const
 	{
 		return alpha_;
 	}
-	void box::alpha(float value)
+	void Box::alpha(float value)
 	{
 		alpha_ = value;
 	}
 
 
-	void box::draw_no_alpha() const
+	void Box::draw_no_alpha() const
 	{
 		if (alpha() < 1.0f)
 		{
@@ -120,15 +120,15 @@ namespace si3
 		// 半透明表示禁止(αブレンディング無効化)
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
-		matrix rotate_mat =
-			matrix().rotate_y(rot_y()) *
-			matrix().rotate_x(rot_x()) *
-			matrix().rotate_z(rot_z());
+		Matrix rotate_mat =
+			Matrix().rotate_y(rot_y()) *
+			Matrix().rotate_x(rot_x()) *
+			Matrix().rotate_z(rot_z());
 
-		matrix parallel_mat;
+		Matrix parallel_mat;
 		parallel_mat.parallel(x(), y(), z());
 
-		matrix world_mat;
+		Matrix world_mat;
 		world_mat = rotate_mat*parallel_mat;
 
 		// ワールド変換行列設定
@@ -148,7 +148,7 @@ namespace si3
 
 		boxd->draw();
 	}
-	void box::draw_alpha() const
+	void Box::draw_alpha() const
 	{
 		if (alpha() >= 1.0f)
 		{
@@ -170,15 +170,15 @@ namespace si3
 		device->SetRenderState(D3DRS_ALPHAREF, 0);
 		device->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
 
-		matrix rotate_mat =
-			matrix().rotate_y(rot_y()) *
-			matrix().rotate_x(rot_x()) *
-			matrix().rotate_z(rot_z());
+		Matrix rotate_mat =
+			Matrix().rotate_y(rot_y()) *
+			Matrix().rotate_x(rot_x()) *
+			Matrix().rotate_z(rot_z());
 
-		matrix parallel_mat;
+		Matrix parallel_mat;
 		parallel_mat.parallel(x(), y(), z());
 
-		matrix world_mat;
+		Matrix world_mat;
 		world_mat = rotate_mat*parallel_mat;
 
 		// ワールド変換行列設定

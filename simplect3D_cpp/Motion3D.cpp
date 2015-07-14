@@ -105,10 +105,10 @@ namespace si3
 
 	void Motion3D::compute_world_mat() const
 	{
-		matrix para_mat;
+		Matrix para_mat;
 		para_mat.parallel(pos.x, pos.y, pos.z);
 
-		matrix rot_mat =
+		Matrix rot_mat =
 			rot_mat.rotate_y(radian.y) *
 			rot_mat.rotate_x(radian.x) *
 			rot_mat.rotate_z(radian.z);

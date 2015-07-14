@@ -9,50 +9,43 @@ namespace si3
 {
 	class Manager;
 
-	class anime_data
+	class AnimeData
 	{
 	public:
 
-		anime_data();
-		anime_data(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
-		anime_data(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
+		AnimeData();
+		AnimeData(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
+		AnimeData(const Manager & manageri, const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
 
-		bool load(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
-		bool load(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum);
+		bool load(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
+		bool load(const Manager & manageri, const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
 
 		uint width() const;
 		uint height() const;
 		uint enable_num() const;
 
-		bool draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint uNo) const;
-		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int BlendMode, uint uNo) const;
+		bool draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint frame_No) const;
+		bool draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int BlendMode, uint frame_No) const;
 
 
 
 
 
-		~anime_data();
+		~AnimeData();
 
 
 	protected:
 
-		uint Width;
-		uint Height;
-		uint uEnableNum;
+		uint width_;
+		uint height_;
+		uint enable_num_;
 
 
 
-		struct land_vertex
-		{
-			D3DVECTOR   pos;
-			D3DVECTOR   normal;
-			float       u, v;
-		};
-
-		class grid
+		class Grid
 		{
 		public:
-			grid(uint uWidth, uint uHeight, float piece_size);
+			Grid(uint width, uint height, float piece_size);
 			int piece_num_x() const;
 			int piece_num_y() const;
 			int piece_num() const;
@@ -85,11 +78,11 @@ namespace si3
 		void construct();
 		void release();
 
-		bool draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint uNo) const;
+		bool draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint frame_No) const;
 
-		bool CreateRectanglePolygon(const top4 & xyz, const top4 & uv, const diffuse & rgba) const;
+		bool CreateRectanglePolygon(const Top4 & xyz, const Top4 & uv, const Diffuse & rgba) const;
 		void DrawWithoutCreatePolygon() const;
-		void compute_world_mat(D3DXMATRIX & mat, const model_coor & coor);
+		void compute_world_mat(D3DXMATRIX & mat, const ModelCoor & coor);
 
 		bool init_vertex(
 			LPDIRECT3DDEVICE9 device,			// in

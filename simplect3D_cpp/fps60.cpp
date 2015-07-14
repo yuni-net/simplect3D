@@ -2,13 +2,13 @@
 
 namespace si3
 {
-	void fps60::init()
+	void Fps60::init()
 	{
 		timeBeginPeriod(1);
 		old_ms = timeGetTime();
 	}
 
-	void fps60::stop_if_need()
+	void Fps60::stop_if_need()
 	{
 		static const float a_second_ms = 1000;
 		static const float fps = 60;
@@ -26,7 +26,7 @@ namespace si3
 		}
 	}
 
-	fps60::~fps60()
+	Fps60::~Fps60()
 	{
 		timeEndPeriod(1);
 	}

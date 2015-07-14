@@ -9,15 +9,18 @@
 namespace si3
 {
 	class Manager;
-	class anime_data;
+	class AnimeData;
 
-	class anime :public display_object
+	/***
+	板ポリに二次元アニメーションを表示するクラス。
+	*/
+	class Anime :public DisplayObject
 	{
 	public:
-		anime();
-	//	anime(const Manager & manageri, const TCHAR * path);
-	//	anime(const Manager & manageri, const std::string & path);
-		anime(const Manager & manageri, const ::si3::anime_data & imaged);
+		Anime();
+	//	Anime(const Manager & manageri, const TCHAR * path);
+	//	Anime(const Manager & manageri, const std::string & path);
+		Anime(const Manager & manageri, const ::si3::AnimeData & imaged);
 
 		// 一つの三角ポリゴンの最大の大きさをここで設定する
 		// 三角ポリゴンの大きさがこれを超えないように、板ポリゴンはいくつかに分割されて管理される
@@ -26,7 +29,7 @@ namespace si3
 
 	//	bool load(const Manager & manageri, const TCHAR * path);
 	//	bool load(const Manager & manageri, const std::string & path);
-		void anime_data(const Manager & manageri, const ::si3::anime_data & imaged);
+		void anime_data(const Manager & manageri, const ::si3::AnimeData & imaged);
 
 		void x(float value);
 		float x() const;
@@ -49,9 +52,15 @@ namespace si3
 		void scale(float value);
 		float scale() const;
 
+		/***
+		画像サイズを得る。
+		*/
 		uint base_width() const;
 		uint base_height() const;
 
+		/***
+		拡大率適用後の画像サイズを得る。
+		*/
 		float width() const;
 		float height() const;
 
@@ -67,9 +76,13 @@ namespace si3
 		void animation_once();
 		void resistor(int v);
 		void replay();
-		bool ifFinalFrame();
+		bool is_final_frame();
 		void set(int nNo);
-		int maxNo();
+
+		/***
+		アニメーションの最後のコマの番号を得る。
+		*/
+		int max_No();
 
 
 
@@ -79,14 +92,14 @@ namespace si3
 		void draw_alpha() const;
 
 
-		~anime();
+		~Anime();
 
 	protected:
 		mutable D3DXMATRIX world_mat;
-		const Manager * pManager;
+		const Manager * manager;
 
 	private:
-		const ::si3::anime_data * animed;
+		const ::si3::AnimeData * animed;
 		bool ownership;
 		D3DMATERIAL9 material_;
 
@@ -98,8 +111,8 @@ namespace si3
 		float rot_z_;
 		float scale_;
 		float piece_size_;
-		int nBlendmode;
-		canimer cnt;
+		int blend_mode;
+		AniCounter cnt;
 
 
 

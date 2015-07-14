@@ -3,80 +3,80 @@
 
 namespace si3
 {
-	int mouse::x() const
+	int Mouse::x() const
 	{
 		return x_;
 	}
-	int mouse::y() const
+	int Mouse::y() const
 	{
 		return y_;
 	}
 
-	int mouse::vx() const
+	int Mouse::vx() const
 	{
 		return vx_;
 	}
-	int mouse::vy() const
+	int Mouse::vy() const
 	{
 		return vy_;
 	}
 
-	int mouse::ax() const
+	int Mouse::ax() const
 	{
 		return ax_;
 	}
-	int mouse::ay() const
+	int Mouse::ay() const
 	{
 		return ay_;
 	}
 
-	int mouse::wheel_forward() const	// マウスホイールの今回のフレームの回転量(前方方向プラス)
+	int Mouse::wheel_forward() const	// マウスホイールの今回のフレームの回転量(前方方向プラス)
 	{
 		return wheel_forward_;
 	}
-	int mouse::wheel_backward() const	// マウスホイールの今回のフレームの回転量(後方方向プラス)
+	int Mouse::wheel_backward() const	// マウスホイールの今回のフレームの回転量(後方方向プラス)
 	{
 		return 0 - wheel_forward_;	// 符号反転
 	}
 
-	bool mouse::freeing(int id) const
+	bool Mouse::freeing(int id) const
 	{
-		return abButtonStatus[bActiveIndex][id] == false;
+		return button_statuses[active_index][id] == false;
 	}
-	bool mouse::pushed(int id) const
+	bool Mouse::pushed(int id) const
 	{
 		return
-			abButtonStatus[!bActiveIndex][id] == false
+			button_statuses[!active_index][id] == false
 			&&
-			abButtonStatus[bActiveIndex][id] == true;
+			button_statuses[active_index][id] == true;
 	}
-	bool mouse::pushing(int id) const
+	bool Mouse::pushing(int id) const
 	{
-		return abButtonStatus[bActiveIndex][id] == true;
+		return button_statuses[active_index][id] == true;
 	}
-	bool mouse::clicked(int id) const
+	bool Mouse::clicked(int id) const
 	{
 		return
-			abButtonStatus[!bActiveIndex][id] == true
+			button_statuses[!active_index][id] == true
 			&&
-			abButtonStatus[bActiveIndex][id] == false;
+			button_statuses[active_index][id] == false;
 	}
 
 
-	mouse::mouse()
+	Mouse::Mouse()
 	{
 		device = nullptr;
 	}
-	bool mouse::init(LPDIRECTINPUT8 & diinterface, HWND windle)
+	bool Mouse::init(LPDIRECTINPUT8 & diinterface, HWND windle)
 	{
 		this->windle = windle;
 
-		bActiveIndex = 0;
+		active_index = 0;
 		for (int n2 = 0; n2 < 2; ++n2)
 		{
 			for (int n3 = 0; n3 < 3; ++n3)
 			{
-				abButtonStatus[n2][n3] = false;
+				button_statuses[n2][n3] = false;
 			}
 		}
 
@@ -88,14 +88,14 @@ namespace si3
 		HRESULT result = diinterface->CreateDevice(GUID_SysMouse, &device, NULL);
 		if (FAILED(result))
 		{
-			fw::popup("failed to create device of mouse");
+			fw::popup("failed to create device of Mouse");
 			return false;
 		}
 
 		result = device->SetDataFormat(&c_dfDIMouse2);
 		if (FAILED(result))
 		{
-			fw::popup("failed to set data-format of mouse");
+			fw::popup("failed to set data-format of Mouse");
 			return false;
 		}
 
@@ -103,7 +103,7 @@ namespace si3
 
 		return true;
 	}
-	void mouse::update()
+	void Mouse::update()
 	{
 		DIMOUSESTATE2 dims;
 		HRESULT result;
@@ -112,10 +112,10 @@ namespace si3
 
 		if (SUCCEEDED(result))
 		{
-			bActiveIndex = !bActiveIndex;
-			abButtonStatus[bActiveIndex][left] = (dims.rgbButtons[0] & (1 << 7)) != 0;
-			abButtonStatus[bActiveIndex][right] = (dims.rgbButtons[1] & (1 << 7)) != 0;
-			abButtonStatus[bActiveIndex][middle] = (dims.rgbButtons[2] & (1 << 7)) != 0;
+			active_index = !active_index;
+			button_statuses[active_index][left] = (dims.rgbButtons[0] & (1 << 7)) != 0;
+			button_statuses[active_index][right] = (dims.rgbButtons[1] & (1 << 7)) != 0;
+			button_statuses[active_index][middle] = (dims.rgbButtons[2] & (1 << 7)) != 0;
 
 			wheel_forward_ = dims.lZ;
 
@@ -124,14 +124,14 @@ namespace si3
 			GetCursorPos(&newxy);
 			ScreenToClient(windle, &newxy);
 
-			int nOldVX = vx_;
-			int nOldVY = vy_;
+			int old_vx = vx_;
+			int old_vy = vy_;
 			vx_ = newxy.x - x_;
 			vy_ = newxy.y - y_;
 			x_ = newxy.x;
 			y_ = newxy.y;
-			ax_ = vx_ - nOldVX;
-			ay_ = vy_ - nOldVY;
+			ax_ = vx_ - old_vx;
+			ay_ = vy_ - old_vy;
 		}
 		else
 		{
@@ -142,7 +142,7 @@ namespace si3
 		}
 	}
 
-	mouse::~mouse()
+	Mouse::~Mouse()
 	{
 		dxsaferelease(device);
 	}

@@ -1,10 +1,10 @@
-#include <camera.h>
-#include <matrix.h>
+#include <Camera.h>
+#include <Matrix.h>
 
 
 namespace si3
 {
-	bool camera::init(LPDIRECT3DDEVICE9 dxdevice, unsigned int screen_width, unsigned int screen_height)
+	bool Camera::init(LPDIRECT3DDEVICE9 dxdevice, unsigned int screen_width, unsigned int screen_height)
 	{
 		const float view_angle = 60.0f;													// 視野角
 		const float aspect_ratio = static_cast<float>(screen_width) / screen_height;	// アスペクト比
@@ -28,30 +28,19 @@ namespace si3
 
 	}
 
-	void camera::update()
+	void Camera::update()
 	{
 		// プロジェクション マトリックス設定
 		dxdevice->SetTransform(D3DTS_PROJECTION, &projection_mat);
 
 
 		// ビュー マトリックス設定
-		matrix rotated_matrix;
+		Matrix rotated_matrix;
 		rotated_matrix.x(camera_coor.x);
 		rotated_matrix.y(camera_coor.y);
 		rotated_matrix.z(camera_coor.z);
 
-		rotated_matrix *= matrix().rotate_x(radian.x)*matrix().rotate_y(radian.y)*matrix().rotate_z(radian.z);
-
-#if 0
-		// ビュー マトリックス設定
-		matrix rotated_matrix;
-		rotated_matrix.x(camera_coor.x - look_coor.x);
-		rotated_matrix.y(camera_coor.y - look_coor.y);
-		rotated_matrix.z(camera_coor.z - look_coor.z);
-
-		rotated_matrix *= matrix().rotate_x(radian.x)*matrix().rotate_y(radian.y)*matrix().rotate_z(radian.z);
-		rotated_matrix *= matrix().trans(look_coor.x, look_coor.y, look_coor.z);
-#endif
+		rotated_matrix *= Matrix().rotate_x(radian.x)*Matrix().rotate_y(radian.y)*Matrix().rotate_z(radian.z);
 
 
 		D3DXVECTOR3 rotated_coor(rotated_matrix.x(), rotated_matrix.y(), rotated_matrix.z());
@@ -74,122 +63,122 @@ namespace si3
 	}
 
 
-	void camera::x(float value)
+	void Camera::x(float value)
 	{
 		camera_coor.x = value;
 	}
-	float camera::x() const
+	float Camera::x() const
 	{
 		return camera_coor.x;
 	}
-	void camera::y(float value)
+	void Camera::y(float value)
 	{
 		camera_coor.y = value;
 	}
-	float camera::y() const
+	float Camera::y() const
 	{
 		return camera_coor.y;
 	}
-	void camera::z(float value)
+	void Camera::z(float value)
 	{
 		camera_coor.z = value;
 	}
-	float camera::z() const
+	float Camera::z() const
 	{
 		return camera_coor.z;
 	}
 
-	void camera::look_x(float value)
+	void Camera::look_x(float value)
 	{
 		look_coor.x = value;
 	}
-	float camera::look_x() const
+	float Camera::look_x() const
 	{
 		return look_coor.x;
 	}
-	void camera::look_y(float value)
+	void Camera::look_y(float value)
 	{
 		look_coor.y = value;
 	}
-	float camera::look_y() const
+	float Camera::look_y() const
 	{
 		return look_coor.y;
 	}
-	void camera::look_z(float value)
+	void Camera::look_z(float value)
 	{
 		look_coor.z = value;
 	}
-	float camera::look_z() const
+	float Camera::look_z() const
 	{
 		return look_coor.z;
 	}
 
-	void camera::up_x(float value)
+	void Camera::up_x(float value)
 	{
 		up_vector.x = value;
 	}
-	float camera::up_x() const
+	float Camera::up_x() const
 	{
 		return up_vector.x;
 	}
-	void camera::up_y(float value)
+	void Camera::up_y(float value)
 	{
 		up_vector.y = value;
 	}
-	float camera::up_y() const
+	float Camera::up_y() const
 	{
 		return up_vector.y;
 	}
-	void camera::up_z(float value)
+	void Camera::up_z(float value)
 	{
 		up_vector.z = value;
 	}
-	float camera::up_z() const
+	float Camera::up_z() const
 	{
 		return up_vector.z;
 	}
 
-	void camera::radian_x(float value)
+	void Camera::radian_x(float value)
 	{
 		radian.x = value;
 	}
-	float camera::radian_x() const
+	float Camera::radian_x() const
 	{
 		return radian.x;
 	}
-	void camera::radian_y(float value)
+	void Camera::radian_y(float value)
 	{
 		radian.y = value;
 	}
-	float camera::radian_y() const
+	float Camera::radian_y() const
 	{
 		return radian.y;
 	}
-	void camera::radian_z(float value)
+	void Camera::radian_z(float value)
 	{
 		radian.z = value;
 	}
-	float camera::radian_z() const
+	float Camera::radian_z() const
 	{
 		return radian.z;
 	}
 
-	const D3DXMATRIX & camera::get_projection_mat() const
+	const D3DXMATRIX & Camera::get_projection_mat() const
 	{
 		return projection_mat;
 	}
 
-	const D3DXMATRIX & camera::view_mat() const
+	const D3DXMATRIX & Camera::view_mat() const
 	{
 		return view_mat_;
 	}
 
-	const D3DXMATRIX & camera::view_rot() const
+	const D3DXMATRIX & Camera::view_rot() const
 	{
 		return view_rot_;
 	}
 
-	float camera::near_clip() const
+	float Camera::near_clip() const
 	{
 		return near_clip_;
 	}

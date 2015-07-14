@@ -2,7 +2,7 @@
 
 namespace si3
 {
-	bool key_system::init(LPDIRECTINPUT8 & diinterface, HWND windle)
+	bool Key_system::init(LPDIRECTINPUT8 & diinterface, HWND windle)
 	{
 		this->windle = windle;
 		this->diinterface = diinterface;
@@ -35,7 +35,7 @@ namespace si3
 		return true;
 	}
 
-	void key_system::update(BYTE * keys)
+	void Key_system::update(BYTE * keys)
 	{
 		HRESULT result;
 
@@ -61,17 +61,17 @@ namespace si3
 
 
 
-	key_system::key_system()
+	Key_system::Key_system()
 	{
 		device = nullptr;
 	}
 
-	key_system::~key_system()
+	Key_system::~Key_system()
 	{
 		release();
 	}
 
-	void key_system::release()
+	void Key_system::release()
 	{
 		if (device)
 		{

@@ -108,6 +108,7 @@
     <ClInclude Include="..\..\simplect3D\manager.h" />
     <ClInclude Include="..\..\simplect3D\matrix.h" />
     <ClInclude Include="..\..\simplect3D\model.h" />
+    <ClInclude Include="..\..\simplect3D\ModelData_pmd.h" />
     <ClInclude Include="..\..\simplect3D\model_coor.h" />
     <ClInclude Include="..\..\simplect3D\model_data.h" />
     <ClInclude Include="..\..\simplect3D\mouse.h" />
@@ -158,7 +159,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\manager.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\matrix.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\model.cpp" />
-    <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\ModelData_pmd.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp" />

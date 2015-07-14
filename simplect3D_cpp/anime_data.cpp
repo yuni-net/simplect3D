@@ -4,24 +4,15 @@
 #include <top4.h>
 #include <diffuse.h>
 #include <model_coor.h>
-
-// max_vertex = 11*11
-// 科リング有効（表のみ描画）
-// device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);カリング有効
-// device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);カリング無効
+#include <saferelease.h>
+#include <si3_top_type.h>
 
 
 static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-struct land_vertex
-{
-	D3DVECTOR   pos;
-	D3DVECTOR   normal;
-	float       u, v;
-};
 
 
-bool si3::anime_data::init_vertex(
+bool si3::AnimeData::init_vertex(
 	LPDIRECT3DDEVICE9 device,			// in
 	int top_num_x,						// in
 	int top_num_y,						// in
@@ -36,7 +27,7 @@ bool si3::anime_data::init_vertex(
 
 	// 頂点情報格納バッファを作成
 	hr = device->CreateVertexBuffer(
-		sizeof(land_vertex)* top_num,
+		sizeof(DxTop)* top_num,
 		D3DUSAGE_WRITEONLY,
 		LAND_FVF,
 		D3DPOOL_MANAGED,
@@ -46,7 +37,7 @@ bool si3::anime_data::init_vertex(
 	if (FAILED(hr)) return false;
 
 	// バッファをロックをして書き込みを開始する
-	land_vertex * pVtx = nullptr;
+	DxTop * pVtx = nullptr;
 	hr = (*vertbuff)->Lock(0, 0, fw::pointer_cast<void **>(&pVtx), 0);
 	if (FAILED(hr)) return false;
 
@@ -62,7 +53,7 @@ bool si3::anime_data::init_vertex(
 	{
 		for (int index_x = 0; index_x < top_num_x; ++index_x)	// 左の列から右の列へ頂点情報を格納してゆく
 		{
-			land_vertex & vertex = pVtx[target_index];
+			DxTop & vertex = pVtx[target_index];
 
 			vertex.pos.x = static_cast<float>(width*index_x) / piece_num_x - width / 2.0f;
 			vertex.pos.y = static_cast<float>(height*(top_num_y - 1 - index_y)) / piece_num_y - height / 2.0f;
@@ -83,7 +74,7 @@ bool si3::anime_data::init_vertex(
 	return true;
 }
 
-bool si3::anime_data::init_index(
+bool si3::AnimeData::init_index(
 	LPDIRECT3DDEVICE9 device,			// in
 	int index_num,						// in
 	IDirect3DIndexBuffer9 ** indexbuff,	// out
@@ -147,7 +138,7 @@ bool si3::anime_data::init_index(
 }
 
 
-bool si3::anime_data::draw(
+bool si3::AnimeData::draw(
 	LPDIRECT3DDEVICE9 device,
 	const D3DXMATRIX & world_mat,
 	LPDIRECT3DTEXTURE9 texture,
@@ -169,7 +160,7 @@ bool si3::anime_data::draw(
 	//テクスチャ設定
 	device->SetTexture(0, texture);
 
-	device->SetStreamSource(0, vertbuff, 0, sizeof(land_vertex));
+	device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 	device->SetIndices(indexbuff);
 
 	device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
@@ -193,67 +184,67 @@ bool si3::anime_data::draw(
 
 namespace si3
 {
-	anime_data::grid::grid(uint uWidth, uint uHeight, float piece_size)
+	AnimeData::Grid::Grid(uint width, uint height, float piece_size)
 	{
 		// todo
 	}
-	int anime_data::grid::piece_num_x() const
+	int AnimeData::Grid::piece_num_x() const
 	{
 		return piece_num_x_;
 	}
-	int anime_data::grid::piece_num_y() const
+	int AnimeData::Grid::piece_num_y() const
 	{
 		return piece_num_y_;
 	}
-	int anime_data::grid::piece_num() const
+	int AnimeData::Grid::piece_num() const
 	{
 		return piece_num_;
 	}
-	int anime_data::grid::top_num_x() const
+	int AnimeData::Grid::top_num_x() const
 	{
 		return top_num_x_;
 	}
-	int anime_data::grid::top_num_y() const
+	int AnimeData::Grid::top_num_y() const
 	{
 		return top_num_y_;
 	}
-	int anime_data::grid::top_num() const
+	int AnimeData::Grid::top_num() const
 	{
 		return top_num_;
 	}
-	int anime_data::grid::index_num() const
+	int AnimeData::Grid::index_num() const
 	{
 		return index_num_;
 	}
-	int anime_data::grid::triangle_num() const
+	int AnimeData::Grid::triangle_num() const
 	{
 		return triangle_num_;
 	}
 
 
-	anime_data::anime_data()
+	AnimeData::AnimeData()
 	{
 		construct();
 	}
-	anime_data::anime_data(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	AnimeData::AnimeData(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
 	{
 		construct();
-		load(manageri, path, piece_size, uPieceWidth, uPieceHeight, uEnableNum);
+		load(manageri, path, piece_size, piece_width, piece_height, enable_num);
 	}
-	anime_data::anime_data(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	AnimeData::AnimeData(const Manager & manageri, const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
 	{
 		construct();
-		load(manageri, path, piece_size, uPieceWidth, uPieceHeight, uEnableNum);
+		load(manageri, path, piece_size, piece_width, piece_height, enable_num);
 	}
 
-	bool anime_data::load(const Manager & manageri, const char * path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	bool AnimeData::load(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
 	{
 		release();
 
 		device = manageri.get_dxdevice();
-		this->uEnableNum = uEnableNum;
-		Width = uPieceWidth;	// 1コマの横幅
-		Height = uPieceHeight;	// 1コマの縦幅
+		this->enable_num_ = enable_num;
+		width_ = piece_width;	// 1コマの横幅
+		height_ = piece_height;	// 1コマの縦幅
 
 		HRESULT hr;
 
@@ -265,14 +256,14 @@ namespace si3
 		uint all_width = info.Width;	// 画像全体の横幅
 		uint all_height = info.Height;	// 画像全体の縦幅
 
-		uint frame_num_x = all_width / Width;		// 横に何コマ格納されているか
-		uint frame_num_y = all_height / Height;		// 縦に何コマ格納されているか
+		uint frame_num_x = all_width / width_;		// 横に何コマ格納されているか
+		uint frame_num_y = all_height / height_;		// 縦に何コマ格納されているか
 		uint frame_num = frame_num_x*frame_num_y;	// 画像全体で何コマ格納されているか
 
-		int piece_num_x = static_cast<int>(Width / piece_size)+1;			// 1コマの範囲で、格子状に分割したときの列数
-		float whole_piece_width = static_cast<float>(Width) / piece_num_x;	// 格子状に分割したときの1ピースの横幅
-		int piece_num_y = static_cast<int>(Height / piece_size)+1;			// 1コマの範囲で、格子状に分割したときの行数
-		float whole_piece_height = static_cast<float>(Height) / piece_num_y;// 格子状に分割したときの1ピースの縦幅
+		int piece_num_x = static_cast<int>(width_ / piece_size)+1;			// 1コマの範囲で、格子状に分割したときの列数
+		float whole_piece_width = static_cast<float>(width_) / piece_num_x;	// 格子状に分割したときの1ピースの横幅
+		int piece_num_y = static_cast<int>(height_ / piece_size)+1;			// 1コマの範囲で、格子状に分割したときの行数
+		float whole_piece_height = static_cast<float>(height_) / piece_num_y;// 格子状に分割したときの1ピースの縦幅
 
 		int whole_piece_num_x = piece_num_x*frame_num_x;	// 板ポリゴンを格子状に分割管理したときの列数
 		int whole_piece_num_y = piece_num_y*frame_num_y;	// 板ポリゴンを格子状に分割管理したときの行数
@@ -323,7 +314,7 @@ namespace si3
 
 		// 頂点情報格納バッファを作成
 		hr = device->CreateVertexBuffer(
-			sizeof(land_vertex)* c_nTotalTopNum,
+			sizeof(DxTop)* c_nTotalTopNum,
 			D3DUSAGE_WRITEONLY,
 			LAND_FVF,
 			D3DPOOL_MANAGED,
@@ -333,7 +324,7 @@ namespace si3
 		if (FAILED(hr)) return false;
 
 		// バッファをロックをして書き込みを開始する
-		land_vertex * pVtx = nullptr;
+		DxTop * pVtx = nullptr;
 		hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&pVtx), 0);
 		if (FAILED(hr)) return false;
 
@@ -353,19 +344,19 @@ namespace si3
 				{
 					for (int index_x = 0; index_x < top_num_x; ++index_x)	// 左の列から右の列へ頂点情報を格納してゆく
 					{
-						land_vertex & vertex = pVtx[target_index];
+						DxTop & vertex = pVtx[target_index];
 
 						float x = whole_piece_width*index_x;
 						float y = whole_piece_height*(top_num_y - 1 - index_y);
 
-						vertex.pos.x = x - Width / 2.0f;
-						vertex.pos.y = y - Height / 2.0f;
+						vertex.pos.x = x - width_ / 2.0f;
+						vertex.pos.y = y - height_ / 2.0f;
 						vertex.pos.z = 0.0f;
 						vertex.normal.x = 0.0f;
 						vertex.normal.y = 0.0f;
 						vertex.normal.z = -1.0f;
-						vertex.u = (x + Width*uFrameXNo) / all_width;
-						vertex.v = (y + Height*uFrameYNo) / all_height;
+						vertex.u = (x + width_*uFrameXNo) / all_width;
+						vertex.v = (y + height_*uFrameYNo) / all_height;
 
 						++target_index;
 					}
@@ -432,26 +423,26 @@ namespace si3
 
 		return true;
 	}
-	bool anime_data::load(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	bool AnimeData::load(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
 	{
 		return load(manageri, path.c_str(), piece_size, uPieceWidth, uPieceHeight, uEnableNum);
 	}
 
-	uint anime_data::width() const
+	uint AnimeData::width() const
 	{
-		return Width;
+		return width_;
 	}
-	uint anime_data::height() const
+	uint AnimeData::height() const
 	{
-		return Height;
-	}
-
-	uint anime_data::enable_num() const
-	{
-		return uEnableNum;
+		return height_;
 	}
 
-	void anime_data::compute_world_mat(D3DXMATRIX & mat, const model_coor & coor)
+	uint AnimeData::enable_num() const
+	{
+		return enable_num_;
+	}
+
+	void AnimeData::compute_world_mat(D3DXMATRIX & mat, const ModelCoor & coor)
 	{
 		D3DXMATRIX matRot, matMove;
 		D3DXMatrixRotationYawPitchRoll(&matRot, coor.radian_y, coor.radian_x, coor.radian_z);
@@ -459,7 +450,7 @@ namespace si3
 		D3DXMatrixMultiply(&mat, &matRot, &matMove);
 	}
 
-	bool anime_data::draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint uNo) const
+	bool AnimeData::draw_no_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint frame_No) const
 	{
 		// αテスト禁止
 		device->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
@@ -468,9 +459,9 @@ namespace si3
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
 
-		return draw(world_mat, material, uNo);
+		return draw(world_mat, material, frame_No);
 	}
-	bool anime_data::draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int nBlendmode, uint uNo) const
+	bool AnimeData::draw_alpha(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, int nBlendmode, uint frame_No) const
 	{
 		// 半透明表示を可能にする(αブレンディング有効化)
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
@@ -498,7 +489,7 @@ namespace si3
 			device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 		}
 
-		bool result = draw(world_mat, material, uNo);
+		bool result = draw(world_mat, material, frame_No);
 
 		// 加算合成解除
 		if (nBlendmode == BlendMode::add)
@@ -520,7 +511,7 @@ namespace si3
 	}
 
 
-	bool anime_data::draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint uNo) const
+	bool AnimeData::draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material, uint frame_No) const
 	{
 		// ワールド変換行列設定
 		device->SetTransform(D3DTS_WORLD, &world_mat);
@@ -534,7 +525,7 @@ namespace si3
 		//テクスチャ設定
 		device->SetTexture(0, texture);
 
-		device->SetStreamSource(0, vertbuff, 0, sizeof(land_vertex));
+		device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 		device->SetIndices(indexbuff);
 
 		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
@@ -544,7 +535,7 @@ namespace si3
 		//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 		//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_POINT);
 
-		uint beg_index = index_num*uNo;
+		uint beg_index = index_num*frame_No;
 
 		// プリミティブ描画
 		device->DrawIndexedPrimitive(
@@ -559,21 +550,21 @@ namespace si3
 	}
 
 
-	void anime_data::release()
+	void AnimeData::release()
 	{
 		dxsaferelease(texture);
 		dxsaferelease(vertbuff);
 		dxsaferelease(indexbuff);
 	}
 
-	anime_data::~anime_data()
+	AnimeData::~AnimeData()
 	{
 		release();
 	}
 
 
 
-	void anime_data::construct()
+	void AnimeData::construct()
 	{
 		texture = nullptr;
 		vertbuff = nullptr;
@@ -619,7 +610,7 @@ namespace si3
 
 static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-struct land_vertex
+struct DxTop
 {
 	D3DVECTOR   pos;
 	D3DVECTOR   normal;
@@ -651,7 +642,7 @@ bool init_vertex(
 
 	// 頂点情報格納バッファを作成
 	hr = device->CreateVertexBuffer(
-		sizeof(land_vertex)* top_num,
+		sizeof(DxTop)* top_num,
 		D3DUSAGE_WRITEONLY,
 		LAND_FVF,
 		D3DPOOL_MANAGED,
@@ -661,7 +652,7 @@ bool init_vertex(
 	if (FAILED(hr)) return false;
  
 	// バッファをロックをして書き込みを開始する
-	land_vertex * pVtx = nullptr;
+	DxTop * pVtx = nullptr;
 	hr = (*vertbuff)->Lock(0, 0, fw::pointer_cast<void **>(&pVtx), 0);
 	if (FAILED(hr)) return false;
 
@@ -677,7 +668,7 @@ bool init_vertex(
 	{
 		for (int index_x = 0; index_x < top_num_x; ++index_x)	// 左の列から右の列へ頂点情報を格納してゆく
 		{
-			land_vertex & vertex = pVtx[target_index];
+			DxTop & vertex = pVtx[target_index];
 
 			vertex.pos.x = static_cast<float>(width*index_x) / piece_num_x -width/2.0f;
 			vertex.pos.y = 0.0f;
@@ -878,7 +869,7 @@ bool draw(
 	//テクスチャ設定
 	device->SetTexture(0, texture);
 
-	device->SetStreamSource(0, vertbuff, 0, sizeof(land_vertex));
+	device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 	device->SetIndices(indexbuff);
 
 	device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
@@ -964,7 +955,7 @@ namespace si3
 		}
 
 		hr = device->CreateVertexBuffer(
-			sizeof(land_vertex)* top_num,
+			sizeof(DxTop)* top_num,
 			D3DUSAGE_WRITEONLY,
 			LAND_FVF,
 			D3DPOOL_MANAGED,
@@ -976,7 +967,7 @@ namespace si3
 			return false;
 		}
 
-		land_vertex * pVtx = nullptr;
+		DxTop * pVtx = nullptr;
 		hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&pVtx), 0);
 		if (FAILED(hr)) return false;
 
@@ -985,7 +976,7 @@ namespace si3
 		{
 			for (int index_x = 0; index_x < top_num_x; ++index_x)
 			{
-				land_vertex & vertex = pVtx[target_index];
+				DxTop & vertex = pVtx[target_index];
 
 				vertex.pos.x = static_cast<float>(Width*index_x) / piece_num_x;
 				vertex.pos.y = 0.0f;
@@ -1081,7 +1072,7 @@ namespace si3
 		return Height;
 	}
 
-	void compute_world_mat(D3DXMATRIX & mat, const model_coor & coor)
+	void compute_world_mat(D3DXMATRIX & mat, const ModelCoor & coor)
 	{
 		D3DXMATRIX matRot, matMove;
 		D3DXMatrixRotationYawPitchRoll(&matRot, coor.radian_y, coor.radian_x, coor.radian_z);
@@ -1119,7 +1110,7 @@ namespace si3
 		//テクスチャ設定
 		device->SetTexture(0, texture);
 
-		device->SetStreamSource(0, vertbuff, 0, sizeof(land_vertex));
+		device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 		device->SetIndices(indexbuff);
 
 		//device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);

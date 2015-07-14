@@ -2,7 +2,7 @@
 #define si3_BonedTop_h_
 
 #include "si3_top_type.h"
-#include "matrix.h"
+#include "Matrix.h"
 #include "Top_pmd.h"
 
 namespace si3
@@ -14,15 +14,15 @@ namespace si3
 
 		void renew_tops(
 			DxTop * top_buffer,
-			const matrix & trans_mat,
-			const matrix & rot_mat) const;
+			const Matrix & trans_mat,
+			const Matrix & rot_mat) const;
 
 
 
 	private:
 		int top_index;
-		matrix pos_mat;
-		matrix normal_mat;
+		Matrix pos_mat;
+		Matrix normal_mat;
 	};
 }
 

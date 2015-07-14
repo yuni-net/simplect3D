@@ -109,7 +109,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\matrix.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\model.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\bunisher.cpp" />
-    <ClCompile Include="..\..\simplect3D_cpp\ModelData.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\ModelData_pmd.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\BoneMap.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp" />
@@ -141,7 +141,7 @@
     <ClInclude Include="..\..\simplect3D\BoneBranch.h" />
     <ClInclude Include="..\..\simplect3D\BoneMotion.h" />
     <ClInclude Include="..\..\simplect3D\BonedTop.h" />
-    <ClInclude Include="..\..\simplect3D\ModelData.h" />
+    <ClInclude Include="..\..\simplect3D\ModelData_pmd.h" />
     <ClInclude Include="..\..\simplect3D\BoneMap.h" />
     <ClInclude Include="..\..\simplect3D\Motion3D.h" />
     <ClInclude Include="..\..\simplect3D\MotionData.h" />

@@ -17,11 +17,11 @@ namespace si3
 
 	void BonedTop::renew_tops(
 		DxTop * top_buffer,
-		const matrix & trans_mat,
-		const matrix & rot_mat) const
+		const Matrix & trans_mat,
+		const Matrix & rot_mat) const
 	{
-		matrix new_pos_mat = pos_mat * trans_mat;
-		matrix new_normal_mat = normal_mat * rot_mat;
+		Matrix new_pos_mat = pos_mat * trans_mat;
+		Matrix new_normal_mat = normal_mat * rot_mat;
 
 		DxTop & top = top_buffer[top_index];
 
