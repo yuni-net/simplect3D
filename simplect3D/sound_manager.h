@@ -21,12 +21,12 @@ namespace si3
 		~sound_manager();
 
 	private:
-		fw::vector<const char *> idpath_list;
+		fw::Array<const char *> idpath_list;
 
 
 		LPDIRECTSOUND8 dxs;
 		LPDIRECTSOUNDBUFFER primarysb;
-		fw::window window_;
+		fw::Window window_;
 	};
 }
 

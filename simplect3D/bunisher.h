@@ -62,7 +62,7 @@ namespace si3
 		const manager * si3m;
 		LPDIRECT3DDEVICE9 device;
 		IDirect3DVertexBuffer9 * listbuff;
-	//	fw::vector<attbute> attbute_list;
+	//	fw::Array<attbute> attbute_list;
 	//	IDirect3DIndexBuffer9 * indexbuff;
 
 		unsigned long triangle_num;

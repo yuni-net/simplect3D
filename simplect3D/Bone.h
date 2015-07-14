@@ -19,7 +19,7 @@ namespace si3
 
 
 	private:
-		fw::vector<BonedTop> boned_top_list;
+		fw::Array<BonedTop> boned_top_list;
 	};
 }
 

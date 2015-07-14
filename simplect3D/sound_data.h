@@ -22,7 +22,7 @@ namespace si3
 		uint uID;
 		manager * si3mp;
 
-		fw::wav wav_data;
+		fw::Wav wav_data;
 		WAVEFORMATEX wfe;
 		DSBUFFERDESC dsbdesc;
 

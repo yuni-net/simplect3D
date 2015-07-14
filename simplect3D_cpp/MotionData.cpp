@@ -23,7 +23,7 @@ namespace si3
 
 		final_frame = 0;
 
-		fw::bfile file(path);
+		fw::Binfile file(path);
 		file.open_to_read();
 
 		Header header;

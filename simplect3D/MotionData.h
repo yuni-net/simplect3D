@@ -81,7 +81,7 @@ namespace si3
 		int now_frame;
 		int final_frame;
 		bool did_seek_first;
-		fw::vector<BoneMotion> motion_list;
+		fw::Array<BoneMotion> motion_list;
 	};
 }
 

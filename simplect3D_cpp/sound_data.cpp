@@ -23,13 +23,13 @@ namespace si3
 
 		// セカンダリ・バッファを作成する
 		// WAVEFORMATEX構造体を設定
-		wfe.wFormatTag = wav_data.wFormatTag();
-		wfe.nChannels = wav_data.nChannels();
-		wfe.nSamplesPerSec = wav_data.nSamplesPerSec();
-		wfe.nAvgBytesPerSec = wav_data.nAvgBytesPerSec();
-		wfe.nBlockAlign = wav_data.nBlockAlign();
-		wfe.wBitsPerSample = wav_data.wBitsPerSample();
-		wfe.cbSize = wav_data.cbSize();
+		wfe.wFormatTag = wav_data.format_tag();
+		wfe.nChannels = wav_data.channels();
+		wfe.nSamplesPerSec = wav_data.samples_per_sec();
+		wfe.nAvgBytesPerSec = wav_data.avg_bytes_per_sec();
+		wfe.nBlockAlign = wav_data.block_align();
+		wfe.wBitsPerSample = wav_data.bits_per_sample();
+		wfe.cbSize = wav_data.pwf_size();
 
 		// DSBUFFERDESC構造体を設定
 		ZeroMemory(&dsbdesc, sizeof(DSBUFFERDESC));

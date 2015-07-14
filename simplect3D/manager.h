@@ -54,7 +54,7 @@ namespace si3
 		const LPDIRECT3DDEVICE9 get_dxdevice() const;
 
 	private:
-		fw::window windowi;
+		fw::Window windowi;
 		dxmanager dxm;
 		::si3::display_manager displaym;
 		fps60 fps60i;

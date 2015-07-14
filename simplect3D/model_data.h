@@ -62,7 +62,7 @@ namespace si3
 #pragma pack(pop)
 
 		LPDIRECT3DDEVICE9 device;
-		fw::vector<attbute> attbute_list;
+		fw::Array<attbute> attbute_list;
 		IDirect3DVertexBuffer9 * vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		unsigned long index_num_;

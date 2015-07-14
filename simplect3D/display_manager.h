@@ -6,7 +6,7 @@
 
 namespace si3
 {
-	typedef fw::vector<const display_object *> vdisplay_object;
+	typedef fw::Array<const display_object *> vdisplay_object;
 
 	class display_manager
 	{

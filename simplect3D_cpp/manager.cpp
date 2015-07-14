@@ -31,7 +31,7 @@ namespace si3
 	{
 		dxinputi.update();
 		// todo
-		return fw::window::processage();
+		return fw::Window::processage();
 	}
 
 	void manager::register_display_object(const display_object & display_objecti)

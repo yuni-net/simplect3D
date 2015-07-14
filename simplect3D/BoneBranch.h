@@ -32,7 +32,7 @@ namespace si3
 		int bone_No;
 		coor3 bone_pos;
 		Bone bone;
-		fw::vector<BoneBranch *> child_list;
+		fw::Array<BoneBranch *> child_list;
 	};
 
 }

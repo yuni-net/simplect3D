@@ -33,7 +33,7 @@ namespace si3
 
 		~se();
 	private:
-		fw::vector<unique_sound> se_list;
+		fw::Array<unique_sound> se_list;
 		int nNextIndex;
 		const sound_data * pSoundData;
 		bool bOwnerShip;
