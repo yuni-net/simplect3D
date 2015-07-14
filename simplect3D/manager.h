@@ -63,7 +63,7 @@ namespace si3
 		/***
 		@brief ディスプレイを管理するクラスのインスタンスを得る。
 		*/
-		::si3::DisplayManager & DisplayManager();
+		::si3::DisplayManager & display_manager();
 
 
 		/*

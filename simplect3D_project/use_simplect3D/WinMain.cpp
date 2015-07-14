@@ -22,11 +22,11 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	const si3::Key & key = si3m.key();
 	si3::Camera & camera = si3m.camera();
 	const si3::Mouse & mouse = si3m.mouse();
-	auto & displaym = si3m.DisplayManager();
+	auto & displaym = si3m.display_manager();
 
 	displaym.context_color(1.0f, 1.0f, 1.0f);
 
-	auto & skydome = si3m.DisplayManager().get_skydome();
+	auto & skydome = si3m.display_manager().get_skydome();
 	skydome.load(si3m, "data/orange.jpg");
 
 	camera.x(0.0f);
