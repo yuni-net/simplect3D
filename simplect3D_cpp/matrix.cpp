@@ -113,35 +113,35 @@ namespace si3
 
 
 
-	Matrix & Matrix::parallel(float fVX, float fVY, float fVZ)
+	Matrix & Matrix::parallel(float vx, float vy, float vz)
 	{
 		*this = Matrix(
 			1.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f,
 			0.0f, 0.0f, 1.0f);
 
-		x(fVX);
-		y(fVY);
-		z(fVZ);
+		x(vx);
+		y(vy);
+		z(vz);
 
 		return *this;
 	}
-	Matrix & Matrix::scale(float fMagniX, float fMagniY, float fMagniZ)
+	Matrix & Matrix::scale(float magni_x, float magni_y, float magni_z)
 	{
 		*this = Matrix(
-			fMagniX, 0.0f, 0.0f,
-			0.0f, fMagniY, 0.0f,
-			0.0f, 0.0f, fMagniZ);
+			magni_x, 0.0f, 0.0f,
+			0.0f, magni_y, 0.0f,
+			0.0f, 0.0f, magni_z);
 
 		return *this;
 	}
-	Matrix & Matrix::rotate(float fRadian)
+	Matrix & Matrix::rotate(float radian)
 	{
-		return rotate_z(fRadian);
+		return rotate_z(radian);
 	}
-	Matrix & Matrix::rotate(float fSin, float fCos)
+	Matrix & Matrix::rotate(float sin_, float cos_)
 	{
-		return rotate_z(fSin, fCos);
+		return rotate_z(sin_, cos_);
 	}
 	Matrix & Matrix::affine(const Matrix & scale, const Matrix & rotate, const Matrix & trans)
 	{
@@ -149,60 +149,60 @@ namespace si3
 		return *this;
 	}
 
-	Matrix & Matrix::rotate_x(float fRadian)
+	Matrix & Matrix::rotate_x(float radian)
 	{
-		return rotate_x(::sin(fRadian), ::cos(fRadian));
+		return rotate_x(::sin(radian), ::cos(radian));
 	}
-	Matrix & Matrix::rotate_y(float fRadian)
+	Matrix & Matrix::rotate_y(float radian)
 	{
-		return rotate_y(::sin(fRadian), ::cos(fRadian));
+		return rotate_y(::sin(radian), ::cos(radian));
 	}
-	Matrix & Matrix::rotate_z(float fRadian)
+	Matrix & Matrix::rotate_z(float radian)
 	{
-		return rotate_z(::sin(fRadian), ::cos(fRadian));
+		return rotate_z(::sin(radian), ::cos(radian));
 	}
 
 
-	Matrix & Matrix::rotate_x(float fSin, float fCos)
+	Matrix & Matrix::rotate_x(float sin_, float cos_)
 	{
 		*this = Matrix(
 			1.0f, 0.0f, 0.0f,
-			0.0f, fCos, -fSin,
-			0.0f, fSin, fCos);
+			0.0f, cos_, -sin_,
+			0.0f, sin_, cos_);
 
 		return *this;
 	}
-	Matrix & Matrix::rotate_y(float fSin, float fCos)
+	Matrix & Matrix::rotate_y(float sin_, float cos_)
 	{
 		*this = Matrix(
-			fCos, 0.0f, fSin,
+			cos_, 0.0f, sin_,
 			0.0f, 1.0f, 0.0f,
-			-fSin, 0.0f, fCos);
+			-sin_, 0.0f, cos_);
 
 		return *this;
 	}
-	Matrix & Matrix::rotate_z(float fSin, float fCos)
+	Matrix & Matrix::rotate_z(float sin_, float cos_)
 	{
 		*this = Matrix(
-			fCos, -fSin, 0.0f,
-			fSin, fCos, 0.0f,
+			cos_, -sin_, 0.0f,
+			sin_, cos_, 0.0f,
 			0.0f, 0.0f, 1.0f);
 
 		return *this;
 	}
 
 
-	void Matrix::x(float fValue)
+	void Matrix::x(float value)
 	{
-		matrix_(3, 0) = fValue;
+		matrix_(3, 0) = value;
 	}
-	void Matrix::y(float fValue)
+	void Matrix::y(float value)
 	{
-		matrix_(3, 1) = fValue;
+		matrix_(3, 1) = value;
 	}
-	void Matrix::z(float fValue)
+	void Matrix::z(float value)
 	{
-		matrix_(3, 2) = fValue;
+		matrix_(3, 2) = value;
 	}
 	float  Matrix::x() const
 	{

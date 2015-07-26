@@ -27,9 +27,9 @@ namespace si3
 		Matrix operator*(const Matrix & mat) const;
 		Matrix & operator*=(const Matrix & mat);
 
-		void x(float fValue);
-		void y(float fValue);
-		void z(float fValue);
+		void x(float value);
+		void y(float value);
+		void z(float value);
 		float  x() const;
 		float  y() const;
 		float  z() const;
@@ -37,19 +37,19 @@ namespace si3
 
 		// 自身の行列を設定する。自身の行列にさらに掛け合わせるわけではない **************
 
-		Matrix & parallel(float fVX, float fVY, float fVZ);
-		Matrix & scale(float fMagniX, float fMagniY, float fMagniZ);
-		Matrix & rotate(float fRadian);			// rotate_zと等価
-		Matrix & rotate(float fSin, float fCos);	// rotate_zと等価
+		Matrix & parallel(float vx, float vy, float vz);
+		Matrix & scale(float magni_x, float magni_y, float magni_z);
+		Matrix & rotate(float radian);			// rotate_zと等価
+		Matrix & rotate(float sin_, float cos_);	// rotate_zと等価
 		Matrix & affine(const Matrix & scale, const Matrix & rotate, const Matrix & trans);
 
-		Matrix & rotate_x(float fRadian);
-		Matrix & rotate_y(float fRadian);
-		Matrix & rotate_z(float fRadian);
+		Matrix & rotate_x(float radian);
+		Matrix & rotate_y(float radian);
+		Matrix & rotate_z(float radian);
 
-		Matrix & rotate_x(float fSin, float fCos);
-		Matrix & rotate_y(float fSin, float fCos);
-		Matrix & rotate_z(float fSin, float fCos);
+		Matrix & rotate_x(float sin_, float cos_);
+		Matrix & rotate_y(float sin_, float cos_);
+		Matrix & rotate_z(float sin_, float cos_);
 
 		// *******************************************************************************
 
