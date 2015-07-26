@@ -1,6 +1,6 @@
-#include <Model.h>
-#include <Manager.h>
-#include <model_data.h>
+#include <si3_Model.h>
+#include <si3_Manager.h>
+#include <si3_modeldata.h>
 
 namespace si3
 {

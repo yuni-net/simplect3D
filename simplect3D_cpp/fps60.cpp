@@ -1,4 +1,4 @@
-#include <fps60.h>
+#include <si3_fps60.h>
 
 namespace si3
 {

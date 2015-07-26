@@ -1,9 +1,9 @@
-#include <ModelData_pmd.h>
-#include <Manager.h>
-#include <MotionData.h>
-#include <Top_pmd.h>
+#include <si3_ModelData_pmd.h>
+#include <si3_Manager.h>
+#include <si3_MotionData.h>
+#include <si3_Top_pmd.h>
 #include <cstdint>
-#include <BoneMap.h>
+#include <si3_BoneMap.h>
 
 namespace si3
 {

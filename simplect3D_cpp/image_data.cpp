@@ -1,9 +1,9 @@
-#include <image_data.h>
-#include <Manager.h>
-#include <utility.h>
-#include <top4.h>
-#include <diffuse.h>
-#include <model_coor.h>
+#include <si3_ImageData.h>
+#include <si3_Manager.h>
+#include <si3_utility.h>
+#include <si3_Top4.h>
+#include <si3_Diffuse.h>
+#include <si3_ModelCoor.h>
 
 
 

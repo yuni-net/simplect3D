@@ -1,4 +1,4 @@
-#include <Bone.h>
+#include <si3_Bone.h>
 
 namespace si3
 {

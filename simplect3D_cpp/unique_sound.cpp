@@ -1,6 +1,6 @@
-#include "unique_sound.h"
-#include "Manager.h"
-#include "saferelease.h"
+#include "si3_UniqueSound.h"
+#include "si3_Manager.h"
+#include "si3_saferelease.h"
 
 namespace si3
 {

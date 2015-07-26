@@ -1,4 +1,4 @@
-#include "Manager.h"
+#include "si3_Manager.h"
 
 
 namespace si3

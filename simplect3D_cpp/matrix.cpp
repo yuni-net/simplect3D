@@ -1,4 +1,4 @@
-#include <matrix.h>
+#include <si3_Matrix.h>
 #include <assert.h>
 
 namespace si3

@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <BoneMotion.h>
+#include <si3_BoneMotion.h>
 
 namespace si3
 {

@@ -1,5 +1,5 @@
-#include "sound_manager.h"
-#include "saferelease.h"
+#include "si3_SoundManager.h"
+#include "si3_saferelease.h"
 
 namespace si3
 {

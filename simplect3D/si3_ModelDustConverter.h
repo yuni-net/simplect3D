@@ -1,8 +1,8 @@
 #ifndef si3_ModelDustConverter_h_
 #define si3_ModelDustConverter_h_
 
-#include "utility.h"
-#include "bunish_data.h"
+#include "si3_utility.h"
+#include "si3_BunishData.h"
 
 namespace si3
 {

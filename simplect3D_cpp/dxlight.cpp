@@ -1,4 +1,4 @@
-#include <dxlight.h>
+#include <si3_DxLight.h>
 
 namespace si3
 {

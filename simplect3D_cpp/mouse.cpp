@@ -1,5 +1,5 @@
-#include <mouse.h>
-#include <utility.h>
+#include <si3_Mouse.h>
+#include <si3_utility.h>
 
 namespace si3
 {

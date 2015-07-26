@@ -1,8 +1,8 @@
 #if 1
 
-#include <Sphere.h>
-#include <Manager.h>
-#include <Matrix.h>
+#include <si3_Sphere.h>
+#include <si3_Manager.h>
+#include <si3_Matrix.h>
 
 namespace si3
 {

@@ -321,116 +321,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\simplect3D\display_object.h">
-      <Filter>simplect3D\display_object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\popular.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\dxmanager.h">
-      <Filter>simplect3D\manager\dxmanager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\fps60.h">
-      <Filter>simplect3D\fps60</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\utility.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\display_manager.h">
-      <Filter>simplect3D\manager\display_manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\dxlight.h">
-      <Filter>simplect3D\dxlight</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\manager.h">
-      <Filter>simplect3D\manager\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\model.h">
-      <Filter>simplect3D\model\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\model_coor.h">
-      <Filter>simplect3D\model\model_coor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\dxinput.h">
-      <Filter>simplect3D\dxinput\dxinput</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\key_system.h">
-      <Filter>simplect3D\dxinput\key\key_system</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\key.h">
-      <Filter>simplect3D\dxinput\key\key</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\camera.h">
-      <Filter>simplect3D\dxcamera</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\matrix.h">
-      <Filter>simplect3D\matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\mouse.h">
-      <Filter>simplect3D\dxinput\mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\image_data.h">
-      <Filter>simplect3D\image_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\top4.h">
-      <Filter>simplect3D\image_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\diffuse.h">
-      <Filter>simplect3D\image_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sphere.h">
-      <Filter>simplect3D\sphere</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sphere_data.h">
-      <Filter>simplect3D\sphere_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\box.h">
-      <Filter>simplect3D\box</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\box_data.h">
-      <Filter>simplect3D\box\box_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\billboard.h">
-      <Filter>simplect3D\billboard</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\simplect3D\simplect3D.h">
       <Filter>simplect3D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\anime.h">
-      <Filter>simplect3D\anime\anime</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\anime_data.h">
-      <Filter>simplect3D\anime\anime_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\leaf.h">
-      <Filter>simplect3D\leaf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\canimer.h">
-      <Filter>simplect3D\anime\canimer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\saferelease.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\se.h">
-      <Filter>simplect3D\sound\se</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sound_data.h">
-      <Filter>simplect3D\sound\sound_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sound_manager.h">
-      <Filter>simplect3D\sound\sound_manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\unique_sound.h">
-      <Filter>simplect3D\sound\unique_sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\bunisher.h">
-      <Filter>simplect3D\bunisher</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\bunish_data.h">
-      <Filter>simplect3D\bunisher\bunish_data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\model_data.h">
-      <Filter>simplect3D\model\model_data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_ModelDustConverter.h">
       <Filter>simplect3D\bunisher\ModelDustConverter</Filter>
@@ -438,56 +330,164 @@
     <ClInclude Include="..\..\simplect3D\si3_blendmode.h">
       <Filter>simplect3D\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\simplect3D\si3_top_type.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sky_dome_mini.h">
-      <Filter>simplect3D\sky_dome\sky_dome_mini</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\rot_mode.h">
-      <Filter>simplect3D\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sky_dome.h">
-      <Filter>simplect3D\sky_dome\sky_dome</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Motion3D.h">
-      <Filter>simplect3D\Motion3D\Motion3D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneMap.h">
-      <Filter>simplect3D\Motion3D\BoneMap</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\MotionData.h">
-      <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Top_pmd.h">
-      <Filter>simplect3D\utility\MMD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\util_MMD.h">
-      <Filter>simplect3D\utility\MMD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneBranch.h">
-      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\Bone.h">
-      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BonedTop.h">
-      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone\BonedTop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\BoneMotion.h">
-      <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\simplect3D\sky_dome_data.h">
-      <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_coor3.h">
       <Filter>simplect3D\utility\coor3</Filter>
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_Quaternion.h">
       <Filter>simplect3D\utility\Quaternion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\simplect3D\ModelData_pmd.h">
+    <ClInclude Include="..\..\simplect3D\si3_Manager.h">
+      <Filter>simplect3D\manager\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Matrix.h">
+      <Filter>simplect3D\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Model.h">
+      <Filter>simplect3D\model\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_ModelCoor.h">
+      <Filter>simplect3D\model\model_coor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_ModelData.h">
+      <Filter>simplect3D\model\model_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_BoneMap.h">
+      <Filter>simplect3D\Motion3D\BoneMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_BonedTop.h">
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone\BonedTop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Bone.h">
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_BoneBranch.h">
+      <Filter>simplect3D\Motion3D\ModelData_pmd\BoneBranch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_ModelData_pmd.h">
       <Filter>simplect3D\Motion3D\ModelData_pmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Motion3D.h">
+      <Filter>simplect3D\Motion3D\Motion3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_BoneMotion.h">
+      <Filter>simplect3D\Motion3D\MotionData\BoneMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_MotionData.h">
+      <Filter>simplect3D\Motion3D\MotionData\MotionData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Skydome.h">
+      <Filter>simplect3D\sky_dome\sky_dome</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SkydomeData.h">
+      <Filter>simplect3D\sky_dome\sky_dome_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SkydomeMini.h">
+      <Filter>simplect3D\sky_dome\sky_dome_mini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SE.h">
+      <Filter>simplect3D\sound\se</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SoundData.h">
+      <Filter>simplect3D\sound\sound_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SoundManager.h">
+      <Filter>simplect3D\sound\sound_manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_UniqueSound.h">
+      <Filter>simplect3D\sound\unique_sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Sphere.h">
+      <Filter>simplect3D\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SphereData.h">
+      <Filter>simplect3D\sphere_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Top_pmd.h">
+      <Filter>simplect3D\utility\MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_util_MMD.h">
+      <Filter>simplect3D\utility\MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_popular.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_RotMode.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_saferelease.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_DxTop.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_utility.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_anime.h">
+      <Filter>simplect3D\anime\anime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_AnimeCounter.h">
+      <Filter>simplect3D\anime\canimer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_AnimeData.h">
+      <Filter>simplect3D\anime\anime_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Billboard.h">
+      <Filter>simplect3D\billboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Box.h">
+      <Filter>simplect3D\box</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_BoxData.h">
+      <Filter>simplect3D\box\box_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Bunisher.h">
+      <Filter>simplect3D\bunisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_BunishData.h">
+      <Filter>simplect3D\bunisher\bunish_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_DisplayObject.h">
+      <Filter>simplect3D\display_object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Camera.h">
+      <Filter>simplect3D\dxcamera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_DxInput.h">
+      <Filter>simplect3D\dxinput\dxinput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_DisplayManager.h">
+      <Filter>simplect3D\manager\display_manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_DxLight.h">
+      <Filter>simplect3D\dxlight</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_DxManager.h">
+      <Filter>simplect3D\manager\dxmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Fps60.h">
+      <Filter>simplect3D\fps60</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Leaf.h">
+      <Filter>simplect3D\leaf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Mouse.h">
+      <Filter>simplect3D\dxinput\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Key.h">
+      <Filter>simplect3D\dxinput\key\key</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_KeySystem.h">
+      <Filter>simplect3D\dxinput\key\key_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_ImageData.h">
+      <Filter>simplect3D\image_data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Top4.h">
+      <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Diffuse.h">
+      <Filter>simplect3D\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

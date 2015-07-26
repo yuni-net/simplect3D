@@ -1,8 +1,8 @@
-#include <MotionData.h>
-#include <ModelData_pmd.h>
+#include <si3_MotionData.h>
+#include <si3_ModelData_pmd.h>
 #include <cstdint>
-#include <BoneMap.h>
-#include <util_MMD.h>
+#include <si3_BoneMap.h>
+#include <si3_util_MMD.h>
 
 namespace si3
 {

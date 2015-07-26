@@ -1,4 +1,4 @@
-#include <BoneMap.h>
+#include <si3_BoneMap.h>
 
 
 namespace si3

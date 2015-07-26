@@ -1,7 +1,7 @@
-#include "sound_data.h"
-#include "sound_manager.h"
-#include "Manager.h"
-#include "saferelease.h"
+#include "si3_SoundData.h"
+#include "si3_SoundManager.h"
+#include "si3_Manager.h"
+#include "si3_saferelease.h"
 
 namespace si3
 {

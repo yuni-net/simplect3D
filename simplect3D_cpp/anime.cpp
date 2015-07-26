@@ -1,9 +1,9 @@
-#include <Anime.h>
-#include <top4.h>
-#include <diffuse.h>
-#include <image_data.h>
-#include <model_coor.h>
-#include <utility.h>
+#include <si3_Anime.h>
+#include <si3_top4.h>
+#include <si3_diffuse.h>
+#include <si3_imagedata.h>
+#include <si3_modelcoor.h>
+#include <si3_utility.h>
 
 namespace si3
 {

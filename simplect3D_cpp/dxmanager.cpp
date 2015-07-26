@@ -1,6 +1,6 @@
-#include <DxManager.h>
-#include <popular.h>
-#include <utility.h>
+#include <si3_DxManager.h>
+#include <si3_popular.h>
+#include <si3_utility.h>
 
 namespace si3
 {

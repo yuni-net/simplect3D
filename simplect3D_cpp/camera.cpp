@@ -1,5 +1,5 @@
-#include <Camera.h>
-#include <Matrix.h>
+#include <si3_Camera.h>
+#include <si3_Matrix.h>
 
 
 namespace si3

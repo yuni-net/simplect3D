@@ -1,4 +1,4 @@
-#include "SE.h"
+#include "si3_SE.h"
 
 namespace si3
 {

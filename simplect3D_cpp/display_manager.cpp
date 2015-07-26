@@ -1,5 +1,5 @@
-#include <display_manager.h>
-#include <utility.h>
+#include <si3_DisplayManager.h>
+#include <si3_utility.h>
 
 namespace si3
 {

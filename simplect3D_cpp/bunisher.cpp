@@ -1,7 +1,7 @@
-#include <bunisher.h>
-#include <Manager.h>
-#include <Model.h>
-#include <utility.h>
+#include <si3_bunisher.h>
+#include <si3_Manager.h>
+#include <si3_Model.h>
+#include <si3_utility.h>
 #include <si3_ModelDustConverter.h>
 
 const float alpha_speed = 0.01f;

@@ -1,7 +1,7 @@
-#include "sky_dome_mini.h"
-#include "Manager.h"
-#include "saferelease.h"
-#include "Matrix.h"
+#include "si3_SkydomeMini.h"
+#include "si3_Manager.h"
+#include "si3_saferelease.h"
+#include "si3_Matrix.h"
 
 namespace si3
 {

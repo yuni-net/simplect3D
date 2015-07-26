@@ -1,5 +1,5 @@
-#include <model_data.h>
-#include <Manager.h>
+#include <si3_ModelData.h>
+#include <si3_Manager.h>
 
 namespace si3
 {

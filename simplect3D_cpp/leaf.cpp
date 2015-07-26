@@ -1,8 +1,8 @@
-#include <Leaf.h>
-#include <top4.h>
-#include <diffuse.h>
-#include <image_data.h>
-#include <model_coor.h>
+#include <si3_Leaf.h>
+#include <si3_Top4.h>
+#include <si3_Diffuse.h>
+#include <si3_ImageData.h>
+#include <si3_ModelCoor.h>
 
 namespace si3
 {

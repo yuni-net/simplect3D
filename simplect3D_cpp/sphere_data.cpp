@@ -1,8 +1,8 @@
 #if 1
 
-#include <utility.h>
-#include <sphere_data.h>
-#include <saferelease.h>
+#include <si3_utility.h>
+#include <si3_SphereData.h>
+#include <si3_saferelease.h>
 
 static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 

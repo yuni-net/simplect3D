@@ -1,9 +1,9 @@
-#include <billboard.h>
-#include <top4.h>
-#include <diffuse.h>
-#include <anime_data.h>
-#include <model_coor.h>
-#include <Manager.h>
+#include <si3_billboard.h>
+#include <si3_top4.h>
+#include <si3_diffuse.h>
+#include <si3_animedata.h>
+#include <si3_modelcoor.h>
+#include <si3_Manager.h>
 
 namespace si3
 {

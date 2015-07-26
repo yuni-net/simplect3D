@@ -1,4 +1,4 @@
-#include "canimer.h"
+#include "si3_AnimeCounter.h"
 #include <assert.h>
 
 si3::AniCounter::AniCounter()

@@ -1,11 +1,11 @@
-#include <anime_data.h>
-#include <Manager.h>
-#include <utility.h>
-#include <top4.h>
-#include <diffuse.h>
-#include <model_coor.h>
-#include <saferelease.h>
-#include <si3_top_type.h>
+#include <si3_animedata.h>
+#include <si3_Manager.h>
+#include <si3_utility.h>
+#include <si3_top4.h>
+#include <si3_diffuse.h>
+#include <si3_modelcoor.h>
+#include <si3_saferelease.h>
+#include <si3_DxTop.h>
 
 
 static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
@@ -595,12 +595,12 @@ namespace si3
 
 #if 0
 
-#include <anime_data.h>
-#include <Manager.h>
-#include <utility.h>
-#include <top4.h>
-#include <diffuse.h>
-#include <model_coor.h>
+#include <si3_AnimeData.h>
+#include <si3_Manager.h>
+#include <si3_utility.h>
+#include <si3_Top4.h>
+#include <si3_Diffuse.h>
+#include <si3_ModelCoor.h>
 
 // max_vertex = 11*11
 // 科リング有効（表のみ描画）

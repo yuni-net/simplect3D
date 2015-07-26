@@ -1,5 +1,5 @@
-#include <utility.h>
-#include <popular.h>
+#include <si3_utility.h>
+#include <si3_popular.h>
 
 namespace si3
 {
