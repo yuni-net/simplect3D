@@ -27,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	displaym.context_color(1.0f, 1.0f, 1.0f);
 
 	auto & skydome = si3m.display_manager().get_skydome();
-	skydome.load(si3m, "data/orange.jpg");
+	skydome.load("data/orange.jpg");
 
 	camera.x(0.0f);
 	camera.y(10.0f);
@@ -38,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_z(0.0f);
 
 	si3::Motion3D yuuki;
-	yuuki.load(si3m, "data/yuuki/yuuki_before.pmd", "data/motion05.vmd");
+	yuuki.load("data/yuuki/yuuki_before.pmd", "data/motion05.vmd");
 //	yuuki.pause();
 	yuuki.pos.x = 0.0f;
 	yuuki.pos.y = 0.0f;

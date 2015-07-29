@@ -14,13 +14,13 @@ namespace si3
 		// この数値が大きいほどメモリは多く消費される。
 		// 省略した場合はデフォルト値(16)が使用される。
 		SE();
-		SE(Manager & si3m, uint uID);
-		SE(Manager & si3m, uint uID, int max_moment);
+		SE(uint uID);
+		SE(uint uID, int max_moment);
 		SE(const SoundData & soundd);
 		SE(const SoundData & soundd, int max_moment);
 
-		bool load(Manager & si3m, uint uID);
-		bool load(Manager & si3m, uint uID, int max_moment);
+		bool load(uint uID);
+		bool load(uint uID, int max_moment);
 		bool set_sound_data(const SoundData & soundd);
 		bool set_sound_data(const SoundData & soundd, int max_moment);
 

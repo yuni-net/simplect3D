@@ -9,15 +9,14 @@ namespace si3
 	{
 		construct();
 	}
-	Skydome::Skydome(const Manager & manageri, const TCHAR * path)
+	Skydome::Skydome(const TCHAR * path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	void Skydome::load(const Manager & manageri, const TCHAR * path)
+	void Skydome::load(const TCHAR * path)
 	{
-		managerp = &manageri;
-		sphered.load(manageri.get_dxdevice(), path, 0.1f);
+		sphered.load(path, 0.1f);
 		loaded = true;
 	}
 
@@ -71,7 +70,7 @@ namespace si3
 			return;
 		}
 
-		const auto & device = managerp->get_dxdevice();
+		const auto & device = si3::Manager::get_dxdevice();
 
 		// Zバッファを更新しない
 		device->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
@@ -103,7 +102,6 @@ namespace si3
 
 	void Skydome::construct()
 	{
-		managerp = nullptr;
 		loaded = false;
 	}
 

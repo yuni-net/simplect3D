@@ -9,19 +9,19 @@ namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-	ModelData_pmd::ModelData_pmd(const Manager & manageri, const TCHAR * path)
+	ModelData_pmd::ModelData_pmd(const TCHAR * path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	ModelData_pmd::ModelData_pmd(const Manager & manageri, const tstring & path)
+	ModelData_pmd::ModelData_pmd(const tstring & path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	ModelData_pmd::ModelData_pmd(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	ModelData_pmd::ModelData_pmd(const TCHAR * path, const si3::Coor3 & center)
 	{
-		load(manageri, path, center);
+		load(path, center);
 	}
 
 
@@ -425,11 +425,11 @@ namespace si3
 	}
 
 
-	bool ModelData_pmd::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	bool ModelData_pmd::load(const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
-		this->device = manageri.get_dxdevice();
+		this->device = si3::Manager::get_dxdevice();
 
 		FILE * fp = fopen(path, "rb");
 
@@ -459,11 +459,11 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData_pmd::load(const Manager & manageri, const TCHAR * path)
+	bool ModelData_pmd::load(const TCHAR * path)
 	{
 		release();
 
-		this->device = manageri.get_dxdevice();
+		this->device = si3::Manager::get_dxdevice();
 
 		FILE * fp = fopen(path, "rb");
 
@@ -493,11 +493,11 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData_pmd::load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
+	bool ModelData_pmd::load(const TCHAR * path, MotionData & motion_data, BoneMap & bone_map)
 	{
 		release();
 
-		this->device = manageri.get_dxdevice();
+		this->device = si3::Manager::get_dxdevice();
 
 		FILE * fp = fopen(path, "rb");
 
@@ -536,9 +536,9 @@ namespace si3
 
 
 
-	bool ModelData_pmd::load(const Manager & manageri, const tstring & path)
+	bool ModelData_pmd::load(const tstring & path)
 	{
-		return load(manageri, path.c_str());
+		return load(path.c_str());
 	}
 
 

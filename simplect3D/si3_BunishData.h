@@ -17,7 +17,7 @@ namespace si3
 		void set_first_pos(const Coor3 & value);
 		void set_bunish_vec(const Coor3 & value);
 		void set_rot_speed(const Coor3 & value);
-		void bunish(const si3::Manager & si3m);
+		void bunish();
 		D3DVECTOR compute_local_pos(uint index) const;
 
 		// 降順にソートされる点に注意
@@ -38,7 +38,7 @@ namespace si3
 
 
 		void compute_world_mat();
-		void compute_z(const si3::Manager & si3m);
+		void compute_z();
 	};
 
 }

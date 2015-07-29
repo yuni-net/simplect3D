@@ -20,8 +20,8 @@ namespace si3
 		** 1.0で最も滑らかくなる。
 		** マイナス値を指定してはいけない。
 		*/
-		Sphere(const Manager & si3m, const char * path, float smoothness, float radius);
-		void create(const Manager & si3m, const char * path, float smoothness, float radius);
+		Sphere(const char * path, float smoothness, float radius);
+		void create(const char * path, float smoothness, float radius);
 
 		void x(float value);
 		float x() const;

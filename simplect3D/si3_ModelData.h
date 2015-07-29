@@ -13,13 +13,13 @@ namespace si3
 	class ModelData
 	{
 	public:
-		ModelData(const Manager & manageri, const TCHAR * path);
-		ModelData(const Manager & manageri, const tstring & path);
-		ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
+		ModelData(const TCHAR * path);
+		ModelData(const tstring & path);
+		ModelData(const TCHAR * path, const si3::Coor3 & center);
 
-		bool load(const Manager & manageri, const TCHAR * path);
-		bool load(const Manager & manageri, const tstring & path);
-		bool load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
+		bool load(const TCHAR * path);
+		bool load(const tstring & path);
+		bool load(const TCHAR * path, const si3::Coor3 & center);
 
 		unsigned long index_num() const;
 		DxTop * lock_top_buffer() const;

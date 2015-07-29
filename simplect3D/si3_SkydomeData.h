@@ -16,8 +16,8 @@ namespace si3
 		** マイナス値を指定してはいけない。
 		** 0.0も指定してはいけない。
 		*/
-		SkydomeData(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
-		void load(LPDIRECT3DDEVICE9 device, const char * path, float roughness);
+		SkydomeData(const char * path, float roughness);
+		void load(const char * path, float roughness);
 		void draw(const D3DXMATRIX & world_mat) const;
 
 

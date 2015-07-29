@@ -87,17 +87,17 @@ namespace si3
 		construct();
 	}
 
-	Sphere::Sphere(const Manager & si3m, const char * path, float smoothness, float radius)
+	Sphere::Sphere(const char * path, float smoothness, float radius)
 	{
 		construct();
-		create(si3m, path, smoothness, radius);
+		create(path, smoothness, radius);
 	}
 
-	void Sphere::create(const Manager & si3m, const char * path, float smoothness, float radius)
+	void Sphere::create(const char * path, float smoothness, float radius)
 	{
-		device = si3m.get_dxdevice();
+		device = si3::Manager::get_dxdevice();
 		radius_ = radius;
-		sphered = new SphereData(si3m.get_dxdevice(), path, smoothness, radius);
+		sphered = new SphereData(path, smoothness, radius);
 		ownership = true;
 	}
 

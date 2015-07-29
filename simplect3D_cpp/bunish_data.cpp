@@ -50,13 +50,13 @@ namespace si3
 	}
 
 
-	void BunishData::bunish(const si3::Manager & si3m)
+	void BunishData::bunish()
 	{
 		pos += bunish_vec;
 		radian += rot_speed;
 		compute_world_mat();
 #ifdef NDEBUG
-		compute_z(si3m);
+		compute_z();
 #endif
 	}
 
@@ -68,7 +68,7 @@ namespace si3
 		world_mat *= Matrix().parallel(pos.x, pos.y, pos.z);
 	}
 
-	void BunishData::compute_z(const si3::Manager & si3m)
+	void BunishData::compute_z()
 	{
 		// reference http://marupeke296.com/DXG_No43_ZBufferTexture.html
 
@@ -79,10 +79,10 @@ namespace si3
 
 		Matrix world_pos = local_pos * world_mat;
 
-		const auto & view_mat = si3m.camera().view_mat();
+		const auto & view_mat = si3::Manager::camera().view_mat();
 		Matrix view_pos = world_pos * view_mat;
 
-		const auto & projection_mat = si3m.camera().get_projection_mat();
+		const auto & projection_mat = si3::Manager::camera().get_projection_mat();
 		Matrix cartesian_coor = view_pos * projection_mat;
 
 		z = cartesian_coor.z() / cartesian_coor.w();

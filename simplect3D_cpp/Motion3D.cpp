@@ -8,11 +8,11 @@ namespace si3
 	** モデルデータはpmd形式、モーションデータはvmd形式のみ対応です。
 	** この時点でアニメーション位置が先頭に設定されます。
 	*/
-	void Motion3D::load(Manager & si3m, const char * model_path, const char * motion_path)
+	void Motion3D::load(const char * model_path, const char * motion_path)
 	{
-		device = si3m.get_dxdevice();
-		model_data.load(si3m, model_path, motion_data, bone_map);
-		motion_data.load(si3m, motion_path, bone_map, model_data.bone_num());
+		device = si3::Manager::get_dxdevice();
+		model_data.load(model_path, motion_data, bone_map);
+		motion_data.load(motion_path, bone_map, model_data.bone_num());
 		seek_first();
 		radian.x = 0.0f;
 		radian.y = 0.0f;

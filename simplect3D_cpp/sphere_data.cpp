@@ -3,6 +3,7 @@
 #include <si3_utility.h>
 #include <si3_SphereData.h>
 #include <si3_saferelease.h>
+#include <si3_Manager.h>
 
 static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
@@ -12,15 +13,15 @@ namespace si3
 	{
 		construct();
 	}
-	SphereData::SphereData(LPDIRECT3DDEVICE9 device, const char * path, float smoothness, float radius)
+	SphereData::SphereData(const char * path, float smoothness, float radius)
 	{
 		construct();
-		load(device, path, smoothness, radius);
+		load(path, smoothness, radius);
 	}
 
-	void SphereData::load(LPDIRECT3DDEVICE9 device, const char * path, float smoothness, float radius)
+	void SphereData::load(const char * path, float smoothness, float radius)
 	{
-		this->device = device;
+		this->device = si3::Manager::get_dxdevice();
 
 		release();
 

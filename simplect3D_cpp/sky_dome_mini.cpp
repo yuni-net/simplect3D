@@ -9,15 +9,14 @@ namespace si3
 	{
 		construct();
 	}
-	Skydome_mini::Skydome_mini(const Manager & manageri, const TCHAR * path)
+	Skydome_mini::Skydome_mini(const TCHAR * path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	void Skydome_mini::load(const Manager & manageri, const TCHAR * path)
+	void Skydome_mini::load(const TCHAR * path)
 	{
-		managerp = &manageri;
-		sphered.load(manageri.get_dxdevice(), path, 0.1f);
+		sphered.load(path, 0.1f);
 		loaded = true;
 	}
 
@@ -35,7 +34,7 @@ namespace si3
 			return;
 		}
 
-		const auto & device = managerp->get_dxdevice();
+		const auto & device = si3::Manager::get_dxdevice();
 
 
 		// ƒ¿ƒeƒXƒg‹ÖŽ~
@@ -85,7 +84,6 @@ namespace si3
 
 	void Skydome_mini::construct()
 	{
-		managerp = nullptr;
 		loaded = false;
 	}
 

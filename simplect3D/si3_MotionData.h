@@ -21,7 +21,7 @@ namespace si3
 		** この時点でアニメーション位置が先頭に設定されます。
 		** また、アニメーションを再生状態にします。
 		*/
-		void load(Manager & si3m, const char * path, const BoneMap & bone_map, const int bone_num);
+		void load(const char * path, const BoneMap & bone_map, const int bone_num);
 
 		/***
 		** アニメーションを再生状態にします

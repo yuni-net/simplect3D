@@ -6,12 +6,11 @@
 namespace si3
 {
 
-	bool SoundData::load(Manager & si3m, uint id)
+	bool SoundData::load(uint id)
 	{
 		this->id = id;
-		si3mp = &si3m;
 
-		SoundManager & soundm = si3m.get_sound_manager();
+		SoundManager & soundm = si3::Manager::get_sound_manager();
 		const char * path = soundm.get_path(id);
 
 		// WAVEファイルを開く
@@ -55,7 +54,7 @@ namespace si3
 	{
 		HRESULT hr;
 
-		SoundManager & soundm = si3mp->get_sound_manager();
+		SoundManager & soundm = si3::Manager::get_sound_manager();
 
 		// バッファを作る
 		LPDIRECTSOUNDBUFFER dsbuffer;
@@ -114,10 +113,10 @@ namespace si3
 	{
 		construct();
 	}
-	SoundData::SoundData(Manager & si3m, uint id)
+	SoundData::SoundData(uint id)
 	{
 		construct();
-		load(si3m, id);
+		load(id);
 	}
 
 

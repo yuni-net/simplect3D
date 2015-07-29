@@ -12,10 +12,10 @@ namespace si3
 
 
 
-	Bunisher::Bunisher(const Manager & manageri, const Model & model_)
+	Bunisher::Bunisher(const Model & model_)
 	{
 		construct();
-		init(manageri, model_);
+		init(model_);
 	}
 
 	bool Bunisher::create_buffer(unsigned long buffer_size)
@@ -37,12 +37,11 @@ namespace si3
 	}
 
 
-	void Bunisher::init(const Manager & manageri, const Model & model_)
+	void Bunisher::init(const Model & model_)
 	{
 		typedef unsigned short ushort;
 
-		device = manageri.get_dxdevice();
-		si3m = &manageri;
+		device = si3::Manager::get_dxdevice();
 
 		const ModelData & modeld = model_.model_data();
 		unsigned long top_num = modeld.index_num();
@@ -78,7 +77,7 @@ namespace si3
 		while (iter != bunish_data_list.end())
 		{
 			BunishData & bunishd = *iter;
-			bunishd.bunish(*si3m);
+			bunishd.bunish();
 
 			top_header[top_No + 0].pos = bunishd.compute_local_pos(0);
 			top_header[top_No + 1].pos = bunishd.compute_local_pos(1);

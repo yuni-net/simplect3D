@@ -23,7 +23,7 @@ namespace si3
 		** この時点でアニメーション位置が先頭に設定されます。
 		** また、回転角はxyz全てゼロに設定されます。
 		*/
-		void load(Manager & si3m, const char * model_path, const char * motion_path);
+		void load(const char * model_path, const char * motion_path);
 
 		/***
 		** アニメーションを再生状態にします

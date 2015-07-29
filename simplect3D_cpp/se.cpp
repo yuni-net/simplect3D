@@ -9,15 +9,15 @@ namespace si3
 	{
 		construct();
 	}
-	SE::SE(Manager & si3m, uint uID)
+	SE::SE(uint uID)
 	{
 		construct();
-		load(si3m, uID);
+		load(uID);
 	}
-	SE::SE(Manager & si3m, uint uID, int max_moment)
+	SE::SE(uint uID, int max_moment)
 	{
 		construct();
-		load(si3m, uID, max_moment);
+		load(uID, max_moment);
 	}
 	SE::SE(const SoundData & soundd)
 	{
@@ -30,16 +30,16 @@ namespace si3
 		set_sound_data(soundd, max_moment);
 	}
 
-	bool SE::load(Manager & si3m, uint uID)
+	bool SE::load(uint uID)
 	{
-		return load(si3m, uID, 16);
+		return load(uID, 16);
 	}
-	bool SE::load(Manager & si3m, uint uID, int max_moment)
+	bool SE::load(uint uID, int max_moment)
 	{
 		bool bResult = true;
 
 		SoundData * soundd = new SoundData();
-		bResult = soundd->load(si3m, uID);
+		bResult = soundd->load(uID);
 		if (bResult == false) return false;
 
 		bResult = set_sound_data(*soundd, max_moment);

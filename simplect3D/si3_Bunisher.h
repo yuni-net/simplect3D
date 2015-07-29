@@ -20,9 +20,9 @@ namespace si3
 	class Bunisher :public DisplayObject
 	{
 	public:
-		Bunisher(const Manager & manageri, const Model & model_);
+		Bunisher(const Model & model_);
 
-		void init(const Manager & manageri, const Model & model_);
+		void init(const Model & model_);
 
 		void bunish();
 
@@ -44,7 +44,6 @@ namespace si3
 
 
 
-		const Manager * si3m;
 		LPDIRECT3DDEVICE9 device;
 		IDirect3DVertexBuffer9 * listbuff;
 

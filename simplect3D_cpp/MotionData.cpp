@@ -10,7 +10,7 @@ namespace si3
 	** モーションデータのロードを行います。
 	** この時点でアニメーション位置が先頭に設定されます。
 	*/
-	void MotionData::load(Manager & si3m, const char * path, const BoneMap & bone_map, const int bone_num)
+	void MotionData::load(const char * path, const BoneMap & bone_map, const int bone_num)
 	{
 #pragma pack(push, 1)
 		struct Header

@@ -11,8 +11,8 @@ namespace si3
 	{
 	public:
 		BoxData();
-		BoxData(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z);
-		void create(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z);
+		BoxData(float size_x, float size_y, float size_z);
+		void create(float size_x, float size_y, float size_z);
 		void draw() const;
 
 

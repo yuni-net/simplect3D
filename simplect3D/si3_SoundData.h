@@ -10,9 +10,9 @@ namespace si3
 	{
 	public:
 		SoundData();
-		SoundData(Manager & si3m, uint id);
+		SoundData(uint id);
 
-		bool load(Manager & si3m, uint id);
+		bool load(uint id);
 		uint get_ID() const;
 
 
@@ -20,7 +20,6 @@ namespace si3
 		bool create_buffer(IDirectSoundBuffer8 * & secondarysb) const;
 	private:
 		uint id;
-		Manager * si3mp;
 
 		fw::Wav wav_data;
 		WAVEFORMATEX wfe;

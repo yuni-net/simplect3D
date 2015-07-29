@@ -3,6 +3,7 @@
 #include <si3_utility.h>
 #include <si3_BoxData.h>
 #include <si3_Matrix.h>
+#include <si3_Manager.h>
 
 //static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL;
@@ -14,15 +15,15 @@ namespace si3
 		construct();
 	}
 
-	BoxData::BoxData(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z)
+	BoxData::BoxData(float size_x, float size_y, float size_z)
 	{
 		construct();
-		create(device, size_x, size_y, size_z);
+		create(size_x, size_y, size_z);
 	}
 
-	void BoxData::create(LPDIRECT3DDEVICE9 device, float size_x, float size_y, float size_z)
+	void BoxData::create(float size_x, float size_y, float size_z)
 	{
-		this->device = device;
+		this->device = si3::Manager::get_dxdevice();
 
 		release();
 

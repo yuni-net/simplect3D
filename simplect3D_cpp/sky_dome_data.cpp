@@ -3,6 +3,7 @@
 #include <si3_utility.h>
 #include <si3_SkydomeData.h>
 #include <si3_saferelease.h>
+#include <si3_Manager.h>
 
 static const WORD SPHERE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
@@ -12,15 +13,15 @@ namespace si3
 	{
 		construct();
 	}
-	SkydomeData::SkydomeData(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
+	SkydomeData::SkydomeData(const char * path, float roughness)
 	{
 		construct();
-		load(device, path, roughness);
+		load(path, roughness);
 	}
 
-	void SkydomeData::load(LPDIRECT3DDEVICE9 device, const char * path, float roughness)
+	void SkydomeData::load(const char * path, float roughness)
 	{
-		this->device = device;
+		this->device = si3::Manager::get_dxdevice();
 
 		release();
 

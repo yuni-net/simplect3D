@@ -15,10 +15,10 @@ namespace si3
 	{
 		construct();
 	}
-	UniqueSound::UniqueSound(Manager & si3m, uint id)
+	UniqueSound::UniqueSound(uint id)
 	{
 		construct();
-		load(si3m, id);
+		load(id);
 	}
 	UniqueSound::UniqueSound(const SoundData & soundd)
 	{
@@ -26,10 +26,10 @@ namespace si3
 		set_sound_data(soundd);
 	}
 
-	bool UniqueSound::load(Manager & si3m, uint id)
+	bool UniqueSound::load(uint id)
 	{
 		SoundData * soundd = new SoundData();
-		bool bResult = soundd->load(si3m, id);
+		bool bResult = soundd->load(id);
 		set_sound_data(*soundd);
 		ownership = true;
 

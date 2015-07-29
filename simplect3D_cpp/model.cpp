@@ -4,53 +4,53 @@
 
 namespace si3
 {
-	Model::Model(const Manager & manageri, const TCHAR * path)
+	Model::Model(const TCHAR * path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	Model::Model(const Manager & manageri, const tstring & path)
+	Model::Model(const tstring & path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	Model::Model(const Manager & manageri, const si3::ModelData & modeld)
+	Model::Model(const si3::ModelData & modeld)
 	{
 		construct();
-		model_data(manageri, modeld);
+		model_data(modeld);
 	}
-	Model::Model(const Manager & manageri, const TCHAR * path, const Coor3 & center)
+	Model::Model(const TCHAR * path, const Coor3 & center)
 	{
 		construct();
-		load(manageri, path, center);
+		load(path, center);
 	}
 
 
-	bool Model::load(const Manager & manageri, const TCHAR * path)
+	bool Model::load(const TCHAR * path)
 	{
-		dxdevice = manageri.get_dxdevice();
+		dxdevice = si3::Manager::get_dxdevice();
 		release();
 		ownership = true;
-		modeld = new ::si3::ModelData(manageri, path);
+		modeld = new ::si3::ModelData(path);
 
 		return true;
 	}
-	bool Model::load(const Manager & manageri, const tstring & path)
+	bool Model::load(const tstring & path)
 	{
-		return load(manageri, path.c_str());
+		return load(path.c_str());
 	}
-	void Model::model_data(const Manager & manageri, const si3::ModelData & modeld)
+	void Model::model_data(const si3::ModelData & modeld)
 	{
-		dxdevice = manageri.get_dxdevice();
+		dxdevice = si3::Manager::get_dxdevice();
 		release();
 		this->modeld = &modeld;
 	}
-	bool Model::load(const Manager & manageri, const TCHAR * path, const Coor3 & center)
+	bool Model::load(const TCHAR * path, const Coor3 & center)
 	{
-		dxdevice = manageri.get_dxdevice();
+		dxdevice = si3::Manager::get_dxdevice();
 		release();
 		ownership = true;
-		modeld = new ::si3::ModelData(manageri, path, center);
+		modeld = new ::si3::ModelData(path, center);
 
 		return true;
 	}

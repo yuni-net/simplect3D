@@ -15,15 +15,15 @@ namespace si3
 	class Model :public DisplayObject
 	{
 	public:
-		Model(const Manager & manageri, const TCHAR * path);
-		Model(const Manager & manageri, const tstring & path);
-		Model(const Manager & manageri, const si3::ModelData & modeld);
-		Model(const Manager & manageri, const TCHAR * path, const Coor3 & center);
+		Model(const TCHAR * path);
+		Model(const tstring & path);
+		Model(const si3::ModelData & modeld);
+		Model(const TCHAR * path, const Coor3 & center);
 
-		bool load(const Manager & manageri, const TCHAR * path);
-		bool load(const Manager & manageri, const tstring & path);
-		void model_data(const Manager & manageri, const si3::ModelData & modeld);
-		bool load(const Manager & manageri, const TCHAR * path, const Coor3 & center);
+		bool load(const TCHAR * path);
+		bool load(const tstring & path);
+		void model_data(const si3::ModelData & modeld);
+		bool load(const TCHAR * path, const Coor3 & center);
 
 
 		const si3::ModelData & model_data() const;

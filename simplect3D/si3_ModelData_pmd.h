@@ -20,14 +20,14 @@ namespace si3
 	class ModelData_pmd
 	{
 	public:
-		ModelData_pmd(const Manager & manageri, const TCHAR * path);
-		ModelData_pmd(const Manager & manageri, const tstring & path);
-		ModelData_pmd(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
+		ModelData_pmd(const TCHAR * path);
+		ModelData_pmd(const tstring & path);
+		ModelData_pmd(const TCHAR * path, const si3::Coor3 & center);
 
-		bool load(const Manager & manageri, const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
-		bool load(const Manager & manageri, const TCHAR * path);
-		bool load(const Manager & manageri, const tstring & path);
-		bool load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center);
+		bool load(const TCHAR * path, MotionData & motion_data, BoneMap & bone_map);
+		bool load(const TCHAR * path);
+		bool load(const tstring & path);
+		bool load(const TCHAR * path, const si3::Coor3 & center);
 
 		unsigned long index_num() const;
 		DxTop * lock_top_buffer() const;

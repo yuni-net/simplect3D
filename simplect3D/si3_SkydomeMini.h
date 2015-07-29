@@ -16,8 +16,8 @@ namespace si3
 	{
 	public:
 		Skydome_mini();
-		Skydome_mini(const Manager & manageri, const TCHAR * path);
-		void load(const Manager & manageri, const TCHAR * path);
+		Skydome_mini(const TCHAR * path);
+		void load(const TCHAR * path);
 
 
 
@@ -32,7 +32,6 @@ namespace si3
 
 
 	private:
-		const Manager * managerp;;
 		SkydomeData sphered;
 		bool loaded;
 

@@ -5,19 +5,19 @@ namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
-	ModelData::ModelData(const Manager & manageri, const TCHAR * path)
+	ModelData::ModelData(const TCHAR * path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	ModelData::ModelData(const Manager & manageri, const tstring & path)
+	ModelData::ModelData(const tstring & path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	ModelData::ModelData(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	ModelData::ModelData(const TCHAR * path, const si3::Coor3 & center)
 	{
-		load(manageri, path, center);
+		load(path, center);
 	}
 
 #pragma pack(push, 1)
@@ -319,11 +319,11 @@ namespace si3
 	}
 
 
-	bool ModelData::load(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	bool ModelData::load(const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
-		this->device = manageri.get_dxdevice();
+		this->device = si3::Manager::get_dxdevice();
 
 		FILE * fp = fopen(path, "rb");
 
@@ -353,11 +353,11 @@ namespace si3
 
 		return true;
 	}
-	bool ModelData::load(const Manager & manageri, const TCHAR * path)
+	bool ModelData::load(const TCHAR * path)
 	{
 		release();
 
-		this->device = manageri.get_dxdevice();
+		this->device = si3::Manager::get_dxdevice();
 
 		FILE * fp = fopen(path, "rb");
 
@@ -391,9 +391,9 @@ namespace si3
 #pragma pack(pop)
 
 
-	bool ModelData::load(const Manager & manageri, const tstring & path)
+	bool ModelData::load(const tstring & path)
 	{
-		return load(manageri, path.c_str());
+		return load(path.c_str());
 	}
 
 
@@ -669,18 +669,18 @@ namespace si3
 
 #if 0
 
-	bool ModelData::load_x(const Manager & manageri, const TCHAR * path, const si3::Coor3 & center)
+	bool ModelData::load_x(const TCHAR * path, const si3::Coor3 & center)
 	{
 		release();
 
-		this->dxdevice = manageri.get_dxdevice();
+		this->dxdevice = si3::Manager::get_dxdevice();
 
 		LPD3DXBUFFER	pMtrlBuf;
 
 		HRESULT hr = D3DXLoadMeshFromX(
 			path,								// ファイル名
 			D3DXMESH_SYSTEMMEM,					// 常に同じ指定
-			manageri.get_dxdevice(),			// Direct3Dデバイス
+			si3::Manager::get_dxdevice(),			// Direct3Dデバイス
 			NULL,								// 常にNULL
 			&pMtrlBuf,							// マテリアルバッファ
 			NULL,								// 常にNULL
@@ -691,7 +691,7 @@ namespace si3
 		}
 
 		LPD3DXMESH pMeshWk;
-		add_normal(mesh, manageri.get_dxdevice(), pMeshWk);
+		add_normal(mesh, si3::Manager::get_dxdevice(), pMeshWk);
 
 		if (get_table(pMeshWk, pMtrlBuf) == false)
 		{
@@ -700,25 +700,25 @@ namespace si3
 
 		compute_tops_center(mesh, center);
 
-		get_material(path, pMtrlBuf, manageri.get_dxdevice());
+		get_material(path, pMtrlBuf, si3::Manager::get_dxdevice());
 
 		judge_with_alpha();
 
 		return true;
 	}
 
-	bool ModelData::load_x(const Manager & manageri, const TCHAR * path)
+	bool ModelData::load_x(const TCHAR * path)
 	{
 		release();
 
-		this->dxdevice = manageri.get_dxdevice();
+		this->dxdevice = si3::Manager::get_dxdevice();
 
 		LPD3DXBUFFER	pMtrlBuf;
 
 		HRESULT hr = D3DXLoadMeshFromX(
 			path,								// ファイル名
 			D3DXMESH_SYSTEMMEM,					// 常に同じ指定
-			manageri.get_dxdevice(),			// Direct3Dデバイス
+			si3::Manager::get_dxdevice(),			// Direct3Dデバイス
 			NULL,								// 常にNULL
 			&pMtrlBuf,							// マテリアルバッファ
 			NULL,								// 常にNULL
@@ -729,7 +729,7 @@ namespace si3
 		}
 
 		LPD3DXMESH pMeshWk;
-		add_normal(mesh, manageri.get_dxdevice(), pMeshWk);
+		add_normal(mesh, si3::Manager::get_dxdevice(), pMeshWk);
 
 		if (get_table(pMeshWk, pMtrlBuf) == false)
 		{
@@ -738,7 +738,7 @@ namespace si3
 
 		compute_tops(mesh);
 
-		get_material(path, pMtrlBuf, manageri.get_dxdevice());
+		get_material(path, pMtrlBuf, si3::Manager::get_dxdevice());
 
 		judge_with_alpha();
 
