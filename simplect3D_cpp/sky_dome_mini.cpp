@@ -50,7 +50,7 @@ namespace si3
 		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
 
 
-		const si3::Camera & camera = managerp->camera();
+		const si3::Camera & camera = si3::Manager::camera();
 		float near_clip = camera.near_clip()+0.1f;
 
 		Matrix scale_mat;

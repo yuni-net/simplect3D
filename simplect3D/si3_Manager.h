@@ -20,63 +20,62 @@ namespace si3
 	{
 	public:
 		/*
-		 * @return true:成功 false:失敗
-		 *
-		 */
-		bool init();
+		* @return true:成功 false:失敗
+		*
+		*/
+		static bool init();
 
 		/*
-		 * 毎フレーム最初に呼び出すこと
-		 * @return true:続行可能 false:続行不可能
-		 *
-		 */
-		bool begin_frame();
+		* 毎フレーム最初に呼び出すこと
+		* @return true:続行可能 false:続行不可能
+		*
+		*/
+		static bool begin_frame();
 
 		/***
 		@brief 表示リストにオブジェクトを登録する。
 		@detail この登録はこのフレームでのみ有効であるため、
-		        毎フレーム描画したければ毎フレーム登録し直す必要がある。
+		毎フレーム描画したければ毎フレーム登録し直す必要がある。
 		*/
-		void register_display_object(const DisplayObject & display_objecti);
+		static void register_display_object(const DisplayObject & display_objecti);
 
 		/***
 		@brief キーボード情報を管理するクラスのインスタンスを得る。
 		*/
-		const ::si3::Key & key() const;
+		static const ::si3::Key & key();
 
 		/***
 		@brief マウス情報を管理するクラスのインスタンスを得る。
 		*/
-		const ::si3::Mouse & mouse() const;
+		static const ::si3::Mouse & mouse();
 
 		/***
 		@brief サウンド情報を管理するクラスのインスタンスを得る。
 		*/
-		SoundManager & get_sound_manager();
+		static SoundManager & get_sound_manager();
 
 		/***
 		@brief カメラを管理するクラスのインスタンスを得る。
 		*/
-		::si3::Camera & camera();
-		const ::si3::Camera & camera() const;
+		static ::si3::Camera & camera();
 
 		/***
 		@brief ディスプレイを管理するクラスのインスタンスを得る。
 		*/
-		::si3::DisplayManager & display_manager();
+		static ::si3::DisplayManager & display_manager();
 
 
 		/*
-		 * 描画内容を画面に反映する
-		 *
-		 */
-		void show();
+		* 描画内容を画面に反映する
+		*
+		*/
+		static void show();
 
 
 
 
-		LPDIRECT3DDEVICE9 get_dxdevice();
-		const LPDIRECT3DDEVICE9 get_dxdevice() const;
+		static LPDIRECT3DDEVICE9 get_dxdevice();
+		static Manager & get_instance();
 
 	private:
 		fw::Window windowi;
@@ -87,5 +86,62 @@ namespace si3
 		::si3::Camera dxcamerai;
 		DxInput dxinputi;
 		SoundManager soundm;
+
+		/*
+		 * @return true:成功 false:失敗
+		 *
+		 */
+		bool init_dynamic();
+
+		/*
+		 * 毎フレーム最初に呼び出すこと
+		 * @return true:続行可能 false:続行不可能
+		 *
+		 */
+		bool begin_frame_dynamic();
+
+		/***
+		@brief 表示リストにオブジェクトを登録する。
+		@detail この登録はこのフレームでのみ有効であるため、
+		        毎フレーム描画したければ毎フレーム登録し直す必要がある。
+		*/
+		void register_display_object_dynamic(const DisplayObject & display_objecti);
+
+		/***
+		@brief キーボード情報を管理するクラスのインスタンスを得る。
+		*/
+		const ::si3::Key & key_dynamic() const;
+
+		/***
+		@brief マウス情報を管理するクラスのインスタンスを得る。
+		*/
+		const ::si3::Mouse & mouse_dynamic() const;
+
+		/***
+		@brief サウンド情報を管理するクラスのインスタンスを得る。
+		*/
+		SoundManager & get_sound_manager_dynamic();
+
+		/***
+		@brief カメラを管理するクラスのインスタンスを得る。
+		*/
+		::si3::Camera & camera_dynamic();
+
+		/***
+		@brief ディスプレイを管理するクラスのインスタンスを得る。
+		*/
+		::si3::DisplayManager & display_manager_dynamic();
+
+
+		/*
+		 * 描画内容を画面に反映する
+		 *
+		 */
+		void show_dynamic();
+
+
+
+
+		LPDIRECT3DDEVICE9 get_dxdevice_dynamic();
 	};
 }
