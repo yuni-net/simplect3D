@@ -226,22 +226,22 @@ namespace si3
 	{
 		construct();
 	}
-	AnimeData::AnimeData(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
+	AnimeData::AnimeData(const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
 	{
 		construct();
-		load(manageri, path, piece_size, piece_width, piece_height, enable_num);
+		load(path, piece_size, piece_width, piece_height, enable_num);
 	}
-	AnimeData::AnimeData(const Manager & manageri, const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
+	AnimeData::AnimeData(const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
 	{
 		construct();
-		load(manageri, path, piece_size, piece_width, piece_height, enable_num);
+		load(path, piece_size, piece_width, piece_height, enable_num);
 	}
 
-	bool AnimeData::load(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
+	bool AnimeData::load(const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num)
 	{
 		release();
 
-		device = manageri.get_dxdevice();
+		device = si3::Manager::get_dxdevice();
 		this->enable_num_ = enable_num;
 		width_ = piece_width;	// 1コマの横幅
 		height_ = piece_height;	// 1コマの縦幅
@@ -423,9 +423,9 @@ namespace si3
 
 		return true;
 	}
-	bool AnimeData::load(const Manager & manageri, const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
+	bool AnimeData::load(const std::string & path, float piece_size, uint uPieceWidth, uint uPieceHeight, uint uEnableNum)
 	{
-		return load(manageri, path.c_str(), piece_size, uPieceWidth, uPieceHeight, uEnableNum);
+		return load(path.c_str(), piece_size, uPieceWidth, uPieceHeight, uEnableNum);
 	}
 
 	uint AnimeData::width() const

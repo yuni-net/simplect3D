@@ -274,20 +274,20 @@ namespace si3
 	{
 		construct();
 	}
-	ImageData::ImageData(const Manager & manageri, const char * path, float piece_size)
+	ImageData::ImageData(const char * path, float piece_size)
 	{
 		construct();
-		load(manageri, path, piece_size);
+		load(path, piece_size);
 	}
-	ImageData::ImageData(const Manager & manageri, const std::string & path, float piece_size)
+	ImageData::ImageData(const std::string & path, float piece_size)
 	{
 		construct();
-		load(manageri, path, piece_size);
+		load(path, piece_size);
 	}
 
-	bool ImageData::load(const Manager & manageri, const char * path, float piece_size)
+	bool ImageData::load(const char * path, float piece_size)
 	{
-		device = manageri.get_dxdevice();
+		device = si3::Manager::get_dxdevice();
 
 		load(
 			device,
@@ -303,9 +303,9 @@ namespace si3
 
 		return true;
 	}
-	bool ImageData::load(const Manager & manageri, const std::string & path, float piece_size)
+	bool ImageData::load(const std::string & path, float piece_size)
 	{
-		return load(manageri, path.c_str(), piece_size);
+		return load(path.c_str(), piece_size);
 	}
 
 	uint ImageData::width() const

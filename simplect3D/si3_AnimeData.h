@@ -14,11 +14,11 @@ namespace si3
 	public:
 
 		AnimeData();
-		AnimeData(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
-		AnimeData(const Manager & manageri, const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
+		AnimeData(const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
+		AnimeData(const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
 
-		bool load(const Manager & manageri, const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
-		bool load(const Manager & manageri, const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
+		bool load(const char * path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
+		bool load(const std::string & path, float piece_size, uint piece_width, uint piece_height, uint enable_num);
 
 		uint width() const;
 		uint height() const;

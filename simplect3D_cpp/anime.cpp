@@ -11,22 +11,10 @@ namespace si3
 	{
 		construct();
 	}
-#if 0
-	Anime::Anime(const Manager & manageri, const TCHAR * path)
+	Anime::Anime(const ::si3::AnimeData & animed)
 	{
 		construct();
-		load(manageri, path);
-	}
-	Anime::Anime(const Manager & manageri, const std::string & path)
-	{
-		construct();
-		load(manageri, path);
-	}
-#endif
-	Anime::Anime(const Manager & manageri, const ::si3::AnimeData & animed)
-	{
-		construct();
-		anime_data(manageri, animed);
+		anime_data(animed);
 	}
 
 	void Anime::piece_size(float value)
@@ -38,22 +26,7 @@ namespace si3
 		return piece_size_;
 	}
 
-#if 0
-	bool Anime::load(const Manager & manageri, const TCHAR * path)
-	{
-		pManager = &manageri;
-		::si3::ImageData * imgd = new ::si3::ImageData();
-		bool result = imgd->load(manageri, path, piece_size());
-		image_data(manageri, *imgd);
-		ownership = true;
-		return result;
-	}
-	bool Anime::load(const Manager & manageri, const std::string & path)
-	{
-		return load(manageri, path.c_str());
-	}
-#endif
-	void Anime::anime_data(const Manager & manageri, const ::si3::AnimeData & animed)
+	void Anime::anime_data(const ::si3::AnimeData & animed)
 	{
 		const int c_nDefaultResistor = 4;
 

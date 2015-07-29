@@ -14,9 +14,9 @@ namespace si3
 	{
 	public:
 		Billboard();
-		Billboard(const Manager & manageri, const TCHAR * path);
-		Billboard(const Manager & manageri, const std::string & path);
-		Billboard(const Manager & manageri, const ::si3::ImageData & imaged);
+		Billboard(const TCHAR * path);
+		Billboard(const std::string & path);
+		Billboard(const ::si3::ImageData & imaged);
 
 
 

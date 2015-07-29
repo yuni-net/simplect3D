@@ -11,17 +11,17 @@ namespace si3
 	{
 		// Nothing
 	}
-	Billboard::Billboard(const Manager & manageri, const TCHAR * path)
+	Billboard::Billboard(const TCHAR * path)
 	{
-		load(manageri, path);
+		load(path);
 	}
-	Billboard::Billboard(const Manager & manageri, const std::string & path)
+	Billboard::Billboard(const std::string & path)
 	{
-		load(manageri, path);
+		load(path);
 	}
-	Billboard::Billboard(const Manager & manageri, const ::si3::ImageData & imaged)
+	Billboard::Billboard(const ::si3::ImageData & imaged)
 	{
-		image_data(manageri, imaged);
+		image_data(imaged);
 	}
 
 
@@ -38,7 +38,7 @@ namespace si3
 		Matrix scale_mat;
 		scale_mat.scale(scale(), scale(), scale());
 
-		const D3DXMATRIX & view_rot = manager->camera().view_rot();
+		const D3DXMATRIX & view_rot = si3::Manager::camera().view_rot();
 		Matrix inverse_rot = inverse_matrix_of_rot(view_rot);
 		Matrix rot_mat;
 		rot_mat.rotate_z(rot_z());

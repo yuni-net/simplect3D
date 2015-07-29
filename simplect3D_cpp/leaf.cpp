@@ -10,20 +10,20 @@ namespace si3
 	{
 		construct();
 	}
-	Leaf::Leaf(const Manager & manageri, const TCHAR * path)
+	Leaf::Leaf(const TCHAR * path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	Leaf::Leaf(const Manager & manageri, const std::string & path)
+	Leaf::Leaf(const std::string & path)
 	{
 		construct();
-		load(manageri, path);
+		load(path);
 	}
-	Leaf::Leaf(const Manager & manageri, const ::si3::ImageData & imaged)
+	Leaf::Leaf(const ::si3::ImageData & imaged)
 	{
 		construct();
-		image_data(manageri, imaged);
+		image_data(imaged);
 	}
 
 	void Leaf::piece_size(float value)
@@ -35,22 +35,20 @@ namespace si3
 		return piece_size_;
 	}
 
-	bool Leaf::load(const Manager & manageri, const TCHAR * path)
+	bool Leaf::load(const TCHAR * path)
 	{
-		manager = &manageri;
 		::si3::ImageData * imgd = new ::si3::ImageData();
-		bool result = imgd->load(manageri, path, piece_size());
-		image_data(manageri, *imgd);
+		bool result = imgd->load(path, piece_size());
+		image_data(*imgd);
 		ownership = true;
 		return result;
 	}
-	bool Leaf::load(const Manager & manageri, const std::string & path)
+	bool Leaf::load(const std::string & path)
 	{
-		return load(manageri, path.c_str());
+		return load(path.c_str());
 	}
-	void Leaf::image_data(const Manager & manageri, const ::si3::ImageData & imaged)
+	void Leaf::image_data(const ::si3::ImageData & imaged)
 	{
-		manager = &manageri;
 		release();
 		this->imaged = &imaged;
 	}

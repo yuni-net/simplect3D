@@ -14,18 +14,18 @@ namespace si3
 	{
 	public:
 		Leaf();
-		Leaf(const Manager & manageri, const TCHAR * path);
-		Leaf(const Manager & manageri, const std::string & path);
-		Leaf(const Manager & manageri, const ::si3::ImageData & imaged);
+		Leaf(const TCHAR * path);
+		Leaf(const std::string & path);
+		Leaf(const ::si3::ImageData & imaged);
 
 		// ˆê‚Â‚ÌOŠpƒ|ƒŠƒSƒ“‚ÌÅ‘å‚Ì‘å‚«‚³‚ğ‚±‚±‚Åİ’è‚·‚é
 		// OŠpƒ|ƒŠƒSƒ“‚Ì‘å‚«‚³‚ª‚±‚ê‚ğ’´‚¦‚È‚¢‚æ‚¤‚ÉA”Âƒ|ƒŠƒSƒ“‚Í‚¢‚­‚Â‚©‚É•ªŠ„‚³‚ê‚ÄŠÇ—‚³‚ê‚é
 		void piece_size(float value);
 		float piece_size() const;
 
-		bool load(const Manager & manageri, const TCHAR * path);
-		bool load(const Manager & manageri, const std::string & path);
-		void image_data(const Manager & manageri, const ::si3::ImageData & imaged);
+		bool load(const TCHAR * path);
+		bool load(const std::string & path);
+		void image_data(const ::si3::ImageData & imaged);
 
 		void x(float value);
 		float x() const;
@@ -78,7 +78,6 @@ namespace si3
 
 	protected:
 		mutable Matrix world_mat;
-		const Manager * manager;
 
 	private:
 		const ::si3::ImageData * imaged;

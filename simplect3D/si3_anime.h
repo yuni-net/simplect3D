@@ -18,18 +18,14 @@ namespace si3
 	{
 	public:
 		Anime();
-	//	Anime(const Manager & manageri, const TCHAR * path);
-	//	Anime(const Manager & manageri, const std::string & path);
-		Anime(const Manager & manageri, const ::si3::AnimeData & imaged);
+		Anime(const ::si3::AnimeData & imaged);
 
 		// ˆê‚Â‚ÌOŠpƒ|ƒŠƒSƒ“‚ÌÅ‘å‚Ì‘å‚«‚³‚ğ‚±‚±‚Åİ’è‚·‚é
 		// OŠpƒ|ƒŠƒSƒ“‚Ì‘å‚«‚³‚ª‚±‚ê‚ğ’´‚¦‚È‚¢‚æ‚¤‚ÉA”Âƒ|ƒŠƒSƒ“‚Í‚¢‚­‚Â‚©‚É•ªŠ„‚³‚ê‚ÄŠÇ—‚³‚ê‚é
 		void piece_size(float value);
 		float piece_size() const;
 
-	//	bool load(const Manager & manageri, const TCHAR * path);
-	//	bool load(const Manager & manageri, const std::string & path);
-		void anime_data(const Manager & manageri, const ::si3::AnimeData & imaged);
+		void anime_data(const ::si3::AnimeData & imaged);
 
 		void x(float value);
 		float x() const;
@@ -96,7 +92,6 @@ namespace si3
 
 	protected:
 		mutable D3DXMATRIX world_mat;
-		const Manager * manager;
 
 	private:
 		const ::si3::AnimeData * animed;

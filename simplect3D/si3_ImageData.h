@@ -21,11 +21,11 @@ namespace si3
 		};
 
 		ImageData();
-		ImageData(const Manager & manageri, const char * path, float piece_size);
-		ImageData(const Manager & manageri, const std::string & path, float piece_size);
+		ImageData(const char * path, float piece_size);
+		ImageData(const std::string & path, float piece_size);
 
-		bool load(const Manager & manageri, const char * path, float piece_size);
-		bool load(const Manager & manageri, const std::string & path, float piece_size);
+		bool load(const char * path, float piece_size);
+		bool load(const std::string & path, float piece_size);
 
 		uint width() const;
 		uint height() const;
