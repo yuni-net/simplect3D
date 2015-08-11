@@ -175,6 +175,12 @@
     <Filter Include="simplect3D\Motion3D\ModelData_pmd\BoneBranch\Bone\BonedTop">
       <UniqueIdentifier>{5ce105c9-5a15-45b5-b2c1-f264e1191179}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\seal">
+      <UniqueIdentifier>{1467c1a6-76ca-434a-9e15-428f4c5470c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\seal\SealData">
+      <UniqueIdentifier>{f8df2c5d-1bf8-456e-becb-832488b66be5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -318,6 +324,12 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\ModelData_pmd.cpp">
       <Filter>simplect3D\Motion3D\ModelData_pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\si3_Seal.cpp">
+      <Filter>simplect3D\seal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\si3_SealData.cpp">
+      <Filter>simplect3D\seal\SealData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -488,6 +500,12 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_Diffuse.h">
       <Filter>simplect3D\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Seal.h">
+      <Filter>simplect3D\seal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_SealData.h">
+      <Filter>simplect3D\seal\SealData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

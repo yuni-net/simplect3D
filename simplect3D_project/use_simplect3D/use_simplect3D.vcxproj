@@ -120,6 +120,8 @@
     <ClCompile Include="..\..\simplect3D_cpp\si3_coor3.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_ModelDustConverter.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_normalize_vector.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_Seal.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_SealData.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_triangle_gravity_center.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome_data.cpp" />
@@ -177,6 +179,8 @@
     <ClInclude Include="..\..\simplect3D\si3_SE.h" />
     <ClInclude Include="..\..\simplect3D\si3_ModelDustConverter.h" />
     <ClInclude Include="..\..\simplect3D\si3_DxTop.h" />
+    <ClInclude Include="..\..\simplect3D\si3_Seal.h" />
+    <ClInclude Include="..\..\simplect3D\si3_SealData.h" />
     <ClInclude Include="..\..\simplect3D\simplect3D.h" />
     <ClInclude Include="..\..\simplect3D\si3_Skydome.h" />
     <ClInclude Include="..\..\simplect3D\si3_SkydomeData.h" />
