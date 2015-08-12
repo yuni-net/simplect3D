@@ -39,8 +39,9 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 
 	si3::Seal seal;
 	seal.load("data/sky.jpg");
-	seal.x = 0.0f;
-	seal.y = 0.0f;
+	seal.x = seal.base_width()*0.5f;
+//	seal.x = 0.0f;
+	seal.y = seal.base_height()*0.5f;
 	seal.z = 0.0f;
 
 

@@ -6,7 +6,6 @@
 #include "si3_Top4.h"
 #include "si3_ModelCoor.h"
 #include "si3_Diffuse.h"
-#include "si3_DxTop.h"
 
 namespace si3
 {
@@ -43,6 +42,11 @@ namespace si3
 
 
 	protected:
+		struct DxTop2D
+		{
+			D3DVECTOR   pos;
+			float       u, v;
+		};
 
 		uint width_;
 		uint height_;
@@ -112,7 +116,7 @@ namespace si3
 			const D3DMATERIAL9 & material) const;
 
 		// âÒì]ÅEägèkå„ÇÃç¿ïWÇ…ïœä∑Ç∑ÇÈ
-		void convert_vertex(DxTop * vert_arr, const D3DXMATRIX & world_mat, DxTop * converted_vert_arr) const;
+		void convert_vertex(DxTop2D * vert_arr, const D3DXMATRIX & world_mat, DxTop2D * converted_vert_arr) const;
 	};
 }
 

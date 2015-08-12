@@ -7,7 +7,7 @@
 
 
 
-static const WORD LAND_FVF = D3DFVF_XYZRHW | D3DFVF_NORMAL | D3DFVF_TEX1;
+static const WORD LAND_FVF = D3DFVF_XYZRHW | D3DFVF_TEX1;
 
 
 
@@ -26,7 +26,7 @@ bool si3::SealData::init_vertex(
 
 	// 頂点情報格納バッファを作成
 	hr = device->CreateVertexBuffer(
-		sizeof(DxTop)* top_num,
+		sizeof(DxTop2D)* top_num,
 		D3DUSAGE_WRITEONLY,
 		LAND_FVF,
 		D3DPOOL_MANAGED,
@@ -36,7 +36,7 @@ bool si3::SealData::init_vertex(
 	if (FAILED(hr)) return false;
 
 	// バッファをロックをして書き込みを開始する
-	DxTop * vert_arr = nullptr;
+	DxTop2D * vert_arr = nullptr;
 	hr = (*vertbuff)->Lock(0, 0, fw::pointer_cast<void **>(&vert_arr), 0);
 	if (FAILED(hr)) return false;
 
@@ -52,14 +52,11 @@ bool si3::SealData::init_vertex(
 	{
 		for (int index_x = 0; index_x < top_num_x; ++index_x)	// 左の列から右の列へ頂点情報を格納してゆく
 		{
-			DxTop & vertex = vert_arr[target_index];
+			DxTop2D & vertex = vert_arr[target_index];
 
 			vertex.pos.x = static_cast<float>(width*index_x) / piece_num_x - width / 2.0f;
 			vertex.pos.y = static_cast<float>(height*(top_num_y - 1 - index_y)) / piece_num_y - height / 2.0f;
 			vertex.pos.z = 0.0f;
-			vertex.normal.x = 0.0f;
-			vertex.normal.y = 0.0f;
-			vertex.normal.z = -1.0f;
 			vertex.u = static_cast<float>(index_x) / piece_num_x;
 			vertex.v = static_cast<float>(index_y) / piece_num_y;
 
@@ -214,13 +211,25 @@ bool si3::SealData::load(
 	if (result == false) return false;
 
 	hr = device->CreateVertexBuffer(
-		sizeof(DxTop)* top_num,
+		sizeof(DxTop2D)* top_num,
 		D3DUSAGE_WRITEONLY,
 		LAND_FVF,
 		D3DPOOL_MANAGED,
 		&converted_vertbuff,
 		NULL);
 	if (FAILED(hr)) return false;
+
+	DxTop2D * vert_arr = nullptr;
+	hr = (**vertbuff).Lock(0, 0, fw::pointer_cast<void **>(&vert_arr), 0);
+	if (FAILED(hr)) return false;
+	DxTop2D * converted_vert_arr = nullptr;
+	hr = converted_vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&converted_vert_arr), 0);
+	if (FAILED(hr)) return false;
+
+	memcpy(converted_vert_arr, vert_arr, sizeof(DxTop2D)*get_vertex_num());
+
+	(**vertbuff).Unlock();
+	converted_vertbuff->Unlock();
 
 	// 頂点インデックスバッファ作成、頂点インデックスデータ設定
 	result = init_index(
@@ -257,7 +266,7 @@ bool si3::SealData::draw(
 	//テクスチャ設定
 	device->SetTexture(0, texture);
 
-	device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
+	device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop2D));
 	device->SetIndices(indexbuff);
 
 	// ライティング無し
@@ -424,10 +433,10 @@ namespace si3
 	{
 		HRESULT hr;
 		// バッファをロックをして書き込みを開始する
-		DxTop * vert_arr = nullptr;
+		DxTop2D * vert_arr = nullptr;
 		hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&vert_arr), 0);
 		if (FAILED(hr)) return false;
-		DxTop * converted_vert_arr = nullptr;
+		DxTop2D * converted_vert_arr = nullptr;
 		hr = converted_vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&converted_vert_arr), 0);
 		if (FAILED(hr)) return false;
 
@@ -441,7 +450,7 @@ namespace si3
 			device,
 			world_mat,
 			texture,
-			vertbuff,
+			converted_vertbuff,
 			indexbuff,
 			index_num,
 			triangle_num,
@@ -453,6 +462,7 @@ namespace si3
 
 	void SealData::release()
 	{
+		dxsaferelease(converted_vertbuff);
 		dxsaferelease(texture);
 		dxsaferelease(vertbuff);
 		dxsaferelease(indexbuff);
@@ -479,7 +489,7 @@ namespace si3
 	}
 
 
-	void SealData::convert_vertex(DxTop * vert_arr, const D3DXMATRIX & world_mat, DxTop * converted_vert_arr) const
+	void SealData::convert_vertex(DxTop2D * vert_arr, const D3DXMATRIX & world_mat, DxTop2D * converted_vert_arr) const
 	{
 		for (int vert_No = 0; vert_No < get_vertex_num(); ++vert_No)
 		{
