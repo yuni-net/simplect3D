@@ -6,6 +6,7 @@
 #include "si3_Top4.h"
 #include "si3_ModelCoor.h"
 #include "si3_Diffuse.h"
+#include "si3_DxTop.h"
 
 namespace si3
 {
@@ -52,12 +53,14 @@ namespace si3
 		LPDIRECT3DTEXTURE9 texture;
 		LPDIRECT3DDEVICE9 device;
 		IDirect3DVertexBuffer9 * vertbuff;
+		IDirect3DVertexBuffer9 * converted_vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		int index_num;
 		int triangle_num;
 
 		void construct();
 		void release();
+		int get_vertex_num() const;
 
 		bool draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material) const;
 
@@ -107,6 +110,9 @@ namespace si3
 			int index_num,
 			int triangle_num,
 			const D3DMATERIAL9 & material) const;
+
+		// âÒì]ÅEägèkå„ÇÃç¿ïWÇ…ïœä∑Ç∑ÇÈ
+		void convert_vertex(DxTop * vert_arr, const D3DXMATRIX & world_mat, DxTop * converted_vert_arr) const;
 	};
 }
 

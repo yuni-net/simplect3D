@@ -1,4 +1,5 @@
 #include <si3_Seal.h>
+#include <si3_SealData.h>
 
 namespace si3
 {

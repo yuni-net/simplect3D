@@ -24,6 +24,7 @@
 #include "si3_SkydomeMini.h"
 #include "si3_box.h"
 #include "si3_Motion3D.h"
+#include "si3_Seal.h"
 
 #ifndef simplect3D_developping_
 #ifdef _DEBUG

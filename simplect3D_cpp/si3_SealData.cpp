@@ -7,7 +7,7 @@
 
 
 
-static const WORD LAND_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
+static const WORD LAND_FVF = D3DFVF_XYZRHW | D3DFVF_NORMAL | D3DFVF_TEX1;
 
 
 
@@ -193,7 +193,10 @@ bool si3::SealData::load(
 		NULL,
 		NULL,
 		texture);
-	if (FAILED(hr)) return false;
+	if (FAILED(hr))
+	{
+		return false;
+	}
 
 	bool result;
 
@@ -209,6 +212,15 @@ bool si3::SealData::load(
 		piece_num_y,
 		vertbuff);
 	if (result == false) return false;
+
+	hr = device->CreateVertexBuffer(
+		sizeof(DxTop)* top_num,
+		D3DUSAGE_WRITEONLY,
+		LAND_FVF,
+		D3DPOOL_MANAGED,
+		&converted_vertbuff,
+		NULL);
+	if (FAILED(hr)) return false;
 
 	// 頂点インデックスバッファ作成、頂点インデックスデータ設定
 	result = init_index(
@@ -236,9 +248,6 @@ bool si3::SealData::draw(
 	int triangle_num,
 	const D3DMATERIAL9 & material) const
 {
-	// ワールド変換行列設定
-	device->SetTransform(D3DTS_WORLD, &world_mat);
-
 	// 頂点フォーマット設定
 	device->SetFVF(LAND_FVF);
 
@@ -251,6 +260,9 @@ bool si3::SealData::draw(
 	device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 	device->SetIndices(indexbuff);
 
+	// ライティング無し
+	device->LightEnable(0, FALSE);
+	device->SetRenderState(D3DRS_LIGHTING, FALSE);
 
 	device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
@@ -264,6 +276,10 @@ bool si3::SealData::draw(
 		index_num,
 		0,
 		triangle_num);
+
+	// ライティング有り
+	device->LightEnable(0, TRUE);
+	device->SetRenderState(D3DRS_LIGHTING, TRUE);
 
 	return true;
 }
@@ -406,6 +422,21 @@ namespace si3
 
 	bool SealData::draw(const D3DXMATRIX & world_mat, const D3DMATERIAL9 & material) const
 	{
+		HRESULT hr;
+		// バッファをロックをして書き込みを開始する
+		DxTop * vert_arr = nullptr;
+		hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&vert_arr), 0);
+		if (FAILED(hr)) return false;
+		DxTop * converted_vert_arr = nullptr;
+		hr = converted_vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&converted_vert_arr), 0);
+		if (FAILED(hr)) return false;
+
+		convert_vertex(vert_arr, world_mat, converted_vert_arr);
+
+		// バッファをアンロックして書き込みを終了する
+		vertbuff->Unlock();
+		converted_vertbuff->Unlock();
+
 		draw(
 			device,
 			world_mat,
@@ -438,11 +469,36 @@ namespace si3
 	{
 		texture = nullptr;
 		vertbuff = nullptr;
+		converted_vertbuff = nullptr;
 		indexbuff = nullptr;
 	}
 
+	int SealData::get_vertex_num() const
+	{
+		return triangle_num - 2;
+	}
 
 
+	void SealData::convert_vertex(DxTop * vert_arr, const D3DXMATRIX & world_mat, DxTop * converted_vert_arr) const
+	{
+		for (int vert_No = 0; vert_No < get_vertex_num(); ++vert_No)
+		{
+			const D3DVECTOR & base_pos = vert_arr[vert_No].pos;
+			D3DXMATRIX base_mat;
+			D3DXMatrixIdentity(&base_mat);
+			base_mat(3, 0) = base_pos.x;
+			base_mat(3, 1) = base_pos.y;
+			base_mat(3, 2) = base_pos.z;
+			D3DXMATRIX converted_mat;
+			D3DXMatrixMultiply(&converted_mat, &base_mat, &world_mat);
+
+			D3DVECTOR & converted_pos = converted_vert_arr[vert_No].pos;
+			converted_pos.x = converted_mat(3, 0);
+			converted_pos.y = converted_mat(3, 1);
+			converted_pos.z = converted_mat(3, 2);
+		}
+
+	}
 
 }
 

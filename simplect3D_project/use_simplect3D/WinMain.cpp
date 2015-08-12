@@ -37,12 +37,12 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_y(10.0f);
 	camera.look_z(0.0f);
 
-	si3::Motion3D yuuki;
-	yuuki.load("data/yuuki/yuuki_before.pmd", "data/motion05.vmd");
-//	yuuki.pause();
-	yuuki.pos.x = 0.0f;
-	yuuki.pos.y = 0.0f;
-	yuuki.pos.z = 0.0f;
+	si3::Seal seal;
+	seal.load("data/sky.jpg");
+	seal.x = 0.0f;
+	seal.y = 0.0f;
+	seal.z = 0.0f;
+
 
 	float fRadian = -3.14159265f/2.0f;
 	const float fRotSpeed = 0.08f;
@@ -96,12 +96,8 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 		//	miku.mask_index += 1;
 		}
 
-		if (key.pushed(DIK_RETURN))
-		{
-			yuuki.seek_first();
-		}
 
-		si3m.register_display_object(yuuki);
+		si3m.register_display_object(seal);
 
 		si3m.show();
 
