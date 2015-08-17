@@ -45,6 +45,7 @@ namespace si3
 		struct DxTop2D
 		{
 			D3DVECTOR   pos;
+			float rhw;
 			float       u, v;
 		};
 

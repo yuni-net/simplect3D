@@ -55,8 +55,9 @@ bool si3::SealData::init_vertex(
 			DxTop2D & vertex = vert_arr[target_index];
 
 			vertex.pos.x = static_cast<float>(width*index_x) / piece_num_x - width / 2.0f;
-			vertex.pos.y = static_cast<float>(height*(top_num_y - 1 - index_y)) / piece_num_y - height / 2.0f;
+			vertex.pos.y = static_cast<float>(height*(index_y)) / piece_num_y - height / 2.0f;
 			vertex.pos.z = 0.0f;
+			vertex.rhw = 1.0f;
 			vertex.u = static_cast<float>(index_x) / piece_num_x;
 			vertex.v = static_cast<float>(index_y) / piece_num_y;
 
@@ -274,8 +275,6 @@ bool si3::SealData::draw(
 	device->SetRenderState(D3DRS_LIGHTING, FALSE);
 
 	device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
-	//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-	//device->SetRenderState(D3DRS_FILLMODE, D3DFILL_POINT);
 
 	// プリミティブ描画
 	device->DrawIndexedPrimitive(
@@ -485,7 +484,7 @@ namespace si3
 
 	int SealData::get_vertex_num() const
 	{
-		return triangle_num - 2;
+		return triangle_num + 2;
 	}
 
 
