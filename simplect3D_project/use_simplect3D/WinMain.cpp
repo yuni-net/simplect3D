@@ -11,22 +11,20 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 {
 	fw::xrandom_init(static_cast<unsigned long>(time(NULL)));
 
-	si3::Manager * si3mp = new si3::Manager();
-	si3::Manager & si3m = *si3mp;
-	if (si3m.init() == false)
+	if (si3::Manager::init() == false)
 	{
 		fw::popup("failed");
 		return -1;
 	}
 
-	const si3::Key & key = si3m.key();
-	si3::Camera & camera = si3m.camera();
-	const si3::Mouse & mouse = si3m.mouse();
-	auto & displaym = si3m.display_manager();
+	const si3::Key & key = si3::Manager::key();
+	si3::Camera & camera = si3::Manager::camera();
+	const si3::Mouse & mouse = si3::Manager::mouse();
+	auto & displaym = si3::Manager::display_manager();
 
 	displaym.context_color(1.0f, 1.0f, 1.0f);
 
-	auto & skydome = si3m.display_manager().get_skydome();
+	auto & skydome = si3::Manager::display_manager().get_skydome();
 	skydome.load("data/orange.jpg");
 
 	camera.x(0.0f);
@@ -52,7 +50,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 
 	bool bunishing = false;
 
-	while (si3m.begin_frame())
+	while (si3::Manager::begin_frame())
 	{
 		const float fSpeed = 0.04f;
 
@@ -99,14 +97,13 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 		}
 
 
-		si3m.register_display_object(seal);
+		si3::Manager::register_display_object(seal);
 
-		si3m.show();
+		si3::Manager::show();
 
 
 	}
 
-	delete si3mp;
 
 	return 0;
 }
