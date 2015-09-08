@@ -245,6 +245,10 @@ namespace si3
 	{
 		return matrix_(3, 3);
 	}
+	Coor3 Matrix::coor3() const
+	{
+		return Coor3(x(), y(), z());
+	}
 
 
 	const D3DXMATRIX & Matrix::dxmat() const

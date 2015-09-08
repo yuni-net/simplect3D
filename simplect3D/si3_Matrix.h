@@ -39,6 +39,7 @@ namespace si3
 		float  y() const;
 		float  z() const;
 		float  w() const;
+		Coor3 coor3() const;
 
 		// 自身の行列を設定する。自身の行列にさらに掛け合わせるわけではない **************
 
