@@ -64,6 +64,9 @@ namespace si3
 		float rot_z_;
 
 		const BoxData * boxd;
+
+
+		void draw() const;
 	};
 }
 

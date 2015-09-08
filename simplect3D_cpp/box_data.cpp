@@ -162,7 +162,6 @@ namespace si3
 	{
 		// 頂点フォーマット設定
 		device->SetFVF(LAND_FVF);
-
 		device->SetStreamSource(0, vertbuff, 0, sizeof(land_vertex));
 
 		device->DrawPrimitive(

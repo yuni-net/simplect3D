@@ -120,34 +120,17 @@ namespace si3
 		// 半透明表示禁止(αブレンディング無効化)
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
-		Matrix rotate_mat =
-			Matrix().rotate_y(rot_y()) *
-			Matrix().rotate_x(rot_x()) *
-			Matrix().rotate_z(rot_z());
-
-		Matrix parallel_mat;
-		parallel_mat.parallel(x(), y(), z());
-
-		Matrix world_mat;
-		world_mat = rotate_mat*parallel_mat;
-
-		// ワールド変換行列設定
-		device->SetTransform(D3DTS_WORLD, world_mat.dxpointer());
-
-		D3DMATERIAL9 material = {
-			{ red(), green(), blue(), alpha() },
-			{ red(), green(), blue(), alpha() },
-			{ 0.0f, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, 0.0f, 0.0f },
-			1.0f
-		};
-
-		//マテリアル設定
-		device->SetMaterial(&material);
+		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
 
 
-		boxd->draw();
+
+		draw();
+
+
+
+		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 	}
+
 	void Box::draw_alpha() const
 	{
 		if (alpha() >= 1.0f)
@@ -170,6 +153,25 @@ namespace si3
 		device->SetRenderState(D3DRS_ALPHAREF, 0);
 		device->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
 
+		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+		
+
+
+		draw();
+		
+		
+		
+		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+	}
+
+	void Box::draw() const
+	{
+		auto device = boxd->get_device();
+
+		device->LightEnable(0, TRUE);
+		device->SetRenderState(D3DRS_LIGHTING, TRUE);
+		device->SetTexture(0, NULL);
+
 		Matrix rotate_mat =
 			Matrix().rotate_y(rot_y()) *
 			Matrix().rotate_x(rot_x()) *
@@ -195,10 +197,11 @@ namespace si3
 		//マテリアル設定
 		device->SetMaterial(&material);
 
-
 		boxd->draw();
 	}
-
 }
+
+
+
 
 #endif
