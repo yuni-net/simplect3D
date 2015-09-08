@@ -7,7 +7,7 @@ namespace si3
 	D3DXMATRIX inverse_matrix_of_rot(const D3DXMATRIX & rot);
 
 
-	struct Coor3;
+	class Coor3;
 
 	/*
 	* Š|‚¯Z‚Í’Êí‰‰Z‚Ì‚Æ‚«‚Æ“¯‚¶‡”Ô‚Å‹Lq‚µ‚Ä—Ç‚¢B
