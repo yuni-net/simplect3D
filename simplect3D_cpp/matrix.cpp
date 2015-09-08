@@ -1,5 +1,6 @@
 #include <si3_Matrix.h>
 #include <assert.h>
+#include "si3_coor3.h"
 
 namespace si3
 {
@@ -21,25 +22,7 @@ namespace si3
 
 	Matrix::Matrix()
 	{
-		matrix_(0, 0) = 1.0f;
-		matrix_(0, 1) = 0.0f;
-		matrix_(0, 2) = 0.0f;
-		matrix_(0, 3) = 0.0f;
-
-		matrix_(1, 0) = 0.0f;
-		matrix_(1, 1) = 1.0f;
-		matrix_(1, 2) = 0.0f;
-		matrix_(1, 3) = 0.0f;
-
-		matrix_(2, 0) = 0.0f;
-		matrix_(2, 1) = 0.0f;
-		matrix_(2, 2) = 1.0f;
-		matrix_(2, 3) = 0.0f;
-
-		matrix_(3, 0) = 0.0f;
-		matrix_(3, 1) = 0.0f;
-		matrix_(3, 2) = 0.0f;
-		matrix_(3, 3) = 1.0f;
+		identity();
 	}
 	Matrix::Matrix(
 		float _00, float _01, float _02,
@@ -68,11 +51,15 @@ namespace si3
 	}
 	Matrix::Matrix(const Matrix & mat)
 	{
-		matrix_ = mat.matrix_;
+		*this = mat;
 	}
 	Matrix::Matrix(const D3DXMATRIX & dxmat)
 	{
-		matrix_ = dxmat;
+		*this = dxmat;
+	}
+	Matrix::Matrix(const si3::Coor3 & coor)
+	{
+		*this = coor;
 	}
 	Matrix & Matrix::operator=(const Matrix & mat)
 	{
@@ -84,7 +71,21 @@ namespace si3
 		matrix_ = dxmat;
 		return *this;
 	}
+	Matrix & Matrix::operator=(const Coor3 & coor)
+	{
+		identity();
+		x(coor.x);
+		y(coor.y);
+		z(coor.z);
+		return *this;
+	}
+
 	float Matrix::operator()(unsigned int y, unsigned int x)
+	{
+		assert(x <= 3 && y <= 3);
+		return matrix_(y, x);
+	}
+	float Matrix::operator()(unsigned int y, unsigned int x) const
 	{
 		assert(x <= 3 && y <= 3);
 		return matrix_(y, x);
@@ -112,6 +113,30 @@ namespace si3
 
 
 
+	Matrix & Matrix::identity()
+	{
+		matrix_(0, 0) = 1.0f;
+		matrix_(0, 1) = 0.0f;
+		matrix_(0, 2) = 0.0f;
+		matrix_(0, 3) = 0.0f;
+
+		matrix_(1, 0) = 0.0f;
+		matrix_(1, 1) = 1.0f;
+		matrix_(1, 2) = 0.0f;
+		matrix_(1, 3) = 0.0f;
+
+		matrix_(2, 0) = 0.0f;
+		matrix_(2, 1) = 0.0f;
+		matrix_(2, 2) = 1.0f;
+		matrix_(2, 3) = 0.0f;
+
+		matrix_(3, 0) = 0.0f;
+		matrix_(3, 1) = 0.0f;
+		matrix_(3, 2) = 0.0f;
+		matrix_(3, 3) = 1.0f;
+
+		return *this;
+	}
 
 	Matrix & Matrix::parallel(float vx, float vy, float vz)
 	{
@@ -219,6 +244,10 @@ namespace si3
 	float Matrix::w() const
 	{
 		return matrix_(3, 3);
+	}
+	Coor3 Matrix::coor3() const
+	{
+		return Coor3(x(), y(), z());
 	}
 
 

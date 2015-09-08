@@ -7,6 +7,8 @@ namespace si3
 	D3DXMATRIX inverse_matrix_of_rot(const D3DXMATRIX & rot);
 
 
+	class Coor3;
+
 	/*
 	* 掛け算は通常演算のときと同じ順番で記述して良い。
 	* デフォルトでは単位行列で初期化される。
@@ -21,9 +23,12 @@ namespace si3
 			float _20, float _21, float _22);
 		Matrix(const Matrix & mat);
 		Matrix(const D3DXMATRIX & dxmat);
+		Matrix(const Coor3 & coor);
 		Matrix & operator=(const Matrix & mat);
 		Matrix & operator=(const D3DXMATRIX & dxmat);
+		Matrix & operator=(const Coor3 & coor);
 		float operator()(unsigned int y, unsigned int x);
+		float operator()(unsigned int y, unsigned int x) const;
 		Matrix operator*(const Matrix & mat) const;
 		Matrix & operator*=(const Matrix & mat);
 
@@ -34,9 +39,11 @@ namespace si3
 		float  y() const;
 		float  z() const;
 		float  w() const;
+		Coor3 coor3() const;
 
 		// 自身の行列を設定する。自身の行列にさらに掛け合わせるわけではない **************
 
+		Matrix & identity();
 		Matrix & parallel(float vx, float vy, float vz);
 		Matrix & scale(float magni_x, float magni_y, float magni_z);
 		Matrix & rotate(float radian);			// rotate_zと等価
