@@ -102,6 +102,24 @@ namespace si3
 	}
 
 
+	si3::Matrix Box::get_world_mat() const
+	{
+		Matrix rotate_mat =
+			Matrix().rotate_y(rot_y()) *
+			Matrix().rotate_x(rot_x()) *
+			Matrix().rotate_z(rot_z());
+
+		Matrix parallel_mat;
+		parallel_mat.parallel(x(), y(), z());
+
+		si3::Matrix world_mat;
+		world_mat = rotate_mat*parallel_mat;
+
+		return world_mat;
+	}
+
+
+
 	void Box::draw_no_alpha() const
 	{
 		if (alpha() < 1.0f)
@@ -172,16 +190,7 @@ namespace si3
 		device->SetRenderState(D3DRS_LIGHTING, TRUE);
 		device->SetTexture(0, NULL);
 
-		Matrix rotate_mat =
-			Matrix().rotate_y(rot_y()) *
-			Matrix().rotate_x(rot_x()) *
-			Matrix().rotate_z(rot_z());
-
-		Matrix parallel_mat;
-		parallel_mat.parallel(x(), y(), z());
-
-		Matrix world_mat;
-		world_mat = rotate_mat*parallel_mat;
+		Matrix world_mat = get_world_mat();
 
 		// ƒ[ƒ‹ƒh•ÏŠ·s—ñÝ’è
 		device->SetTransform(D3DTS_WORLD, world_mat.dxpointer());

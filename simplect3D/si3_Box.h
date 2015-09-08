@@ -44,11 +44,13 @@ namespace si3
 		float alpha() const;
 		void alpha(float value);
 
+
+		si3::Matrix get_world_mat() const;
+
+
+
 		void draw_no_alpha() const;
 		void draw_alpha() const;
-
-
-
 
 	private:
 		float x_;
