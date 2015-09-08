@@ -24,6 +24,7 @@ namespace si3
 		Matrix & operator=(const Matrix & mat);
 		Matrix & operator=(const D3DXMATRIX & dxmat);
 		float operator()(unsigned int y, unsigned int x);
+		float operator()(unsigned int y, unsigned int x) const;
 		Matrix operator*(const Matrix & mat) const;
 		Matrix & operator*=(const Matrix & mat);
 

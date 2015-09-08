@@ -89,6 +89,11 @@ namespace si3
 		assert(x <= 3 && y <= 3);
 		return matrix_(y, x);
 	}
+	float Matrix::operator()(unsigned int y, unsigned int x) const
+	{
+		assert(x <= 3 && y <= 3);
+		return matrix_(y, x);
+	}
 	Matrix Matrix::operator*(const Matrix & mat) const
 	{
 		D3DXMATRIX result9 = matrix_ * mat.matrix_;
