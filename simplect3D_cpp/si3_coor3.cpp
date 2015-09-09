@@ -80,6 +80,11 @@ namespace si3
 		y = y*magni;
 		z = z*magni;
 	}
+	D3DXVECTOR3 Coor3::dxvec3() const
+	{
+		return D3DXVECTOR3(x, y, z);
+	}
+
 
 	float Coor3::dot(const si3::Coor3 & one, const si3::Coor3 & ano)
 	{

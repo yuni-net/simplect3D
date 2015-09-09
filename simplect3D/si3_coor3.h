@@ -23,6 +23,7 @@ namespace si3
 		float length2() const;
 		float length() const;
 		void normalize();
+		D3DXVECTOR3 dxvec3() const;
 
 		static float dot(const si3::Coor3 & one, const si3::Coor3 & ano);
 		static si3::Coor3 cross(const si3::Coor3 one, const si3::Coor3 & ano);
