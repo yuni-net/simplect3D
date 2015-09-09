@@ -9,8 +9,21 @@ namespace si3
 	*/
 	bool Manager::init()
 	{
-		return get_instance().init_dynamic();
+		return get_instance().init_dynamic(640, 480);
 	}
+
+	/*
+	* @param
+	*      width: ウィンドウの横幅(px)
+	*      height: ウィンドウの縦幅(px)
+	* @return true:成功 false:失敗
+	*
+	*/
+	bool Manager::init(const int width, const int height)
+	{
+		return get_instance().init_dynamic(width, height);
+	}
+
 
 	/*
 	* 毎フレーム最初に呼び出すこと
@@ -98,11 +111,11 @@ namespace si3
 
 
 
-	bool Manager::init_dynamic()
+	bool Manager::init_dynamic(const int width, const int height)
 	{
 		fps60i.init();
 
-		windowi.width(640).height(480);
+		windowi.width(width).height(height);
 		windowi.create();
 
 		if (dxm.init(windowi.myhandle(), windowi.width(), windowi.height())==false) return false;

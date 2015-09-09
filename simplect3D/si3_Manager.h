@@ -26,6 +26,15 @@ namespace si3
 		static bool init();
 
 		/*
+		 * @param
+		 *      width: ウィンドウの横幅(px)
+		 *      height: ウィンドウの縦幅(px)
+		 * @return true:成功 false:失敗
+		 *
+		 */
+		static bool init(const int width, const int height);
+
+		/*
 		* 毎フレーム最初に呼び出すこと
 		* @return true:続行可能 false:続行不可能
 		*
@@ -86,12 +95,17 @@ namespace si3
 		::si3::Camera dxcamerai;
 		DxInput dxinputi;
 		SoundManager soundm;
+		int window_width;
+		int window_height;
 
 		/*
+		 * @param
+		 *      width: ウィンドウの横幅(px)
+		 *      height: ウィンドウの縦幅(px)
 		 * @return true:成功 false:失敗
 		 *
 		 */
-		bool init_dynamic();
+		bool init_dynamic(const int width, const int height);
 
 		/*
 		 * 毎フレーム最初に呼び出すこと
