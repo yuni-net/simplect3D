@@ -181,6 +181,9 @@
     <Filter Include="simplect3D\seal\SealData">
       <UniqueIdentifier>{f8df2c5d-1bf8-456e-becb-832488b66be5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\Vector">
+      <UniqueIdentifier>{fee60323-8488-458a-9382-3c4d814e09e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -330,6 +333,12 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\si3_SealData.cpp">
       <Filter>simplect3D\seal\SealData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\si3_Vector.cpp">
+      <Filter>simplect3D\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\si3_UniVec3.cpp">
+      <Filter>simplect3D\Vector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -506,6 +515,12 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_SealData.h">
       <Filter>simplect3D\seal\SealData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Vector.h">
+      <Filter>simplect3D\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_UniVec3.h">
+      <Filter>simplect3D\Vector</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

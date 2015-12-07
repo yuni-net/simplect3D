@@ -123,6 +123,8 @@
     <ClCompile Include="..\..\simplect3D_cpp\si3_Seal.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_SealData.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_triangle_gravity_center.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_UniVec3.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\si3_Vector.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome_data.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sky_dome_mini.cpp" />
@@ -181,6 +183,7 @@
     <ClInclude Include="..\..\simplect3D\si3_DxTop.h" />
     <ClInclude Include="..\..\simplect3D\si3_Seal.h" />
     <ClInclude Include="..\..\simplect3D\si3_SealData.h" />
+    <ClInclude Include="..\..\simplect3D\si3_Vector.h" />
     <ClInclude Include="..\..\simplect3D\simplect3D.h" />
     <ClInclude Include="..\..\simplect3D\si3_Skydome.h" />
     <ClInclude Include="..\..\simplect3D\si3_SkydomeData.h" />
@@ -194,6 +197,7 @@
     <ClInclude Include="..\..\simplect3D\si3_UniqueSound.h" />
     <ClInclude Include="..\..\simplect3D\si3_utility.h" />
     <ClInclude Include="..\..\simplect3D\si3_util_MMD.h" />
+    <ClInclude Include="..\..\simplect3D\si3_UniVec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
