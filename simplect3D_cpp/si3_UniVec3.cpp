@@ -18,6 +18,11 @@ namespace si3
 		z_ = another.z()*percent;
 	}
 
+	Vector3 UniVec3::operator*(const float val) const
+	{
+		return Vector3(x()*val, y()*val, z()*val);
+	}
+
 	float UniVec3::x() const
 	{
 		return x_;

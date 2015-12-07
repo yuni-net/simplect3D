@@ -15,6 +15,13 @@ namespace si3
 		z(another.z());
 	}
 
+	Vector3::Vector3(const Coor3 & pos)
+	{
+		x(pos.x);
+		y(pos.y);
+		z(pos.z);
+	}
+
 	Vector3::Vector3(const float x, const float y, const float z)
 	{
 		this->x(x);

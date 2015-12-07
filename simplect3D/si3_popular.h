@@ -1,3 +1,6 @@
+#pragma warning(push)
+#pragma warning(disable:4091)
+
 #ifndef STRICT
 #define STRICT
 #endif
@@ -43,3 +46,5 @@
 //#define FW_DX_PROGRAMABLE_DEF_
 //*/
 #include <FantomWaves.h>
+
+#pragma warning(pop)

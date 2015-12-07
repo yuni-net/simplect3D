@@ -5,6 +5,9 @@
 #include <cstdint>
 #include <si3_BoneMap.h>
 
+#pragma warning(push)
+#pragma warning(disable:4996)
+
 namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
@@ -782,3 +785,5 @@ namespace si3
 	}
 
 }
+
+#pragma warning(pop)
