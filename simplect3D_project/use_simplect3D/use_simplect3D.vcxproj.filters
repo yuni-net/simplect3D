@@ -184,6 +184,15 @@
     <Filter Include="simplect3D\Vector">
       <UniqueIdentifier>{fee60323-8488-458a-9382-3c4d814e09e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\ModelFBX">
+      <UniqueIdentifier>{c15f0cc9-b751-49d6-8e26-bcbf564c65d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\ModelFBX\MyFbxManager">
+      <UniqueIdentifier>{0201e984-8c68-4fe4-be12-b0186dd9f6ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="simplect3D\ModelFBX\MyFbxMesh">
+      <UniqueIdentifier>{f213f4af-0d6e-42ef-b091-6a3f2b904633}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -339,6 +348,15 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\si3_UniVec3.cpp">
       <Filter>simplect3D\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\ModelFBX.cpp">
+      <Filter>simplect3D\ModelFBX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\MyFbxManager.cpp">
+      <Filter>simplect3D\ModelFBX\MyFbxManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\MyFbxMesh.cpp">
+      <Filter>simplect3D\ModelFBX\MyFbxMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -521,6 +539,15 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_UniVec3.h">
       <Filter>simplect3D\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_ModelFBX.h">
+      <Filter>simplect3D\ModelFBX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_MyFbxManager.h">
+      <Filter>simplect3D\ModelFBX\MyFbxManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_MyFbxMesh.h">
+      <Filter>simplect3D\ModelFBX\MyFbxMesh</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
