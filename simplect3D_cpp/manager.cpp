@@ -9,7 +9,7 @@ namespace si3
 	*/
 	bool Manager::init()
 	{
-		return get_instance().init_dynamic(640, 480);
+		return get_instance().init_dynamic(640, 480, std::string("game"));
 	}
 
 	/*
@@ -19,9 +19,9 @@ namespace si3
 	* @return true:ê¨å˜ false:é∏îs
 	*
 	*/
-	bool Manager::init(const int width, const int height)
+	bool Manager::init(const int width, const int height, const std::string & title)
 	{
-		return get_instance().init_dynamic(width, height);
+		return get_instance().init_dynamic(width, height, title);
 	}
 
 
@@ -111,11 +111,11 @@ namespace si3
 
 
 
-	bool Manager::init_dynamic(const int width, const int height)
+	bool Manager::init_dynamic(const int width, const int height, const std::string & title)
 	{
 		fps60i.init();
 
-		windowi.width(width).height(height);
+		windowi.width(width).height(height).title(title);
 		windowi.create();
 
 		if (dxm.init(windowi.myhandle(), windowi.width(), windowi.height())==false) return false;

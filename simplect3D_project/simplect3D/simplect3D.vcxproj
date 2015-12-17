@@ -114,6 +114,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\model.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\ModelData_pmd.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\model_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\MorfData.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\Motion3D.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\MotionData.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\mouse.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="..\..\simplect3D\si3_ModelData.h" />
     <ClInclude Include="..\..\simplect3D\si3_ModelData_pmd.h" />
     <ClInclude Include="..\..\simplect3D\si3_ModelDustConverter.h" />
+    <ClInclude Include="..\..\simplect3D\si3_MorfData.h" />
     <ClInclude Include="..\..\simplect3D\si3_Motion3D.h" />
     <ClInclude Include="..\..\simplect3D\si3_MotionData.h" />
     <ClInclude Include="..\..\simplect3D\si3_Mouse.h" />

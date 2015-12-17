@@ -27,6 +27,7 @@
 #include "si3_Seal.h"
 #include "si3_Vector.h"
 #include "si3_UniVec3.h"
+#include "si3_MorfData.h"
 
 #ifndef simplect3D_developping_
 #ifdef _DEBUG

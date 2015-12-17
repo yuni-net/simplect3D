@@ -32,7 +32,7 @@ namespace si3
 		 * @return true:成功 false:失敗
 		 *
 		 */
-		static bool init(const int width, const int height);
+		static bool init(const int width, const int height, const std::string & title);
 
 		/*
 		* 毎フレーム最初に呼び出すこと
@@ -102,10 +102,11 @@ namespace si3
 		 * @param
 		 *      width: ウィンドウの横幅(px)
 		 *      height: ウィンドウの縦幅(px)
+		 *		title: ウィンドウタイトル
 		 * @return true:成功 false:失敗
 		 *
 		 */
-		bool init_dynamic(const int width, const int height);
+		bool init_dynamic(const int width, const int height, const std::string & title);
 
 		/*
 		 * 毎フレーム最初に呼び出すこと

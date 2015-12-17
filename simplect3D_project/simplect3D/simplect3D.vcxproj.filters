@@ -61,6 +61,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\anime.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_Vector.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_UniVec3.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\MorfData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\simplect3D\si3_anime.h" />
@@ -123,5 +124,6 @@
     <ClInclude Include="..\..\simplect3D\simplect3D.h" />
     <ClInclude Include="..\..\simplect3D\si3_Vector.h" />
     <ClInclude Include="..\..\simplect3D\si3_UniVec3.h" />
+    <ClInclude Include="..\..\simplect3D\si3_MorfData.h" />
   </ItemGroup>
 </Project>
