@@ -25,6 +25,8 @@
 #include "si3_box.h"
 #include "si3_Motion3D.h"
 #include "si3_Seal.h"
+#include "si3_Vector.h"
+#include "si3_UniVec3.h"
 
 #ifndef simplect3D_developping_
 #ifdef _DEBUG
