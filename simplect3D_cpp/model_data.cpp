@@ -1,6 +1,9 @@
 #include <si3_ModelData.h>
 #include <si3_Manager.h>
 
+#pragma warning(push)
+#pragma warning(disable:4996)
+
 namespace si3
 {
 	static const DWORD model_fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
@@ -931,3 +934,5 @@ namespace si3
 #endif
 
 }
+
+#pragma warning(pop)
