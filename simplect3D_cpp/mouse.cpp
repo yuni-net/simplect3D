@@ -52,7 +52,7 @@ namespace si3
 			button_statuses[active_index][id] == true;
 	}
 
-	bool Mouse::all_freeing(int id) const
+	bool Mouse::all_freeing() const
 	{
 		static const int statuses_qty = 3;
 		for (int index = 0; index < statuses_qty; ++index)
@@ -65,7 +65,7 @@ namespace si3
 		return true;
 	}
 
-	bool Mouse::any_pushing(int id) const
+	bool Mouse::any_pushing() const
 	{
 		static const int statuses_qty = 3;
 		for (int index = 0; index < statuses_qty; ++index)

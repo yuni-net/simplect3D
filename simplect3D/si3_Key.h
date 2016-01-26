@@ -37,7 +37,7 @@ namespace si3
 			true: the user is pushing any key.
 			false: the user is NOT pushing any key.
 		*/
-		bool any_pushing(unsigned char key) const;
+		bool any_pushing() const;
 
 		/**
 		@brief I check whether the user is pushing none of key.
@@ -46,7 +46,7 @@ namespace si3
 			true: the user is pushing none of key.
 			false: the user is pushing any key.
 		*/
-		bool all_freeing(unsigned char key) const;
+		bool all_freeing() const;
 
 		/**
 		@brief I check whether the user has just pushed the 'key.'
