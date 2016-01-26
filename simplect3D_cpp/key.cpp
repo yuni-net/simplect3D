@@ -26,7 +26,7 @@ namespace si3
 		return !pushing(Key);
 	}
 
-	bool Key::any_pushing(unsigned char key) const
+	bool Key::any_pushing() const
 	{
 		static const int keystate_qty = 256;
 		for (int index = 0; index < keystate_qty; ++index)
@@ -39,7 +39,7 @@ namespace si3
 		return false;
 	}
 
-	bool Key::all_freeing(unsigned char key) const
+	bool Key::all_freeing() const
 	{
 		static const int keystate_qty = 256;
 		for (int index = 0; index < keystate_qty; ++index)
