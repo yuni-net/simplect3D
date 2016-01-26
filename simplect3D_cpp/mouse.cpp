@@ -43,6 +43,7 @@ namespace si3
 	{
 		return button_statuses[active_index][id] == false;
 	}
+
 	bool Mouse::pushed(int id) const
 	{
 		return
@@ -50,10 +51,38 @@ namespace si3
 			&&
 			button_statuses[active_index][id] == true;
 	}
+
+	bool Mouse::all_freeing(int id) const
+	{
+		static const int statuses_qty = 3;
+		for (int index = 0; index < statuses_qty; ++index)
+		{
+			if (button_statuses[active_index][index] == true)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	bool Mouse::any_pushing(int id) const
+	{
+		static const int statuses_qty = 3;
+		for (int index = 0; index < statuses_qty; ++index)
+		{
+			if (button_statuses[active_index][index] == true)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	bool Mouse::pushing(int id) const
 	{
 		return button_statuses[active_index][id] == true;
 	}
+
 	bool Mouse::clicked(int id) const
 	{
 		return

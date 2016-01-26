@@ -28,6 +28,8 @@ namespace si3
 
 		bool freeing(int id) const;
 		bool pushed(int id) const;
+		bool all_freeing(int id) const;
+		bool any_pushing(int id) const;
 		bool pushing(int id) const;
 		bool clicked(int id) const;
 
