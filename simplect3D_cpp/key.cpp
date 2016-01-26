@@ -26,6 +26,33 @@ namespace si3
 		return !pushing(Key);
 	}
 
+	bool Key::any_pushing(unsigned char key) const
+	{
+		static const int keystate_qty = 256;
+		for (int index = 0; index < keystate_qty; ++index)
+		{
+			if ((keystate[active][index] & 0x80) != 0)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool Key::all_freeing(unsigned char key) const
+	{
+		static const int keystate_qty = 256;
+		for (int index = 0; index < keystate_qty; ++index)
+		{
+			if ((keystate[active][index] & 0x80) != 0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+
 	bool Key::pushed(unsigned char Key) const
 	{
 		if ((keystate[active][Key] & 0x80) == 0) return false;
