@@ -70,7 +70,6 @@ namespace si3
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
 
-		ulong top_num;
 		fread(&top_num, sizeof(ulong), 1, fp);
 
 		if (create_top_buffer(top_num) == false)
@@ -119,7 +118,6 @@ namespace si3
 		typedef unsigned long ulong;
 		typedef unsigned short ushort;
 
-		ulong top_num;
 		fread(&top_num, sizeof(ulong), 1, fp);
 
 		if (create_top_buffer(top_num) == false)
@@ -398,6 +396,26 @@ namespace si3
 	{
 		return load(path.c_str());
 	}
+
+
+	void ModelData::scale(const float value)
+	{
+		scale(value, value, value);
+	}
+
+	void ModelData::scale(const float xval, const float yval, const float zval)
+	{
+		DxTop * tops = lock_top_buffer();
+		for (unsigned long top_No = 0; top_No < top_num; ++top_No)
+		{
+			DxTop & top = tops[top_No];
+			top.pos.x *= xval;
+			top.pos.y *= yval;
+			top.pos.z *= zval;
+		}
+		unlock_top_buffer();
+	}
+
 
 
 

@@ -21,6 +21,9 @@ namespace si3
 		bool load(const tstring & path);
 		bool load(const TCHAR * path, const si3::Coor3 & center);
 
+		void scale(const float value);
+		void scale(const float xval, const float yval, const float zval);
+
 		unsigned long index_num() const;
 		DxTop * lock_top_buffer() const;
 		unsigned short * lock_index_buffer() const;
@@ -65,6 +68,7 @@ namespace si3
 		IDirect3DVertexBuffer9 * vertbuff;
 		IDirect3DIndexBuffer9 * indexbuff;
 		unsigned long index_num_;
+		unsigned long top_num;
 		//	bool with_alpha;
 
 		void construct();
