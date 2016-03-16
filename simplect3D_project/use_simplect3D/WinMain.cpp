@@ -35,14 +35,15 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 	camera.look_y(10.0f);
 	camera.look_z(0.0f);
 
-	si3::Seal seal;
-	seal.piece_size(500.0f);
-	seal.load("data/sky.jpg");
-	seal.x = seal.base_width()*0.5f;
-//	seal.x = 0.0f;
-	seal.y = seal.base_height()*0.5f;
-	seal.z = 0.0f;
+	si3::ModelData modeld;
+	modeld.load("data/Lat_Miku/Miku_mini.pmd");
+	modeld.scale(4.0f);
 
+	si3::Model model;
+	model.model_data(modeld);
+	model.x(0.0f);
+	model.y(0.0f);
+	model.z(0.0f);
 
 	float fRadian = -3.14159265f/2.0f;
 	const float fRotSpeed = 0.08f;
@@ -97,7 +98,7 @@ int WINAPI WinMain(HINSTANCE hI, HINSTANCE hP, LPSTR lpC, int nC)
 		}
 
 
-		si3::Manager::register_display_object(seal);
+		si3::Manager::register_display_object(model);
 
 		si3::Manager::show();
 
