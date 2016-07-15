@@ -184,6 +184,9 @@
     <Filter Include="simplect3D\Vector">
       <UniqueIdentifier>{33b86ef3-e363-4bb9-baf4-780105e51dbb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="simplect3D\Triangle">
+      <UniqueIdentifier>{0e3bdcde-4d06-49e6-98dc-e5e1cd1cd91f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp" />
@@ -339,6 +342,9 @@
     </ClCompile>
     <ClCompile Include="..\..\simplect3D_cpp\si3_Vector.cpp">
       <Filter>simplect3D\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simplect3D_cpp\Triangle.cpp">
+      <Filter>simplect3D\Triangle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -521,6 +527,9 @@
     </ClInclude>
     <ClInclude Include="..\..\simplect3D\si3_Vector.h">
       <Filter>simplect3D\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simplect3D\si3_Triangle.h">
+      <Filter>simplect3D\Triangle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

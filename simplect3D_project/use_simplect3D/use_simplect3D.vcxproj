@@ -133,6 +133,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\BoneBranch.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\Triangle.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\unique_sound.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\utility.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="..\..\simplect3D\si3_UniqueSound.h" />
     <ClInclude Include="..\..\simplect3D\si3_utility.h" />
     <ClInclude Include="..\..\simplect3D\si3_util_MMD.h" />
+    <ClInclude Include="..\..\simplect3D\si3_Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
