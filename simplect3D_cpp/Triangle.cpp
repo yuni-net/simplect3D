@@ -82,6 +82,8 @@ namespace si3
 		device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
 		device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
 
+		device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+
 		// ƒ[ƒ‹ƒh•ÏŠ·s—ñÝ’è
 		D3DXMATRIX world_mat = Matrix().parallel(x,y,z).dxmat();
 		device->SetTransform(D3DTS_WORLD, &world_mat);
