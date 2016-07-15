@@ -10,6 +10,9 @@ namespace si3
 {
 	Triangle::Triangle(const Coor3 & a, const Coor3 & b, const Coor3 & c)
 	{
+		tops[0] = a;
+		tops[1] = b;
+		tops[2] = c;
 		LPDIRECT3DDEVICE9 device = si3::Manager::get_dxdevice();
 		HRESULT	hr;
 
@@ -63,6 +66,12 @@ namespace si3
 		// バッファをアンロックして書き込みを終了する
 		vertbuff->Unlock();
 	}
+
+	const Coor3 & Triangle::get_top(const int index) const
+	{
+		return tops[index];
+	}
+
 
 	void Triangle::draw_no_alpha() const
 	{

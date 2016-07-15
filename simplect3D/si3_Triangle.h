@@ -13,18 +13,26 @@ namespace si3
 		float z;
 
 		Triangle(const Coor3 & a, const Coor3 & b, const Coor3 & c);
+
+		const Coor3 & get_top(const int index) const;
+
+
+
+
+
+
+
+
+
+
+
+
 		void draw_no_alpha() const;
 		void draw_alpha() const;
-
-
-
-
-
-
-
 
 	private:
 		IDirect3DVertexBuffer9 * vertbuff;
 		LPDIRECT3DTEXTURE9 texture;
+		Coor3 tops[3];
 	};
 }
