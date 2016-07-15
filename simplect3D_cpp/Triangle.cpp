@@ -2,14 +2,9 @@
 #include <si3_popular.h>
 #include <si3_Manager.h>
 #include <si3_Matrix.h>
+#include <si3_DxTop.h>
 
-static const WORD fvf = D3DFVF_XYZ | D3DFVF_NORMAL;
-
-struct Top
-{
-	D3DVECTOR   pos;
-	D3DVECTOR   normal;
-};
+static const WORD fvf = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
 namespace si3
 {
@@ -18,9 +13,27 @@ namespace si3
 		LPDIRECT3DDEVICE9 device = si3::Manager::get_dxdevice();
 		HRESULT	hr;
 
+		// テクスチャ作成
+		hr = D3DXCreateTextureFromFileEx(
+			device,
+			"data/white.png",
+			D3DX_DEFAULT_NONPOW2,
+			D3DX_DEFAULT_NONPOW2,
+			0,
+			0,
+			D3DFMT_UNKNOWN,
+			D3DPOOL_MANAGED,
+			D3DX_DEFAULT,
+			D3DX_DEFAULT,
+			0,
+			NULL,
+			NULL,
+			&texture);
+		if (FAILED(hr)) return;
+
 		// 頂点情報格納バッファを作成
 		hr = device->CreateVertexBuffer(
-			sizeof(Top)* 3,
+			sizeof(DxTop)* 3,
 			D3DUSAGE_WRITEONLY,
 			fvf,
 			D3DPOOL_MANAGED,
@@ -30,16 +43,22 @@ namespace si3
 		if (FAILED(hr)) return;
 
 		// バッファをロックをして書き込みを開始する
-		Top * vert_arr = nullptr;
+		DxTop * vert_arr = nullptr;
 		hr = vertbuff->Lock(0, 0, fw::pointer_cast<void **>(&vert_arr), 0);
 		if (FAILED(hr)) return;
 
 		vert_arr[0].pos = a.dxvec3();
 		vert_arr[0].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+		vert_arr[0].u = 0.0f;
+		vert_arr[0].v = 0.0f;
 		vert_arr[1].pos = b.dxvec3();
 		vert_arr[1].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+		vert_arr[1].u = 0.0f;
+		vert_arr[1].v = 0.0f;
 		vert_arr[2].pos = c.dxvec3();
 		vert_arr[2].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+		vert_arr[2].u = 0.0f;
+		vert_arr[2].v = 0.0f;
 
 		// バッファをアンロックして書き込みを終了する
 		vertbuff->Unlock();
@@ -59,8 +78,9 @@ namespace si3
 		device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
 		// マテリアルとテクスチャのrgba情報を掛け合わせる設定
-		device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTA_DIFFUSE);
+		device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 		device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+		device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TEXTURE);
 
 		// ワールド変換行列設定
 		D3DXMATRIX world_mat = Matrix().parallel(x,y,z).dxmat();
@@ -94,7 +114,10 @@ namespace si3
 		material.Power = 1.0f;
 		device->SetMaterial(&material);
 
-		device->SetStreamSource(0, vertbuff, 0, sizeof(Top));
+		//テクスチャ設定
+		device->SetTexture(0, texture);
+
+		device->SetStreamSource(0, vertbuff, 0, sizeof(DxTop));
 
 
 		device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);

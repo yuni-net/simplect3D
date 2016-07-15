@@ -134,6 +134,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\sound_manager.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\sphere_data.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\Triangle.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\unique_sound.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\utility.cpp" />
   </ItemGroup>

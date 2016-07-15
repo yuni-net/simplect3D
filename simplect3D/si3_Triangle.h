@@ -25,5 +25,6 @@ namespace si3
 
 	private:
 		IDirect3DVertexBuffer9 * vertbuff;
+		LPDIRECT3DTEXTURE9 texture;
 	};
 }

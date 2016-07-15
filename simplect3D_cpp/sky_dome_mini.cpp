@@ -50,7 +50,7 @@ namespace si3
 
 
 		const si3::Camera & camera = si3::Manager::camera();
-		float near_clip = camera.near_clip()+0.1f;
+		float near_clip = camera.near_clip()*2.0f;
 
 		Matrix scale_mat;
 		scale_mat.scale(near_clip, near_clip, near_clip);

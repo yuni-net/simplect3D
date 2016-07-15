@@ -10,7 +10,10 @@ namespace si3
 	class Camera
 	{
 	public:
-		bool init(LPDIRECT3DDEVICE9 dxdevice, unsigned int screen_width, unsigned int screen_height);
+		bool init(
+			LPDIRECT3DDEVICE9 dxdevice,
+			unsigned int screen_width,
+			unsigned int screen_height);
 		void update();
 
 		void x(float value);
@@ -46,6 +49,11 @@ namespace si3
 		const D3DXMATRIX & view_rot() const;
 
 		float near_clip() const;
+		void near_clip(const float value);
+		float far_clip() const;
+		void far_clip(const float value);
+		float view_angle() const;
+		void view_angle(const float value);
 
 
 
@@ -60,5 +68,10 @@ namespace si3
 		D3DXMATRIX	view_rot_;
 		D3DXMATRIX	view_mat_;
 		float near_clip_;
+		float far_clip_;
+		float view_angle_;
+		float aspect_ratio;
+
+		void update_proj_mat();
 	};
 }

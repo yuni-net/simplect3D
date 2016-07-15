@@ -61,6 +61,7 @@
     <ClCompile Include="..\..\simplect3D_cpp\anime.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_UniVec3.cpp" />
     <ClCompile Include="..\..\simplect3D_cpp\si3_Vector.cpp" />
+    <ClCompile Include="..\..\simplect3D_cpp\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\simplect3D\si3_anime.h" />
